@@ -8,7 +8,8 @@ const TestLabLayout = () => {
         <img alt='logo' />
         <h1>Testlab</h1>
         <nav>
-          <Link to='overview'>Overview</Link>
+          <Link to='.'>Overview</Link>
+          <Link to='1'>DetailExample</Link>
           <Link to='/'>LogOut</Link>
         </nav>
       </header>

@@ -13,6 +13,7 @@
 
 .page-header > nav {
     display: flex;
+    justify-content: flex-end;
     gap: 1rem;
     align-items: center;
 }
@@ -21,4 +22,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.lab-library-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.lab-library-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 1px gray solid;
+    margin: 0rem;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
 }
