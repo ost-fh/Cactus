@@ -16,7 +16,8 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<PublicLayout />}>
-          <Route path='home' index element={<Home />} />
+          <Route index element={<Navigate to='home' />} />
+          <Route path='home' element={<Home />} />
           <Route path='results' element={<Results />} />
           <Route path='contribute' element={<Contribute />} />
           <Route path='login' element={<Login setToken={setToken} />} />
