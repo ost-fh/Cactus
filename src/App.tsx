@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
+import "./App.css";
+import Contribute from "./pages/Contribute";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import PublicLayout from "./pages/PublicLayout";
+import Results from "./pages/Results";
+import TestLabLayout from "./pages/TestLabLayout";
+import TestLabOverview from "./pages/TestLabOverview";
 
 function App() {
+  const [token, setToken] = useState();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<PublicLayout />}>
+          <Route path='home' index element={<Home />} />
+          <Route path='results' element={<Results />} />
+          <Route path='contribute' element={<Contribute />} />
+          <Route path='login' element={<Login setToken={setToken} />} />
+        </Route>
+        {token ? (
+          <Route path='testlab' element={<TestLabLayout />}>
+            <Route path='overview' index element={<TestLabOverview />} />
+          </Route>
+        ) : (
+          <Route path='testlab' element={<Navigate to='/' />} />
+        )}
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 
