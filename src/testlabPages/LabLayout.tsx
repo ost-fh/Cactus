@@ -6,12 +6,13 @@ const TestLabLayout = () => {
     <div className='container'>
       <header className='page-header page-header-testlab'>
         <img alt='logo' />
-        <h1>Testlab</h1>
-        <nav>
+        <h1>Cactus Testlab</h1>
+        {/* <nav>
           <Link to='.'>Overview</Link>
           <Link to='1'>DetailExample</Link>
+          <Link to='test'>Test</Link>
           <Link to='/'>LogOut</Link>
-        </nav>
+        </nav> */}
       </header>
       <main>
         <Outlet />

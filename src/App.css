@@ -1,3 +1,43 @@
+/* CSS Reset */
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* general */
+
 * {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -6,9 +46,61 @@
     margin: auto 1rem;
 }
 
+:focus {
+    outline-color: red;
+    /* outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.8); */
+}
+
+/* * {
+    outline: 1px red solid;
+} */
+
+/** Utilities **/
+
+button {
+    background-color: rgb(224, 224, 224);
+    border: solid rgb(239, 239, 239) 1px;
+    text-align: center;
+    border-radius: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+    display: inline-block;
+    transition-duration: 0.3s;
+}
+button:hover {
+    background-color: rgb(234, 234, 234);
+}
+
+button:active {
+}
+
+button:disabled {
+}
+
+.button-wide {
+    width: 100%;
+}
+
+.button-primary {
+    background-color: rgb(14, 124, 221);
+    border-color: rgb(240, 248, 255);
+    color: white;
+}
+
+.button-primary:hover {
+    background-color: rgb(14, 113, 200);
+}
+
+.alert-info {
+}
+
+/** Page Layout **/
+
 .page-header {
     display: grid;
     grid-template-columns: auto auto auto;
+    padding: 1rem 0;
 }
 
 .page-header > nav {
@@ -27,14 +119,99 @@
 .lab-library-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.7rem;
+    margin-top: 1rem;
 }
 
 .lab-library-card {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    border: 1px gray solid;
+    border: 1px rgb(224, 224, 224) solid;
     margin: 0rem;
     padding: 0.7rem;
     border-radius: 0.5rem;
 }
+
+.lab-library-card > main {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/** library-detail **/
+
+.lib-detail > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lib-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.lib-controls,
+.lib-infos {
+    display: flex;
+    flex-direction: column;
+}
+
+.lib-testresults {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.lib-testresult {
+    background-color: whitesmoke;
+    padding: 0.7rem;
+    border-radius: 0.4rem;
+}
+
+.lib-testresult h2 {
+    margin: 0;
+}
+
+.lib-testresult > header {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding-bottom: 0.5rem;
+}
+
+/** Scorebubble **/
+
+.score-bubble,
+.score-score {
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.9rem;
+}
+
+.score-bubble {
+    background-color: rgb(148, 226, 148);
+    display: flex;
+    /* margin: 0.5rem; */
+}
+
+.score-score {
+    background-color: rgb(98, 186, 98);
+    margin: -0.4rem -0.7rem;
+    margin-right: 0.4rem;
+}
+
+/** component tests **/
+.test-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+.test-item {
+    border: grey solid 1px;
+    border-radius: 0.4rem;
+    padding: 1rem;
+}
+
+/**  **/
+/**  **/
