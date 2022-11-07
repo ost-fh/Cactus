@@ -93,6 +93,10 @@ button:disabled {
 }
 
 .alert-info {
+    background-color: rgb(255, 250, 216);
+    border: rgb(247, 241, 126) solid 1px;
+    border-radius: 0.4rem;
+    padding: 0.7rem;
 }
 
 /** Page Layout **/
@@ -116,26 +120,41 @@ button:disabled {
     align-items: center;
 }
 
-.lab-library-list {
+.library-list {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
     margin-top: 1rem;
 }
 
-.lab-library-card {
+.library-card {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "title ctrl"
+        "score ctrl";
     border: 1px rgb(224, 224, 224) solid;
+    gap: 0.5rem;
     margin: 0rem;
     padding: 0.7rem;
     border-radius: 0.5rem;
+    align-items: center;
 }
 
-.lab-library-card > main {
+.library-card > title {
+    grid-area: title;
+}
+
+.library-card > main {
+    grid-area: score;
     display: flex;
+    gap: 0.5rem;
     justify-content: flex-start;
     align-items: center;
+}
+
+.library-card > aside {
+    grid-area: ctrl;
 }
 
 /** library-detail **/
@@ -183,34 +202,105 @@ button:disabled {
 /** Scorebubble **/
 
 .score-bubble,
-.score-score {
+.score-score,
+.count-bubble,
+.count-count {
     padding: 0.4rem 0.7rem;
     border-radius: 0.9rem;
 }
 
-.score-bubble {
-    background-color: rgb(148, 226, 148);
+.score-bubble,
+.count-bubble {
     display: flex;
     /* margin: 0.5rem; */
 }
 
-.score-score {
-    background-color: rgb(98, 186, 98);
+.score-score,
+.count-count {
     margin: -0.4rem -0.7rem;
     margin-right: 0.4rem;
 }
 
+.score-bubble {
+    background-color: rgb(148, 226, 148);
+}
+
+.score-score {
+    background-color: rgb(98, 186, 98);
+}
+
+.count-bubble {
+    background-color: rgb(251, 251, 251);
+}
+
+.count-count {
+    background-color: rgb(244, 244, 242);
+}
+
+/** lab-start **/
+
+.lab-start {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 /** component tests **/
+
+.component-test {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.test-general {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .test-list {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
     gap: 1rem;
 }
+
+.test-instructions {
+    border: grey solid 1px;
+    border-radius: 0.4rem;
+    padding: 1rem;
+    background-color: rgb(213, 244, 213);
+}
+
 .test-item {
     border: grey solid 1px;
     border-radius: 0.4rem;
     padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.7rem;
+}
+
+.test-item-criteria {
+    font-size: 1.2rem;
+}
+
+.test-item > .button-group {
+    grid-column: span 2;
+}
+
+.test-item-help {
+    background-color: yellow;
+    margin: 0 -1rem;
+    padding: 1rem;
+    grid-column: span 2;
+}
+
+.test-item-comment {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
 }
 
 /**  **/

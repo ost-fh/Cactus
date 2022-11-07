@@ -4,7 +4,7 @@ type ScoreBubbleProps = {
   /**
    * without percent-sign
    */
-  score: string;
+  score: number;
   label?: string;
 };
 

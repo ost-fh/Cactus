@@ -4,7 +4,9 @@ import LinkButton from "../components/LinkButton";
 const Start = () => {
   return (
     <div className='lab-start'>
-      Start
+      <div className='alert-info'>
+        Choose Component and Testmode to continue
+      </div>
       <label>Choose Component</label>
       <input type='dropdown' />
       <label>Choose Testmode</label>
