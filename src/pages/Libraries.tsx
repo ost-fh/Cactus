@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import CountBubble from "../components/CountBubble";
 import LinkButton from "../components/LinkButton";
 import ScoreBubble from "../components/ScoreBubble";

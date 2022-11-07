@@ -99,6 +99,19 @@ button:disabled {
     padding: 0.7rem;
 }
 
+/** forms **/
+
+form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    padding-top: 1rem;
+}
+
+.form-control {
+    grid-column: span 2;
+}
+
 /** Page Layout **/
 
 .page-header {
