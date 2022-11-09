@@ -5,11 +5,20 @@ const getLibraries = async (req, res) => {
     res.status(200).json(libraries)
 }
 
+const getLibrary = async (req, res) => {
+    const library = await Library.findById(req.params.id)
+    if (!library) {
+        res.status(400);
+        throw new Error('Library not found')
+    }
+    res.status(200).json(library);
+}
+
 const postLibrary = async (req, res) => {
     console.log(req.body)
-    if (!req.body.title) {
+    if (!req.body.title || !req.body.linkHome || !req.body.linkDocs || !req.body.currentVersion) {
         res.status(400)
-        throw new Error('please add textfield')
+        throw new Error('please add all required fields')
     }
     const library = await Library.create({
         title: req.body.title,
@@ -25,4 +34,5 @@ const postLibrary = async (req, res) => {
 module.exports = {
     getLibraries,
     postLibrary,
+    getLibrary
 }
