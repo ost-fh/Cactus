@@ -7,11 +7,15 @@ const Start = () => {
       <div className='alert-info'>
         Choose Component and Testmode to continue
       </div>
-      <label>Choose Component</label>
-      <input type='dropdown' />
-      <label>Choose Testmode</label>
-      <input type='dropdown' />
-      <LinkButton path='test' label='Start Test'></LinkButton>
+      <form>
+        <label>Choose Component</label>
+        <input type='dropdown' />
+        <label>Choose Testmode</label>
+        <input type='dropdown' />
+        <div className='form-control'>
+          <LinkButton path='test' label='Start Test'></LinkButton>
+        </div>
+      </form>
     </div>
   );
 };

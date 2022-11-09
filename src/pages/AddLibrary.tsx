@@ -1,16 +1,11 @@
 import React, { useState } from "react";
-
-type newLibrary = {
-  title: string;
-  version: string;
-  linkHome: string;
-  linkDocs: string;
-};
+import { createLibrary } from "../api";
+import { newLibrary } from "../types";
 
 const AddLibrary = () => {
   const [newLibrary, setNewLibrary] = useState<newLibrary>({
     title: "",
-    version: "",
+    currentVersion: "",
     linkDocs: "",
     linkHome: "",
   });
@@ -26,6 +21,7 @@ const AddLibrary = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(newLibrary);
+    createLibrary(newLibrary).then(() => console.log("success"));
   };
 
   return (
@@ -44,7 +40,7 @@ const AddLibrary = () => {
         <input
           onChange={handleChange}
           type='text'
-          name='version'
+          name='currentVersion'
           id='lib-version'
         />
         <label htmlFor='lib-link-home'>Link to Homepage</label>

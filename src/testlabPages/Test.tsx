@@ -1,36 +1,68 @@
 import React from "react";
+import LinkButton from "../components/LinkButton";
+import TestItem from "../components/TestItem";
+
+type testDataType = {
+  libraryId: string;
+  component: string;
+  testtype: string;
+  criteriaGroup: object;
+};
+
+const criteria = [
+  {
+    _id: "123",
+    text: "focus style is visible",
+    help: "Hier steht hilfetext",
+  },
+  {
+    _id: "1243",
+    text: "buttons are focusable",
+    help: "Hier steht hilfetext",
+  },
+];
+
+// brauchts das? gibt es zusätzliche angaben? ja -> videolinsk, allg. instructions
+const criteriaGroup = {
+  videoLink: "test.com",
+  instructions: "This is how you test a Dialog.",
+  additionalHint: "mode: keyboard use Hinweis",
+  criteria: criteria,
+};
+
+const testData = {
+  libraryId: "234214",
+  library: {}, // fetch from server
+  component: "Dialog",
+  testtype: "Keyboard",
+  criteriaGroup: criteriaGroup,
+};
+
+// Library Data import -> title, links ...
 
 const Test = () => {
+  const toggleHelp = {};
+
   return (
     <div className='component-test'>
       <div className='test-general'>
-        <p>Component: Dialog</p>
-        <p>Testmode: ...</p>
-
-        <button>Open documentation in new window</button>
+        <p>Library: {testData.libraryId} </p>
+        <p>Component: {testData.component} </p>
+        <p>Testmode: {testData.testtype} </p>
+        <LinkButton path={"test"} label='Open documentation in new window' />
       </div>
-      <div className='alert-info'>mode: keyboard use Hinweis</div>
+      <div className='alert-info'>{testData.criteriaGroup.additionalHint}</div>
       <div className='test-instructions'>
         <h3>Instructions</h3>
-        video Blablabla
+        {testData.criteriaGroup.instructions}
+        <div>video: {testData.criteriaGroup.videoLink} </div>
       </div>
       <section className='test-list'>
-        <article className='test-item'>
-          <p className='test-item-criteria'>criteria</p>
-          <button>help</button>
-          <div className='test-item-help'>Help Section</div>
-          <div className='button-group'>
-            <button>eval/btn group</button>
-            <button>eval/btn group</button>
-            <button>eval/btn group</button>
-          </div>
-          <div className='test-item-comment'>
-            <label htmlFor='item-comment'>Write here</label>
-            <textarea name='comment' id='item-comment'></textarea>
-          </div>
-        </article>
+        {testData.criteriaGroup.criteria.map((criteria) => (
+          <TestItem key={criteria._id} criteria={criteria} />
+        ))}
       </section>
-      <button>Finish Test</button>
+      <button type='submit'>Finish Test</button>
     </div>
   );
 };

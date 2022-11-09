@@ -23,7 +23,7 @@ function App() {
           <Route path='home' element={<Home />} />
           <Route path='libraries' element={<Libraries />} />
           <Route path='libraries/new' element={<AddLibrary />} />
-          <Route path='libraries/1' element={<LabLibraryDetail />} />
+          <Route path='libraries/:id' element={<LabLibraryDetail />} />
           <Route path='contribute' element={<Contribute />} />
           <Route path='login' element={<Login setToken={setToken} />} />
         </Route>

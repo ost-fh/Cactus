@@ -92,6 +92,11 @@ button:disabled {
     background-color: rgb(14, 113, 200);
 }
 
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
 .alert-info {
     background-color: rgb(255, 250, 216);
     border: rgb(247, 241, 126) solid 1px;
@@ -304,7 +309,7 @@ form {
 }
 
 .test-item-help {
-    background-color: yellow;
+    background-color: rgb(252, 252, 206);
     margin: 0 -1rem;
     padding: 1rem;
     grid-column: span 2;
