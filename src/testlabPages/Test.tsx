@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LinkButton from "../components/LinkButton";
 import TestItem from "../components/TestItem";
 
@@ -22,7 +22,6 @@ const criteria = [
   },
 ];
 
-// brauchts das? gibt es zusätzliche angaben? ja -> videolinsk, allg. instructions
 const criteriaGroup = {
   videoLink: "test.com",
   instructions: "This is how you test a Dialog.",
@@ -38,10 +37,36 @@ const testData = {
   criteriaGroup: criteriaGroup,
 };
 
+type criteriumResult = {
+  _id: string;
+  text: string;
+  help: string;
+  choice: string;
+  comment: string;
+};
+
 // Library Data import -> title, links ...
 
 const Test = () => {
   const toggleHelp = {};
+  const [testResult, setTestResult] = useState<criteriumResult[]>();
+
+  const prefillResults = () => {
+    const results = criteria.map((criterium) => {
+      const result = { ...criterium, choice: "", comment: "" };
+      return result;
+    });
+    // console.log(results);
+    setTestResult(results);
+  };
+
+  useEffect(() => {
+    prefillResults();
+
+    return () => {};
+  }, []);
+
+  const handleChange = () => {};
 
   return (
     <div className='component-test'>
@@ -58,9 +83,14 @@ const Test = () => {
         <div>video: {testData.criteriaGroup.videoLink} </div>
       </div>
       <section className='test-list'>
-        {testData.criteriaGroup.criteria.map((criteria) => (
-          <TestItem key={criteria._id} criteria={criteria} />
-        ))}
+        {testResult &&
+          testResult.map((criterium) => (
+            <TestItem
+              key={criterium._id}
+              criterium={criterium}
+              handleChange={handleChange}
+            />
+          ))}
       </section>
       <button type='submit'>Finish Test</button>
     </div>

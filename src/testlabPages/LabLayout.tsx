@@ -5,7 +5,7 @@ const TestLabLayout = () => {
   return (
     <div className='container'>
       <header className='page-header page-header-testlab'>
-        <img alt='logo' />
+        <img className='logo' alt='logo' src='/cactus_logo.png' />
         <h1>Cactus Testlab</h1>
         {/* <nav>
           <Link to='.'>Overview</Link>

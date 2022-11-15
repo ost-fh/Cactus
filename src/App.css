@@ -38,8 +38,14 @@ img {
 
 /* general */
 
+@font-face {
+    font-family: "Regular";
+    src: local("AtkinsonHyperlegible-Regular"),
+        url("./fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+}
+
 * {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Regular", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container {
@@ -72,10 +78,24 @@ button:hover {
     background-color: rgb(234, 234, 234);
 }
 
+.button-selected {
+    background-color: rgb(141, 202, 127);
+    border: solid rgb(239, 239, 239) 1px;
+}
+.button-selected:hover {
+    background-color: rgb(118, 175, 105);
+    border: solid rgb(239, 239, 239) 1px;
+}
+
 button:active {
+    background-color: rgb(195, 193, 193);
+    border: solid rgb(239, 239, 239) 1px;
 }
 
 button:disabled {
+    background-color: rgb(243, 243, 243);
+    border: solid rgb(228, 228, 228) 1px;
+    color: grey;
 }
 
 .button-wide {
@@ -119,10 +139,24 @@ form {
 
 /** Page Layout **/
 
+.page-header-center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 3rem;
+    gap: 3rem;
+}
+
 .page-header {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 5rem auto auto;
     padding: 1rem 0;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    max-height: 5rem;
 }
 
 .page-header > nav {
@@ -130,6 +164,20 @@ form {
     justify-content: flex-end;
     gap: 1rem;
     align-items: center;
+}
+
+.hr {
+    height: 1px;
+    background-color: #e6e6e6;
+    width: 100%;
+    margin: 0 auto 1rem;
+    background-image: linear-gradient(left, white 2%, #e6e6e6 50%, white 98%);
+    background-image: -webkit-linear-gradient(
+        left,
+        white 2%,
+        #e6e6e6 50%,
+        white 98%
+    );
 }
 
 .login-wrapper {
@@ -270,6 +318,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin-bottom: 5rem;
 }
 
 .test-general {

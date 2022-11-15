@@ -18,7 +18,6 @@ const mocklibrary: library = {
 };
 
 const LabLibraryDetail = () => {
-  //const library = mocklibrary;
   const [library, setLibrary] = useState<library>();
   const { id } = useParams();
 
@@ -27,12 +26,12 @@ const LabLibraryDetail = () => {
       setLibrary(mocklibrary);
     } else if (id) {
       getLibrary(id).then((lib) => {
-        //console.log(items);
+        //console.log(lib);
         setLibrary(lib);
       });
     }
     return () => {};
-  }, []);
+  }, [id]);
 
   return (
     <div className='lib-detail'>
@@ -43,7 +42,7 @@ const LabLibraryDetail = () => {
             <div className='lib-score'>
               <ScoreBubble
                 label='total accessibility score'
-                score={library.totalScore}
+                score={library.totalScore || 0}
               />
             </div>
           </header>
@@ -56,7 +55,7 @@ const LabLibraryDetail = () => {
               </div>
               <div className='lib-controls'>
                 <LinkButton
-                  path='/testlab/'
+                  path={`/testlab/${library._id}/${library.currentVersion}`}
                   classname='button-primary'
                   label='Add Component Test'
                 />
@@ -64,21 +63,27 @@ const LabLibraryDetail = () => {
               </div>
             </section>
             <section className='lib-testresults'>
-              {library.testsByVersion.map((component: any) => (
-                <article className='lib-testresult'>
-                  <header>
-                    <h2>Component</h2>
-                    <ScoreBubble score={component.score} />
-                  </header>
-                  <main>
-                    <ul>
-                      <li>Does that</li>
-                      <li>Does this</li>
-                      <li>Does not this</li>
-                    </ul>
-                  </main>
-                </article>
-              ))}
+              {library.testsByVersion.length !== 0 ? (
+                library.testsByVersion.map((component: any) => (
+                  <article className='lib-testresult'>
+                    <header>
+                      <h2>Component</h2>
+                      <ScoreBubble score={component.score} />
+                    </header>
+                    <main>
+                      <ul>
+                        <li>Does that</li>
+                        <li>Does this</li>
+                        <li>Does not this</li>
+                      </ul>
+                    </main>
+                  </article>
+                ))
+              ) : (
+                <div className='alert-info'>
+                  <p>There are currently no tests for this library.</p>
+                </div>
+              )}
             </section>
           </main>
         </>

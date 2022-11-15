@@ -12,6 +12,7 @@ import LabLibraryDetail from "./pages/LibraryDetail";
 import Test from "./testlabPages/Test";
 import Start from "./testlabPages/Start";
 import AddLibrary from "./pages/AddLibrary";
+import "./fonts/AtkinsonHyperlegible-Regular.ttf";
 
 function App() {
   const [token, setToken] = useState();
@@ -29,8 +30,8 @@ function App() {
         </Route>
         {token ? (
           <Route path='testlab' element={<LabLayout />}>
-            <Route index element={<Start />} />
-            <Route path='test' element={<Test />} />
+            <Route path=':id/:version' element={<Start />} />
+            <Route path='test/:id/:version' element={<Test />} />
           </Route>
         ) : (
           <Route path='testlab' element={<Navigate to='/' />} />

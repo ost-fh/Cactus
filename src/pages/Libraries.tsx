@@ -38,7 +38,7 @@ const Libraries = () => {
 
   return (
     <div>
-      Page: Overview
+      <h2>Libraries</h2>
       <nav>Search and Filters</nav>{" "}
       <LinkButton path='new' label='Add Library' classname='button-primary' />
       <section className='library-list'>
