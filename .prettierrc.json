@@ -1,18 +1,17 @@
 {
-    "tabWidth": 2,
-    "useTabs": false,
-    "semi": true,
-    "singleQuote": false,
-    "arrowParens": "always",
-    "bracketSpacing": true,
-    "jsxSingleQuote": true,
-    "overrides": [
-      {
-        "files": "**/*.css",
-        "options": {
-          "tabWidth": 4
-        }
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": false,
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "jsxSingleQuote": true,
+  "overrides": [
+    {
+      "files": "**/*.css",
+      "options": {
+        "tabWidth": 4
       }
-    ]
-  }
-  
+    }
+  ]
+}
