@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 
-const TestItem = ({ criterium }: any) => {
+// type TestItemType = {
+//   criterium:
+// }
+
+const TestItem = ({ criterium, handleChange }: any) => {
   //   console.log(criteria);
   const [helpOpen, setHelpOpen] = useState(false);
   const [commentOpen, setCommentOpen] = useState(false);
-  const [choice, setChoice] = useState<string | undefined>(undefined);
+  const [criteriumData, setCriteriumData] = useState(criterium);
 
   const toggleHelp = () => {
     setHelpOpen(!helpOpen);
   };
 
-  const handleChoice = (choice: string) => {
-    setChoice(choice);
+  const changeChoice = (choice: string) => {
+    const newCriteriumData = { ...criterium, choice: choice };
+    setCriteriumData(newCriteriumData);
+    handleChange(newCriteriumData);
     if (choice === "not_decidable") {
       setCommentOpen(true);
     } else {
@@ -19,7 +25,12 @@ const TestItem = ({ criterium }: any) => {
     }
   };
 
-  const toggleComment = () => {};
+  const changeComment = (e: any) => {
+    const comment = e.target.value;
+    const newCriteriumData = { ...criterium, comment: comment };
+    setCriteriumData(newCriteriumData);
+    handleChange(newCriteriumData);
+  };
 
   return (
     <article className='test-item'>
@@ -44,20 +55,22 @@ const TestItem = ({ criterium }: any) => {
       {/* not really accessible */}
       <div className='button-group'>
         <button
-          className={choice === "yes" ? "button-selected" : ""}
-          onClick={() => handleChoice("yes")}
+          className={criteriumData.choice === "yes" ? "button-selected" : ""}
+          onClick={() => changeChoice("yes")}
         >
           Yes
         </button>
         <button
-          className={choice === "no" ? "button-selected" : ""}
-          onClick={() => handleChoice("no")}
+          className={criteriumData.choice === "no" ? "button-selected" : ""}
+          onClick={() => changeChoice("no")}
         >
           No
         </button>
         <button
-          className={choice === "not_decidable" ? "button-selected" : ""}
-          onClick={() => handleChoice("not_decidable")}
+          className={
+            criteriumData.choice === "not_decidable" ? "button-selected" : ""
+          }
+          onClick={() => changeChoice("not_decidable")}
         >
           Not decidable
         </button>
@@ -65,7 +78,13 @@ const TestItem = ({ criterium }: any) => {
       {commentOpen && (
         <div className='test-item-comment'>
           <label htmlFor='item-comment'>Why is it not decidable?</label>
-          <textarea required name='comment' id='item-comment'></textarea>
+          <textarea
+            required
+            name='comment'
+            id='item-comment'
+            value={criteriumData.comment}
+            onChange={changeComment}
+          ></textarea>
         </div>
       )}
     </article>

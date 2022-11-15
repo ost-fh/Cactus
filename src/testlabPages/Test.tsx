@@ -2,13 +2,6 @@ import React, { useEffect, useState } from "react";
 import LinkButton from "../components/LinkButton";
 import TestItem from "../components/TestItem";
 
-type testDataType = {
-  libraryId: string;
-  component: string;
-  testtype: string;
-  criteriaGroup: object;
-};
-
 const criteria = [
   {
     _id: "123",
@@ -18,6 +11,11 @@ const criteria = [
   {
     _id: "1243",
     text: "buttons are focusable",
+    help: "Hier steht hilfetext",
+  },
+  {
+    _id: "12325",
+    text: "Other Things are focusable",
     help: "Hier steht hilfetext",
   },
 ];
@@ -48,7 +46,6 @@ type criteriumResult = {
 // Library Data import -> title, links ...
 
 const Test = () => {
-  const toggleHelp = {};
   const [testResult, setTestResult] = useState<criteriumResult[]>();
 
   const prefillResults = () => {
@@ -66,7 +63,33 @@ const Test = () => {
     return () => {};
   }, []);
 
-  const handleChange = () => {};
+  const handleChange = (newCriteriumData: criteriumResult) => {
+    //console.log(newCriteriumData);
+    if (testResult) {
+      const newResults = testResult.map((result) => {
+        //console.log(result._id, newCriteriumData._id);
+        if (result._id === newCriteriumData._id) {
+          result = newCriteriumData;
+        }
+        return result;
+      });
+      //console.log(newResults);
+
+      setTestResult(newResults);
+    }
+  };
+
+  const submitTest = () => {
+    if (testResult) {
+      testResult.forEach((element) => {
+        if (element.choice === "") {
+          console.log("empty choice");
+          return;
+        }
+      });
+    }
+    console.log(testResult);
+  };
 
   return (
     <div className='component-test'>
@@ -92,7 +115,9 @@ const Test = () => {
             />
           ))}
       </section>
-      <button type='submit'>Finish Test</button>
+      <button onClick={submitTest} type='submit'>
+        Finish Test
+      </button>
     </div>
   );
 };

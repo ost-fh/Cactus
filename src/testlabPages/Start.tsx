@@ -1,11 +1,23 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import LinkButton from "../components/LinkButton";
+import { criteriaCatalogue } from "../types";
 import Test from "./Test";
+
+type testDataType = {
+  libraryId: string;
+  component: string;
+  testtype: string;
+  criteriaGroup: object;
+};
 
 const Start = () => {
   const { id, version } = useParams();
   console.log(id, version);
+
+  const criteriaData = criteriaCatalogue;
+  const components = criteriaData.map((item) => item.name);
+  const testmodes = ["Screenreader", "Keyboard"];
+  console.log(components);
 
   return (
     <div className='lab-start'>
@@ -15,10 +27,18 @@ const Start = () => {
       <p>id: {id}</p>
       <p>version: {version} </p>
       <form>
-        <label>Choose Component</label>
-        <input type='dropdown' />
-        <label>Choose Testmode</label>
-        <input type='dropdown' />
+        <label htmlFor='components'>Choose Component</label>
+        <select name='components' id='components'>
+          {components.map((item) => (
+            <option value={item}>{item}</option>
+          ))}
+        </select>
+        <label htmlFor='testmode'>Choose Testmode</label>
+        <select name='testmode' id='testmode'>
+          {testmodes.map((item) => (
+            <option value={item}>{item}</option>
+          ))}
+        </select>
         <div className='form-control'>
           <button>Start Test</button>
         </div>
