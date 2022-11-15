@@ -1,11 +1,15 @@
-const express = require('express')
-const { getLibraries, postLibrary, getLibrary } = require('../controllers/libraryController')
-const router = express.Router()
+const express = require("express");
+const {
+  getLibraries,
+  postLibrary,
+  getLibrary,
+} = require("../controllers/libraryController");
+const router = express.Router();
 
-router.get('/', getLibraries)
+router.get("/", getLibraries);
 
-router.post('/', postLibrary)
+router.post("/", postLibrary);
 
-router.get('/:id/', getLibrary)
+router.get("/:id/", getLibrary);
 
-module.exports = router
+module.exports = router;

@@ -1,0 +1,16 @@
+{
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": false,
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "overrides": [
+        {
+            "files": "*.json",
+            "options": {
+                "tabWidth": 4
+            }
+        }
+    ]
+}

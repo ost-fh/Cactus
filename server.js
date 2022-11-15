@@ -1,28 +1,27 @@
-const express = require('express');
-const cors = require('cors');
-const connectDB = require('./config/db')
-const dotenv = require('dotenv').config() // for file
+const express = require("express");
+const cors = require("cors");
+const connectDB = require("./config/db");
+// eslint-disable-next-line no-unused-vars
+const dotenv = require("dotenv").config(); // for file
 const app = express();
-const { errorHandler } = require('./middleware/errorMiddleware')
+const { errorHandler } = require("./middleware/errorMiddleware");
 
-const port = process.env.PORT
+const port = process.env.PORT;
 
-connectDB()
+connectDB();
 
 app.use(cors());
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.use('/login', (req, res) => {
+app.use("/login", (req, res) => {
   res.send({
-    token: 'test123'
+    token: "test123",
   });
 });
 
-app.use('/api/libraries', require('./routes/libraryRoutes'))
-
-
+app.use("/api/libraries", require("./routes/libraryRoutes"));
 
 // app.use((req, res, next) => {
 //     console.log('Time: ', Date.now());
@@ -38,6 +37,8 @@ app.use('/api/libraries', require('./routes/libraryRoutes'))
 //   res.send('Successful response.');
 // });
 
-app.use(errorHandler)
+app.use(errorHandler);
 
-app.listen(port, () => console.log('API is running on http://localhost:8080/login '));
+app.listen(port, () =>
+  console.log("API is running on http://localhost:8080/login ")
+);
