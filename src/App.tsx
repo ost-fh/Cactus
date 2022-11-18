@@ -29,10 +29,7 @@ function App() {
           <Route path='login' element={<Login setToken={setToken} />} />
         </Route>
         {token ? (
-          <Route path='testlab' element={<LabLayout />}>
-            <Route path=':id/:version' element={<Start />} />
-            <Route path='test/:id/:version' element={<Test />} />
-          </Route>
+          <Route path='testlab/:id/:version/*' element={<LabLayout />}></Route>
         ) : (
           <Route path='testlab' element={<Navigate to='/' />} />
         )}

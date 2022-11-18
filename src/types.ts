@@ -28,13 +28,23 @@ export type component = {
 
 // Test / Criteria Data
 
+export type testData = {
+    libraryId: string;
+    libraryVersion: string;
+    component: string;
+    testMode: string;
+    criteriaGroup: criteriaGroup | undefined;
+};
+
 export type componentCriteria = {
-    name: string;
-    screenreaderCriteria: criteriaGroup;
-    keyboardCriteria: criteriaGroup;
+    component: string;
+    criteria: criteriaGroup[];
+    // screenreaderCriteria: criteriaGroup;
+    // keyboardCriteria: criteriaGroup;
 };
 
 export type criteriaGroup = {
+    testMode: string
     instructions: string;
     videoLink: string;
     additionalHint: string;
@@ -47,91 +57,107 @@ export type criterium = {
     help: string;
 };
 
+export type testResults = {
+    testedBy: string
+    testedOn: Date
+    // ...
+}
+
 export const criteriaCatalogue: componentCriteria[] = [
     {
-        name: "Dialog",
-        screenreaderCriteria: {
-            instructions: "",
-            videoLink: "",
-            additionalHint: "",
-            criteria: [{
-                _id: "123",
-                text: "focus style is visible",
-                help: "Hier steht hilfetext",
+        component: "Dialog",
+        criteria: [
+            {
+                testMode: "Screenreader",
+                instructions: "",
+                videoLink: "",
+                additionalHint: "",
+                criteria: [{
+                    _id: "123",
+                    text: "focus style is visible",
+                    help: "Hier steht hilfetext",
+                },
+                {
+                    _id: "1243",
+                    text: "buttons are focusable",
+                    help: "Hier steht hilfetext",
+                },
+                {
+                    _id: "12325",
+                    text: "Other Things are focusable",
+                    help: "Hier steht hilfetext",
+                },]
             },
             {
-                _id: "1243",
-                text: "buttons are focusable",
-                help: "Hier steht hilfetext",
+                testMode: "Keyboard",
+                instructions: "",
+                videoLink: "",
+                additionalHint: "",
+                criteria: [{
+                    _id: "123",
+                    text: "focus style is visible",
+                    help: "Hier steht hilfetext",
+                },
+                {
+                    _id: "1243",
+                    text: "buttons are focusable",
+                    help: "Hier steht hilfetext",
+                },
+                {
+                    _id: "12325",
+                    text: "Other Things are focusable",
+                    help: "Hier steht hilfetext",
+                },]
             },
-            {
-                _id: "12325",
-                text: "Other Things are focusable",
-                help: "Hier steht hilfetext",
-            },]
-        },
-        keyboardCriteria: {
-            instructions: "",
-            videoLink: "",
-            additionalHint: "",
-            criteria: [{
-                _id: "123",
-                text: "focus style is visible",
-                help: "Hier steht hilfetext",
-            },
-            {
-                _id: "1243",
-                text: "buttons are focusable",
-                help: "Hier steht hilfetext",
-            },
-            {
-                _id: "12325",
-                text: "Other Things are focusable",
-                help: "Hier steht hilfetext",
-            },]
-        },
+
+        ]
     },
     {
-        name: "Accordion",
-        screenreaderCriteria: {
-            instructions: "",
-            videoLink: "",
-            additionalHint: "",
-            criteria: [{
-                _id: "123",
-                text: "focus style is visible",
-                help: "Hier steht hilfetext",
+        component: "Accordion",
+        criteria: [
+            {
+                testMode: "Screenreader",
+                instructions: "",
+                videoLink: "",
+                additionalHint: "",
+                criteria: [{
+                    _id: "123",
+                    text: "focus style is visible",
+                    help: "Hier steht hilfetext",
+                },
+                {
+                    _id: "1243",
+                    text: "buttons are focusable",
+                    help: "Hier steht hilfetext",
+                },
+                {
+                    _id: "12325",
+                    text: "Other Things are focusable",
+                    help: "Hier steht hilfetext",
+                },]
             },
             {
-                _id: "1243",
-                text: "buttons are focusable",
-                help: "Hier steht hilfetext",
+                testMode: "Keyboard",
+                instructions: "",
+                videoLink: "",
+                additionalHint: "",
+                criteria: [{
+                    _id: "123",
+                    text: "focus style is visible",
+                    help: "Hier steht hilfetext",
+                },
+                {
+                    _id: "1243",
+                    text: "buttons are focusable",
+                    help: "Hier steht hilfetext",
+                },
+                {
+                    _id: "12325",
+                    text: "Other Things are focusable",
+                    help: "Hier steht hilfetext",
+                },]
             },
-            {
-                _id: "12325",
-                text: "Other Things are focusable",
-                help: "Hier steht hilfetext",
-            },]
-        },
-        keyboardCriteria: {
-            instructions: "",
-            videoLink: "",
-            additionalHint: "",
-            criteria: [{
-                _id: "123",
-                text: "focus style is visible",
-                help: "Hier steht hilfetext",
-            },
-            {
-                _id: "1243",
-                text: "buttons are focusable",
-                help: "Hier steht hilfetext",
-            },
-            {
-                _id: "12325",
-                text: "Other Things are focusable",
-                help: "Hier steht hilfetext",
-            },]
-        },
+
+        ]
     },
 ];

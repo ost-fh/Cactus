@@ -1,50 +1,80 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { criteriaCatalogue } from "../types";
-import Test from "./Test";
+import React, { useEffect } from "react";
+import LinkButton from "../components/LinkButton";
+import { criteriaCatalogue, testData } from "../types";
 
-type testDataType = {
-  libraryId: string;
-  component: string;
-  testtype: string;
-  criteriaGroup: object;
+type StartProps = {
+  testData: testData;
+  setTestData: Function;
 };
 
-const Start = () => {
-  const { id, version } = useParams();
-  console.log(id, version);
-
+const Start = ({ testData, setTestData }: StartProps) => {
   const criteriaData = criteriaCatalogue;
-  const components = criteriaData.map((item) => item.name);
-  const testmodes = ["Screenreader", "Keyboard"];
-  console.log(components);
+  const components = criteriaData.map((item) => item.component);
+  const testModes = ["Screenreader", "Keyboard"];
+
+  useEffect(() => {
+    // Fills testData with default values
+    let newTestData = testData;
+    if (testData.component === "") {
+      newTestData = { ...newTestData, component: components[0] };
+    }
+    if (testData.testMode === "") {
+      newTestData = { ...newTestData, testMode: testModes[0] };
+    }
+    setTestData(newTestData);
+    return () => {};
+  }, []);
+
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
+    setTestData((prevState: any) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(value);
+    console.log(testData);
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    console.log(testData);
+  };
 
   return (
     <div className='lab-start'>
       <div className='alert-info'>
         Choose Component and Testmode to continue
       </div>
-      <p>id: {id}</p>
-      <p>version: {version} </p>
       <form>
         <label htmlFor='components'>Choose Component</label>
-        <select name='components' id='components'>
+        <select
+          name='component'
+          value={testData.component}
+          id='components'
+          onChange={handleChange}
+        >
           {components.map((item) => (
             <option value={item}>{item}</option>
           ))}
         </select>
-        <label htmlFor='testmode'>Choose Testmode</label>
-        <select name='testmode' id='testmode'>
-          {testmodes.map((item) => (
+        <label htmlFor='testMode'>Choose Testmode</label>
+        <select
+          name='testMode'
+          id='testMode'
+          value={testData.testMode}
+          onChange={handleChange}
+        >
+          {testModes.map((item) => (
             <option value={item}>{item}</option>
           ))}
         </select>
         <div className='form-control'>
-          <button>Start Test</button>
+          {/* <button onClick={handleSubmit}>Start Test</button> */}
+          <LinkButton label='Start Test' path='test'></LinkButton>
         </div>
       </form>
       {/* Pass Testinfos to test component */}
-      <Test></Test>
+      {/* <Test></Test> */}
     </div>
   );
 };

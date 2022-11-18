@@ -1,39 +1,40 @@
 import React, { useEffect, useState } from "react";
 import LinkButton from "../components/LinkButton";
 import TestItem from "../components/TestItem";
+import { criteriaGroup, testData } from "../types";
 
-const criteria = [
-  {
-    _id: "123",
-    text: "focus style is visible",
-    help: "Hier steht hilfetext",
-  },
-  {
-    _id: "1243",
-    text: "buttons are focusable",
-    help: "Hier steht hilfetext",
-  },
-  {
-    _id: "12325",
-    text: "Other Things are focusable",
-    help: "Hier steht hilfetext",
-  },
-];
+// const criteria = [
+//   {
+//     _id: "123",
+//     text: "focus style is visible",
+//     help: "Hier steht hilfetext",
+//   },
+//   {
+//     _id: "1243",
+//     text: "buttons are focusable",
+//     help: "Hier steht hilfetext",
+//   },
+//   {
+//     _id: "12325",
+//     text: "Other Things are focusable",
+//     help: "Hier steht hilfetext",
+//   },
+// ];
 
-const criteriaGroup = {
-  videoLink: "test.com",
-  instructions: "This is how you test a Dialog.",
-  additionalHint: "mode: keyboard use Hinweis",
-  criteria: criteria,
-};
+// const criteriaGroup = {
+//   videoLink: "test.com",
+//   instructions: "This is how you test a Dialog.",
+//   additionalHint: "mode: keyboard use Hinweis",
+//   criteria: criteria,
+// };
 
-const testData = {
-  libraryId: "234214",
-  library: {}, // fetch from server
-  component: "Dialog",
-  testtype: "Keyboard",
-  criteriaGroup: criteriaGroup,
-};
+// const testData = {
+//   libraryId: "234214",
+//   library: {}, // fetch from server
+//   component: "Dialog",
+//   testtype: "Keyboard",
+//   criteriaGroup: criteriaGroup,
+// };
 
 type criteriumResult = {
   _id: string;
@@ -45,11 +46,15 @@ type criteriumResult = {
 
 // Library Data import -> title, links ...
 
-const Test = () => {
+type TestProps = {
+  testData: testData;
+};
+
+const Test = ({ testData }: TestProps) => {
   const [testResult, setTestResult] = useState<criteriumResult[]>();
 
   const prefillResults = () => {
-    const results = criteria.map((criterium) => {
+    const results = testData.criteriaGroup?.criteria.map((criterium: any) => {
       const result = { ...criterium, choice: "", comment: "" };
       return result;
     });
@@ -84,7 +89,6 @@ const Test = () => {
       testResult.forEach((element) => {
         if (element.choice === "") {
           console.log("empty choice");
-          return;
         }
       });
     }
@@ -96,25 +100,31 @@ const Test = () => {
       <div className='test-general'>
         <p>Library: {testData.libraryId} </p>
         <p>Component: {testData.component} </p>
-        <p>Testmode: {testData.testtype} </p>
+        <p>Testmode: {testData.testMode} </p>
         <LinkButton path={"test"} label='Open documentation in new window' />
       </div>
-      <div className='alert-info'>{testData.criteriaGroup.additionalHint}</div>
-      <div className='test-instructions'>
-        <h3>Instructions</h3>
-        {testData.criteriaGroup.instructions}
-        <div>video: {testData.criteriaGroup.videoLink} </div>
-      </div>
-      <section className='test-list'>
-        {testResult &&
-          testResult.map((criterium) => (
-            <TestItem
-              key={criterium._id}
-              criterium={criterium}
-              handleChange={handleChange}
-            />
-          ))}
-      </section>
+      {testData.criteriaGroup && (
+        <>
+          <div className='alert-info'>
+            {testData.criteriaGroup.additionalHint}
+          </div>
+          <div className='test-instructions'>
+            <h3>Instructions</h3>
+            {testData.criteriaGroup.instructions}
+            <div>video: {testData.criteriaGroup.videoLink} </div>
+          </div>
+          <section className='test-list'>
+            {testResult &&
+              testResult.map((criterium) => (
+                <TestItem
+                  key={criterium._id}
+                  criterium={criterium}
+                  handleChange={handleChange}
+                />
+              ))}
+          </section>
+        </>
+      )}
       <button onClick={submitTest} type='submit'>
         Finish Test
       </button>
