@@ -17,7 +17,7 @@ const mocklibrary: library = {
   testsByVersion: [],
 };
 
-const LabLibraryDetail = () => {
+const LabLibraryDetail = ({ token }: any | undefined) => {
   const [library, setLibrary] = useState<library>();
   const { id } = useParams();
 
@@ -54,11 +54,13 @@ const LabLibraryDetail = () => {
                 <a href={library.linkDocs}>Documentation</a>
               </div>
               <div className='lib-controls'>
-                <LinkButton
-                  path={`/testlab/${library._id}/${library.currentVersion}`}
-                  classname='button-primary'
-                  label='Add Component Test'
-                />
+                {token && (
+                  <LinkButton
+                    path={`/testlab/${library._id}/${library.currentVersion}`}
+                    classname='button-primary'
+                    label='Add Component Test'
+                  />
+                )}
                 {/* <LinkButton path='' label='New Version' /> */}
               </div>
             </section>

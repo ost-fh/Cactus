@@ -8,9 +8,7 @@ import NotFound from "./pages/NotFound";
 import PublicLayout from "./pages/PublicLayout";
 import Libraries from "./pages/Libraries";
 import LabLayout from "./testlabPages/LabLayout";
-import LabLibraryDetail from "./pages/LibraryDetail";
-import Test from "./testlabPages/Test";
-import Start from "./testlabPages/Start";
+import LibraryDetail from "./pages/LibraryDetail";
 import AddLibrary from "./pages/AddLibrary";
 import "./fonts/AtkinsonHyperlegible-Regular.ttf";
 
@@ -22,9 +20,12 @@ function App() {
         <Route path='/' element={<PublicLayout />}>
           <Route index element={<Navigate to='home' />} />
           <Route path='home' element={<Home />} />
-          <Route path='libraries' element={<Libraries />} />
+          <Route path='libraries' element={<Libraries token={token} />} />
           <Route path='libraries/new' element={<AddLibrary />} />
-          <Route path='libraries/:id' element={<LabLibraryDetail />} />
+          <Route
+            path='libraries/:id'
+            element={<LibraryDetail token={token} />}
+          />
           <Route path='contribute' element={<Contribute />} />
           <Route path='login' element={<Login setToken={setToken} />} />
         </Route>

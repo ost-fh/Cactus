@@ -25,7 +25,7 @@ const mocklibs = [
   },
 ];
 
-const Libraries = () => {
+const Libraries = ({ token }: any | undefined) => {
   const [libraries, setLibraries] = useState<any>();
 
   useEffect(() => {
@@ -40,7 +40,9 @@ const Libraries = () => {
     <div>
       <h2>Libraries</h2>
       <nav>Search and Filters</nav>{" "}
-      <LinkButton path='new' label='Add Library' classname='button-primary' />
+      {token && (
+        <LinkButton path='new' label='Add Library' classname='button-primary' />
+      )}
       <section className='library-list'>
         {libraries &&
           libraries.map((library: any) => (
