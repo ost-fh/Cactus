@@ -1,8 +1,39 @@
 const mongoose = require("mongoose");
 
+const criteriumSchema = mongoose.Schema({
+  text: String,
+  help: String,
+  choice: String,
+  comment: String,
+});
+
+const testSchema = mongoose.Schema({
+  testerName: {
+    type: String,
+    required: true,
+  },
+  criteria: [criteriumSchema],
+});
+
+const modeSchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  tests: [testSchema],
+});
+
+const componentSchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  modes: [modeSchema],
+});
+
 const versionSchema = mongoose.Schema({
   version: String,
-  tests: [],
+  components: [componentSchema],
 });
 
 const librarySchema = mongoose.Schema(
@@ -39,4 +70,5 @@ const librarySchema = mongoose.Schema(
 module.exports = {
   Library: mongoose.model("Library", librarySchema),
   Version: mongoose.model("Version", versionSchema),
+  Criterium: mongoose.model("Criterium", criteriumSchema),
 };

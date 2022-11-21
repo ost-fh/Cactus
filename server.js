@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 // eslint-disable-next-line no-unused-vars
-const dotenv = require("dotenv").config(); // for file
+const dotenv = require("dotenv").config(); // for .env file
 const app = express();
 const { errorHandler } = require("./middleware/errorMiddleware");
 
@@ -22,6 +22,7 @@ app.use("/login", (req, res) => {
 });
 
 app.use("/api/libraries", require("./routes/libraryRoutes"));
+app.use("/api/testlab", require("./routes/testRoutes"));
 
 // app.use((req, res, next) => {
 //     console.log('Time: ', Date.now());
