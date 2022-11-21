@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import { getLibrary } from "../api";
-import { criteriaCatalogue, criteriaGroup, library, testData } from "../types";
+import { criteriaCatalogue, library, testData } from "../types";
 import Instructions from "./Instructions";
 import Outcome from "./Outcome";
 import Start from "./Start";
@@ -11,9 +11,8 @@ const TestLabLayout = () => {
   const { id, version } = useParams();
   // console.log(id, version);
   const importedcriteriaCatalogue = criteriaCatalogue;
-  const [library, setLibrary] = useState<library>();
-  //const [criteriaGroup, setCriteriaGroup] = useState<criteriaGroup>();
 
+  const [library, setLibrary] = useState<library>();
   const [testData, setTestData] = useState<testData>({
     libraryId: id ? id : "0",
     libraryVersion: version ? version : "0",
@@ -62,10 +61,10 @@ const TestLabLayout = () => {
       <main>
         <header>
           {library && (
-            <ul>
-              <li>Library: {library.title}</li>
-              <li>Version: {testData.libraryVersion} </li>
-            </ul>
+            <>
+              <p>Library: {library.title}</p>
+              <p>Version: {testData.libraryVersion} </p>
+            </>
           )}
         </header>
         <Routes>
@@ -77,7 +76,15 @@ const TestLabLayout = () => {
             path='instructions/'
             element={<Instructions testData={testData} />}
           />
-          <Route path='test/' element={<Test testData={testData} />} />
+          <Route
+            path='test/'
+            element={
+              <Test
+                testData={testData}
+                linkDocs={library?.linkDocs || "error"}
+              />
+            }
+          />
           <Route path='outcome/' element={<Outcome />} />
         </Routes>
       </main>

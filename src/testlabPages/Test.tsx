@@ -48,25 +48,20 @@ type criteriumResult = {
 
 type TestProps = {
   testData: testData;
+  linkDocs: string;
 };
 
-const Test = ({ testData }: TestProps) => {
+const Test = ({ testData, linkDocs }: TestProps) => {
   const [testResult, setTestResult] = useState<criteriumResult[]>();
 
-  const prefillResults = () => {
+  useEffect(() => {
     const results = testData.criteriaGroup?.criteria.map((criterium: any) => {
       const result = { ...criterium, choice: "", comment: "" };
       return result;
     });
-    // console.log(results);
     setTestResult(results);
-  };
-
-  useEffect(() => {
-    prefillResults();
-
     return () => {};
-  }, []);
+  }, [testData.criteriaGroup?.criteria]);
 
   const handleChange = (newCriteriumData: criteriumResult) => {
     //console.log(newCriteriumData);
@@ -98,16 +93,22 @@ const Test = ({ testData }: TestProps) => {
   return (
     <div className='component-test'>
       <div className='test-general'>
-        <p>Library: {testData.libraryId} </p>
         <p>Component: {testData.component} </p>
         <p>Testmode: {testData.testMode} </p>
-        <LinkButton path={"test"} label='Open documentation in new window' />
+        <a href={linkDocs} className='button' target='_blank' rel='noreferrer'>
+          Open documentation
+        </a>
+        {/* <LinkButton path={"test"} label='Open documentation in new window' /> */}
       </div>
       {testData.criteriaGroup && (
         <>
-          <div className='alert-info'>
-            {testData.criteriaGroup.additionalHint}
-          </div>
+          {testData.criteriaGroup.additionalHint === "" ? (
+            ""
+          ) : (
+            <div className='alert-info'>
+              {testData.criteriaGroup.additionalHint}
+            </div>
+          )}
           <div className='test-instructions'>
             <h3>Instructions</h3>
             {testData.criteriaGroup.instructions}

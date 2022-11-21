@@ -64,7 +64,8 @@ img {
 
 /** Utilities **/
 
-button {
+button,
+.button {
     background-color: rgb(224, 224, 224);
     border: solid rgb(239, 239, 239) 1px;
     text-align: center;
@@ -73,8 +74,11 @@ button {
     font-size: 1rem;
     display: inline-block;
     transition-duration: 0.3s;
+    text-decoration: none;
+    color: black;
 }
-button:hover {
+button:hover,
+.button:hover {
     background-color: rgb(234, 234, 234);
 }
 
@@ -87,11 +91,13 @@ button:hover {
     border: solid rgb(239, 239, 239) 1px;
 }
 
-button:active {
+button:active,
+.button:active {
     background-color: rgb(195, 193, 193);
     border: solid rgb(239, 239, 239) 1px;
 }
 
+button:disabled,
 button:disabled {
     background-color: rgb(243, 243, 243);
     border: solid rgb(228, 228, 228) 1px;
