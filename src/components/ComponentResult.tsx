@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { choiceToScore, combineScore, score } from "../scoring";
+import {
+  calcScorePercentage,
+  choiceToScore,
+  combineScore,
+  score,
+} from "../scoring";
 import { component } from "../types";
 import CountBubble from "./CountBubble";
+import ScoreBubble from "./ScoreBubble";
 
 type ComponentResultProps = {
   component: component;
+  addScore: Function;
 };
 
-const ComponentResult = ({ component }: ComponentResultProps) => {
+const ComponentResult = ({ component, addScore }: ComponentResultProps) => {
   const [scores, setScores] = useState<
     {
       mode: string;
       results: score;
     }[]
   >();
+  const [componentScore, setComponentScore] = useState<score>();
 
   useEffect(() => {
     // console.log(component);
@@ -31,6 +39,11 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
 
     // console.log(resultingScore);
     setScores(resultingScore);
+    const componentScore = combineScore(
+      resultingScore.map((item) => item.results)
+    );
+    setComponentScore(componentScore);
+    // addScore(calcScorePercentage(componentScore));
 
     return () => {};
   }, [component]);
@@ -39,7 +52,9 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
     <article className='lib-testresult'>
       <header>
         <h2>{component.name}</h2>
-        {/* <ScoreBubble score={component.score} /> */}
+        {componentScore && (
+          <ScoreBubble score={calcScorePercentage(componentScore)} />
+        )}
       </header>
       <main>
         {scores?.map((item) => (

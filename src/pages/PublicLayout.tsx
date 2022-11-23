@@ -15,8 +15,7 @@ const PublicLayout = () => {
             <Link to='login'>Login</Link>
           </nav>
         </header>
-        <div className='hr'></div>
-        <main>
+        <main className='page-main'>
           <Outlet />
         </main>
       </div>

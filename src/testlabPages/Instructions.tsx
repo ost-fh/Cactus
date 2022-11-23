@@ -1,6 +1,5 @@
 import React from "react";
 import LinkButton from "../components/LinkButton";
-import { testData } from "../types";
 
 type InstructionsProps = {
   linkDocs: string;

@@ -3,29 +3,15 @@ import { useParams } from "react-router-dom";
 import { getLibrary } from "../api";
 import ComponentResult from "../components/ComponentResult";
 import LinkButton from "../components/LinkButton";
-import ScoreBubble from "../components/ScoreBubble";
 import { library } from "../types";
-
-// const mocklibrary: library = {
-//   _id: "1",
-//   title: "Semantic-UI",
-//   componentsTested: 3,
-//   totalScore: 40,
-//   currentVersion: "3.5.1",
-//   //addedByUser: "mathiaslenz",
-//   linkDocs: "https://getbootstrap.com/docs/5.2/getting-started/introduction/",
-//   linkHome: "https://getbootstrap.com/",
-//   testsByVersion: [],
-// };
 
 const LabLibraryDetail = ({ token }: any | undefined) => {
   const [library, setLibrary] = useState<library>();
   const { id } = useParams();
+  const [scores, setScores] = useState<number[]>([]);
+  const [score, setScore] = useState<number>();
 
   useEffect(() => {
-    // if (id === "1") {
-    //   setLibrary(mocklibrary);
-    // } else
     if (id) {
       getLibrary(id).then((lib) => {
         console.log(lib);
@@ -35,18 +21,35 @@ const LabLibraryDetail = ({ token }: any | undefined) => {
     return () => {};
   }, [id]);
 
+  useEffect(() => {
+    let sum = 0;
+    console.log(scores);
+
+    for (let score of scores) {
+      console.log(score);
+
+      sum += score;
+    }
+    const average = sum / scores.length;
+    setScore(average);
+  }, [scores]);
+
+  const addScore = (number: number) => {
+    setScores([...scores, number]);
+  };
+
   return (
     <div className='lib-detail'>
       {library ? (
         <>
           <header>
             <h1>{library.title}</h1>
-            <div className='lib-score'>
+            {/* <div className='lib-score'>
               <ScoreBubble
                 label='total accessibility score'
-                score={library.totalScore || 0}
+                score={score || 0}
               />
-            </div>
+            </div> */}
           </header>
           <main>
             <section className='lib-info'>
@@ -72,7 +75,10 @@ const LabLibraryDetail = ({ token }: any | undefined) => {
                   <>
                     <h3>{version.version}</h3>
                     {version.components.map((component: any) => (
-                      <ComponentResult component={component} />
+                      <ComponentResult
+                        addScore={addScore}
+                        component={component}
+                      />
                     ))}
                   </>
                 ))
@@ -85,7 +91,7 @@ const LabLibraryDetail = ({ token }: any | undefined) => {
           </main>
         </>
       ) : (
-        " "
+        <div className='alert-info'>Library not found.</div>
       )}
     </div>
   );
