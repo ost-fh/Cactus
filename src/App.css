@@ -257,7 +257,7 @@ form {
 }
 
 .lib-testresult {
-    background-color: whitesmoke;
+    background-color: rgb(252, 252, 252);
     padding: 0.7rem;
     border-radius: 0.4rem;
 }
@@ -270,6 +270,12 @@ form {
     display: grid;
     grid-template-columns: 3fr 1fr;
     padding-bottom: 0.5rem;
+}
+
+.count-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 /** Scorebubble **/

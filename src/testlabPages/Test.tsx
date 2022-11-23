@@ -1,48 +1,7 @@
 import React, { useEffect, useState } from "react";
-import LinkButton from "../components/LinkButton";
+import { postTestResult } from "../api";
 import TestItem from "../components/TestItem";
-import { criteriaGroup, testData } from "../types";
-
-// const criteria = [
-//   {
-//     _id: "123",
-//     text: "focus style is visible",
-//     help: "Hier steht hilfetext",
-//   },
-//   {
-//     _id: "1243",
-//     text: "buttons are focusable",
-//     help: "Hier steht hilfetext",
-//   },
-//   {
-//     _id: "12325",
-//     text: "Other Things are focusable",
-//     help: "Hier steht hilfetext",
-//   },
-// ];
-
-// const criteriaGroup = {
-//   videoLink: "test.com",
-//   instructions: "This is how you test a Dialog.",
-//   additionalHint: "mode: keyboard use Hinweis",
-//   criteria: criteria,
-// };
-
-// const testData = {
-//   libraryId: "234214",
-//   library: {}, // fetch from server
-//   component: "Dialog",
-//   testtype: "Keyboard",
-//   criteriaGroup: criteriaGroup,
-// };
-
-type criteriumResult = {
-  _id: string;
-  text: string;
-  help: string;
-  choice: string;
-  comment: string;
-};
+import { criteriumResult, testData } from "../types";
 
 // Library Data import -> title, links ...
 
@@ -80,14 +39,25 @@ const Test = ({ testData, linkDocs }: TestProps) => {
   };
 
   const submitTest = () => {
+    let testFinished = true;
     if (testResult) {
       testResult.forEach((element) => {
         if (element.choice === "") {
           console.log("empty choice");
+          testFinished = false;
         }
       });
+      if (testFinished) {
+        console.log("success");
+        console.log(
+          JSON.stringify({ testData: testData, criteria: testResult })
+        );
+        postTestResult({ testData: testData, criteria: testResult });
+      } else {
+        console.error("error");
+      }
     }
-    console.log(testResult);
+    // console.log(testResult);
   };
 
   return (

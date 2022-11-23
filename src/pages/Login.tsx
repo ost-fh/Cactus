@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 async function loginUser(credentials: { username: string; password: string }) {
-  return fetch("http://localhost:8080/login", {
+  return fetch("http://localhost:3010/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
