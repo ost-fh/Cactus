@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { choiceToScore, combineScore, score } from "../scoring";
 import { component } from "../types";
 import CountBubble from "./CountBubble";
-import ScoreBubble from "./ScoreBubble";
 
 type ComponentResultProps = {
   component: component;

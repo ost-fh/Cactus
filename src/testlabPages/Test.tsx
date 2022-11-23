@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { postTestResult } from "../api";
 import TestItem from "../components/TestItem";
 import { criteriumResult, testData } from "../types";
@@ -11,6 +12,8 @@ type TestProps = {
 };
 
 const Test = ({ testData, linkDocs }: TestProps) => {
+  const navigate = useNavigate();
+
   const [testResult, setTestResult] = useState<criteriumResult[]>();
 
   useEffect(() => {
@@ -48,11 +51,12 @@ const Test = ({ testData, linkDocs }: TestProps) => {
         }
       });
       if (testFinished) {
-        console.log("success");
-        console.log(
-          JSON.stringify({ testData: testData, criteria: testResult })
-        );
+        // console.log("success");
+        // console.log(
+        //   JSON.stringify({ testData: testData, criteria: testResult })
+        // );
         postTestResult({ testData: testData, criteria: testResult });
+        navigate("../outcome");
       } else {
         console.error("error");
       }
@@ -68,10 +72,9 @@ const Test = ({ testData, linkDocs }: TestProps) => {
         <a href={linkDocs} className='button' target='_blank' rel='noreferrer'>
           Open documentation
         </a>
-        {/* <LinkButton path={"test"} label='Open documentation in new window' /> */}
       </div>
       {testData.criteriaGroup && (
-        <>
+        <main>
           {testData.criteriaGroup.additionalHint === "" ? (
             ""
           ) : (
@@ -82,7 +85,11 @@ const Test = ({ testData, linkDocs }: TestProps) => {
           <div className='test-instructions'>
             <h3>Instructions</h3>
             {testData.criteriaGroup.instructions}
-            <div>video: {testData.criteriaGroup.videoLink} </div>
+            {testData.criteriaGroup.videoLink === "" ? (
+              ""
+            ) : (
+              <div>video: {testData.criteriaGroup.videoLink} </div>
+            )}
           </div>
           <section className='test-list'>
             {testResult &&
@@ -94,9 +101,9 @@ const Test = ({ testData, linkDocs }: TestProps) => {
                 />
               ))}
           </section>
-        </>
+        </main>
       )}
-      <button onClick={submitTest} type='submit'>
+      <button className='button-primary' onClick={submitTest} type='submit'>
         Finish Test
       </button>
     </div>

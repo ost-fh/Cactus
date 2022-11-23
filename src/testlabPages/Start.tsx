@@ -23,7 +23,8 @@ const Start = ({ testData, setTestData }: StartProps) => {
     }
     setTestData(newTestData);
     return () => {};
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [components, setTestData, testData]);
 
   const handleChange = (event: any) => {
     const { name, value } = event.target;
@@ -35,17 +36,12 @@ const Start = ({ testData, setTestData }: StartProps) => {
     console.log(testData);
   };
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    console.log(testData);
-  };
-
   return (
     <div className='lab-start'>
       <div className='alert-info'>
         Choose Component and Testmode to continue
       </div>
-      <form>
+      <div className='form'>
         <label htmlFor='components'>Choose Component</label>
         <select
           name='component'
@@ -69,12 +65,13 @@ const Start = ({ testData, setTestData }: StartProps) => {
           ))}
         </select>
         <div className='form-control'>
-          {/* <button onClick={handleSubmit}>Start Test</button> */}
-          <LinkButton label='Start Test' path='test'></LinkButton>
+          <LinkButton
+            label='Next'
+            classname='button-primary'
+            path='instructions'
+          ></LinkButton>
         </div>
-      </form>
-      {/* Pass Testinfos to test component */}
-      {/* <Test></Test> */}
+      </div>
     </div>
   );
 };

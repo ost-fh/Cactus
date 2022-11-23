@@ -22,6 +22,7 @@ p,
 ol,
 ul {
     margin: 0;
+    margin-bottom: 0.3em;
     padding: 0;
     font-weight: normal;
 }
@@ -132,6 +133,7 @@ button:disabled {
 
 /** forms **/
 
+.form,
 form {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -159,6 +161,7 @@ form {
     padding: 1rem 0;
     align-items: center;
     gap: 1rem;
+    border-bottom: 2px rgb(239, 239, 239) solid;
 }
 
 .logo {
@@ -257,7 +260,7 @@ form {
 }
 
 .lib-testresult {
-    background-color: rgb(252, 252, 252);
+    border: 2px solid rgb(237, 237, 237);
     padding: 0.7rem;
     border-radius: 0.4rem;
 }
@@ -326,17 +329,42 @@ form {
 
 /** component tests **/
 
+.testlab-libraryinfos {
+    margin-bottom: 0.7rem;
+}
+
+.test-outcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
 .component-test {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
     margin-bottom: 5rem;
+}
+
+.component-test main {
+    width: 100%;
 }
 
 .test-general {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+}
+
+.test-instruction img {
+    max-height: 50vh;
+}
+
+.test-instruction > section {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
 }
 
 .test-list {
@@ -350,6 +378,7 @@ form {
     border-radius: 0.4rem;
     padding: 1rem;
     background-color: rgb(213, 244, 213);
+    margin-bottom: 1rem;
 }
 
 .test-item {

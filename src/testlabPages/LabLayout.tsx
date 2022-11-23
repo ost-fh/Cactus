@@ -54,19 +54,18 @@ const TestLabLayout = () => {
 
   return (
     <div className='container'>
-      <header className='page-header page-header-testlab'>
+      <header className='page-header'>
         <img className='logo' alt='logo' src='/cactus_logo.png' />
         <h1>Cactus Testlab</h1>
+        {library && (
+          <div>
+            <p>Library: {library.title}</p>
+            <p>Version: {testData.libraryVersion} </p>
+          </div>
+        )}
       </header>
       <main>
-        <header>
-          {library && (
-            <>
-              <p>Library: {library.title}</p>
-              <p>Version: {testData.libraryVersion} </p>
-            </>
-          )}
-        </header>
+        <header className='testlab-libraryinfos'></header>
         <Routes>
           <Route
             index
@@ -74,7 +73,7 @@ const TestLabLayout = () => {
           />
           <Route
             path='instructions/'
-            element={<Instructions testData={testData} />}
+            element={<Instructions linkDocs={library?.linkDocs || "error"} />}
           />
           <Route
             path='test/'
@@ -85,7 +84,7 @@ const TestLabLayout = () => {
               />
             }
           />
-          <Route path='outcome/' element={<Outcome />} />
+          <Route path='outcome/' element={<Outcome testData={testData} />} />
         </Routes>
       </main>
     </div>
