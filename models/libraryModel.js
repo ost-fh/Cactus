@@ -42,12 +42,12 @@ const librarySchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    componentsTested: {
-      type: Number,
-    },
-    totalScore: {
-      type: Number,
-    },
+    // componentsTested: {
+    //   type: Number,
+    // },
+    // totalScore: {
+    //   type: Number,
+    // },
     linkHome: {
       type: String,
       required: true,

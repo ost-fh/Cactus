@@ -41,5 +41,5 @@ app.use("/api/testlab", require("./routes/testRoutes"));
 app.use(errorHandler);
 
 app.listen(port, () =>
-  console.log("API is running on http://localhost:8080/login ")
+  console.log("API is running on http://localhost:" + port + "/login ")
 );
