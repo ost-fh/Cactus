@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import Alert from "../components/Alert";
+import PublicLayout from "../layout/PublicLayout";
 
 const NotFound = () => {
   return (
-    <div>404 NotFound</div>
-  )
-}
+    <PublicLayout>
+      <Alert message='Error 404: Page Not Found' />
+    </PublicLayout>
+  );
+};
 
-export default NotFound
+export default NotFound;

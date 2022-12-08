@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createLibrary } from "../api";
+import PublicLayout from "../layout/PublicLayout";
 import { newLibrary } from "../types";
 
 const AddLibrary = () => {
+  const navigate = useNavigate();
   const [newLibrary, setNewLibrary] = useState<newLibrary>({
     title: "",
     currentVersion: "",
@@ -20,13 +23,14 @@ const AddLibrary = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(newLibrary);
-    createLibrary(newLibrary).then(() => console.log("success"));
+    createLibrary(newLibrary).then((res) => {
+      navigate(`/libraries/${res._id}`);
+    });
   };
 
   return (
-    <div>
-      <h1>New Library</h1>
+    <PublicLayout>
+      <h2>Add a new Library</h2>
       <p>To add a new Library, please fill out the form below.</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor='lib-title'>Name of the Library</label>
@@ -61,7 +65,7 @@ const AddLibrary = () => {
           <button type='submit'>Add new Library</button>
         </div>
       </form>
-    </div>
+    </PublicLayout>
   );
 };
 

@@ -1,0 +1,6 @@
+.alert-info {
+    background-color: rgb(255, 250, 216);
+    border: rgb(247, 241, 126) solid 1px;
+    border-radius: 0.4rem;
+    padding: 0.7rem;
+}

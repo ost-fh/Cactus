@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PublicLayout from "../layout/PublicLayout";
+import "./login.css";
 
 async function loginUser(credentials: { username: string; password: string }) {
   return fetch("http://localhost:3010/login", {
@@ -29,24 +31,26 @@ export default function Login(props: { setToken: any }) {
   };
 
   return (
-    <div className='login-wrapper'>
-      <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Username</p>
-          <input type='text' onChange={(e) => setUserName(e.target.value)} />
-        </label>
-        <label>
-          <p>Password</p>
-          <input
-            type='password'
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <div>
-          <button type='submit'>Submit</button>
-        </div>
-      </form>
-    </div>
+    <PublicLayout activeLink='login'>
+      <div className='login'>
+        <h2>Please Log In</h2>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <p>Username</p>
+            <input type='text' onChange={(e) => setUserName(e.target.value)} />
+          </label>
+          <label>
+            <p>Password</p>
+            <input
+              type='password'
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <div>
+            <button type='submit'>Submit</button>
+          </div>
+        </form>
+      </div>
+    </PublicLayout>
   );
 }
