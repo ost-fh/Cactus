@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Libraries from "./pages/Libraries";
-import LabLayout from "./layout/LabLayout";
 import LibraryDetail from "./pages/LibraryDetail";
 import AddLibrary from "./pages/AddLibrary";
 import "./fonts/AtkinsonHyperlegible-Regular.ttf";

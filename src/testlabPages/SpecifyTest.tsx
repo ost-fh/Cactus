@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Alert from "../components/Alert";
 import LabPathDisplay from "../components/LabPathDisplay";
 import LinkButton from "../components/LinkButton";
@@ -14,6 +14,16 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
   const criteriaData = criteriaCatalogue;
   const components = criteriaData.map((item) => item.component);
   const testModes = ["Screenreader", "Keyboard"];
+
+  const [formValid, setFormValid] = useState(false);
+
+  useEffect(() => {
+    if (testData.component === "" || testData.testMode === "") {
+      setFormValid(false);
+    } else {
+      setFormValid(true);
+    }
+  }, [testData]);
 
   const handleChange = (component: string, testMode: string) => {
     setTestData({ ...testData, component: component, testMode: testMode });
@@ -56,10 +66,12 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
       <div className='control-group'>
         <LinkButton label={"Back"} to={"../start"} />
         <LinkButton
+          disabled={!formValid}
           label='Next'
           className='button-primary'
           to='../test'
         ></LinkButton>
+        {!formValid && <p className='text-red'>Please choose a test.</p>}
       </div>
     </div>
   );

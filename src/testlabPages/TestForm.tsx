@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postTestResult } from "../api";
-import Alert from "../components/Alert";
 import LabPathDisplay from "../components/LabPathDisplay";
 import LinkButton from "../components/LinkButton";
 import TestItem from "../components/TestItem";
@@ -35,9 +34,18 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
     return () => {};
   }, [criteriaGroup]);
 
+  // Check if form is vaild
   useEffect(() => {
-    checkIfFormValid();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    let formValid = true;
+    if (testResult) {
+      testResult.forEach((element) => {
+        if (element.choice === "") {
+          console.log("empty choice");
+          formValid = false;
+        }
+      });
+      setTestFormValid(formValid);
+    }
   }, [testResult]);
 
   const handleChange = (newCriteriumData: criteriumResult) => {
@@ -53,18 +61,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
     }
   };
 
-  const checkIfFormValid = () => {
-    let formValid = true;
-    if (testResult) {
-      testResult.forEach((element) => {
-        if (element.choice === "") {
-          console.log("empty choice");
-          formValid = false;
-        }
-      });
-      setTestFormValid(formValid);
-    }
-  };
+  const checkIfFormValid = () => {};
 
   const submitTest = () => {
     if (testResult) {
