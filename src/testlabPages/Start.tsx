@@ -2,25 +2,26 @@ import React from "react";
 import Alert from "../components/Alert";
 import LabPathDisplay from "../components/LabPathDisplay";
 import LinkButton from "../components/LinkButton";
+import { testData } from "../types";
 
-const Start = () => {
+type StartProps = {
+  testData: testData;
+};
+
+const Start = ({ testData }: StartProps) => {
   return (
     <div>
       <LabPathDisplay currentPage='start' />
-      {/* <h2>Start</h2> */}
+      <h2>Welcome to the test section. </h2>
       <Alert
         title='Attention: '
         type='help'
         message='If this is your first test, please read the information below'
       />
-      <p>
-        Welcome to the test section. Here you can add tests to the chosen
-        library.
-      </p>
+      <p>Here you can add tests to the chosen library.</p>
       <div className='lab-start-split'>
         <div>
           <h3>Step 1: Specify Test</h3>
-
           <p>
             In the next view, you will need to choose a component-type and a
             testmode.
@@ -28,7 +29,6 @@ const Start = () => {
         </div>
         <div>
           <h3>Step 2: Test</h3>
-
           <p>
             There are several criteria that you will test and evaluate with the
             official documentation of the library.
@@ -39,7 +39,13 @@ const Start = () => {
           <p>You will have done it!</p>
         </div>
       </div>
-      <LinkButton to='../specify' className='button' label='Next' />
+      <div className='control-group'>
+        <LinkButton
+          label={"Cancel and close Test"}
+          to={"/libraries/" + testData.libraryId}
+        />
+        <LinkButton to='../specify' className='button-primary' label='Next' />
+      </div>
     </div>
   );
 };

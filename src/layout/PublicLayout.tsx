@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./public-layout.css";
+import "./publiclayout.css";
 
 type PublicLayoutProps = {
   children?: React.ReactNode;

@@ -57,11 +57,8 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
         return result;
       });
       setTestResult(newResults);
-      checkIfFormValid();
     }
   };
-
-  const checkIfFormValid = () => {};
 
   const submitTest = () => {
     if (testResult) {

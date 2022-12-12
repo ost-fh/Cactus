@@ -1,0 +1,49 @@
+/** library-detail **/
+
+.lib-detail > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.lib-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.lib-controls,
+.lib-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.lib-testresults {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.lib-testresult {
+    border: 2px solid rgb(237, 237, 237);
+    padding: 0.7rem;
+    border-radius: 0.4rem;
+}
+
+.lib-testresult h2 {
+    margin: 0;
+}
+
+.lib-testresult > header {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding-bottom: 0.5rem;
+}
+
+.count-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}

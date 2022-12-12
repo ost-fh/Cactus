@@ -38,13 +38,8 @@
 .component-test {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 1rem;
     margin-bottom: 5rem;
-}
-
-.component-test main {
-    width: 100%;
 }
 
 .test-general {
@@ -105,4 +100,14 @@
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+}
+
+.control-group {
+    display: flex;
+    gap: 0.7rem;
+    align-items: baseline;
+}
+
+.text-red {
+    color: rgb(202, 0, 0);
 }

@@ -5,6 +5,7 @@ import ComponentResult from "../components/ComponentResult";
 import LinkButton from "../components/LinkButton";
 import PublicLayout from "../layout/PublicLayout";
 import { library } from "../types";
+import "./librarydetail.css";
 
 const LabLibraryDetail = ({ token }: any | undefined) => {
   const [library, setLibrary] = useState<library>();
@@ -64,7 +65,7 @@ const LabLibraryDetail = ({ token }: any | undefined) => {
                   {token && (
                     <LinkButton
                       to={`/testlab/${library._id}/${library.currentVersion}`}
-                      className='button-primary'
+                      className='button-primary button-wide'
                       label='Add Component Test'
                     />
                   )}

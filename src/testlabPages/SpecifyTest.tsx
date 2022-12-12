@@ -32,11 +32,8 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
   return (
     <div className='lab-start'>
       <LabPathDisplay currentPage='specify' />
-
       <Alert type='help' message='Choose Component and Testmode to continue.' />
-
       <p>There are two testmodes for every component:</p>
-
       <p>
         Keyboard: this focuses on accessibility with keyboard use and screen,
         for example to use the 'enter'-key to click a button.
@@ -48,11 +45,12 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
       <p>Choose one to continue.</p>
 
       {components.map((component) => (
-        <div className='specify-component'>
+        <div key={component} className='specify-component'>
           <p>{component}</p>
           <div className='specify-component-options'>
             {testModes.map((testMode) => (
               <SpecifyTestButton
+                key={`${component}-${testMode}`}
                 testData={testData}
                 testMode={testMode}
                 component={component}

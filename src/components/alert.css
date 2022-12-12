@@ -1,6 +1,7 @@
 .alert {
     border-radius: 0.4rem;
     padding: 0.7rem;
+    margin-bottom: 0.5rem;
 }
 
 .alert-info {
