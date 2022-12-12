@@ -41,7 +41,7 @@ const Start = ({ testData }: StartProps) => {
       </div>
       <div className='control-group'>
         <LinkButton
-          label={"Cancel and close Test"}
+          label={"Cancel and close Testlab"}
           to={"/libraries/" + testData.libraryId}
         />
         <LinkButton to='../specify' className='button-primary' label='Next' />

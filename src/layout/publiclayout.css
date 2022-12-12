@@ -13,9 +13,17 @@
     padding: 0.3rem 0.5rem;
     border-radius: 0.2rem;
     color: black;
+    background-color: white;
+    transition: background-color 0.3s ease;
 }
 
-.nav-link-active {
+.nav-link:hover {
+    transition: background-color 0.2s ease;
+    background-color: rgb(225, 225, 240);
+}
+
+.nav-link-active,
+.nav-link-active:hover {
     color: rgb(0, 85, 23);
     background-color: rgba(63, 220, 20, 0.077);
 }
