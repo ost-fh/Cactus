@@ -1,25 +1,27 @@
 import React from "react";
+import LabPathDisplay from "../components/LabPathDisplay";
 import LinkButton from "../components/LinkButton";
 import { testData } from "../types";
 
-type OutcomeProps = {
+type ConfirmationProps = {
   testData: testData;
 };
 
-const Outcome = ({ testData }: OutcomeProps) => {
+const Confirmation = ({ testData }: ConfirmationProps) => {
   console.log(testData);
 
   return (
-    <div className='test-outcome'>
+    <div className='test-confirmation'>
+      <LabPathDisplay currentPage={"confirm"} />
       <h2>Thank you very much!</h2>
       <p>Your testresults were added to the library.</p>
       <LinkButton
         label={"Go to library overview"}
-        classname='button-primary'
-        path={"/libraries/" + testData.libraryId}
+        className='button-primary'
+        to={"/libraries/" + testData.libraryId}
       />
     </div>
   );
 };
 
-export default Outcome;
+export default Confirmation;

@@ -63,8 +63,8 @@ const LabLibraryDetail = ({ token }: any | undefined) => {
                 <div className='lib-controls'>
                   {token && (
                     <LinkButton
-                      path={`/testlab/${library._id}/${library.currentVersion}`}
-                      classname='button-primary'
+                      to={`/testlab/${library._id}/${library.currentVersion}`}
+                      className='button-primary'
                       label='Add Component Test'
                     />
                   )}

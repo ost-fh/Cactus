@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 type LinkButtonProps = {
   label: string;
-  classname?: string;
-  path: string;
+  className?: string;
+  to: string;
 };
 
-const LinkButton = ({ label, path, classname }: LinkButtonProps) => {
+const LinkButton = ({ label, to, className }: LinkButtonProps) => {
   const navigate = useNavigate();
   return (
-    <button className={classname} onClick={() => navigate(path)}>
+    <button className={className} onClick={() => navigate(to)}>
       {label}
     </button>
   );

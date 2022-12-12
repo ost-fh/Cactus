@@ -44,7 +44,7 @@ export type testData = {
     libraryVersion: string;
     component: string;
     testMode: string;
-    criteriaGroup: criteriaGroup | undefined;
+    //criteriaGroup: criteriaGroup | undefined;
 };
 
 export type componentCriteria = {
@@ -89,7 +89,7 @@ export const criteriaCatalogue: componentCriteria[] = [
         criteria: [
             {
                 testMode: "Keyboard",
-                instructions: "Lorem Ipsum Instruktionen",
+                instructions: "",
                 videoLink: "link video",
                 additionalHint: "",
                 criteria: [
@@ -122,7 +122,7 @@ export const criteriaCatalogue: componentCriteria[] = [
             },
             {
                 testMode: "Screenreader",
-                instructions: "Lorem Ipsum Instruktionen",
+                instructions: "",
                 videoLink: "",
                 additionalHint: "",
                 criteria: [
@@ -145,7 +145,7 @@ export const criteriaCatalogue: componentCriteria[] = [
         criteria: [
             {
                 testMode: "Screenreader",
-                instructions: "Lorem Ipsum Instruktionen",
+                instructions: "",
                 videoLink: "",
                 additionalHint: "",
                 criteria: [
@@ -158,7 +158,7 @@ export const criteriaCatalogue: componentCriteria[] = [
             },
             {
                 testMode: "Keyboard",
-                instructions: "Lorem Ipsum Instruktionen",
+                instructions: "",
                 videoLink: "",
                 additionalHint: "",
                 criteria: [
@@ -191,7 +191,7 @@ export const criteriaCatalogue: componentCriteria[] = [
         criteria: [
             {
                 testMode: "Screenreader",
-                instructions: "Lorem Ipsum Instruktionen",
+                instructions: "",
                 videoLink: "",
                 additionalHint: "",
                 criteria: [
@@ -204,7 +204,7 @@ export const criteriaCatalogue: componentCriteria[] = [
             },
             {
                 testMode: "Keyboard",
-                instructions: "Lorem Ipsum Instruktionen",
+                instructions: "",
                 videoLink: "",
                 additionalHint: "",
                 criteria: [

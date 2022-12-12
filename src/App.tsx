@@ -7,11 +7,12 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Libraries from "./pages/Libraries";
-import LabLayout from "./testlabPages/LabLayout";
+import LabLayout from "./layout/LabLayout";
 import LibraryDetail from "./pages/LibraryDetail";
 import AddLibrary from "./pages/AddLibrary";
 import "./fonts/AtkinsonHyperlegible-Regular.ttf";
 import About from "./pages/About";
+import TestLab from "./testlabPages/TestLab";
 
 function App() {
   const [token, setToken] = useState();
@@ -31,7 +32,7 @@ function App() {
           <Route path='login' element={<Login setToken={setToken} />} />
         </Route>
         {token ? (
-          <Route path='testlab/:id/:version/*' element={<LabLayout />}></Route>
+          <Route path='testlab/:id/:version/*' element={<TestLab />}></Route>
         ) : (
           <Route path='testlab' element={<Navigate to='/' />} />
         )}

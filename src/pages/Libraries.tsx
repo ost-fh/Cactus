@@ -5,6 +5,7 @@ import CountBubble from "../components/CountBubble";
 import LinkButton from "../components/LinkButton";
 import ScoreBubble from "../components/ScoreBubble";
 import PublicLayout from "../layout/PublicLayout";
+import "./libraries.css";
 
 const Libraries = ({ token }: any | undefined) => {
   const [libraries, setLibraries] = useState<any>();
@@ -18,27 +19,36 @@ const Libraries = ({ token }: any | undefined) => {
 
   return (
     <PublicLayout activeLink='libraries'>
-      <h2>Libraries</h2>
-      <nav>Search and Filters</nav>{" "}
-      {token && (
-        <LinkButton path='new' label='Add Library' classname='button-primary' />
-      )}
+      <header className='library-header'>
+        <h2>Libraries</h2>
+        <Alert
+          type='help'
+          title='Remember:'
+          message={
+            "The accessibility scores do not neccessarily represent how accessible a finished product using that library is. It only shows how good the baseline is it starts from."
+          }
+        />
+        <nav>ToDo: Search and Filters and Sorting </nav>{" "}
+        {token && (
+          <LinkButton to='new' label='Add Library' className='button-primary' />
+        )}
+      </header>
       <section className='library-list'>
         {libraries ? (
           libraries.map((library: any) => (
             <article id={library._id.toString()} className='library-card'>
               <header>{library.title} </header>
-              <main>
+              <div className='library-card-main'>
                 <ScoreBubble score={library.totalScore || 0} />
                 <CountBubble count={library.componentsTested || 0} />
-              </main>
-              <aside>
+              </div>
+              <div className='library-card-aside'>
                 <LinkButton
-                  path={library._id}
-                  classname='button-wide'
+                  to={library._id}
+                  className='button-wide'
                   label='Show More'
                 />
-              </aside>
+              </div>
             </article>
           ))
         ) : (

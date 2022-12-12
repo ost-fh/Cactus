@@ -28,7 +28,16 @@ ul {
 }
 
 h1 {
+    font-size: 2.1rem;
     margin-bottom: 0;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+p {
+    margin-bottom: 0.3rem;
 }
 
 ol,

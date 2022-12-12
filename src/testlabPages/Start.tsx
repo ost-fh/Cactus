@@ -1,77 +1,45 @@
-import React, { useEffect } from "react";
+import React from "react";
+import Alert from "../components/Alert";
+import LabPathDisplay from "../components/LabPathDisplay";
 import LinkButton from "../components/LinkButton";
-import { criteriaCatalogue, testData } from "../types";
 
-type StartProps = {
-  testData: testData;
-  setTestData: Function;
-};
-
-const Start = ({ testData, setTestData }: StartProps) => {
-  const criteriaData = criteriaCatalogue;
-  const components = criteriaData.map((item) => item.component);
-  const testModes = ["Screenreader", "Keyboard"];
-
-  useEffect(() => {
-    // Fills testData with default values
-    let newTestData = testData;
-    if (testData.component === "") {
-      newTestData = { ...newTestData, component: components[0] };
-    }
-    if (testData.testMode === "") {
-      newTestData = { ...newTestData, testMode: testModes[0] };
-    }
-    setTestData(newTestData);
-    return () => {};
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [components, setTestData, testData]);
-
-  const handleChange = (event: any) => {
-    const { name, value } = event.target;
-    setTestData((prevState: any) => ({
-      ...prevState,
-      [name]: value,
-    }));
-    console.log(value);
-    console.log(testData);
-  };
-
+const Start = () => {
   return (
-    <div className='lab-start'>
-      <div className='alert-info'>
-        Choose Component and Testmode to continue
-      </div>
-      <div className='form'>
-        <label htmlFor='components'>Choose Component</label>
-        <select
-          name='component'
-          value={testData.component}
-          id='components'
-          onChange={handleChange}
-        >
-          {components.map((item) => (
-            <option value={item}>{item}</option>
-          ))}
-        </select>
-        <label htmlFor='testMode'>Choose Testmode</label>
-        <select
-          name='testMode'
-          id='testMode'
-          value={testData.testMode}
-          onChange={handleChange}
-        >
-          {testModes.map((item) => (
-            <option value={item}>{item}</option>
-          ))}
-        </select>
-        <div className='form-control'>
-          <LinkButton
-            label='Next'
-            classname='button-primary'
-            path='instructions'
-          ></LinkButton>
+    <div>
+      <LabPathDisplay currentPage='start' />
+      {/* <h2>Start</h2> */}
+      <Alert
+        title='Attention: '
+        type='help'
+        message='If this is your first test, please read the information below'
+      />
+      <p>
+        Welcome to the test section. Here you can add tests to the chosen
+        library.
+      </p>
+      <div className='lab-start-split'>
+        <div>
+          <h3>Step 1: Specify Test</h3>
+
+          <p>
+            In the next view, you will need to choose a component-type and a
+            testmode.
+          </p>
+        </div>
+        <div>
+          <h3>Step 2: Test</h3>
+
+          <p>
+            There are several criteria that you will test and evaluate with the
+            official documentation of the library.
+          </p>
+        </div>
+        <div>
+          <h3>Step 3: Confirmation</h3>
+          <p>You will have done it!</p>
         </div>
       </div>
+      <LinkButton to='../specify' className='button' label='Next' />
     </div>
   );
 };

@@ -1,0 +1,42 @@
+.library-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.library-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 1rem;
+}
+
+.library-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "title ctrl"
+        "score ctrl";
+    border: 1px rgb(224, 224, 224) solid;
+    gap: 0.5rem;
+    margin: 0rem;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+    align-items: center;
+}
+
+.library-card > title {
+    grid-area: title;
+}
+
+.library-card-main {
+    grid-area: score;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.library-card-aside {
+    grid-area: ctrl;
+}

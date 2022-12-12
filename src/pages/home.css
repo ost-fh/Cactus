@@ -1,0 +1,25 @@
+.home-intro {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 3rem;
+    gap: 3rem;
+    font-size: 1.4rem;
+}
+
+.home-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.home-title {
+    font-size: 2rem;
+    justify-self: right;
+}
+
+.home-text {
+    font-size: 1.3rem;
+}
