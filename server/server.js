@@ -34,9 +34,9 @@ app.use("/api/testlab", require("./routes/testRoutes"));
 //   next();
 // });
 
-// app.get('/', (req, res) => {
-//   res.send('Successful response.');
-// });
+app.get("/", (req, res) => {
+  res.send("API is running");
+});
 
 app.use(errorHandler);
 
