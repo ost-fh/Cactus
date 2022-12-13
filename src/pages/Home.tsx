@@ -15,7 +15,7 @@ const home = () => {
       </div>
       <div className='home-section '>
         <div className='home-title'>
-          <span>The Mission</span>
+          <h3>The Mission</h3>
         </div>
         <div className='home-text'>
           <p>
@@ -31,7 +31,7 @@ const home = () => {
       </div>
       <div className='home-section '>
         <div className='home-title'>
-          <span>How does it work?</span>
+          <h3>How does it work?</h3>
         </div>
         <div className='home-text'>
           <p>
@@ -47,7 +47,7 @@ const home = () => {
       </div>
       <div className='home-section '>
         <div className='home-title'>
-          <span>We need your help!</span>
+          <h3>We need your help!</h3>
         </div>
         <div className='home-text'>
           <p>

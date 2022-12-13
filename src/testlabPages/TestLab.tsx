@@ -7,6 +7,7 @@ import TestForm from "./TestForm";
 import TestLabLayout from "../layout/LabLayout";
 import Start from "./Start";
 import Confirmation from "./Confirmation";
+import NotFound from "../pages/NotFound";
 
 const TestLab = () => {
   const { id, version } = useParams();
@@ -36,9 +37,9 @@ const TestLab = () => {
     >
       <Routes>
         <Route index element={<Navigate to='start' />}></Route>
-        <Route path='start' element={<Start testData={testData} />} />
+        <Route path='start/' element={<Start testData={testData} />} />
         <Route
-          path='specify'
+          path='specify/'
           element={
             <SpecifyTest testData={testData} setTestData={setTestData} />
           }
@@ -56,6 +57,7 @@ const TestLab = () => {
           path='confirmation/'
           element={<Confirmation testData={testData} />}
         />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </TestLabLayout>
   );

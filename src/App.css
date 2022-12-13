@@ -11,7 +11,30 @@
 }
 
 .container {
-    margin: auto 1rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 850px;
+}
+
+/* .flex-column {
+    display: flex;
+    flex-direction: column;
+} */
+
+main {
+    margin-top: 0.8rem;
+}
+
+.layout-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 850px) {
+    .layout-split {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 :focus {

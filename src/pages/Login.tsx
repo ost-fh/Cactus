@@ -35,17 +35,18 @@ export default function Login(props: { setToken: any }) {
       <div className='login'>
         <h2>Please Log In</h2>
         <form onSubmit={handleSubmit}>
-          <label>
-            <p>Username</p>
-            <input type='text' onChange={(e) => setUserName(e.target.value)} />
-          </label>
-          <label>
-            <p>Password</p>
-            <input
-              type='password'
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
+          <label htmlFor='login-username'>Username</label>
+          <input
+            id='login-username'
+            type='text'
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <label htmlFor='login-password'>Password</label>
+          <input
+            id='login-password'
+            type='password'
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <div>
             <button type='submit'>Submit</button>
           </div>

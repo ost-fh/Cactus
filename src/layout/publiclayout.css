@@ -36,12 +36,3 @@
     gap: 1rem;
     border-bottom: 2px rgb(239, 239, 239) solid;
 }
-
-main {
-    margin-top: 0.8rem;
-}
-
-.layout-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
