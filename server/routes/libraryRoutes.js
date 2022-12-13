@@ -1,4 +1,6 @@
 const express = require("express");
+const { protect } = require("../middleware/authMiddleware");
+
 const {
   getLibraries,
   postLibrary,
@@ -8,8 +10,11 @@ const router = express.Router();
 
 router.get("/", getLibraries);
 
-router.post("/", postLibrary);
+router.post("/", protect, postLibrary);
 
-router.get("/:id/", getLibrary);
+// TODO Remove protect
+router.get("/:id/", protect, getLibrary);
+
+//router.post("/:id", protect, postNewVersion);
 
 module.exports = router;

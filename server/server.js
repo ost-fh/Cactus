@@ -21,8 +21,9 @@ app.use("/login", (req, res) => {
   });
 });
 
+app.use("/api/auth", require("./routes/userRoutes"));
 app.use("/api/libraries", require("./routes/libraryRoutes"));
-app.use("/api/testlab", require("./routes/testRoutes"));
+app.use("/api/testlab", require("./routes/testingRoutes"));
 
 // app.use((req, res, next) => {
 //     console.log('Time: ', Date.now());
