@@ -28,7 +28,7 @@ const Contribute = () => {
           <p>Please register to contribute to the Cactus Project</p>
           <form onSubmit={handleSubmit}>
             <label htmlFor='registration-username'>
-              Username (you will use this to login)
+              Username <small>(you will use this to login)</small>
             </label>
             <input
               required

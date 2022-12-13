@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../App";
 import "./publiclayout.css";
 
 type PublicLayoutProps = {
@@ -8,6 +9,8 @@ type PublicLayoutProps = {
 };
 
 const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
+  const userData = useContext(UserContext);
+
   return (
     <div className='container'>
       <header className='page-header'>
@@ -46,14 +49,20 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
           >
             Contribute
           </Link>
-          <Link
-            className={`nav-link ${
-              activeLink === "login" ? "nav-link-active" : ""
-            }`}
-            to='/login'
-          >
-            Login
-          </Link>
+          {!userData?.token ? (
+            <Link
+              className={`nav-link ${
+                activeLink === "login" ? "nav-link-active" : ""
+              }`}
+              to='/login'
+            >
+              Login
+            </Link>
+          ) : (
+            <Link className='nav-link' to='/logout'>
+              Logout
+            </Link>
+          )}
         </nav>
       </header>
       <main>{children}</main>

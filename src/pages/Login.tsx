@@ -1,19 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../api";
 import PublicLayout from "../layout/PublicLayout";
 import "./login.css";
 
-async function loginUser(credentials: { username: string; password: string }) {
-  return fetch("http://localhost:3010/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
-
-export default function Login(props: { setToken: any }) {
+const Login = (props: { setUserData: any }) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -23,10 +14,8 @@ export default function Login(props: { setToken: any }) {
     const token = await loginUser({
       username,
       password,
-    });
-    console.log(token);
-
-    props.setToken(token);
+    }).then();
+    props.setUserData(token);
     navigate("/libraries");
   };
 
@@ -54,4 +43,6 @@ export default function Login(props: { setToken: any }) {
       </div>
     </PublicLayout>
   );
-}
+};
+
+export default Login;

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postTestResult } from "../api";
+import { UserContext } from "../App";
 import LabPathDisplay from "../components/LabPathDisplay";
 import LinkButton from "../components/LinkButton";
 import TestItem from "../components/TestItem";
@@ -14,6 +15,8 @@ type TestFormProps = {
 };
 
 const TestForm = ({ testData, linkDocs }: TestFormProps) => {
+  const userData = useContext(UserContext);
+
   const criteriaGroup = criteriaCatalogue
     .find((item) => item.component === testData.component)
     ?.criteria.find((item) => item.testMode === testData.testMode);
@@ -62,7 +65,10 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
 
   const submitTest = () => {
     if (testResult) {
-      postTestResult({ testData: testData, criteria: testResult });
+      postTestResult(
+        { testData: testData, criteria: testResult },
+        userData!.token
+      );
       navigate("../confirmation");
     }
   };

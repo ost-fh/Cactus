@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getLibrary } from "../api";
+import { UserContext } from "../App";
 import ComponentResult from "../components/ComponentResult";
 import LinkButton from "../components/LinkButton";
 import PublicLayout from "../layout/PublicLayout";
-import { library } from "../types";
+import { component, library } from "../types";
 import "./librarydetail.css";
 
-const LabLibraryDetail = ({ token }: any | undefined) => {
+const LibraryDetail = () => {
+  const userData = useContext(UserContext);
   const [library, setLibrary] = useState<library>();
   const { id } = useParams();
-  const [scores, setScores] = useState<number[]>([]);
-  const [score, setScore] = useState<number>();
 
   useEffect(() => {
     if (id) {
@@ -22,23 +22,6 @@ const LabLibraryDetail = ({ token }: any | undefined) => {
     }
     return () => {};
   }, [id]);
-
-  useEffect(() => {
-    let sum = 0;
-    console.log(scores);
-
-    for (let score of scores) {
-      console.log(score);
-
-      sum += score;
-    }
-    const average = sum / scores.length;
-    setScore(average);
-  }, [scores]);
-
-  const addScore = (number: number) => {
-    setScores([...scores, number]);
-  };
 
   return (
     <PublicLayout>
@@ -62,7 +45,7 @@ const LabLibraryDetail = ({ token }: any | undefined) => {
                   <a href={library.linkDocs}>Documentation</a>
                 </div>
                 <div className='lib-controls'>
-                  {token && (
+                  {userData?.token && (
                     <LinkButton
                       to={`/testlab/${library._id}/${library.currentVersion}`}
                       className='button-primary button-wide'
@@ -73,16 +56,22 @@ const LabLibraryDetail = ({ token }: any | undefined) => {
                 </div>
               </section>
               <section className='lib-testresults'>
-                {library.testsByVersion.length !== 0 ? (
-                  library.testsByVersion.map((version: any) => (
+                {library.versions.length !== 0 ? (
+                  library.versions.map((version: any) => (
                     <>
                       <h3>{version.version}</h3>
-                      {version.components.map((component: any) => (
+                      {version.components.map((component: component) => (
+                        <ComponentResult
+                          key={component.name}
+                          component={component}
+                        />
+                      ))}
+                      {/* {version.components.map((component: any) => (
                         <ComponentResult
                           addScore={addScore}
                           component={component}
                         />
-                      ))}
+                      ))} */}
                     </>
                   ))
                 ) : (
@@ -101,4 +90,4 @@ const LabLibraryDetail = ({ token }: any | undefined) => {
   );
 };
 
-export default LabLibraryDetail;
+export default LibraryDetail;

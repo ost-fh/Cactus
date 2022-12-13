@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createLibrary } from "../api";
+import { UserContext } from "../App";
 import PublicLayout from "../layout/PublicLayout";
 import { newLibrary } from "../types";
 
 const AddLibrary = () => {
+  const userData = useContext(UserContext);
+
   const navigate = useNavigate();
   const [newLibrary, setNewLibrary] = useState<newLibrary>({
     title: "",
@@ -23,7 +26,10 @@ const AddLibrary = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    createLibrary(newLibrary).then((res) => {
+    if (!userData) {
+      throw new Error("missing userData");
+    }
+    createLibrary(newLibrary, userData.token).then((res) => {
       navigate(`/libraries/${res._id}`);
     });
   };
