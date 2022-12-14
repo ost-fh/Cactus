@@ -14,7 +14,7 @@ const Login = (props: { setUserData: any }) => {
     const token = await loginUser({
       username,
       password,
-    }).then();
+    });
     props.setUserData(token);
     navigate("/libraries");
   };

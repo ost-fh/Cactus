@@ -67,12 +67,6 @@ const LibraryDetail = () => {
                           component={component}
                         />
                       ))}
-                      {/* {version.components.map((component: any) => (
-                        <ComponentResult
-                          addScore={addScore}
-                          component={component}
-                        />
-                      ))} */}
                     </>
                   ))
                 ) : (

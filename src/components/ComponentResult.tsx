@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { component } from "../types";
 import CountBubble from "./CountBubble";
 import ScoreBubble from "./ScoreBubble";

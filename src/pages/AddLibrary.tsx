@@ -67,7 +67,7 @@ const AddLibrary = () => {
           name='linkDocs'
           id='lib-link-docs'
         />
-        <div className='form-control'>
+        <div>
           <button type='submit'>Add new Library</button>
         </div>
       </form>

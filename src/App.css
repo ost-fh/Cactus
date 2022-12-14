@@ -1,4 +1,4 @@
-/* general */
+/* General */
 
 @font-face {
     font-family: "Regular";
@@ -33,12 +33,10 @@ main {
 }
 
 :focus {
-    outline-color: red;
-    /* outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.8); */
+    outline-color: rgb(209, 7, 7);
 }
 
-/** Utilities **/
+/** Buttons **/
 
 button,
 .button {
@@ -108,7 +106,7 @@ button:disabled {
     gap: 0.5rem;
 }
 
-/** forms **/
+/** Forms **/
 
 .form,
 form {
@@ -117,7 +115,3 @@ form {
     gap: 0.7rem;
     padding-top: 1rem;
 }
-
-/* .form-control {
-    grid-column: span 2;
-} */

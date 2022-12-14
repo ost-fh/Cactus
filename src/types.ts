@@ -68,7 +68,6 @@ export type testData = {
   libraryVersion: string;
   component: string;
   testMode: string;
-  //criteriaGroup: criteriaGroup | undefined;
 };
 
 export type componentCriteria = {
@@ -99,9 +98,6 @@ export type criteriumResult = {
 };
 
 export type testResultTransmission = {
-  //testedBy: string
-  //testedOn: Date
   testData: testData;
   criteria: criteriumResult[];
-  // ...
 };

@@ -42,17 +42,7 @@ const TestItem = ({ criterium, handleChange }: any) => {
         help
       </button>
       {helpOpen && <div className='test-item-help'>{criterium.help}</div>}
-      {/* <div className='radio-group'>
-        <input checked type='radio' id='radioYes' name='' value='yes' checked />
-        <label htmlFor='radioYes'>Yes</label>
-
-        <input type='radio' id='radioNo' name='' value='banana' />
-        <label htmlFor='radioNo'>No</label>
-
-        <input type='radio' id='radioNotDecidable' name='' value='orange' />
-        <label htmlFor='radioNotDecidable'>Not decidable</label>
-      </div> */}
-      {/* not really accessible */}
+      {/* TODO Improve Accessibility */}
       <div className='button-group'>
         <button
           className={criteriumData.choice === "yes" ? "button-selected" : ""}
