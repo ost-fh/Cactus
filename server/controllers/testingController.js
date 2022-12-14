@@ -1,12 +1,15 @@
 const { Library, Criterium } = require("../models/libraryModel");
+const User = require("../models/userModel");
+const { scoreLibrary } = require("../services/scoring");
 
 const postTestResult = async (req, res) => {
-  // console.log(req.body);
   const data = req.body.testData;
+
   // prepare criteria
   const criteria = req.body.criteria.map(
     (item) =>
       new Criterium({
+        criterium_id: item._id,
         text: item.text,
         help: item.help,
         choice: item.choice,
@@ -14,48 +17,40 @@ const postTestResult = async (req, res) => {
       })
   );
 
-  //evtl. check
   const library = await Library.findById(data.libraryId);
   if (!library) {
     console.error("Library not found: ID invalid");
   }
-  // console.log(library);
-  // create version if not exists
 
   if (
-    library.testsByVersion.length === 0 ||
-    !library.testsByVersion.find((item) => item.version === data.libraryVersion)
+    library.versions.length === 0 ||
+    !library.versions.find((item) => item.version === data.libraryVersion)
   ) {
-    library.testsByVersion.push({
+    library.versions.push({
       version: data.libraryVersion,
       components: [],
     });
   }
-  // console.log("---version---");
-  // find version
-  const version = library.testsByVersion.find(
+
+  const version = library.versions.find(
     (item) => item.version === data.libraryVersion
   );
-  // TODO handle not found -> Refactoring
+  // TODO handle not found
 
-  // find components
   if (
     version.components.length === 0 ||
     !version.components.find((item) => item.name === data.component)
   ) {
-    // console.log("found version, no components");
     version.components.push({
       name: data.component,
       modes: [],
     });
   }
-  // console.log(version);
-  // console.log("---component created---");
-  // console.log(library);
+
   const component = version.components.find(
     (item) => item.name === data.component
   );
-  // console.log(component);
+
   if (
     component.modes.length === 0 ||
     !component.modes.find((item) => item.name === data.testMode)
@@ -63,15 +58,12 @@ const postTestResult = async (req, res) => {
     component.modes.push({ name: data.testMode, tests: [] });
   }
   const mode = component.modes.find((item) => item.name === data.testMode);
-
-  mode.tests.push({ testerName: "implement_me", criteria: criteria });
-  // console.log(mode);
+  const { username } = await User.findById(req.user.id);
+  mode.tests.push({ testedBy: username, criteria: criteria });
 
   await library.save();
-  console.log("library updated");
 
-  // console.log("---library---");
-  // console.log(library);
+  scoreLibrary(data.libraryId);
 
   res.status(200);
 };

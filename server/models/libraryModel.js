@@ -1,6 +1,24 @@
 const mongoose = require("mongoose");
 
+// Scoring
+const criteriumScore = mongoose.Schema({
+  criterium_id: String,
+  positive: Number,
+  negative: Number,
+  notDecided: Number,
+  agreementScore: Number,
+});
+
+const aggregatedScore = mongoose.Schema({
+  positive: Number,
+  negative: Number,
+  notDecided: Number,
+  amountOfTests: Number,
+});
+
+// Testresultdata
 const criteriumSchema = mongoose.Schema({
+  criterium_id: String,
   text: String,
   help: String,
   choice: String,
@@ -8,11 +26,14 @@ const criteriumSchema = mongoose.Schema({
 });
 
 const testSchema = mongoose.Schema({
-  testerName: {
+  // TODO connect to userschema
+  testedBy: {
     type: String,
     required: true,
   },
   criteria: [criteriumSchema],
+  testScore: aggregatedScore,
+  scorePerCriterium: [criteriumScore],
 });
 
 const modeSchema = mongoose.Schema({
@@ -21,6 +42,10 @@ const modeSchema = mongoose.Schema({
     required: true,
   },
   tests: [testSchema],
+  testScores: aggregatedScore,
+  scoresPerCriterium: [criteriumScore],
+  accessibilityScore: Number,
+  agreementScore: Number,
 });
 
 const componentSchema = mongoose.Schema({
@@ -29,11 +54,17 @@ const componentSchema = mongoose.Schema({
     required: true,
   },
   modes: [modeSchema],
+  accessibilityScore: Number,
+  agreementScore: Number,
+  amountOfTests: Number,
 });
 
 const versionSchema = mongoose.Schema({
   version: String,
   components: [componentSchema],
+  accessibilityScore: Number,
+  agreementScore: Number,
+  amountOfComponentsTested: Number,
 });
 
 const librarySchema = mongoose.Schema(
@@ -42,12 +73,6 @@ const librarySchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    // componentsTested: {
-    //   type: Number,
-    // },
-    // totalScore: {
-    //   type: Number,
-    // },
     linkHome: {
       type: String,
       required: true,
@@ -60,7 +85,7 @@ const librarySchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    testsByVersion: [versionSchema],
+    versions: [versionSchema],
   },
   {
     timestamps: true,

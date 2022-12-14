@@ -12,8 +12,7 @@ router.get("/", getLibraries);
 
 router.post("/", protect, postLibrary);
 
-// TODO Remove protect
-router.get("/:id/", protect, getLibrary);
+router.get("/:id/", getLibrary);
 
 //router.post("/:id", protect, postNewVersion);
 
