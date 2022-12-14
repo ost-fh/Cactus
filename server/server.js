@@ -15,32 +15,16 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/login", (req, res) => {
-  res.send({
-    token: "test123",
-  });
+app.get("/", (req, res) => {
+  res.send("API is running");
 });
 
 app.use("/api/auth", require("./routes/userRoutes"));
 app.use("/api/libraries", require("./routes/libraryRoutes"));
 app.use("/api/testlab", require("./routes/testingRoutes"));
 
-// app.use((req, res, next) => {
-//     console.log('Time: ', Date.now());
-//     next();
-// });
-
-// app.use('/*', (req, res, next) => {
-//   console.log('New Request: ', req.method, " ", Date.now());
-//   next();
-// });
-
-app.get("/", (req, res) => {
-  res.send("API is running");
-});
-
 app.use(errorHandler);
 
 app.listen(port, () =>
-  console.log("API is running on http://localhost:" + port + "/login ")
+  console.log("API is running on http://localhost:" + port + "/api ")
 );

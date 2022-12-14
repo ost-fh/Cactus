@@ -34,7 +34,6 @@ const registerUser = async (req, res) => {
     res.status(201).json({
       _id: user._id,
       username: user.username,
-      email: user.email,
       token: generateToken(user._id),
     });
   } else {
@@ -72,10 +71,4 @@ const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "2d" });
 };
 
-const getSelf = async (req, res) => {
-  const { _id, username, email } = await User.findById(req.user.id);
-
-  res.json({ id: _id, username, email });
-};
-
-module.exports = { registerUser, loginUser, getSelf };
+module.exports = { registerUser, loginUser };

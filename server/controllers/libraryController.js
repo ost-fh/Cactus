@@ -15,25 +15,19 @@ const getLibrary = async (req, res) => {
 };
 
 const postLibrary = async (req, res) => {
-  console.log(req.body);
-  if (
-    !req.body.title ||
-    !req.body.linkHome ||
-    !req.body.linkDocs ||
-    !req.body.currentVersion
-  ) {
+  const { title, linkHome, linkDocs, currentVersion } = req.body;
+  if (!(title && linkHome && linkDocs && currentVersion)) {
     res.status(400);
-    console.error("please add all required fields");
+    res.send("please add all required fields");
+    return;
   }
   const library = await Library.create({
-    title: req.body.title,
-    linkHome: req.body.linkHome,
-    linkDocs: req.body.linkDocs,
-    currentVersion: req.body.currentVersion,
+    title,
+    linkHome,
+    linkDocs,
+    currentVersion,
   });
   res.status(200).json(library);
-
-  // res.status(200).json({ message: "create Lib" })
 };
 
 module.exports = {
