@@ -15,6 +15,20 @@ export const loginUser = async (credentials: {
   }).then((data) => data.json());
 };
 
+export const registerUser = async (credentials: {
+  username: string;
+  email: string;
+  password: string;
+}) => {
+  return fetch(`${API_URL}/auth/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+};
+
 export const getLibraries = () => {
   return fetch(`${API_URL}/libraries`)
     .then((data) => data.json())

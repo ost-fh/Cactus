@@ -5,7 +5,6 @@ import React, { useState } from "react";
 // }
 
 const TestItem = ({ criterium, handleChange }: any) => {
-  //   console.log(criteria);
   const [helpOpen, setHelpOpen] = useState(false);
   const [commentOpen, setCommentOpen] = useState(false);
   const [criteriumData, setCriteriumData] = useState(criterium);

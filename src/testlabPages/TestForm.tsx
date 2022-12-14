@@ -44,7 +44,6 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
     if (testResult) {
       testResult.forEach((element) => {
         if (element.choice === "") {
-          console.log("empty choice");
           formValid = false;
         }
       });

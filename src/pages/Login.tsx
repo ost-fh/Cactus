@@ -11,11 +11,11 @@ const Login = (props: { setUserData: any }) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const token = await loginUser({
+    const userData = await loginUser({
       username,
       password,
     });
-    props.setUserData(token);
+    props.setUserData(userData);
     navigate("/libraries");
   };
 

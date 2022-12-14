@@ -42,7 +42,10 @@ function App() {
           <Route path='libraries' element={<Libraries />} />
           <Route path='libraries/new' element={<AddLibrary />} />
           <Route path='libraries/:id' element={<LibraryDetail />} />
-          <Route path='contribute' element={<Contribute />} />
+          <Route
+            path='contribute'
+            element={<Contribute setUserData={setUserData} />}
+          />
           <Route path='about' element={<About />} />
           <Route path='login' element={<Login setUserData={setUserData} />} />
           <Route path='logout' element={<LogOut logOut={logOut} />} />

@@ -16,9 +16,8 @@ const LibraryDetail = () => {
 
   useEffect(() => {
     if (id) {
-      getLibrary(id).then((lib) => {
-        console.log(lib);
-        setLibrary(lib);
+      getLibrary(id).then((library) => {
+        setLibrary(library);
       });
     }
     return () => {};

@@ -10,9 +10,7 @@ type AlertProps = {
 
 const Alert = ({ title, message, type = "info" }: AlertProps) => {
   if (type !== "info" && type !== "error" && type !== "help") {
-    console.log(type);
-
-    throw new Error();
+    throw new Error("invalid alert type");
   }
   return (
     <div className={`alert-${type} alert`}>

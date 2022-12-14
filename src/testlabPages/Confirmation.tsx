@@ -8,8 +8,6 @@ type ConfirmationProps = {
 };
 
 const Confirmation = ({ testData }: ConfirmationProps) => {
-  console.log(testData);
-
   return (
     <div className='test-confirmation'>
       <LabPathDisplay currentPage={"confirm"} />
