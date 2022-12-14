@@ -1,12 +1,12 @@
 import { newLibrary, testResultTransmission } from "../types";
 
-const API_URL = "http://localhost:3010/api/";
+const API_URL = "http://localhost:3010/api";
 
 export const loginUser = async (credentials: {
   username: string;
   password: string;
 }) => {
-  return fetch(`${API_URL}auth/login`, {
+  return fetch(`${API_URL}/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -16,19 +16,19 @@ export const loginUser = async (credentials: {
 };
 
 export const getLibraries = () => {
-  return fetch(API_URL + "libraries")
+  return fetch(`${API_URL}/libraries`)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
 
 export const getLibrary = (id: string) => {
-  return fetch(API_URL + "libraries/" + id)
+  return fetch(`${API_URL}/libraries/${id}`)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
 
 export const createLibrary = (newLibrary: newLibrary, token: string) => {
-  return fetch(API_URL + "libraries", {
+  return fetch(`${API_URL}/libraries`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -44,7 +44,7 @@ export const postTestResult = (
   testResult: testResultTransmission,
   token: string
 ) => {
-  return fetch(API_URL + "testlab", {
+  return fetch(`${API_URL}/testlab`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
