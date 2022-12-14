@@ -16,11 +16,6 @@
     max-width: 850px;
 }
 
-/* .flex-column {
-    display: flex;
-    flex-direction: column;
-} */
-
 main {
     margin-top: 0.8rem;
 }
@@ -126,41 +121,3 @@ form {
 /* .form-control {
     grid-column: span 2;
 } */
-
-/** Scorebubble **/
-
-.score-bubble,
-.score-score,
-.count-bubble,
-.count-count {
-    padding: 0.4rem 0.7rem;
-    border-radius: 0.9rem;
-}
-
-.score-bubble,
-.count-bubble {
-    display: flex;
-    /* margin: 0.5rem; */
-}
-
-.score-score,
-.count-count {
-    margin: -0.4rem -0.7rem;
-    margin-right: 0.4rem;
-}
-
-.score-bubble {
-    background-color: rgb(148, 226, 148);
-}
-
-.score-score {
-    background-color: rgb(98, 186, 98);
-}
-
-.count-bubble {
-    background-color: rgb(248, 248, 248);
-}
-
-.count-count {
-    background-color: rgb(233, 233, 233);
-}

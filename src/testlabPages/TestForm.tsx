@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { postTestResult } from "../api";
+import { postTestResult } from "../services/api";
 import { UserContext } from "../App";
 import LabPathDisplay from "../components/LabPathDisplay";
 import LinkButton from "../components/LinkButton";
 import TestItem from "../components/TestItem";
-import { criteriaCatalogue, criteriumResult, testData } from "../types";
+import { criteriumResult, testData } from "../types";
+import { criteriaCatalogue } from "../services/criteria";
 
 // Library Data import -> title, links ...
 

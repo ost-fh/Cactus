@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { getLibraries } from "../api";
+import { getLibraries } from "../services/api";
 import { UserContext } from "../App";
 import Alert from "../components/Alert";
 import CountBubble from "../components/CountBubble";
@@ -42,8 +42,12 @@ const Libraries = () => {
             <article key={library._id.toString()} className='library-card'>
               <header>{library.title} </header>
               <div className='library-card-main'>
-                <ScoreBubble score={library.totalScore || 0} />
-                <CountBubble count={library.componentsTested || 0} />
+                <ScoreBubble
+                  score={library.versions[0].accessibilityScore || 0}
+                />
+                <CountBubble
+                  count={library.versions[0].amountOfComponentsTested || 0}
+                />
               </div>
               <div className='library-card-aside'>
                 <LinkButton

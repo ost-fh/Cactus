@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../api";
+import { loginUser } from "../services/api";
 import PublicLayout from "../layout/PublicLayout";
 import "./login.css";
 

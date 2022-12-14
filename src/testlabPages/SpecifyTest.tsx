@@ -3,7 +3,8 @@ import Alert from "../components/Alert";
 import LabPathDisplay from "../components/LabPathDisplay";
 import LinkButton from "../components/LinkButton";
 import SpecifyTestButton from "../components/SpecifyTestButton";
-import { criteriaCatalogue, testData } from "../types";
+import { criteriaCatalogue } from "../services/criteria";
+import { testData } from "../types";
 
 type SpecifyTestProps = {
   testData: testData;
