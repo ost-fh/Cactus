@@ -7,17 +7,18 @@ import LinkButton from "../components/LinkButton";
 import ScoreBubble from "../components/ScoreBubble";
 import PublicLayout from "../layout/PublicLayout";
 import "./libraries.css";
+import { library } from "../types";
+import LibraryCard from "../components/LibraryCard";
 
 const Libraries = () => {
   const userData = useContext(UserContext);
-  const [libraries, setLibraries] = useState<any>();
+  const [libraries, setLibraries] = useState<library[]>();
 
   // Fetch Libraries
   useEffect(() => {
     getLibraries().then((items) => {
       setLibraries(items);
     });
-    return () => {};
   }, []);
 
   return (
@@ -31,33 +32,35 @@ const Libraries = () => {
             "The accessibility scores do not neccessarily represent how accessible a finished product using that library is. It only shows how good the baseline is it starts from."
           }
         />
-        <nav>ToDo: Search and Filters and Sorting </nav>{" "}
-        {userData?.token && (
-          <LinkButton to='new' label='Add Library' className='button-primary' />
-        )}
+        {/* <nav>ToDo: Search and Filters and Sorting </nav> */}
+        <aside className='library-add-library'>
+          <h3>Do you miss a UI Library?</h3>
+          {userData?.token ? (
+            <LinkButton
+              to='new'
+              label='Add a new library'
+              className='button-primary'
+            />
+          ) : (
+            <>
+              <p>
+                We are always looking for help. And you might be able to improve
+                this directory for yourself and for others.
+              </p>
+              <LinkButton to='/contribute' label='Find out how to contribute' />
+            </>
+          )}
+        </aside>
       </header>
       <section className='library-list'>
         {libraries ? (
-          libraries.map((library: any) => (
-            <article key={library._id.toString()} className='library-card'>
-              <header>{library.title} </header>
-              <div className='library-card-main'>
-                <ScoreBubble
-                  score={library.versions[0].accessibilityScore || 0}
-                />
-                <CountBubble
-                  count={library.versions[0].amountOfComponentsTested || 0}
-                />
-              </div>
-              <div className='library-card-aside'>
-                <LinkButton
-                  to={library._id}
-                  className='button-wide'
-                  label='Show More'
-                />
-              </div>
-            </article>
-          ))
+          libraries.length === 0 ? (
+            <Alert message='Currently, there are no libraries.' />
+          ) : (
+            libraries.map((library: library) => (
+              <LibraryCard key={library._id} library={library} />
+            ))
+          )
         ) : (
           <Alert message='Libraries are loading ...' />
         )}

@@ -11,6 +11,13 @@
     margin-top: 1rem;
 }
 
+.library-add-library {
+    background-color: rgb(252, 252, 252);
+    border: solid 1px rgb(215, 215, 215);
+    padding: 1rem;
+    border-radius: 0.3rem;
+}
+
 .library-card {
     display: grid;
     grid-template-columns: 1fr auto;
