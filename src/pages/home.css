@@ -15,6 +15,10 @@
     gap: 1.5rem;
 }
 
+.home-section .button {
+    font-size: 1.2rem;
+}
+
 .home-title {
     font-size: 2rem;
     justify-self: right;

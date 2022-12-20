@@ -8,6 +8,7 @@ import PublicLayout from "../layout/PublicLayout";
 import { component, library } from "../types";
 import "./librarydetail.css";
 import ScoreBubble from "../components/ScoreBubble";
+import Alert from "../components/Alert";
 
 const LibraryDetail = () => {
   const userData = useContext(UserContext);
@@ -31,10 +32,12 @@ const LibraryDetail = () => {
             <header>
               <h1>{library.title}</h1>
               <div className='lib-score'>
-                <ScoreBubble
-                  label='total accessibility score'
-                  score={library.versions[0].accessibilityScore || 0}
-                />
+                {library.versions.length !== 0 && (
+                  <ScoreBubble
+                    label='total accessibility score'
+                    score={library.versions[0].accessibilityScore || 0}
+                  />
+                )}
               </div>
             </header>
             <main>
@@ -59,7 +62,7 @@ const LibraryDetail = () => {
                 {library.versions.length !== 0 ? (
                   library.versions.map((version: any) => (
                     <>
-                      <h3>{version.version}</h3>
+                      {/* <h3>{version.version}</h3> */}
                       {version.components.map((component: component) => (
                         <ComponentResult
                           key={component.name}
@@ -69,9 +72,7 @@ const LibraryDetail = () => {
                     </>
                   ))
                 ) : (
-                  <div className='alert-info'>
-                    <p>There are currently no tests for this library.</p>
-                  </div>
+                  <Alert message='There are currently no tests for this library.' />
                 )}
               </section>
             </main>

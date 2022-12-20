@@ -27,7 +27,14 @@ const Contribute = (props: { setUserData: any }) => {
       <div className='layout-split'>
         <div>
           <h2>Would you like to contribute?</h2>
-          <p>Blablabla</p>
+          <p>
+            You can register now to help us and the community to improve the
+            catalogue of libraries and rated components.{" "}
+          </p>
+          <p>
+            It would be best if you already have basic knowledge of web
+            development and also a little knowledge of accessibility.
+          </p>
         </div>
         <div>
           <h2>Registration</h2>

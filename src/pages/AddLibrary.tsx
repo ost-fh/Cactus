@@ -41,6 +41,7 @@ const AddLibrary = () => {
       <form onSubmit={handleSubmit}>
         <label htmlFor='lib-title'>Name of the Library</label>
         <input
+          required
           onChange={handleChange}
           type='text'
           name='title'
@@ -48,6 +49,7 @@ const AddLibrary = () => {
         />
         <label htmlFor='lib-version'>Current Version</label>
         <input
+          required
           onChange={handleChange}
           type='text'
           name='currentVersion'
@@ -55,6 +57,7 @@ const AddLibrary = () => {
         />
         <label htmlFor='lib-link-home'>Link to Homepage</label>
         <input
+          required
           onChange={handleChange}
           type='text'
           name='linkHome'
@@ -62,6 +65,7 @@ const AddLibrary = () => {
         />
         <label htmlFor='lib-link-docs'>Link to Documentation</label>
         <input
+          required
           onChange={handleChange}
           type='text'
           name='linkDocs'

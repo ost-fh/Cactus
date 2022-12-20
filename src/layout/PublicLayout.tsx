@@ -16,54 +16,61 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
       <header className='page-header'>
         <img className='logo' alt='logo' src='/cactus_logo.png' />
         <h1>Project Cactus</h1>
-        <nav>
-          <Link
-            className={`nav-link ${
-              activeLink === "home" ? "nav-link-active" : ""
-            }`}
-            to='/'
-          >
-            Home
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeLink === "libraries" ? "nav-link-active" : ""
-            }`}
-            to='/libraries'
-          >
-            Libraries
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeLink === "about" ? "nav-link-active" : ""
-            }`}
-            to='/about'
-          >
-            About
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeLink === "contribute" ? "nav-link-active" : ""
-            }`}
-            to='/contribute'
-          >
-            Contribute
-          </Link>
-          {!userData?.token ? (
+        <div className='page-header-group'>
+          {userData?.token && (
+            <div className='page-header-user'>
+              Logged in as {userData.username}
+            </div>
+          )}
+          <nav>
             <Link
               className={`nav-link ${
-                activeLink === "login" ? "nav-link-active" : ""
+                activeLink === "home" ? "nav-link-active" : ""
               }`}
-              to='/login'
+              to='/'
             >
-              Login
+              Home
             </Link>
-          ) : (
-            <Link className='nav-link' to='/logout'>
-              Logout
+            <Link
+              className={`nav-link ${
+                activeLink === "libraries" ? "nav-link-active" : ""
+              }`}
+              to='/libraries'
+            >
+              Libraries
             </Link>
-          )}
-        </nav>
+            <Link
+              className={`nav-link ${
+                activeLink === "about" ? "nav-link-active" : ""
+              }`}
+              to='/about'
+            >
+              About
+            </Link>
+            <Link
+              className={`nav-link ${
+                activeLink === "contribute" ? "nav-link-active" : ""
+              }`}
+              to='/contribute'
+            >
+              Contribute
+            </Link>
+            {!userData?.token ? (
+              <Link
+                className={`nav-link ${
+                  activeLink === "login" ? "nav-link-active" : ""
+                }`}
+                to='/login'
+              >
+                Login
+              </Link>
+            ) : (
+              <Link className='nav-link' to='/logout'>
+                Logout
+              </Link>
+            )}
+          </nav>
+        </div>
       </header>
       <main>{children}</main>
     </div>
