@@ -9,10 +9,11 @@ const home = () => {
       <div className='home-intro'>
         <h2>Welcome to Project Cactus</h2>
         <p>
-          We provide a Platform to test and provide results to qualify UI
+          We provide a platform to test and provide results to qualify UI
           libraries in terms of accessibility.
         </p>
       </div>
+      <hr />
       <div className='home-section '>
         <div className='home-title'>
           <h3>The Mission</h3>
@@ -24,7 +25,7 @@ const home = () => {
             projects early. We do this by providing accessibility metrics to UI
             libraries, to make a choice for your next project easier.
           </p>
-          <Link to='/libraries' className='button'>
+          <Link to='/libraries' className='button button-primary'>
             Check out the scores
           </Link>
         </div>
@@ -37,8 +38,8 @@ const home = () => {
           <p>
             We test UI libraries to see, if they provide a baseline of
             accessibility. There is a criteria-catalogue specially developed for
-            this, that is manually checked against the libraries. This is a
-            crowdsourced effort.
+            this, that is manually checked against different components of the
+            libraries. It is a crowdsourced effort.
           </p>
           <Link to='/about' className='button'>
             Find out how it works
@@ -51,7 +52,7 @@ const home = () => {
         </div>
         <div className='home-text'>
           <p>
-            Ther are a lot of UI libraries. It takes a lot of time to test them
+            There are a lot of UI libraries. It takes a lot of time to test them
             all. Therefore we made the testing crowdsourced. Are you interested
             to help out?
           </p>

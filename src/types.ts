@@ -40,6 +40,7 @@ export type version = {
 
 export type component = {
   name: string;
+  alternativeComponentNames: string;
   modes: mode[];
   accessibilityScore: number;
   agreementScore: number;
@@ -67,11 +68,13 @@ export type testData = {
   libraryId: string;
   libraryVersion: string;
   component: string;
+  alternativeComponentNames: string;
   testMode: string;
 };
 
 export type componentCriteria = {
   component: string;
+  alternativeComponentNames: string;
   criteria: criteriaGroup[];
 };
 

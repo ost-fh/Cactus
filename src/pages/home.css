@@ -7,6 +7,11 @@
     font-size: 1.4rem;
 }
 
+.home-intro h2 {
+    color: darkgreen;
+    font-size: 3rem;
+}
+
 .home-section {
     display: grid;
     grid-template-columns: 1fr 1fr;

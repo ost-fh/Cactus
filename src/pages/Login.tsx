@@ -26,6 +26,7 @@ const Login = (props: { setUserData: any }) => {
         <form onSubmit={handleSubmit}>
           <label htmlFor='login-username'>Username</label>
           <input
+            autoFocus
             id='login-username'
             type='text'
             onChange={(e) => setUserName(e.target.value)}

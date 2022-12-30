@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
 import Alert from "../components/Alert";
 import PublicLayout from "../layout/PublicLayout";
@@ -7,20 +7,34 @@ import { registerUser } from "../services/api";
 
 const Contribute = (props: { setUserData: any }) => {
   const userData = useContext(UserContext);
+  const navigate = useNavigate();
 
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [formState, setFormState] = useState("new");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setFormState("loading");
     const loginData = { username: username, email: email, password: password };
-    const userData = await registerUser(loginData);
-
-    props.setUserData(userData);
-    navigate("/libraries");
+    // const userData = await registerUser(loginData);
+    registerUser(loginData)
+      .then((userData) => {
+        props.setUserData(userData);
+        setFormState("success");
+      })
+      .catch(() => setFormState("error"));
+    // navigate("/libraries");
   };
+
+  useEffect(() => {
+    if (userData?.token) {
+      if (formState === "new") {
+        setFormState("logged_in");
+      }
+    }
+  }, [formState, userData]);
 
   return (
     <PublicLayout activeLink='contribute'>
@@ -39,7 +53,8 @@ const Contribute = (props: { setUserData: any }) => {
         <div>
           <h2>Registration</h2>
           <p>Please register to contribute to the Cactus Project</p>
-          {!userData ? (
+
+          {formState === "new" && (
             <form onSubmit={handleSubmit}>
               <label htmlFor='registration-username'>
                 Username <small>(you will use this to login)</small>
@@ -68,8 +83,23 @@ const Contribute = (props: { setUserData: any }) => {
                 <button type='submit'>Submit</button>
               </div>
             </form>
-          ) : (
-            <Alert message='You are already logged in' />
+          )}
+          {formState === "loading" && <Alert message='Please wait...' />}
+          {formState === "error" && (
+            <Alert
+              type='error'
+              message='Something went wrong. Please try again later.'
+            />
+          )}
+          {formState === "success" && (
+            <Alert type='help'>
+              You are logged in now. Go to{" "}
+              <Link to={"/libraries"}>libraries</Link> to add new libraries and
+              tests.
+            </Alert>
+          )}
+          {formState === "logged_in" && (
+            <Alert message='You are already registered and logged in' />
           )}
         </div>
       </div>

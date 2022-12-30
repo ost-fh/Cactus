@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
+// import { FaSignOutAlt } from "react-icons/fa";
 import "./publiclayout.css";
 
 type PublicLayoutProps = {
@@ -66,13 +67,14 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
               </Link>
             ) : (
               <Link className='nav-link' to='/logout'>
-                Logout
+                {/* <FaSignOutAlt />*/} Logout
               </Link>
             )}
           </nav>
         </div>
       </header>
       <main>{children}</main>
+      <footer className='page-footer'></footer>
     </div>
   );
 };

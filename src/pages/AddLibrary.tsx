@@ -42,6 +42,7 @@ const AddLibrary = () => {
         <label htmlFor='lib-title'>Name of the Library</label>
         <input
           required
+          autoFocus
           onChange={handleChange}
           type='text'
           name='title'
