@@ -10,10 +10,24 @@
     font-family: "Regular", Verdana, Geneva, Tahoma, sans-serif;
 }
 
+body {
+    overflow-y: scroll;
+}
+
 .container {
     margin: 0 auto;
     padding: 0 1rem;
     max-width: 850px;
+}
+
+/* span number*/
+.number-circle {
+    margin-right: 0.5em;
+    height: 1.8em;
+    width: 1.8em;
+    padding: 0.15em;
+    border: 2px rgb(189, 189, 189) solid;
+    border-radius: 50%;
 }
 
 main {
@@ -24,6 +38,10 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+}
+
+.layout-split *:first-child {
+    justify-self: end;
 }
 
 @media screen and (max-width: 850px) {

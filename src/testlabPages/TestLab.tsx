@@ -15,6 +15,7 @@ const TestLab = () => {
   const [testData, setTestData] = useState<testData>({
     libraryId: id ? id : "0",
     libraryVersion: version ? version : "0",
+    alternativeComponentNames: "",
     component: "",
     testMode: "",
   });
@@ -25,7 +26,6 @@ const TestLab = () => {
         setLibrary(lib);
       });
     }
-    return () => {};
   }, [id]);
 
   return (

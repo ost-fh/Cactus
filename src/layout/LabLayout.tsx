@@ -19,8 +19,14 @@ const TestLabLayout = (props: TestLabLayoutProps) => {
           <ul>
             <li>Library: {props.libraryTitle}</li>
             <li>Version: {props.libraryVersion}</li>
-            <li>Component: {props.component}</li>
-            <li>Testmode: {props.testmode}</li>
+            <li>
+              Component:{" "}
+              {props.component === "" ? "not yet chosen" : props.component}
+            </li>
+            <li>
+              Testmode:{" "}
+              {props.testmode === "" ? "not yet chosen" : props.testmode}
+            </li>
           </ul>
         </div>
       </header>

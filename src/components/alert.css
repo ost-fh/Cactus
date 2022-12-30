@@ -13,3 +13,8 @@
     background-color: rgb(237, 245, 255);
     border: rgb(171, 212, 249) solid 1px;
 }
+
+.alert-error {
+    background-color: rgb(248, 229, 229);
+    border: rgb(240, 121, 121) solid 1px;
+}

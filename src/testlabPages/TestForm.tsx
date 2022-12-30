@@ -7,6 +7,7 @@ import LinkButton from "../components/LinkButton";
 import TestItem from "../components/TestItem";
 import { criteriumResult, testData } from "../types";
 import { criteriaCatalogue } from "../services/criteria";
+import Alert from "../components/Alert";
 
 // Library Data import -> title, links ...
 
@@ -65,6 +66,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
 
   const submitTest = () => {
     if (testResult) {
+      // console.log({ testData: testData, criteria: testResult });
       postTestResult(
         { testData: testData, criteria: testResult },
         userData!.token
@@ -77,15 +79,23 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
     <div className='component-test'>
       <LabPathDisplay currentPage='test' />
 
-      <div className='test-general'>
+      <Alert type='help'>
         <p>
           Open the documentation besides the testlab-window. Navigate to the
-          documentation page of {testData.component}.
+          documentation page of <strong>{testData.component}</strong>.
         </p>
+        {testData.alternativeComponentNames !== "" &&
+          testData.alternativeComponentNames !== undefined && (
+            <p>
+              Alternative name(s) for the component could be:{" "}
+              <strong>{testData.alternativeComponentNames}</strong>
+            </p>
+          )}
+
         <p>
           <a
             href={linkDocs}
-            className='button'
+            className='button button-primary'
             target='_blank'
             rel='noreferrer'
           >
@@ -106,16 +116,15 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
           Please use the keyboard to test the criteria (tab, enter, esc, space,
           arrows).
         </p>
-      </div>
+      </Alert>
       {criteriaGroup && (
         <>
-          <div>
-            {criteriaGroup.additionalHint === "" ? (
-              ""
-            ) : (
-              <div className='alert-info'>{criteriaGroup.additionalHint}</div>
-            )}
-          </div>
+          {criteriaGroup.additionalHint === "" ? (
+            ""
+          ) : (
+            <div className='alert-info'>{criteriaGroup.additionalHint}</div>
+          )}
+
           {criteriaGroup.instructions !== "" && (
             <div className='test-instructions'>
               <h3>Instructions</h3>
@@ -127,18 +136,19 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
               )}
             </div>
           )}
-          <section className='test-list'>
-            {testResult &&
-              testResult.map((criterium) => (
-                <TestItem
-                  key={criterium._id}
-                  criterium={criterium}
-                  handleChange={handleChange}
-                />
-              ))}
-          </section>
         </>
       )}
+      <section className='test-list'>
+        {testResult &&
+          testResult.map((criterium) => (
+            <TestItem
+              key={criterium._id}
+              criterium={criterium}
+              handleChange={handleChange}
+            />
+          ))}
+      </section>
+
       <div className='control-group'>
         <LinkButton label='Back' to={"../specify"} />
         <button

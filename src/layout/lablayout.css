@@ -21,6 +21,12 @@
     flex-direction: column;
 }
 
+.specify-component-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
 .specify-component-options {
     display: flex;
     gap: 0.7rem;
