@@ -43,6 +43,7 @@ const postTestResult = async (req, res) => {
   ) {
     version.components.push({
       name: data.component,
+      alternativeComponentNames: data.alternativeComponentNames,
       modes: [],
     });
   }

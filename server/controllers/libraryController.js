@@ -9,7 +9,8 @@ const getLibrary = async (req, res) => {
   const library = await Library.findById(req.params.id);
   if (!library) {
     res.status(400);
-    throw new Error("Library not found");
+    res.json({ message: "Library not found" });
+    return;
   }
   res.status(200).json(library);
 };
@@ -18,7 +19,7 @@ const postLibrary = async (req, res) => {
   const { title, linkHome, linkDocs, currentVersion } = req.body;
   if (!(title && linkHome && linkDocs && currentVersion)) {
     res.status(400);
-    res.send("please add all required fields");
+    res.json({ message: "please add all required fields" });
     return;
   }
   const library = await Library.create({

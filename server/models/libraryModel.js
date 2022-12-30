@@ -53,6 +53,8 @@ const componentSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  alternativeComponentNames: String,
+  componentExcluded: Boolean,
   modes: [modeSchema],
   accessibilityScore: Number,
   agreementScore: Number,
