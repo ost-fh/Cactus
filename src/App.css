@@ -1,136 +1,136 @@
 /* General */
 
 @font-face {
-    font-family: "Regular";
-    src: local("AtkinsonHyperlegible-Regular"),
-        url("./fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+  font-family: "Regular";
+  src: local("AtkinsonHyperlegible-Regular"),
+    url("./fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
 }
 
 * {
-    font-family: "Regular", Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Regular", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .container {
-    margin: 0 auto;
-    padding: 0 1rem;
-    max-width: 850px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 850px;
 }
 
 /* span number*/
 .number-circle {
-    margin-right: 0.5em;
-    height: 1.8em;
-    width: 1.8em;
-    padding: 0.15em;
-    border: 2px rgb(189, 189, 189) solid;
-    border-radius: 50%;
+  margin-right: 0.5em;
+  height: 1.8em;
+  width: 1.8em;
+  padding: 0.15em;
+  border: 2px rgb(189, 189, 189) solid;
+  border-radius: 50%;
 }
 
 main {
-    margin-top: 0.8rem;
+  margin-top: 0.8rem;
 }
 
 .layout-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 .layout-split *:first-child {
-    justify-self: end;
+  justify-self: end;
 }
 
 @media screen and (max-width: 850px) {
-    .layout-split {
-        display: flex;
-        flex-direction: column;
-    }
+  .layout-split {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 :focus {
-    outline-color: rgb(209, 7, 7);
+  outline-color: rgb(209, 7, 7);
 }
 
 /** Buttons **/
 
 button,
 .button {
-    background-color: rgb(224, 224, 224);
-    border: solid rgb(239, 239, 239) 1px;
-    text-align: center;
-    border-radius: 0.3rem;
-    padding: 0.4rem 0.8rem;
-    font-size: 1rem;
-    display: inline-block;
-    transition-duration: 0.3s;
-    text-decoration: none;
-    color: black;
+  background-color: rgb(224, 224, 224);
+  border: solid rgb(239, 239, 239) 1px;
+  text-align: center;
+  border-radius: 0.3rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  display: inline-block;
+  transition-duration: 0.3s;
+  text-decoration: none;
+  color: black;
 }
 button:hover,
 .button:hover {
-    background-color: rgb(234, 234, 234);
+  background-color: rgb(234, 234, 234);
 }
 
 .button-selected {
-    background-color: rgb(141, 202, 127);
-    border: solid rgb(239, 239, 239) 1px;
+  background-color: rgb(141, 202, 127);
+  border: solid rgb(239, 239, 239) 1px;
 }
 .button-selected:hover {
-    background-color: rgb(118, 175, 105);
-    border: solid rgb(239, 239, 239) 1px;
+  background-color: rgb(118, 175, 105);
+  border: solid rgb(239, 239, 239) 1px;
 }
 
 button:active,
 .button:active {
-    background-color: rgb(195, 193, 193);
-    border: solid rgb(239, 239, 239) 1px;
+  background-color: rgb(195, 193, 193);
+  border: solid rgb(239, 239, 239) 1px;
 }
 
 button:disabled,
 button:disabled {
-    background-color: rgb(243, 243, 243);
-    border: solid rgb(228, 228, 228) 1px;
-    color: grey;
+  background-color: rgb(243, 243, 243);
+  border: solid rgb(228, 228, 228) 1px;
+  color: grey;
 }
 
 .button-wide {
-    width: 100%;
+  width: 100%;
 }
 
 .button-primary {
-    background-color: rgb(14, 124, 221);
-    border-color: rgb(240, 248, 255);
-    color: white;
+  background-color: rgb(14, 124, 221);
+  border-color: rgb(240, 248, 255);
+  color: white;
 }
 
 .button-primary:disabled {
-    background-color: rgb(57, 109, 155);
-    border-color: rgb(240, 248, 255);
-    color: rgb(201, 216, 222);
+  background-color: rgb(57, 109, 155);
+  border-color: rgb(240, 248, 255);
+  color: rgb(201, 216, 222);
 }
 
 .button-primary:hover {
-    background-color: rgb(14, 113, 200);
+  background-color: rgb(14, 113, 200);
 }
 .button-primary:disabled:hover {
-    background-color: rgb(139, 164, 185);
+  background-color: rgb(139, 164, 185);
 }
 
 .button-group {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 /** Forms **/
 
 .form,
 form {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.7rem;
-    padding-top: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  padding-top: 1rem;
 }

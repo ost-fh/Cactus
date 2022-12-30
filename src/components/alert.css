@@ -1,20 +1,20 @@
 .alert {
-    border-radius: 0.4rem;
-    padding: 0.7rem;
-    margin-bottom: 0.5rem;
+  border-radius: 0.4rem;
+  padding: 0.7rem;
+  margin-bottom: 0.5rem;
 }
 
 .alert-info {
-    background-color: rgb(255, 250, 216);
-    border: rgb(247, 241, 126) solid 1px;
+  background-color: rgb(255, 250, 216);
+  border: rgb(247, 241, 126) solid 1px;
 }
 
 .alert-help {
-    background-color: rgb(237, 245, 255);
-    border: rgb(171, 212, 249) solid 1px;
+  background-color: rgb(237, 245, 255);
+  border: rgb(171, 212, 249) solid 1px;
 }
 
 .alert-error {
-    background-color: rgb(248, 229, 229);
-    border: rgb(240, 121, 121) solid 1px;
+  background-color: rgb(248, 229, 229);
+  border: rgb(240, 121, 121) solid 1px;
 }
