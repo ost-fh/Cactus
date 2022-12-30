@@ -16,7 +16,9 @@ const LibraryCard = ({ library }: LibraryCardProps) => {
 
   return (
     <article key={library._id.toString()} className='library-card'>
-      <header>{library.title} </header>
+      <header className='library-card-header'>
+        <h3>{library.title}</h3> Version: {library.currentVersion}
+      </header>
       <div className='library-card-main'>
         {currentVersion &&
         currentVersion.amountOfComponentsTested !== 0 &&

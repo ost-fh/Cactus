@@ -1,11 +1,12 @@
 import React from "react";
-import { testData } from "../types";
+import { componentCriteria, testData } from "../types";
 
 type SpecifyTestButtonProps = {
-  testData: testData;
+  testData: testData; // to check if active
   testMode: string;
-  component: string;
+  component: componentCriteria;
   handleChange: Function;
+  amountOfTests?: number;
 };
 
 const SpecifyTestButton = ({
@@ -13,17 +14,30 @@ const SpecifyTestButton = ({
   testMode,
   component,
   handleChange,
+  amountOfTests,
 }: SpecifyTestButtonProps) => {
   const active =
-    testData.component === component && testData.testMode === testMode;
+    testData.component === component.component &&
+    testData.testMode === testMode;
 
   return (
     <button
-      onClick={() => handleChange(component, testMode)}
+      onClick={() =>
+        handleChange(
+          component.component,
+          component.alternativeComponentNames,
+          testMode
+        )
+      }
       className={active ? "button-selected" : ""}
       aria-pressed={active}
     >
-      {testMode}
+      {testMode} <br></br>
+      {amountOfTests && amountOfTests >= 1 ? (
+        <small>amount of tests: {amountOfTests} </small>
+      ) : (
+        <small>no tests</small>
+      )}
     </button>
   );
 };

@@ -8,14 +8,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
-    margin-top: 1rem;
-}
-
-.library-add-library {
-    background-color: rgb(252, 252, 252);
-    border: solid 1px rgb(215, 215, 215);
-    padding: 1rem;
-    border-radius: 0.3rem;
+    margin: 1rem 0;
 }
 
 .library-card {
@@ -27,13 +20,16 @@
     border: 1px rgb(224, 224, 224) solid;
     gap: 0.5rem;
     margin: 0rem;
-    padding: 0.7rem;
+    padding: 0.7rem 0.9rem;
     border-radius: 0.5rem;
     align-items: center;
 }
 
-.library-card > title {
+.library-card-header {
     grid-area: title;
+    display: flex;
+    gap: 2rem;
+    align-items: baseline;
 }
 
 .library-card-main {

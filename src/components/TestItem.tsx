@@ -38,7 +38,7 @@ const TestItem = ({ criterium, handleChange }: any) => {
         className={helpOpen ? "button-selected" : ""}
         onClick={toggleHelp}
       >
-        help
+        {helpOpen ? "Hide Help" : "Show Help"}
       </button>
       {helpOpen && <div className='test-item-help'>{criterium.help}</div>}
       {/* TODO Improve Accessibility */}

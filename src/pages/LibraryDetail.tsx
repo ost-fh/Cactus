@@ -2,27 +2,37 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getLibrary } from "../services/api";
 import { UserContext } from "../App";
+
 import ComponentResult from "../components/ComponentResult";
 import LinkButton from "../components/LinkButton";
 import PublicLayout from "../layout/PublicLayout";
-import { component, library } from "../types";
-import "./librarydetail.css";
 import ScoreBubble from "../components/ScoreBubble";
 import Alert from "../components/Alert";
+
+import { component, library, version } from "../types";
+import "./librarydetail.css";
 
 const LibraryDetail = () => {
   const userData = useContext(UserContext);
   const [library, setLibrary] = useState<library>();
   const { id } = useParams();
+  const [version, setVersion] = useState<version | undefined>(undefined);
 
   useEffect(() => {
     if (id) {
-      getLibrary(id).then((library) => {
+      getLibrary(id).then((library: library) => {
         setLibrary(library);
+        setVersion(
+          library.versions.find(
+            (version) => library.currentVersion === version.version
+          )
+        );
       });
     }
     return () => {};
-  }, [id]);
+  });
+
+  // const changeVersion = () => {}
 
   return (
     <PublicLayout>
@@ -32,10 +42,10 @@ const LibraryDetail = () => {
             <header>
               <h1>{library.title}</h1>
               <div className='lib-score'>
-                {library.versions.length !== 0 && (
+                {version?.accessibilityScore && (
                   <ScoreBubble
                     label='total accessibility score'
-                    score={library.versions[0].accessibilityScore || 0}
+                    score={version.accessibilityScore}
                   />
                 )}
               </div>
@@ -52,33 +62,45 @@ const LibraryDetail = () => {
                     <LinkButton
                       to={`/testlab/${library._id}/${library.currentVersion}`}
                       className='button-primary button-wide'
-                      label='Add Component Test'
+                      label='Add a Component Test'
                     />
+                  )}
+                  {version && (
+                    <Alert type='help'>
+                      <h3>What do these numbers mean?</h3>
+                      <p>
+                        <strong>Accessibility Score:</strong> This is an average
+                        score over all the tests that were made for a component
+                        or library. It gives an idea, how good a library
+                        performs in terms of accessibility
+                      </p>
+                      <p>
+                        <strong>Agreement Score:</strong> This number between 0
+                        and 1 displays, how much different testers agree with
+                        each other. A number closer to 1 is better.
+                      </p>
+                    </Alert>
                   )}
                   {/* <LinkButton path='' label='New Version' /> */}
                 </div>
               </section>
+
               <section className='lib-testresults'>
-                {library.versions.length !== 0 ? (
-                  library.versions.map((version: any) => (
-                    <>
-                      {/* <h3>{version.version}</h3> */}
-                      {version.components.map((component: component) => (
-                        <ComponentResult
-                          key={component.name}
-                          component={component}
-                        />
-                      ))}
-                    </>
-                  ))
+                {!version || version.components.length === 0 ? (
+                  <Alert message='There are currently no component testresults for this library.' />
                 ) : (
-                  <Alert message='There are currently no tests for this library.' />
+                  version.components.map((component: component) => (
+                    <ComponentResult
+                      key={component.name}
+                      component={component}
+                    />
+                  ))
                 )}
               </section>
             </main>
           </>
         ) : (
-          <div className='alert-info'>Library not found.</div>
+          <Alert>Library not found.</Alert>
         )}
       </div>
     </PublicLayout>

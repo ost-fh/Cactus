@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { getLibraries } from "../services/api";
 import { UserContext } from "../App";
+
 import Alert from "../components/Alert";
-import CountBubble from "../components/CountBubble";
 import LinkButton from "../components/LinkButton";
-import ScoreBubble from "../components/ScoreBubble";
+import LibraryCard from "../components/LibraryCard";
 import PublicLayout from "../layout/PublicLayout";
+
 import "./libraries.css";
 import { library } from "../types";
-import LibraryCard from "../components/LibraryCard";
 
 const Libraries = () => {
   const userData = useContext(UserContext);
@@ -25,6 +25,10 @@ const Libraries = () => {
     <PublicLayout activeLink='libraries'>
       <header className='library-header'>
         <h2>Libraries</h2>
+        <p>
+          Down below you can find all libraries that have been added to Project
+          Cactus.
+        </p>
         <Alert
           type='help'
           title='Remember:'
@@ -33,8 +37,25 @@ const Libraries = () => {
           }
         />
         {/* <nav>ToDo: Search and Filters and Sorting </nav> */}
-        <aside className='library-add-library'>
-          <h3>Do you miss a UI Library?</h3>
+      </header>
+      <hr />
+      <section className='library-list'>
+        {libraries ? (
+          libraries.length === 0 ? (
+            <Alert message='Currently, there are no libraries.' />
+          ) : (
+            libraries.map((library: library) => (
+              <LibraryCard key={library._id} library={library} />
+            ))
+          )
+        ) : (
+          <Alert message='Libraries are loading ...' />
+        )}
+      </section>
+      <hr />
+      <section>
+        <Alert type='info'>
+          <h3>Do you miss a UI library?</h3>
           {userData?.token ? (
             <LinkButton
               to='new'
@@ -50,20 +71,7 @@ const Libraries = () => {
               <LinkButton to='/contribute' label='Find out how to contribute' />
             </>
           )}
-        </aside>
-      </header>
-      <section className='library-list'>
-        {libraries ? (
-          libraries.length === 0 ? (
-            <Alert message='Currently, there are no libraries.' />
-          ) : (
-            libraries.map((library: library) => (
-              <LibraryCard key={library._id} library={library} />
-            ))
-          )
-        ) : (
-          <Alert message='Libraries are loading ...' />
-        )}
+        </Alert>
       </section>
     </PublicLayout>
   );
