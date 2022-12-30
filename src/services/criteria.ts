@@ -1,9 +1,21 @@
-import { componentCriteria } from "../types";
+import { componentCriteria, criterium } from "../types";
+
+export const getAllCriteria = (): criterium[] => {
+  const allCriteria = criteriaCatalogue.map((component) => {
+    return component.criteria.map((group) => group.criteria);
+  });
+  return allCriteria.flat(2);
+};
+
+export const getCriterium = (id: string): criterium | undefined => {
+  const allCriteria = getAllCriteria();
+  return allCriteria.find((item) => item._id === id);
+};
 
 export const criteriaCatalogue: componentCriteria[] = [
   {
     component: "Dialog",
-    // TODO add alternative names field
+    alternativeComponentNames: "Modal, Promt",
     criteria: [
       {
         testMode: "Keyboard",
@@ -14,12 +26,12 @@ export const criteriaCatalogue: componentCriteria[] = [
           {
             _id: "1",
             text: "The focus (style) is visible",
-            help: "The focus is usually a ring around an interactive element, that shows what element is selected.",
+            help: "The focus is usually a ring around an interactive element, that shows what element is selected. To test this, navigate to an interactive example of a dialog inside the documentation. It usually opens with a button of some sort. Click besides it and try to navigate to it with the 'tab' key. ",
           },
           {
             _id: "2",
             text: "Buttons are focusable",
-            help: "All interactive elements should be reachable only using the 'tab' key",
+            help: "All interactive elements should be reachable only using the 'tab' key. You can click buttons with 'enter' or sometimes with 'space'. If you could reach a button with tab, also inside the open dialog, this criteria is fulfilled.",
           },
           {
             _id: "3",
@@ -29,12 +41,12 @@ export const criteriaCatalogue: componentCriteria[] = [
           {
             _id: "4",
             text: "The dialog closes with the `esc` key",
-            help: "Upon pressing 'esc', the dialog should close. 'esc' is seen as the cancel option.",
+            help: "Have the dialog open. Upon pressing 'esc', the dialog should close. 'esc' is seen as the cancel option.",
           },
           {
             _id: "5",
             text: "The focus returns to the calling button after closing or canceling the dialog with `esc`",
-            help: "To help with seamless navigation, the focus should return to the element that opened a dialog.",
+            help: "To help with seamless navigation, the focus should return to the element that opened a dialog. So open the modal with a button or link that you selected with 'tab', then cancel or close the modal. the focus should return to the calling button.",
           },
         ],
       },
@@ -60,6 +72,7 @@ export const criteriaCatalogue: componentCriteria[] = [
   },
   {
     component: "Accordion",
+    alternativeComponentNames: "Disclosure",
     criteria: [
       {
         testMode: "Screenreader",
@@ -106,6 +119,7 @@ export const criteriaCatalogue: componentCriteria[] = [
   },
   {
     component: "Tooltip",
+    alternativeComponentNames: "Inline Dialog, Popover",
     criteria: [
       {
         testMode: "Screenreader",
