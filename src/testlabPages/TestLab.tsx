@@ -36,7 +36,7 @@ const TestLab = () => {
       testmode={testData.testMode}
     >
       <Routes>
-        <Route index element={<Navigate to='start' />}></Route>
+        <Route index element={<Navigate to='start' replace />}></Route>
         <Route path='start/' element={<Start testData={testData} />} />
         <Route
           path='specify/'

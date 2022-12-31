@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Alert from "../components/Alert";
 import LabPathDisplay from "../components/LabPathDisplay";
 import LinkButton from "../components/LinkButton";
@@ -101,11 +102,12 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
       ))}
 
       <div className='control-group'>
-        <LinkButton label={"Back"} to={"../start"} />
+        <LinkButton label={"Back"} to={"../start"} icon={<BsChevronLeft />} />
         <LinkButton
           disabled={!formValid}
           label='Next'
           className='button-primary'
+          icon={<BsChevronRight />}
           to='../test'
         ></LinkButton>
         {!formValid && <p className='text-red'>Please choose a test.</p>}

@@ -8,6 +8,7 @@ import TestItem from "../components/TestItem";
 import { criteriumResult, testData } from "../types";
 import { criteriaCatalogue } from "../services/criteria";
 import Alert from "../components/Alert";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 // Library Data import -> title, links ...
 
@@ -80,6 +81,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
       <LabPathDisplay currentPage='test' />
 
       <Alert type='help'>
+        <h3>Instructions</h3>
         <p>
           Open the documentation besides the testlab-window. Navigate to the
           documentation page of <strong>{testData.component}</strong>.
@@ -150,14 +152,14 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
       </section>
 
       <div className='control-group'>
-        <LinkButton label='Back' to={"../specify"} />
+        <LinkButton label='Back' to={"../specify"} icon={<BsChevronLeft />} />
         <button
-          className='button-primary'
+          className='button-primary button-with-icon'
           disabled={!testFormValid}
           onClick={submitTest}
           type='submit'
         >
-          Finish Test
+          <BsChevronRight /> Finish Test
         </button>
         {!testFormValid && (
           <p className='text-red'>Please answer all criteria.</p>

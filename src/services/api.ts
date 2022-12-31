@@ -29,19 +29,24 @@ export const registerUser = async (credentials: {
   }).then((data) => data.json());
 };
 
-export const getLibraries = () => {
+export const getLibraries = async () => {
   return fetch(`${API_URL}/libraries`)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
 
-export const getLibrary = (id: string) => {
-  return fetch(`${API_URL}/libraries/${id}`)
-    .then((data) => data.json())
-    .catch((error) => console.error(error));
+export const getLibrary = async (id: string) => {
+  return fetch(`${API_URL}/libraries/${id}`).then((data) => {
+    if (data.status === 200) {
+      return data.json();
+    } else {
+      throw new Error("failed");
+    }
+  });
+  // .catch((error) => console.error(error));
 };
 
-export const createLibrary = (newLibrary: newLibrary, token: string) => {
+export const createLibrary = async (newLibrary: newLibrary, token: string) => {
   return fetch(`${API_URL}/libraries`, {
     method: "POST",
     headers: {
@@ -54,7 +59,7 @@ export const createLibrary = (newLibrary: newLibrary, token: string) => {
     .catch((error) => console.error(error));
 };
 
-export const postTestResult = (
+export const postTestResult = async (
   testResult: testResultTransmission,
   token: string
 ) => {
@@ -68,4 +73,25 @@ export const postTestResult = (
   })
     .then((data) => data.json())
     .catch((error) => console.error(error));
+};
+
+export const postNewVersion = (
+  newVersion: string,
+  library: string,
+  token: string
+) => {
+  return fetch(`${API_URL}/libraries/${library}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ newVersion: newVersion }),
+  }).then((data) => {
+    if (data.status === 200) {
+      return data.json();
+    } else {
+      throw new Error("Post failed");
+    }
+  });
 };

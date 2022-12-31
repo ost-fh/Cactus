@@ -16,7 +16,7 @@ const Confirmation = ({ testData }: ConfirmationProps) => {
       <LinkButton
         label={"Go to library overview"}
         className='button-primary'
-        to={"/libraries/" + testData.libraryId}
+        to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
       />
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BsQuestionCircleFill } from "react-icons/bs";
 
 // type TestItemType = {
 //   criterium:
@@ -35,9 +36,10 @@ const TestItem = ({ criterium, handleChange }: any) => {
     <article className='test-item'>
       <p className='test-item-criteria'>{criterium.text}</p>
       <button
-        className={helpOpen ? "button-selected" : ""}
+        className={`button-with-icon ${helpOpen && "button-selected"}`}
         onClick={toggleHelp}
       >
+        <BsQuestionCircleFill />
         {helpOpen ? "Hide Help" : "Show Help"}
       </button>
       {helpOpen && <div className='test-item-help'>{criterium.help}</div>}

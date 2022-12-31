@@ -111,7 +111,7 @@
 .control-group {
   display: flex;
   gap: 0.7rem;
-  align-items: baseline;
+  align-items: center;
 }
 
 .text-red {

@@ -1,4 +1,5 @@
 import React from "react";
+import { BsChevronDoubleLeft, BsChevronRight } from "react-icons/bs";
 import Alert from "../components/Alert";
 import LabPathDisplay from "../components/LabPathDisplay";
 import LinkButton from "../components/LinkButton";
@@ -12,7 +13,7 @@ const Start = ({ testData }: StartProps) => {
   return (
     <div>
       <LabPathDisplay currentPage='start' />
-      <h2>Welcome to the test section. </h2>
+      <h2>Welcome to the Testlab. </h2>
       <Alert
         title='Attention: '
         type='help'
@@ -47,9 +48,15 @@ const Start = ({ testData }: StartProps) => {
       <div className='control-group'>
         <LinkButton
           label={"Cancel and close Testlab"}
-          to={"/libraries/" + testData.libraryId}
+          to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
+          icon={<BsChevronDoubleLeft />}
         />
-        <LinkButton to='../specify' className='button-primary' label='Next' />
+        <LinkButton
+          to='../specify'
+          className='button-primary'
+          label='Next'
+          icon={<BsChevronRight />}
+        />
       </div>
     </div>
   );
