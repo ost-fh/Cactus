@@ -45,6 +45,7 @@ export type component = {
   accessibilityScore: number;
   agreementScore: number;
   amountOfTests: number;
+  componentTested: boolean;
 };
 
 export type mode = {

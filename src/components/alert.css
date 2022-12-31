@@ -14,7 +14,24 @@
   border: rgb(171, 212, 249) solid 1px;
 }
 
+.alert-success {
+  background-color: rgb(241, 255, 237);
+  border: rgb(161, 241, 139) solid 1px;
+}
+
 .alert-error {
   background-color: rgb(248, 229, 229);
   border: rgb(240, 121, 121) solid 1px;
+}
+
+.alert-with-icon {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  align-items: baseline;
+}
+
+.alert-with-icon > svg {
+  width: 1rem;
+  flex-shrink: 0;
 }

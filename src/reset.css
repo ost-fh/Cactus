@@ -45,8 +45,20 @@ h3 {
   font-size: 1.5rem;
 }
 
+h4 {
+  font-weight: bold;
+}
+
 p {
   margin-bottom: 0.3rem;
+}
+
+input,
+select {
+  font-size: 1rem;
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.2rem;
+  border: 1px solid lightgray;
 }
 
 ol,

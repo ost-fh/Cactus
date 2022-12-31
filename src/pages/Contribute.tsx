@@ -92,7 +92,7 @@ const Contribute = (props: { setUserData: any }) => {
             />
           )}
           {formState === "success" && (
-            <Alert type='help'>
+            <Alert type='success'>
               You are logged in now. Go to{" "}
               <Link to={"/libraries"}>libraries</Link> to add new libraries and
               tests.
