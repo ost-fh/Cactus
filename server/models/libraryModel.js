@@ -59,10 +59,14 @@ const componentSchema = mongoose.Schema({
   accessibilityScore: Number,
   agreementScore: Number,
   amountOfTests: Number,
+  componentTested: Boolean,
 });
 
 const versionSchema = mongoose.Schema({
-  version: String,
+  version: {
+    type: String,
+    required: true,
+  },
   components: [componentSchema],
   accessibilityScore: Number,
   agreementScore: Number,

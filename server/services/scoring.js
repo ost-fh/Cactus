@@ -9,9 +9,11 @@ const {
   choiceToScore,
 } = require("./scoringHelpers");
 
+const AMOUNT_OF_MODES = 2;
+
 const scoreLibrary = async (libraryId) => {
   const library = await Library.findById(libraryId);
-  console.log("scoring...");
+  console.log(`SCORING ${library.title}, id: ${library._id}`);
 
   for (const version of library.versions) {
     for (const component of version.components) {
@@ -30,15 +32,19 @@ const scoreLibrary = async (libraryId) => {
 
 const scoreVersion = (version) => {
   // accessibilityScore
-  version.accessibilityScore = calculateAverage(
-    version.components.map((component) => component.accessibilityScore)
-  );
-  // agreementScore
-  version.agreementScore = calculateAverage(
-    version.components.map((component) => component.agreementScore)
-  );
-  // amountOfComponentsTested
-  version.amountOfComponentsTested = version.components.length;
+  if (version.components.length > 0) {
+    version.accessibilityScore = calculateAverage(
+      version.components.map((component) => component.accessibilityScore)
+    );
+    // agreementScore
+    version.agreementScore = calculateAverage(
+      version.components.map((component) => component.agreementScore)
+    );
+    // amountOfComponentsTested
+    version.amountOfComponentsTested = version.components.filter(
+      (item) => item.componentTested === true
+    ).length;
+  }
 };
 
 const scoreComponent = (component) => {
@@ -47,15 +53,26 @@ const scoreComponent = (component) => {
     component.modes.map((mode) => mode.accessibilityScore)
   );
 
-  // agreementScore
+  // agreementScore calculated directly from criterium scores -> weighted average
   component.agreementScore = calculateAverage(
-    component.modes.map((mode) => mode.agreementScore)
+    component.modes
+      .map((mode) =>
+        mode.scoresPerCriterium.map((score) => score.agreementScore)
+      )
+      .flat(1)
   );
 
-  // amountOfTests
+  // accumulate amountOfTests
   component.amountOfTests = component.modes
     .map((mode) => mode.testScores.amountOfTests)
     .reduce((a, b) => a + b, 0);
+
+  // mark component as tested, if all modes were tested
+  if (component.modes.length === AMOUNT_OF_MODES) {
+    component.componentTested = true;
+  } else {
+    component.componentTested = false;
+  }
 };
 
 const scoreMode = (mode) => {
@@ -85,12 +102,12 @@ const scoreMode = (mode) => {
 
 const scoreTest = (test) => {
   if (!test.testScore) {
-    // testScore
+    // calculate testScore from all criteria
     test.testScore = combineScore(
       test.criteria.map((criterium) => choiceToScore(criterium.choice))
     );
 
-    // scorePerCriterium
+    // calculate scorePerCriterium for agreement Score
     test.scorePerCriterium = test.criteria.map((criterium) =>
       extractCriteria(criterium)
     );
