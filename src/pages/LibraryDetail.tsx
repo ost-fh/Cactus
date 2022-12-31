@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getLibrary } from "../services/api";
 import { UserContext } from "../App";
 
@@ -11,38 +11,74 @@ import Alert from "../components/Alert";
 
 import { component, library, version } from "../types";
 import "./librarydetail.css";
+import AddVersion from "../components/AddVersion";
+import { BsBoxArrowUpRight } from "react-icons/bs";
 
 const LibraryDetail = () => {
+  const { id, paramVersion } = useParams();
+  const navigate = useNavigate();
+
   const userData = useContext(UserContext);
+  enum state {
+    new,
+    loading,
+    success,
+    error,
+  }
+  const [pageLoadingState, setPageLoadingState] = useState<state>(state.new);
+
   const [library, setLibrary] = useState<library>();
-  const { id } = useParams();
   const [version, setVersion] = useState<version | undefined>(undefined);
 
-  useEffect(() => {
-    if (id) {
-      getLibrary(id).then((library: library) => {
-        setLibrary(library);
-        setVersion(
-          library.versions.find(
-            (version) => library.currentVersion === version.version
-          )
-        );
-      });
+  const changeVersion = (newVersion: string) => {
+    if (library) {
+      setVersion(
+        library.versions.find((version) => version.version === newVersion)
+      );
+      navigate(`/libraries/${library._id}/${newVersion}`, { replace: true });
     }
-    return () => {};
-  });
+  };
 
-  // const changeVersion = () => {}
+  useEffect(() => {
+    if (id && !library) {
+      setPageLoadingState(state.loading);
+      getLibrary(id)
+        .then((library: library) => {
+          setPageLoadingState(state.success);
+          setLibrary(library);
+        })
+        .catch(() => {
+          setPageLoadingState(state.error);
+        });
+    }
+  }, [id, library, state.error, state.loading, state.success]);
+
+  useEffect(() => {
+    if (library) {
+      if (version === undefined) {
+        if (paramVersion === undefined) {
+          changeVersion(library.currentVersion);
+        } else {
+          changeVersion(paramVersion);
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [library, paramVersion, version]);
+
+  const handleChangeVersion = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    changeVersion(event.target.value);
+  };
 
   return (
     <PublicLayout>
       <div className='lib-detail'>
-        {library ? (
+        {library && (
           <>
             <header>
               <h1>{library.title}</h1>
               <div className='lib-score'>
-                {version?.accessibilityScore && (
+                {version?.accessibilityScore !== undefined && (
                   <ScoreBubble
                     label='total accessibility score'
                     score={version.accessibilityScore}
@@ -51,18 +87,38 @@ const LibraryDetail = () => {
               </div>
             </header>
             <main>
-              <section className='lib-info'>
+              <section className='lib-info layout-split'>
                 <div className='lib-infos'>
-                  Version: {library.currentVersion}
                   <a href={library.linkHome}>Homepage</a>
                   <a href={library.linkDocs}>Documentation</a>
+                  <label>
+                    Version:{" "}
+                    <select
+                      onChange={(e) => handleChangeVersion(e)}
+                      disabled={library.versions.length === 1}
+                      value={version?.version || library.currentVersion}
+                    >
+                      {library.versions.map((version) => (
+                        <option key={version.version} value={version.version}>
+                          {version.version}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  {userData?.token && (
+                    <AddVersion
+                      changeVersion={changeVersion}
+                      libraryId={library._id}
+                    />
+                  )}
                 </div>
                 <div className='lib-controls'>
                   {userData?.token && (
                     <LinkButton
-                      to={`/testlab/${library._id}/${library.currentVersion}`}
+                      to={`/testlab/${library._id}/${version?.version}`}
                       className='button-primary button-wide'
                       label='Add a Component Test'
+                      icon={<BsBoxArrowUpRight />}
                     />
                   )}
                   {version && (
@@ -81,7 +137,6 @@ const LibraryDetail = () => {
                       </p>
                     </Alert>
                   )}
-                  {/* <LinkButton path='' label='New Version' /> */}
                 </div>
               </section>
 
@@ -99,8 +154,12 @@ const LibraryDetail = () => {
               </section>
             </main>
           </>
-        ) : (
-          <Alert>Library not found.</Alert>
+        )}
+        {pageLoadingState === state.loading && (
+          <Alert>Library loading...</Alert>
+        )}
+        {pageLoadingState === state.error && (
+          <Alert type='error'>Library not found.</Alert>
         )}
       </div>
     </PublicLayout>

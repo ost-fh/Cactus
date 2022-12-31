@@ -34,17 +34,14 @@ main {
   margin-top: 0.8rem;
 }
 
+/* responsive 2 column layout class*/
 .layout-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
-.layout-split *:first-child {
-  justify-self: end;
-}
-
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 650px) {
   .layout-split {
     display: flex;
     flex-direction: column;
@@ -120,6 +117,13 @@ button:disabled {
   background-color: rgb(139, 164, 185);
 }
 
+.button-with-icon {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+  align-items: center;
+}
+
 .button-group {
   display: flex;
   gap: 0.5rem;
@@ -132,5 +136,6 @@ form {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.7rem;
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
+  align-items: baseline;
 }

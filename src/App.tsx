@@ -41,7 +41,11 @@ function App() {
           <Route index element={<Home />} />
           <Route path='libraries' element={<Libraries />} />
           <Route path='libraries/new' element={<AddLibrary />} />
-          <Route path='libraries/:id' element={<LibraryDetail />} />
+          <Route path='libraries/:id/' element={<LibraryDetail />} />
+          <Route
+            path='libraries/:id/:paramVersion/'
+            element={<LibraryDetail />}
+          />
           <Route
             path='contribute'
             element={<Contribute setUserData={setUserData} />}

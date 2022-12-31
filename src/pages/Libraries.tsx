@@ -33,7 +33,7 @@ const Libraries = () => {
           type='help'
           title='Remember:'
           message={
-            "The accessibility scores do not neccessarily represent how accessible a finished product using that library is. It only shows how good the baseline is it starts from."
+            "The accessibility scores do not neccessarily represent how accessible a finished product using that library is. It only shows how good the baseline is it starts from, according to our criteria."
           }
         />
         {/* <nav>ToDo: Search and Filters and Sorting </nav> */}

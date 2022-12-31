@@ -17,7 +17,10 @@ const LibraryCard = ({ library }: LibraryCardProps) => {
   return (
     <article key={library._id.toString()} className='library-card'>
       <header className='library-card-header'>
-        <h3>{library.title}</h3> Version: {library.currentVersion}
+        <h3>{library.title}</h3> Version: {library.currentVersion}{" "}
+        {library.versions.length > 1 && (
+          <small>(older versions available)</small>
+        )}
       </header>
       <div className='library-card-main'>
         {currentVersion &&
@@ -29,7 +32,11 @@ const LibraryCard = ({ library }: LibraryCardProps) => {
             <CountBubble count={currentVersion.amountOfComponentsTested} />
           </>
         ) : (
-          <Alert message='There are currently no tested components for this library' />
+          <Alert
+            message={`There are currently no tested components for this  ${
+              library.versions.length > 1 ? "version" : "library"
+            }`}
+          />
         )}
       </div>
       <div className='library-card-aside'>

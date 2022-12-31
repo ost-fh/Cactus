@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { component } from "../types";
 import Alert from "./Alert";
+import ComponentResultDetails from "./ComponentResultDetails";
 import CountBubble from "./CountBubble";
 import ScoreBubble from "./ScoreBubble";
 
@@ -8,23 +10,34 @@ type ComponentResultProps = {
   component: component;
 };
 
+/** This Component is to be used with LibraryDetail */
 const ComponentResult = ({ component }: ComponentResultProps) => {
+  const [detailsOpen, setDetailsOpen] = useState(false);
+
   const screenReaderScores = component.modes.find(
     (mode) => mode.name === "Screenreader"
   );
   const keyboardScores = component.modes.find(
     (mode) => mode.name === "Keyboard"
   );
+
+  const toggleDetails = () => {
+    setDetailsOpen(!detailsOpen);
+  };
+
   return (
     <article className='lib-testresult'>
       <header>
         <h3>{component.name}</h3>
         <p>{component.alternativeComponentNames}</p>
+        {!component.componentTested && (
+          <Alert type='info' message='This component needs more testing' />
+        )}
         {/* {(!screenReaderScores ||
           screenReaderScores.testScores.amountOfTests < 3 ||
           !keyboardScores ||
           keyboardScores.testScores.amountOfTests < 3) && (
-          <Alert type='error' message='This component needs more testing' />
+          <Alert type='info' message='This component needs more testing' />
         )} */}
       </header>
       <div className='count-list'>
@@ -32,48 +45,27 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
           <strong>Overall Scores:</strong>
         </p>
         <ScoreBubble score={component.accessibilityScore} />
-        <CountBubble label='tests were done' count={component.amountOfTests} />
+        <CountBubble label='Tests total' count={component.amountOfTests} />
         <CountBubble label='Agreement Score' count={component.agreementScore} />
-
-        {/* testmodes */}
       </div>
-
-      <div className='count-list'>
-        <p>Screenreader Scores:</p>
-        {screenReaderScores ? (
+      <button className='button-with-icon' onClick={toggleDetails}>
+        {detailsOpen ? (
           <>
-            <ScoreBubble score={screenReaderScores.accessibilityScore} />
-            <CountBubble
-              label='tests were done'
-              count={screenReaderScores.testScores.amountOfTests}
-            />
-            <CountBubble
-              label='Agreement Score'
-              count={screenReaderScores.agreementScore}
-            />
+            <BsChevronUp /> Hide
           </>
         ) : (
-          <Alert message='There were no screenreader accessibility tests done yet' />
-        )}
-      </div>
-      <div className='count-list'>
-        <p>Keyboard Scores:</p>
-        {keyboardScores ? (
           <>
-            <ScoreBubble score={keyboardScores.accessibilityScore} />
-            <CountBubble
-              label='tests were done'
-              count={keyboardScores.testScores.amountOfTests}
-            />
-            <CountBubble
-              label='Agreement Score'
-              count={keyboardScores.agreementScore}
-            />
+            <BsChevronDown /> Show
           </>
-        ) : (
-          <Alert message='There were no keyboard accessibility tests done yet' />
-        )}
-      </div>
+        )}{" "}
+        detailed evaluation
+      </button>
+      {detailsOpen && (
+        <ComponentResultDetails
+          screenReaderScores={screenReaderScores}
+          keyboardScores={keyboardScores}
+        />
+      )}
     </article>
   );
 };

@@ -7,10 +7,10 @@
   margin-bottom: 1rem;
 }
 
-.lib-info {
+/* .lib-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
+} */
 
 .lib-controls,
 .lib-infos {
@@ -42,7 +42,7 @@
 
 .lib-testresult > header {
   display: grid;
-  grid-template-columns: auto 1fr 2fr;
+  grid-template-columns: auto 1fr auto;
   align-items: baseline;
   gap: 1rem;
   padding-bottom: 0.5rem;
@@ -50,7 +50,7 @@
 
 .count-list {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.9rem;
   align-items: baseline;
   flex-wrap: wrap;
 }
