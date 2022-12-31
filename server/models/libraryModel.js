@@ -56,7 +56,7 @@ const componentSchema = mongoose.Schema({
   alternativeComponentNames: String,
   componentExcluded: Boolean,
   modes: [modeSchema],
-  accessibilityScore: Number,
+  accessibilityScore: Number | undefined,
   agreementScore: Number,
   amountOfTests: Number,
   componentTested: Boolean,
@@ -68,7 +68,7 @@ const versionSchema = mongoose.Schema({
     required: true,
   },
   components: [componentSchema],
-  accessibilityScore: Number,
+  accessibilityScore: Number | undefined,
   agreementScore: Number,
   amountOfComponentsTested: Number,
 });
