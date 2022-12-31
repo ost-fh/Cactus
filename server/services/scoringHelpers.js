@@ -58,6 +58,9 @@ const extractCriteria = (criterium) => {
 };
 
 const calculateScorePercentage = (score) => {
+  if (score.positive === 0 && score.negative === 0) {
+    return 0;
+  }
   const total = score.positive + score.negative;
   return Math.floor((score.positive * 100) / total);
 };

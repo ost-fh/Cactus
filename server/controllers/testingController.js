@@ -35,7 +35,6 @@ const postTestResult = async (req, res) => {
   const version = library.versions.find(
     (item) => item.version === data.libraryVersion
   );
-  // TODO: handle not found
 
   if (
     version.components.length === 0 ||
