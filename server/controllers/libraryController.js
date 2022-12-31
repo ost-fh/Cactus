@@ -34,6 +34,7 @@ const postLibrary = async (req, res) => {
     linkHome,
     linkDocs,
     currentVersion,
+    versions: [{ version: currentVersion }],
   });
   res.status(200).json(library);
 };
