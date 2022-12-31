@@ -113,15 +113,28 @@ const LibraryDetail = () => {
                   )}
                 </div>
                 <div className='lib-controls'>
-                  {userData?.token && (
+                  {userData?.token ? (
                     <LinkButton
                       to={`/testlab/${library._id}/${version?.version}`}
                       className='button-primary button-wide'
                       label='Add a Component Test'
                       icon={<BsBoxArrowUpRight />}
                     />
+                  ) : (
+                    <Alert type='info'>
+                      <h3>Looking to contribute?</h3>
+                      <p>
+                        You can review components yourself and help us to
+                        improve this library
+                      </p>
+                      <LinkButton
+                        to='/contribute'
+                        label='Find out how to contribute'
+                      />
+                    </Alert>
                   )}
-                  {version && (
+
+                  {!version || version.components.length === 0 || (
                     <Alert type='help'>
                       <h3>What do these numbers mean?</h3>
                       <p>

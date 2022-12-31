@@ -4,6 +4,7 @@ import { loginUser } from "../services/api";
 import PublicLayout from "../layout/PublicLayout";
 import "./login.css";
 import Alert from "../components/Alert";
+import LinkButton from "../components/LinkButton";
 
 const Login = (props: { setUserData: any }) => {
   const [username, setUserName] = useState("");
@@ -52,6 +53,7 @@ const Login = (props: { setUserData: any }) => {
     <PublicLayout activeLink='login'>
       <div className='login'>
         <h2>Please Log In</h2>
+
         <form onSubmit={handleSubmit}>
           <label htmlFor='login-username'>Username</label>
           <input
@@ -69,9 +71,10 @@ const Login = (props: { setUserData: any }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div>
-            <button type='submit'>Submit</button>
+            <button type='submit'>Log in</button>
           </div>
         </form>
+
         {formState === state.loading && (
           <Alert type='info' message={`Login in progress...`} />
         )}
@@ -79,10 +82,17 @@ const Login = (props: { setUserData: any }) => {
           <Alert type='error' message={`Login failed: ${error}`} />
         )}
         {formState === state.success && (
-          <Alert
-            type='info'
-            message='Login succeeded, you will be redirected in 3 seconds'
-          ></Alert>
+          <>
+            <Alert
+              type='info'
+              message='Login succeeded, you will be redirected in 3 seconds'
+            />
+            <LinkButton
+              to='/libraries'
+              className='button primary'
+              label='Go to the libraries overview'
+            />
+          </>
         )}
       </div>
     </PublicLayout>

@@ -5,7 +5,7 @@ type ScoreBubbleProps = {
   /**
    * without percent-sign
    */
-  score: number;
+  score: number | undefined;
   label?: string;
 };
 
@@ -15,7 +15,13 @@ const ScoreBubble = ({
 }: ScoreBubbleProps) => {
   return (
     <div className='score-bubble'>
-      <span className='score-score'>{Math.floor(score)}%</span> {label}
+      {score ? (
+        <>
+          <span className='score-score'>{Math.floor(score)}%</span> {label}
+        </>
+      ) : (
+        "not scored yet"
+      )}
     </div>
   );
 };
