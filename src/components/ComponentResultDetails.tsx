@@ -18,34 +18,6 @@ const ComponentResultDetails = ({
   return (
     <>
       <div className='count-list'>
-        <h4>Screenreader Scores:</h4>
-        {screenReaderScores ? (
-          <>
-            <ScoreBubble score={screenReaderScores.accessibilityScore} />
-            <CountBubble
-              label='Tests'
-              count={screenReaderScores.testScores.amountOfTests}
-            />
-            <CountBubble
-              label='Agreement Score'
-              count={screenReaderScores.agreementScore}
-            />
-            <h4>Screenreader Criteria Evaluation:</h4>
-
-            {screenReaderScores.scoresPerCriterium.map((item) => {
-              return (
-                <CriteriumResult
-                  key={item.criterium_id + screenReaderScores.name}
-                  item={item}
-                />
-              );
-            })}
-          </>
-        ) : (
-          <Alert message='There were no screenreader accessibility tests done yet' />
-        )}
-      </div>
-      <div className='count-list'>
         <h4>Keyboard Scores:</h4>
         {keyboardScores ? (
           <>
@@ -58,7 +30,7 @@ const ComponentResultDetails = ({
               label='Agreement Score'
               count={keyboardScores.agreementScore}
             />
-            <h4>Keyboard Criteria Evaluation:</h4>
+            <h4 className='count-list-br'>Keyboard Criteria Evaluation:</h4>
             {keyboardScores.scoresPerCriterium.map((item) => {
               return (
                 <CriteriumResult
@@ -70,6 +42,34 @@ const ComponentResultDetails = ({
           </>
         ) : (
           <Alert message='There were no keyboard accessibility tests done yet' />
+        )}
+      </div>
+      <div className='count-list'>
+        <h4>Screenreader Scores:</h4>
+        {screenReaderScores ? (
+          <>
+            <ScoreBubble score={screenReaderScores.accessibilityScore} />
+            <CountBubble
+              label='Tests'
+              count={screenReaderScores.testScores.amountOfTests}
+            />
+            <CountBubble
+              label='Agreement Score'
+              count={screenReaderScores.agreementScore}
+            />
+            <h4 className='count-list-br'>Screenreader Criteria Evaluation:</h4>
+
+            {screenReaderScores.scoresPerCriterium.map((item) => {
+              return (
+                <CriteriumResult
+                  key={item.criterium_id + screenReaderScores.name}
+                  item={item}
+                />
+              );
+            })}
+          </>
+        ) : (
+          <Alert message='There were no screenreader accessibility tests done yet' />
         )}
       </div>
     </>

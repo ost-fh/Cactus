@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserContext } from "../App";
 import Alert from "../components/Alert";
 import PublicLayout from "../layout/PublicLayout";
@@ -7,7 +7,6 @@ import { registerUser } from "../services/api";
 
 const Contribute = (props: { setUserData: any }) => {
   const userData = useContext(UserContext);
-  const navigate = useNavigate();
 
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState("");
@@ -18,14 +17,12 @@ const Contribute = (props: { setUserData: any }) => {
     e.preventDefault();
     setFormState("loading");
     const loginData = { username: username, email: email, password: password };
-    // const userData = await registerUser(loginData);
     registerUser(loginData)
       .then((userData) => {
         props.setUserData(userData);
         setFormState("success");
       })
       .catch(() => setFormState("error"));
-    // navigate("/libraries");
   };
 
   useEffect(() => {

@@ -21,8 +21,9 @@ const CriteriumResult = ({ item }: CriteriumResultProps) => {
     <div className='criterium-detail'>
       <div className='criterium-text'>{criterium?.text}</div>
       <div className='criterium-result'>
-        {item.positive} <BsHandThumbsUp /> | {item.negative}{" "}
-        <BsHandThumbsDown /> | {item.notDecided} <BsPatchQuestion />
+        {item.positive} <BsHandThumbsUp title='Positive' /> | {item.negative}{" "}
+        <BsHandThumbsDown title='negative' /> | {item.notDecided}{" "}
+        <BsPatchQuestion title='not decided' />
       </div>
       <CountBubble label='Agreement Score' count={item.agreementScore} />
     </div>

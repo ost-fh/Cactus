@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createLibrary } from "../services/api";
 import { UserContext } from "../App";
+import { createLibrary } from "../services/api";
 import PublicLayout from "../layout/PublicLayout";
 import { newLibrary } from "../types";
 import LinkButton from "../components/LinkButton";
+import "./addlibrary.css";
 
 const AddLibrary = () => {
   const userData = useContext(UserContext);
@@ -39,7 +40,7 @@ const AddLibrary = () => {
     <PublicLayout>
       <h2>Add a new Library</h2>
       <p>To add a new Library, please fill out the form below.</p>
-      <form onSubmit={handleSubmit}>
+      <form className='add-library-form' onSubmit={handleSubmit}>
         <div className='form'>
           <label htmlFor='lib-title'>Name of the Library</label>
           <input

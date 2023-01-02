@@ -33,12 +33,6 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
         {!component.componentTested && (
           <Alert type='info' message='This component needs more testing' />
         )}
-        {/* {(!screenReaderScores ||
-          screenReaderScores.testScores.amountOfTests < 3 ||
-          !keyboardScores ||
-          keyboardScores.testScores.amountOfTests < 3) && (
-          <Alert type='info' message='This component needs more testing' />
-        )} */}
       </header>
       <div className='count-list'>
         <p>

@@ -1,9 +1,6 @@
 import React from "react";
 
 type CountBubbleProps = {
-  /**
-   * without percent-sign
-   */
   count: number | undefined;
   label?: string;
 };
@@ -17,7 +14,10 @@ const CountBubble = ({
 
   return (
     <div className='count-bubble'>
-      <span className='count-count'>{countString || "undefined"}</span> {label}
+      <span className='count-count'>
+        {countString !== undefined ? countString : "undefined"}
+      </span>{" "}
+      {label}
     </div>
   );
 };

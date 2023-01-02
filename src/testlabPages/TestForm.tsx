@@ -90,10 +90,13 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
             Open documentation
           </a>
         </p>
-        {testData.testMode === "screenreader" && (
+        {testData.testMode === "Screenreader" && (
           <p>
-            To test with a screenreader, please have NVDA ready and use Chrome.
-            This way, we will have reproducible results.
+            To test with a screenreader, please have <strong>NVDA</strong> ready
+            and use <strong>Chrome</strong>. This way, we will have reproducible
+            results. If you're on Mac, you can use{" "}
+            <a href='https://assistivlabs.com/sign-up'>AssistivLabs</a> (14 days
+            free, sign-up required).
           </p>
         )}
         <p>
@@ -102,27 +105,12 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
         </p>
         <p>
           Please use the keyboard to test the criteria (tab, enter, esc, space,
-          arrows).
+          arrow keys).
         </p>
+        {criteriaGroup && criteriaGroup.additionalHint !== "" && (
+          <p>{criteriaGroup.additionalHint}</p>
+        )}
       </Alert>
-      {criteriaGroup && (
-        <>
-          {criteriaGroup.additionalHint !== "" && (
-            <div className='alert-info'>{criteriaGroup.additionalHint}</div>
-          )}
-          {criteriaGroup.instructions !== "" && (
-            <div className='test-instructions'>
-              <h3>Instructions</h3>
-              {criteriaGroup.instructions}
-              {criteriaGroup.videoLink === "" ? (
-                ""
-              ) : (
-                <div>video: {criteriaGroup.videoLink} </div>
-              )}
-            </div>
-          )}
-        </>
-      )}
       <section className='test-list'>
         {testResult &&
           testResult.map((criterium) => (

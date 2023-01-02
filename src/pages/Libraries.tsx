@@ -23,21 +23,54 @@ const Libraries = () => {
 
   return (
     <PublicLayout activeLink='libraries'>
-      <header className='library-header'>
-        <h2>Libraries</h2>
-        <p>
-          Down below you can find all libraries that have been added to Project
-          Cactus.
-        </p>
-        <Alert
-          type='help'
-          title='Remember:'
-          message={
-            "The accessibility scores do not neccessarily represent how accessible a finished product using that library is. It only shows how good the baseline is it starts from, according to our criteria."
-          }
-        />
-        {/* <nav>ToDo: Search and Filters and Sorting </nav> */}
-      </header>
+      <h2>Libraries</h2>
+      <div className='layout-split'>
+        <header className='library-header'>
+          <p>
+            Down below you can find all libraries that have been added to
+            Project Cactus.
+          </p>
+          <Alert type='help'>
+            <h3>Important Note</h3>
+            <p>
+              The accessibility scores do not neccessarily represent how
+              accessible a finished product using that library is. It only shows
+              how good the baseline is it starts from, according to our
+              criteria.
+            </p>
+          </Alert>
+          {/* <nav>ToDo: Search and Filters and Sorting </nav> */}
+        </header>
+        <section>
+          <Alert type='info'>
+            <h3>Do you miss a UI library?</h3>
+            {userData?.token ? (
+              <>
+                <p>
+                  Add a library, after that test its components to immediatly
+                  compare it to other libraries:
+                </p>
+                <LinkButton
+                  to='new'
+                  label='Add a new library'
+                  className='button-primary'
+                />
+              </>
+            ) : (
+              <>
+                <p>
+                  We are always looking for help. And you might be able to
+                  improve this directory for yourself and for others.
+                </p>
+                <LinkButton
+                  to='/contribute'
+                  label='Find out how to contribute'
+                />
+              </>
+            )}
+          </Alert>
+        </section>
+      </div>
       <hr />
       <section className='library-list'>
         {libraries ? (
@@ -53,26 +86,6 @@ const Libraries = () => {
         )}
       </section>
       <hr />
-      <section>
-        <Alert type='info'>
-          <h3>Do you miss a UI library?</h3>
-          {userData?.token ? (
-            <LinkButton
-              to='new'
-              label='Add a new library'
-              className='button-primary'
-            />
-          ) : (
-            <>
-              <p>
-                We are always looking for help. And you might be able to improve
-                this directory for yourself and for others.
-              </p>
-              <LinkButton to='/contribute' label='Find out how to contribute' />
-            </>
-          )}
-        </Alert>
-      </section>
     </PublicLayout>
   );
 };

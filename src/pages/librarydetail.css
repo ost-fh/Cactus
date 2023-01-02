@@ -54,3 +54,7 @@
   align-items: baseline;
   flex-wrap: wrap;
 }
+
+.count-list-br {
+  width: 100%;
+}
