@@ -1,7 +1,9 @@
 const gini = require("gini");
 
 const calculateAverage = (values) => {
-  return values.reduce((a, b) => a + b, 0) / values.length;
+  // filter values to skip undefined values
+  const filteredValues = values.filter((item) => item);
+  return filteredValues.reduce((a, b) => a + b, 0) / filteredValues.length;
 };
 
 const combinePerCriteria = (scorePerCriterium) => {
@@ -88,7 +90,7 @@ const combineScore = (scores) => {
 
 const choiceToScore = (choice) => {
   if (!(choice === "yes" || choice === "no" || choice === "not_decidable")) {
-    console.error("invalid choice value");
+    console.error("invalid choice value: " + choice);
   }
   return {
     positive: choice === "yes" ? 1 : 0,
