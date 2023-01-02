@@ -16,16 +16,14 @@ export const criteriaCatalogue: componentCriteria[] = [
   {
     component: "Dialog",
     alternativeComponentNames: "Modal, Promt",
+    description: "",
     criteria: [
       {
         testMode: "Keyboard",
-        instructions: "",
-        videoLink: "link video",
-        additionalHint: "",
         criteria: [
           {
             _id: "1",
-            text: "The focus (style) is visible",
+            text: "The focus (style) of interactive elements is visible",
             help: "The focus is usually a ring around an interactive element, that shows what element is selected. To test this, navigate to an interactive example of a dialog inside the documentation. It usually opens with a button of some sort. Click besides it and try to navigate to it with the 'tab' key. ",
           },
           {
@@ -52,19 +50,21 @@ export const criteriaCatalogue: componentCriteria[] = [
       },
       {
         testMode: "Screenreader",
-        instructions: "",
-        videoLink: "",
-        additionalHint: "",
         criteria: [
           {
             _id: "11",
-            text: "The `[x]` close button has alt-text, that is read with the screenreader",
-            help: "If you select the close button with tab",
+            text: "The [x] button of the dialog is announced as the close button (or similar).",
+            help: "If you select the close button with tab, the screenreader should read out to you, that this is a close button or similar. Not all modals have a close button. You might need to check different implementations",
           },
           {
             _id: "12",
             text: "The content of the dialog is read upon opening",
-            help: "If a dialog opens, the text inside should automatically be read. A blind person otherwise can't know, that ther is a dialog open.",
+            help: "If a dialog opens, the text or at least the heading of the modal should automatically be read. A blind person otherwise can't know, that a dialog opened.",
+          },
+          {
+            _id: "13",
+            text: "It should not be possible to leave the modal using the arrow up and down keys",
+            help: "The contents and non interactive elements of the dialog are read by navigating with the arrow up and down keys. To align with the keyboard accessibility, it should not be possible to accidently leave the modal using the the screenreader's reading function.",
           },
         ],
       },
@@ -73,45 +73,40 @@ export const criteriaCatalogue: componentCriteria[] = [
   {
     component: "Accordion",
     alternativeComponentNames: "Disclosure",
+    description: "",
     criteria: [
       {
         testMode: "Screenreader",
-        instructions: "",
-        videoLink: "",
-        additionalHint: "",
         criteria: [
           {
             _id: "21",
             text: "Any hidden text is not read",
-            help: "Hier steht hilfetext",
+            help: "Collapse one section of the accordion. Using the arrow keys, it should not be possible to read text that is not visible.",
           },
         ],
       },
       {
         testMode: "Keyboard",
-        instructions: "",
-        videoLink: "",
-        additionalHint: "",
         criteria: [
           {
             _id: "31",
             text: "The header elements are focusable",
-            help: "Hier steht hilfetext",
+            help: "Since the header/title elements are interactive and are used to open and close the accordion, they should be focusable. This means, by clicking the tab key repeatedly, you should reach the header element.",
           },
           {
             _id: "32",
-            text: "The focus (style) is visible",
-            help: "Hier steht hilfetext",
+            text: "The focus (style) of the header elements is visible",
+            help: "If you reached the header element with tab, you should (easily) be able to recognize, what header element is currently focused.",
           },
           {
             _id: "33",
-            text: "The panel opens/closes with `space` or `enter` upon focus of a header element",
-            help: "Hier steht hilfetext",
+            text: "The panel opens/closes with `space` or `enter` keys upon focus of a header element",
+            help: "To interact with the accordion, it should be possible to open and close it.",
           },
           {
             _id: "34",
             text: "Navigation between panel headers is possible with `tab`",
-            help: "Hier steht hilfetext",
+            help: "To open and close the different panels of the accordion, it is neccessary to be able to change between the different panels to open and close them",
           },
         ],
       },
@@ -120,45 +115,40 @@ export const criteriaCatalogue: componentCriteria[] = [
   {
     component: "Tooltip",
     alternativeComponentNames: "Inline Dialog, Popover",
+    description: "",
     criteria: [
       {
         testMode: "Screenreader",
-        instructions: "",
-        videoLink: "",
-        additionalHint: "",
         criteria: [
           {
             _id: "41",
             text: "The tooltip is read upon focus of the element",
-            help: "Hier steht hilfetext",
+            help: "Once the element that tiggers the tooltip is focused, the content of the tooltip is read. the tooltip itself never recieves focus.",
           },
         ],
       },
       {
         testMode: "Keyboard",
-        instructions: "",
-        videoLink: "",
-        additionalHint: "",
         criteria: [
           {
             _id: "51",
             text: "The element with the tooltip is focusable",
-            help: "Hier steht hilfetext",
+            help: "To access the information in the tooltip, the tooltip must be focusable. By clicking the tab key repeatedly, you should reach the tooltip-triggering element.",
           },
           {
             _id: "52",
-            text: "The focus (style) is visible",
-            help: "Hier steht hilfetext",
+            text: "The focus (style) of the triggering element is visible",
+            help: "If you reached the triggering element with tab, you should (easily) be able to tell that the element is currently focused.",
           },
           {
             _id: "53",
             text: "The tooltip is shown upon focus",
-            help: "Hier steht hilfetext",
+            help: "Once the element with the tooltip recieves focus with the tab key, the tooltip should be shown. This may happen with a small delay",
           },
           {
             _id: "54",
             text: "The tooltip closes with the `esc` key",
-            help: "Hier steht hilfetext",
+            help: "The tooltip should dissapear when pressing the escape key. It should also dissapear if the focus leaves the element, but that is not the focus here.",
           },
         ],
       },

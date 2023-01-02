@@ -76,14 +76,13 @@ export type testData = {
 export type componentCriteria = {
   component: string;
   alternativeComponentNames: string;
+  description: string;
   criteria: criteriaGroup[];
 };
 
 export type criteriaGroup = {
   testMode: string;
-  instructions: string;
-  videoLink: string;
-  additionalHint: string;
+  additionalHint?: string;
   criteria: criterium[];
 };
 
