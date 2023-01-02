@@ -1,11 +1,41 @@
 import React, { useState } from "react";
 import { BsQuestionCircleFill } from "react-icons/bs";
+import { criteriumResult } from "../types";
+import "./testitem.css";
 
-// type TestItemType = {
-//   criterium:
-// }
+type TestItemButtonProps = {
+  id: string;
+  label: string;
+  choice: string;
+  changeChoice: Function;
+  active: boolean;
+};
 
-const TestItem = ({ criterium, handleChange }: any) => {
+const TestItemButton = ({
+  id,
+  label,
+  choice,
+  changeChoice,
+  active,
+}: TestItemButtonProps) => {
+  return (
+    <label
+      className={`button ${active && "button-selected"}`}
+      onClick={() => changeChoice(choice)}
+    >
+      {/* {active ? <BsCheckSquare />} */}
+      <input type='radio' name={id} required id={`${id}${choice}`} />
+      {label}
+    </label>
+  );
+};
+
+type TestItemProps = {
+  criterium: criteriumResult;
+  handleChange: Function;
+};
+
+const TestItem = ({ criterium, handleChange }: TestItemProps) => {
   const [helpOpen, setHelpOpen] = useState(false);
   const [commentOpen, setCommentOpen] = useState(false);
   const [criteriumData, setCriteriumData] = useState(criterium);
@@ -33,9 +63,10 @@ const TestItem = ({ criterium, handleChange }: any) => {
   };
 
   return (
-    <article className='test-item'>
+    <div className='test-item'>
       <p className='test-item-criteria'>{criterium.text}</p>
       <button
+        type='button'
         className={`button-with-icon ${helpOpen && "button-selected"}`}
         onClick={toggleHelp}
       >
@@ -45,10 +76,35 @@ const TestItem = ({ criterium, handleChange }: any) => {
       {helpOpen && <div className='test-item-help'>{criterium.help}</div>}
       {/* TODO Improve Accessibility */}
       <div className='button-group'>
-        <button
-          className={criteriumData.choice === "yes" ? "button-selected" : ""}
+        <TestItemButton
+          id={criterium._id}
+          label='Yes'
+          choice='yes'
+          changeChoice={changeChoice}
+          active={criteriumData.choice === "yes"}
+        />
+        <TestItemButton
+          id={criterium._id}
+          label='No'
+          choice='no'
+          changeChoice={changeChoice}
+          active={criteriumData.choice === "no"}
+        />
+        <TestItemButton
+          id={criterium._id}
+          label='Not Decidable'
+          choice='not_decidable'
+          changeChoice={changeChoice}
+          active={criteriumData.choice === "not_decidable"}
+        />
+        {/* <button
+          className={
+            "button-with-icon " +
+            (criteriumData.choice === "yes" ? "button-selected" : "")
+          }
           onClick={() => changeChoice("yes")}
         >
+          {criteriumData.choice === "yes" && <BsCheckSquare />}
           Yes
         </button>
         <button
@@ -64,7 +120,7 @@ const TestItem = ({ criterium, handleChange }: any) => {
           onClick={() => changeChoice("not_decidable")}
         >
           Not decidable
-        </button>
+        </button> */}
       </div>
       {commentOpen && (
         <div className='test-item-comment'>
@@ -78,7 +134,7 @@ const TestItem = ({ criterium, handleChange }: any) => {
           ></textarea>
         </div>
       )}
-    </article>
+    </div>
   );
 };
 

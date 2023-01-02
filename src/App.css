@@ -131,8 +131,7 @@ button:disabled {
 
 /** Forms **/
 
-.form,
-form {
+.form {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.7rem;

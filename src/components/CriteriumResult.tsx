@@ -1,4 +1,9 @@
 import React from "react";
+import {
+  BsHandThumbsDown,
+  BsHandThumbsUp,
+  BsPatchQuestion,
+} from "react-icons/bs";
 import { getCriterium } from "../services/criteria";
 import { criteriumScore } from "../types";
 import CountBubble from "./CountBubble";
@@ -16,9 +21,10 @@ const CriteriumResult = ({ item }: CriteriumResultProps) => {
     <div className='criterium-detail'>
       <div className='criterium-text'>{criterium?.text}</div>
       <div className='criterium-result'>
-        {item.positive} + | {item.negative} - | {item.notDecided} ?
+        {item.positive} <BsHandThumbsUp /> | {item.negative}{" "}
+        <BsHandThumbsDown /> | {item.notDecided} <BsPatchQuestion />
       </div>
-      <CountBubble label='Agreement' count={item.agreementScore} />
+      <CountBubble label='Agreement Score' count={item.agreementScore} />
     </div>
   );
 };

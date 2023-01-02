@@ -15,8 +15,12 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
   return (
     <div className='container'>
       <header className='page-header'>
-        <img className='logo' alt='logo' src='/cactus_logo.png' />
-        <h1>Project Cactus</h1>
+        <Link to={"/"}>
+          <img className='logo' alt='logo' src='/cactus_logo.png' />
+        </Link>
+        <Link to={"/"} className='page-header-title'>
+          <h1>Project Cactus</h1>
+        </Link>
         <div className='page-header-group'>
           {userData?.token && (
             <div className='page-header-user'>

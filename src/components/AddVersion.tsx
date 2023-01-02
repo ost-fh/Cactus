@@ -43,7 +43,7 @@ const AddVersion = ({ libraryId, changeVersion }: AddVersionProps) => {
 
   return formOpen ? (
     <div className='add-version-form'>
-      <form onSubmit={handleSubmit}>
+      <form className='form' onSubmit={handleSubmit}>
         <label>New Version Number:</label>
         <input
           autoFocus

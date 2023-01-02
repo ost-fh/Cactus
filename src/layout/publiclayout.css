@@ -11,6 +11,11 @@
   padding: auto;
 }
 
+.page-header-title {
+  text-decoration: none;
+  color: #000;
+}
+
 .nav-link {
   padding: 0.3rem 0.5rem;
   border-radius: 0.3rem;

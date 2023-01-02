@@ -54,7 +54,7 @@ const Login = (props: { setUserData: any }) => {
       <div className='login'>
         <h2>Please Log In</h2>
 
-        <form onSubmit={handleSubmit}>
+        <form className='form' onSubmit={handleSubmit}>
           <label htmlFor='login-username'>Username</label>
           <input
             autoFocus
@@ -89,7 +89,7 @@ const Login = (props: { setUserData: any }) => {
             />
             <LinkButton
               to='/libraries'
-              className='button primary'
+              className='button-primary'
               label='Go to the libraries overview'
             />
           </>

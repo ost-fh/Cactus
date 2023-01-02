@@ -14,14 +14,13 @@ type SpecifyTestProps = {
 };
 
 const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
-  // const criteriaData = criteriaCatalogue;
-  // const components = criteriaData.map((item) => item.component);
   const components = criteriaCatalogue;
   const testModes = ["Keyboard", "Screenreader"];
   const [library, setLibrary] = useState<library | undefined>();
 
   const [formValid, setFormValid] = useState(false);
 
+  // load Library
   useEffect(() => {
     if (testData.libraryId) {
       getLibrary(testData.libraryId).then((lib: library) => {
@@ -30,6 +29,7 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
     }
   }, [testData.libraryId]);
 
+  // check if form is valid
   useEffect(() => {
     if (testData.component === "" || testData.testMode === "") {
       setFormValid(false);
@@ -92,7 +92,7 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
                           foundComponent.name === component.component
                       )
                       ?.modes.find((mode) => mode.name === testMode)?.testScores
-                      .amountOfTests || 0
+                      ?.amountOfTests
                   }
                 />
               </div>

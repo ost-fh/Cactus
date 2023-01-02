@@ -1,0 +1,30 @@
+.test-item {
+  border: grey solid 1px;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.7rem;
+}
+
+.test-item-criteria {
+  font-size: 1.2rem;
+}
+
+.test-item > .button-group {
+  grid-column: span 2;
+}
+
+.test-item-help {
+  background-color: rgb(171, 212, 249);
+  margin: 0 -1rem;
+  padding: 1rem;
+  grid-column: span 2;
+}
+
+.test-item-comment {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}

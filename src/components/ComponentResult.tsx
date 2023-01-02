@@ -48,18 +48,20 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
         <CountBubble label='Tests total' count={component.amountOfTests} />
         <CountBubble label='Agreement Score' count={component.agreementScore} />
       </div>
-      <button className='button-with-icon' onClick={toggleDetails}>
-        {detailsOpen ? (
-          <>
-            <BsChevronUp /> Hide
-          </>
-        ) : (
-          <>
-            <BsChevronDown /> Show
-          </>
-        )}{" "}
-        detailed evaluation
-      </button>
+      <div>
+        <button className='button-with-icon' onClick={toggleDetails}>
+          {detailsOpen ? (
+            <>
+              <BsChevronUp /> Hide
+            </>
+          ) : (
+            <>
+              <BsChevronDown /> Show
+            </>
+          )}{" "}
+          detailed evaluation
+        </button>
+      </div>
       {detailsOpen && (
         <ComponentResultDetails
           screenReaderScores={screenReaderScores}

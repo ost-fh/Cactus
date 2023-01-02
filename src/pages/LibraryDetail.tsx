@@ -80,7 +80,7 @@ const LibraryDetail = () => {
               <div className='lib-score'>
                 {version?.accessibilityScore !== undefined && (
                   <ScoreBubble
-                    label='total accessibility score'
+                    label='Library Accessibility Score'
                     score={version.accessibilityScore}
                   />
                 )}

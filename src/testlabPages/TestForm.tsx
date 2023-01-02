@@ -19,18 +19,16 @@ type TestFormProps = {
 
 const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   const userData = useContext(UserContext);
+  const navigate = useNavigate();
 
   const criteriaGroup = criteriaCatalogue
     .find((item) => item.component === testData.component)
     ?.criteria.find((item) => item.testMode === testData.testMode);
 
-  const navigate = useNavigate();
-
   const [testResult, setTestResult] = useState<criteriumResult[]>();
-  const [testFormValid, setTestFormValid] = useState(false);
 
   useEffect(() => {
-    if (criteriaGroup) {
+    if (criteriaGroup && !testResult) {
       const results = criteriaGroup.criteria.map((criterium: any) => {
         const result = { ...criterium, choice: "", comment: "" };
         return result;
@@ -38,20 +36,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
       setTestResult(results);
     }
     return () => {};
-  }, [criteriaGroup]);
-
-  // Check if form is vaild
-  useEffect(() => {
-    let formValid = true;
-    if (testResult) {
-      testResult.forEach((element) => {
-        if (element.choice === "") {
-          formValid = false;
-        }
-      });
-      setTestFormValid(formValid);
-    }
-  }, [testResult]);
+  }, [criteriaGroup, testResult]);
 
   const handleChange = (newCriteriumData: criteriumResult) => {
     if (testResult) {
@@ -65,7 +50,8 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
     }
   };
 
-  const submitTest = () => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (testResult) {
       // console.log({ testData: testData, criteria: testResult });
       postTestResult(
@@ -77,7 +63,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   };
 
   return (
-    <div className='component-test'>
+    <form onSubmit={handleSubmit} className='component-test'>
       <LabPathDisplay currentPage='test' />
 
       <Alert type='help'>
@@ -121,12 +107,9 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
       </Alert>
       {criteriaGroup && (
         <>
-          {criteriaGroup.additionalHint === "" ? (
-            ""
-          ) : (
+          {criteriaGroup.additionalHint !== "" && (
             <div className='alert-info'>{criteriaGroup.additionalHint}</div>
           )}
-
           {criteriaGroup.instructions !== "" && (
             <div className='test-instructions'>
               <h3>Instructions</h3>
@@ -152,20 +135,21 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
       </section>
 
       <div className='control-group'>
-        <LinkButton label='Back' to={"../specify"} icon={<BsChevronLeft />} />
+        <LinkButton
+          type='button'
+          label='Back'
+          to={"../specify"}
+          icon={<BsChevronLeft />}
+        />
         <button
-          className='button-primary button-with-icon'
-          disabled={!testFormValid}
-          onClick={submitTest}
           type='submit'
+          className='button-primary button-with-icon'
+          // disabled={!testFormValid}
         >
           <BsChevronRight /> Finish Test
         </button>
-        {!testFormValid && (
-          <p className='text-red'>Please answer all criteria.</p>
-        )}
       </div>
-    </div>
+    </form>
   );
 };
 

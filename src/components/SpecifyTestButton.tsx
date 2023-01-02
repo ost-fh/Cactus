@@ -1,4 +1,5 @@
 import React from "react";
+import { BsCheckSquare } from "react-icons/bs";
 import { componentCriteria, testData } from "../types";
 
 type SpecifyTestButtonProps = {
@@ -29,15 +30,18 @@ const SpecifyTestButton = ({
           testMode
         )
       }
-      className={active ? "button-selected" : ""}
+      className={`button-with-icon ${active && "button-selected"}`}
       aria-pressed={active}
     >
-      {testMode} <br></br>
-      {amountOfTests && amountOfTests >= 1 ? (
-        <small>amount of tests: {amountOfTests} </small>
-      ) : (
-        <small>no tests</small>
-      )}
+      {active && <BsCheckSquare />}
+      <div>
+        {testMode} <br />
+        {amountOfTests && amountOfTests >= 1 ? (
+          <small>amount of tests: {amountOfTests} </small>
+        ) : (
+          <small>no tests</small>
+        )}
+      </div>
     </button>
   );
 };

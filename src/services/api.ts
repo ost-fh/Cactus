@@ -26,7 +26,13 @@ export const registerUser = async (credentials: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(credentials),
-  }).then((data) => data.json());
+  }).then((data) => {
+    if (data.status === 200) {
+      return data.json();
+    } else {
+      throw new Error("failed");
+    }
+  });
 };
 
 export const getLibraries = async () => {

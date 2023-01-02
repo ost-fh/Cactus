@@ -4,7 +4,7 @@ type CountBubbleProps = {
   /**
    * without percent-sign
    */
-  count: number;
+  count: number | undefined;
   label?: string;
 };
 
@@ -12,11 +12,12 @@ const CountBubble = ({
   count,
   label = "components tested",
 }: CountBubbleProps) => {
-  const countString = count < 1 ? count.toPrecision(2) : count.toString();
+  const countString =
+    count && (count < 1 ? count.toPrecision(2) : count.toString());
 
   return (
     <div className='count-bubble'>
-      <span className='count-count'>{countString}</span> {label}
+      <span className='count-count'>{countString || "undefined"}</span> {label}
     </div>
   );
 };

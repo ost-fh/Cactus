@@ -10,20 +10,11 @@ import "./alert.css";
 type AlertProps = {
   title?: string;
   message?: string;
-  /** Allowed types: error, info, help, success */
-  type?: string;
+  type?: "info" | "error" | "help" | "success";
   children?: any;
 };
 
 const Alert = ({ title, message, type = "info", children }: AlertProps) => {
-  if (
-    type !== "info" &&
-    type !== "error" &&
-    type !== "help" &&
-    type !== "success"
-  ) {
-    throw new Error("invalid alert type");
-  }
   if (children) {
     return <div className={`alert-${type} alert`}>{children}</div>;
   }

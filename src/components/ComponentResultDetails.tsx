@@ -52,7 +52,7 @@ const ComponentResultDetails = ({
             <ScoreBubble score={keyboardScores.accessibilityScore} />
             <CountBubble
               label='Tests'
-              count={keyboardScores.testScores.amountOfTests}
+              count={keyboardScores.testScores?.amountOfTests}
             />
             <CountBubble
               label='Agreement Score'

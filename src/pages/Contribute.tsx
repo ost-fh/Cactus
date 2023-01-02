@@ -55,7 +55,7 @@ const Contribute = (props: { setUserData: any }) => {
           <p>Please register to contribute to the Cactus Project</p>
 
           {formState === "new" && (
-            <form onSubmit={handleSubmit}>
+            <form className='form' onSubmit={handleSubmit}>
               <label htmlFor='registration-username'>
                 Username <small>(you will use this to login)</small>
               </label>
