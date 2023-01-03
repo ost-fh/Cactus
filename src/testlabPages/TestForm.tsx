@@ -10,8 +10,6 @@ import { criteriaCatalogue } from "../services/criteria";
 import Alert from "../components/Alert";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
-// Library Data import -> title, links ...
-
 type TestFormProps = {
   testData: testData;
   linkDocs: string;
@@ -21,12 +19,14 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   const userData = useContext(UserContext);
   const navigate = useNavigate();
 
+  const [testResult, setTestResult] = useState<criteriumResult[]>();
+
+  // get the relevant criteria-group
   const criteriaGroup = criteriaCatalogue
     .find((item) => item.component === testData.component)
     ?.criteria.find((item) => item.testMode === testData.testMode);
 
-  const [testResult, setTestResult] = useState<criteriumResult[]>();
-
+  // transform criteria in criteria with results (criteriumResult). save in testResult
   useEffect(() => {
     if (criteriaGroup && !testResult) {
       const results = criteriaGroup.criteria.map((criterium: any) => {

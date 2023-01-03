@@ -17,7 +17,6 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
   const components = criteriaCatalogue;
   const testModes = ["Keyboard", "Screenreader"];
   const [library, setLibrary] = useState<library | undefined>();
-
   const [formValid, setFormValid] = useState(false);
 
   // load Library
