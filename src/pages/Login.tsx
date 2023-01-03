@@ -52,7 +52,7 @@ const Login = (props: { setUserData: any }) => {
   return (
     <PublicLayout activeLink='login'>
       <div className='login'>
-        <h2>Please Log In</h2>
+        <h2>Login</h2>
 
         <form className='form' onSubmit={handleSubmit}>
           <label htmlFor='login-username'>Username</label>

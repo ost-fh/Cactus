@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
+import { BsFillPersonFill, BsPersonCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
-// import { FaSignOutAlt } from "react-icons/fa";
 import "./publiclayout.css";
 
 type PublicLayoutProps = {
@@ -15,18 +15,37 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
   return (
     <div className='container'>
       <header className='page-header'>
-        <Link to={"/"}>
-          <img className='logo' alt='logo' src='/cactus_logo.png' />
+        <Link tabIndex={-1} title='Navigate to homepage' to={"/"}>
+          <img
+            className='logo'
+            alt='logo of project cactus'
+            src='/cactus_logo.png'
+          />
         </Link>
-        <Link to={"/"} className='page-header-title'>
+        <Link
+          title='Navigate to homepage'
+          to={"/"}
+          className='page-header-title'
+        >
           <h1>Project Cactus</h1>
         </Link>
         <div className='page-header-group'>
-          {userData?.token && (
-            <div className='page-header-user'>
-              Logged in as {userData.username}
-            </div>
-          )}
+          <div className='page-header-user'>
+            {userData?.token ? (
+              <>
+                <BsFillPersonFill /> Logged in as {userData.username}
+                {" - "}
+                <Link to='/logout'>Logout</Link>
+              </>
+            ) : (
+              <>
+                <BsFillPersonFill />
+                <Link className={`${activeLink === "login" && ""}`} to='/login'>
+                  Login
+                </Link>
+              </>
+            )}
+          </div>
           <nav>
             <Link
               className={`nav-link ${
@@ -60,7 +79,7 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
             >
               Contribute
             </Link>
-            {!userData?.token ? (
+            {/* {!userData?.token ? (
               <Link
                 className={`nav-link ${
                   activeLink === "login" ? "nav-link-active" : ""
@@ -71,9 +90,9 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
               </Link>
             ) : (
               <Link className='nav-link' to='/logout'>
-                {/* <FaSignOutAlt />*/} Logout
+                Logout
               </Link>
-            )}
+            )} */}
           </nav>
         </div>
       </header>

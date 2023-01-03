@@ -42,10 +42,9 @@
 
 .lib-testresult > header {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   align-items: baseline;
   gap: 1rem;
-  padding-bottom: 0.5rem;
 }
 
 .count-list {

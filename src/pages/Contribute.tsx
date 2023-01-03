@@ -77,7 +77,9 @@ const Contribute = (props: { setUserData: any }) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <div>
-                <button type='submit'>Submit</button>
+                <button className='button-primary' type='submit'>
+                  Register
+                </button>
               </div>
             </form>
           )}
