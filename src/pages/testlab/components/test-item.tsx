@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { criteriumResult } from "../../../shared/resources/types";
-import "./testitem.css";
+import "./test-item.css";
 
 type TestItemButtonProps = {
   id: string;

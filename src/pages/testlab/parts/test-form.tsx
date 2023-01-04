@@ -7,8 +7,8 @@ import { criteriumResult, testData } from "../../../shared/resources/types";
 import { criteriaCatalogue } from "../../../shared/resources/criteria";
 import Alert from "../../../shared/components/alert";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import LabPathDisplay from "../components/LabPathDisplay";
-import TestItem from "../components/TestItem";
+import LabPathDisplay from "../components/lab-path-display";
+import TestItem from "../components/test-item";
 
 type TestFormProps = {
   testData: testData;

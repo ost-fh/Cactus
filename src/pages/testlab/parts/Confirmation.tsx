@@ -1,7 +1,7 @@
 import React from "react";
 import LinkButton from "../../../shared/components/link-button";
 import { testData } from "../../../shared/resources/types";
-import LabPathDisplay from "../components/LabPathDisplay";
+import LabPathDisplay from "../components/lab-path-display";
 
 type ConfirmationProps = {
   testData: testData;

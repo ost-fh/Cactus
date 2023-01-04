@@ -5,8 +5,8 @@ import LinkButton from "../../../shared/components/link-button";
 import { getLibrary } from "../../../shared/services/api";
 import { criteriaCatalogue } from "../../../shared/resources/criteria";
 import { library, testData } from "../../../shared/resources/types";
-import LabPathDisplay from "../components/LabPathDisplay";
-import SpecifyTestButton from "../components/SpecifyTestButton";
+import LabPathDisplay from "../components/lab-path-display";
+import SpecifyTestButton from "../components/specify-test-button";
 
 type SpecifyTestProps = {
   testData: testData;

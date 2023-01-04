@@ -5,7 +5,7 @@ import { createLibrary } from "../../shared/services/api";
 import PublicLayout from "../../shared/layout/public-layout";
 import { newLibrary } from "../../shared/resources/types";
 import LinkButton from "../../shared/components/link-button";
-import "./addlibrary.css";
+import "./add-library.css";
 
 const AddLibrary = () => {
   const userData = useContext(UserContext);

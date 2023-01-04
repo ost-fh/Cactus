@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { getLibrary } from "../../shared/services/api";
 import { library, testData } from "../../shared/resources/types";
 import { Navigate, Route, Routes, useParams } from "react-router-dom";
-import SpecifyTest from "./parts/SpecifyTest";
-import TestForm from "./parts/TestForm";
-import TestLabLayout from "./layout/LabLayout";
-import Start from "./parts/Start";
-import Confirmation from "./parts/Confirmation";
+import SpecifyTest from "./parts/specify-test";
+import TestForm from "./parts/test-form";
+import TestLabLayout from "./layout/lab-layout";
+import Start from "./parts/start";
+import Confirmation from "./parts/confirmation";
 import NotFound from "../not-found/not-found";
 
 const TestLab = () => {

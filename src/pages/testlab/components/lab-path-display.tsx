@@ -1,6 +1,6 @@
 import React from "react";
-import "./labpathdisplay.css";
-import LabPathDisplayField from "./LabPathDisplayField";
+import "./lab-path-display.css";
+import LabPathDisplayField from "./lab-path-display-field";
 
 type LabPathDisplayProps = {
   currentPage: string;

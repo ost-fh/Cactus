@@ -3,7 +3,7 @@ import { BsChevronDoubleLeft, BsChevronRight } from "react-icons/bs";
 import Alert from "../../../shared/components/alert";
 import LinkButton from "../../../shared/components/link-button";
 import { testData } from "../../../shared/resources/types";
-import LabPathDisplay from "../components/LabPathDisplay";
+import LabPathDisplay from "../components/lab-path-display";
 
 type StartProps = {
   testData: testData;

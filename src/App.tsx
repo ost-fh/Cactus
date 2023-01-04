@@ -7,13 +7,13 @@ import "./shared/fonts/AtkinsonHyperlegible-Regular.ttf";
 import "./shared/fonts/AtkinsonHyperlegible-Bold.ttf";
 
 import NotFound from "./pages/not-found/not-found";
-import AddLibrary from "./pages/add-library/AddLibrary";
-import About from "./pages/about/About";
+import AddLibrary from "./pages/add-library/add-library";
+import About from "./pages/about/about";
 import TestLab from "./pages/testlab/test-lab";
 import { useUserData } from "./shared/services/use-token";
 import LogOut from "./pages/logout/logout";
 import Home from "./pages/home/home";
-import Libraries from "./pages/libraries/Libraries";
+import Libraries from "./pages/libraries/libraries";
 import LibraryDetail from "./pages/library-detail/library-detail";
 import Login from "./pages/login/login";
 import Contribute from "./pages/contribute/contribute";

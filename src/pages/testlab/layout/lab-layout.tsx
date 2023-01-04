@@ -1,5 +1,5 @@
 import React from "react";
-import "./lablayout.css";
+import "./lab-layout.css";
 
 type TestLabLayoutProps = {
   libraryTitle: string;
