@@ -5,6 +5,8 @@ import CountBubble from "../../../shared/components/count-bubble";
 import LinkButton from "../../../shared/components/link-button";
 import ScoreBubble from "../../../shared/components/score-bubble";
 
+import "./library-card.css";
+
 type LibraryCardProps = {
   library: library;
 };

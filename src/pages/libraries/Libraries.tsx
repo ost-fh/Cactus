@@ -4,7 +4,7 @@ import { UserContext } from "../../App";
 
 import Alert from "../../shared/components/alert";
 import LinkButton from "../../shared/components/link-button";
-import LibraryCard from "./parts/LibraryCard";
+import LibraryCard from "./parts/library-card";
 import PublicLayout from "../../shared/layout/public-layout";
 
 import "./libraries.css";
