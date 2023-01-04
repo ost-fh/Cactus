@@ -1,0 +1,12 @@
+.library-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.library-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}

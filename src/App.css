@@ -1,13 +1,21 @@
 /* General */
 
 @font-face {
-  font-family: "Regular";
+  font-family: "AtkinsonHyperlegible";
   src: local("AtkinsonHyperlegible-Regular"),
-    url("./fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+    url("./shared/fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "AtkinsonHyperlegible";
+  src: local("AtkinsonHyperlegible-Bold"),
+    url("./shared/fonts/AtkinsonHyperlegible-Bold.ttf") format("truetype");
+  font-weight: bold;
 }
 
 * {
-  font-family: "Regular", Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "AtkinsonHyperlegible", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {

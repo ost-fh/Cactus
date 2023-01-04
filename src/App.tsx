@@ -1,21 +1,22 @@
 import React, { createContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import "./reset.css";
+import "./shared/layout/reset.css";
 import "./App.css";
-import "./fonts/AtkinsonHyperlegible-Regular.ttf";
+import "./shared/fonts/AtkinsonHyperlegible-Regular.ttf";
+import "./shared/fonts/AtkinsonHyperlegible-Bold.ttf";
 
-import Contribute from "./pages/Contribute";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import NotFound from "./pages/NotFound";
-import Libraries from "./pages/Libraries";
-import LibraryDetail from "./pages/LibraryDetail";
-import AddLibrary from "./pages/AddLibrary";
-import About from "./pages/About";
-import TestLab from "./testlabPages/TestLab";
-import { useUserData } from "./services/useToken";
-import LogOut from "./pages/LogOut";
+import NotFound from "./pages/not-found/not-found";
+import AddLibrary from "./pages/add-library/add-library";
+import About from "./pages/about/about";
+import TestLab from "./pages/testlab/test-lab";
+import { useUserData } from "./shared/services/use-token";
+import LogOut from "./pages/logout/logout";
+import Home from "./pages/home/home";
+import Libraries from "./pages/libraries/libraries";
+import LibraryDetail from "./pages/library-detail/library-detail";
+import Login from "./pages/login/login";
+import Contribute from "./pages/contribute/contribute";
 
 export type UserData = {
   _id: string;
@@ -28,7 +29,6 @@ export const UserContext = createContext<UserData | undefined>(undefined);
 
 function App() {
   const { userData, setUserData } = useUserData();
-  const token = {};
 
   const logOut = () => {
     setUserData(undefined);
@@ -54,10 +54,10 @@ function App() {
           <Route path='login' element={<Login setUserData={setUserData} />} />
           <Route path='logout' element={<LogOut logOut={logOut} />} />
         </Route>
-        {token ? (
+        {userData?.token ? (
           <Route path='testlab/:id/:version/*' element={<TestLab />}></Route>
         ) : (
-          <Route path='testlab' element={<Navigate to='/' />} />
+          <Route path='testlab/*' element={<Navigate to='/' />} />
         )}
         <Route path='*' element={<NotFound />} />
       </Routes>
