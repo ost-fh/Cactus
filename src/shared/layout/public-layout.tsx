@@ -63,14 +63,14 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
             >
               Libraries
             </Link>
-            {/* <Link
+            <Link
               className={`nav-link ${
                 activeLink === "about" ? "nav-link-active" : ""
               }`}
               to='/about'
             >
               About
-            </Link> */}
+            </Link>
             <Link
               className={`nav-link ${
                 activeLink === "contribute" ? "nav-link-active" : ""
