@@ -15,6 +15,8 @@ import AddVersion from "./parts/add-version";
 import ComponentResult from "./parts/component-result";
 
 import "./library-detail.css";
+import CountBubble from "../../shared/components/count-bubble";
+import ResultBubble from "../../shared/components/result-bubble";
 
 const LibraryDetail = () => {
   const { id, paramVersion } = useParams();
@@ -78,7 +80,7 @@ const LibraryDetail = () => {
         {library && (
           <>
             <header>
-              <h1>{library.title}</h1>
+              <h2>{library.title}</h2>
               <div className='lib-score'>
                 {version?.accessibilityScore !== undefined && (
                   <ScoreBubble
@@ -113,8 +115,6 @@ const LibraryDetail = () => {
                       libraryId={library._id}
                     />
                   )}
-                </div>
-                <div className='lib-controls'>
                   {userData?.token ? (
                     <LinkButton
                       to={`/testlab/${library._id}/${version?.version}`}
@@ -124,10 +124,10 @@ const LibraryDetail = () => {
                     />
                   ) : (
                     <Alert type='info'>
-                      <h3>Looking to contribute?</h3>
+                      <h3>Would you like to help?</h3>
                       <p>
                         You can review components yourself and help us to
-                        improve this library
+                        improve the quality of the scores
                       </p>
                       <LinkButton
                         to='/contribute'
@@ -135,21 +135,43 @@ const LibraryDetail = () => {
                       />
                     </Alert>
                   )}
-
+                </div>
+                <div className='lib-infos'>
                   {!version || version.components.length === 0 || (
                     <Alert type='help'>
                       <h3>What do these numbers mean?</h3>
-                      <p>
-                        <strong>Accessibility Score:</strong> This is an average
-                        score over all the tests that were made for a component
-                        or library. It gives an idea, how good a library
-                        performs in terms of accessibility
-                      </p>
-                      <p>
-                        <strong>Agreement Score:</strong> This number between 0
-                        and 1 displays, how much different testers agree with
-                        each other. A number closer to 1 is better.
-                      </p>
+                      <div className='lib-detail-help'>
+                        <ScoreBubble
+                          label='Accessibility Score (example)'
+                          score={100}
+                        />
+                        <p>
+                          This is an average score over all the tests that were
+                          made for a component, testmode or library. It gives an
+                          idea about how good a library performs in terms of
+                          accessibility.
+                        </p>
+
+                        <ResultBubble
+                          positive={4}
+                          negative={0}
+                          not_decided={0}
+                        />
+                        <p>
+                          This shows how many testers voted if a criterium was
+                          fullfilled, not fulfilled or not decidable. (exemplary
+                          numbers used)
+                        </p>
+                        <CountBubble
+                          label='Agreement Score (example)'
+                          count={1}
+                        />
+                        <p>
+                          This number between 0 and 1 shows how much different
+                          testers agree with each other. A number closer to 1 is
+                          better.
+                        </p>
+                      </div>
                     </Alert>
                   )}
                 </div>

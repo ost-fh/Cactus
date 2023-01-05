@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  BsHandThumbsDown,
-  BsHandThumbsUp,
-  BsPatchQuestion,
-} from "react-icons/bs";
 import { getCriterium } from "../../../shared/resources/criteria";
 import { criteriumScore } from "../../../shared/resources/types";
 import CountBubble from "../../../shared/components/count-bubble";
+import ResultBubble from "../../../shared/components/result-bubble";
 import "./criterium-result.css";
 
 type CriteriumResultProps = {
@@ -20,11 +16,11 @@ const CriteriumResult = ({ item }: CriteriumResultProps) => {
   return (
     <div className='criterium-detail'>
       <div className='criterium-text'>{criterium?.text}</div>
-      <div className='criterium-result'>
-        {item.positive} <BsHandThumbsUp title='Positive' /> | {item.negative}{" "}
-        <BsHandThumbsDown title='negative' /> | {item.notDecided}{" "}
-        <BsPatchQuestion title='not decided' />
-      </div>
+      <ResultBubble
+        positive={item.positive}
+        negative={item.negative}
+        not_decided={item.notDecided}
+      />
       <CountBubble label='Agreement Score' count={item.agreementScore} />
     </div>
   );
