@@ -8,10 +8,78 @@ const home = () => {
     <PublicLayout activeLink='home'>
       <div className='home-intro'>
         <h2>Welcome to Project Cactus</h2>
-        <p>
+        {/* <p>
           We provide a platform to test and provide results to qualify UI
           libraries in terms of accessibility.
-        </p>
+        </p> */}
+
+        <div className='home-cact'>
+          <div className='home-cact-item'>
+            <img
+              src='/crowd.jpeg'
+              alt='symbolic representation of a group of people'
+              className='home-cact-image'
+            />
+            <p className='home-cact-highlight'>
+              <span>C</span>ollaborative
+            </p>
+            {/* <p className='home-cact-description'>
+            This is a community driven platform
+          </p> */}
+          </div>
+          <div className='home-cact-item'>
+            <img
+              src='/accessibility.jpeg'
+              alt='symbol for web accessibility'
+              className='home-cact-image'
+            />
+            <p className='home-cact-highlight'>
+              <span>A</span>ccessibility
+            </p>
+            {/* <p className='home-cact-description'>
+            Making the web a little bit more accessible
+          </p> */}
+          </div>
+          <div className='home-cact-item'>
+            <img
+              src='/components.jpeg'
+              alt='symbolic representation of a group of UI Components'
+              className='home-cact-image'
+            />
+            <div>
+              <p className='home-cact-highlight'>
+                <span>C</span>omponents
+              </p>
+              <p className='home-cact-description'>from Web UI Libraries</p>
+            </div>
+          </div>
+          <div className='home-cact-item'>
+            <img
+              src='/testing.jpeg'
+              alt='a checklist'
+              className='home-cact-image'
+            />
+            <p className='home-cact-highlight'>
+              <span>T</span>esting
+            </p>
+            {/* <p className='home-cact-description'>
+            This is a community driven platform
+          </p> */}
+          </div>
+          <div className='home-cact-item'>
+            <img
+              src='/cactus_logo.png'
+              alt='the project cactus logo'
+              className='home-cact-image'
+            />
+            <div>
+              <p className='home-cact-highlight'>
+                cact<span>US</span>
+              </p>
+              <p className='home-cact-description'>That's what we do!</p>
+            </div>
+          </div>
+        </div>
       </div>
       <hr />
       <div className='home-section '>
@@ -20,13 +88,12 @@ const home = () => {
         </div>
         <div className='home-text'>
           <p>
-            To make the web more accessible for everyone, we aim to provide a
-            resource to improve and ease the inclusion of accessibility in
-            projects early. We do this by providing accessibility metrics to UI
-            libraries, to make a choice for your next project easier.
+            "Is my favourite UI library accessible?" - "What UI Frameworks could
+            I choose for my project that gives me a headstart in accessibility?"
+            These are the questions project cactus tries to answer!
           </p>
           <Link to='/libraries' className='button button-primary'>
-            Check out the scores
+            Check out the scored libraries
           </Link>
         </div>
       </div>
@@ -36,10 +103,10 @@ const home = () => {
         </div>
         <div className='home-text'>
           <p>
-            We test UI libraries to see, if they provide a baseline of
-            accessibility. There is a criteria-catalogue specially developed for
-            this, that is manually checked against different components of the
-            libraries. It is a crowdsourced effort.
+            Our community tests UI libraries to see, if they provide a baseline
+            of accessibility. There is a criteria-catalogue specially developed
+            for this, that is manually checked against different components of
+            the libraries.
           </p>
           <Link to='/about' className='button'>
             Find out how it works
@@ -52,9 +119,9 @@ const home = () => {
         </div>
         <div className='home-text'>
           <p>
-            There are a lot of UI libraries. It takes a lot of time to test them
-            all. Therefore we made the testing crowdsourced. Are you interested
-            to help out?
+            There are a lot of UI libraries with a lot of components. It takes a
+            lot of time to test them all. Therefore we made the testing
+            crowdsourced. Are you interested to help out?
           </p>
           <Link to='/contribute' className='button'>
             See how you can contribute
