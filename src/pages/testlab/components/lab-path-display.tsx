@@ -3,30 +3,21 @@ import "./lab-path-display.css";
 import LabPathDisplayField from "./lab-path-display-field";
 
 type LabPathDisplayProps = {
-  currentPage: string;
+  currentPage: "preparation" | "specify" | "test" | "confirm";
 };
 
 const LabPathDisplay = ({ currentPage }: LabPathDisplayProps) => {
-  if (
-    currentPage !== "start" &&
-    currentPage !== "specify" &&
-    currentPage !== "test" &&
-    currentPage !== "confirm"
-  )
-    throw new Error();
-
   return (
     <div className='lab-path-display'>
       <LabPathDisplayField
-        active={currentPage === "start"}
-        label='Start'
+        active={currentPage === "specify"}
+        label='Testmode'
         step={1}
       />
       <span className='path-connector'></span>
       <LabPathDisplayField
-        active={currentPage === "specify"}
-        label='Specify Test'
-        // label='Choose Mode'
+        active={currentPage === "preparation"}
+        label='Preparation'
         step={2}
       />
       <span className='path-connector'></span>

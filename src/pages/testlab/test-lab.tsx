@@ -5,9 +5,9 @@ import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import SpecifyTest from "./parts/specify-test";
 import TestForm from "./parts/test-form";
 import TestLabLayout from "./layout/lab-layout";
-import Start from "./parts/start";
 import Confirmation from "./parts/confirmation";
 import NotFound from "../not-found/not-found";
+import Preparation from "./parts/preparation";
 
 const TestLab = () => {
   const { id, version } = useParams();
@@ -36,12 +36,20 @@ const TestLab = () => {
       testmode={testData.testMode}
     >
       <Routes>
-        <Route index element={<Navigate to='start' replace />}></Route>
-        <Route path='start/' element={<Start testData={testData} />} />
+        <Route index element={<Navigate to='specify' replace />}></Route>
         <Route
           path='specify/'
           element={
             <SpecifyTest testData={testData} setTestData={setTestData} />
+          }
+        />
+        <Route
+          path='prepare/'
+          element={
+            <Preparation
+              testData={testData}
+              linkDocs={library?.linkDocs || "error"}
+            />
           }
         />
         <Route

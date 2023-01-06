@@ -31,3 +31,13 @@
 .path-element-done {
   background-color: green;
 }
+
+/* span number*/
+.number-circle {
+  margin-right: 0.5em;
+  height: 1.8em;
+  width: 1.8em;
+  padding: 0.15em;
+  border: 2px rgb(189, 189, 189) solid;
+  border-radius: 50%;
+}

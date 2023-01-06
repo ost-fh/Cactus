@@ -65,43 +65,16 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   return (
     <form onSubmit={handleSubmit} className='component-test'>
       <LabPathDisplay currentPage='test' />
-
+      <h2>Testing the Component</h2>
       <Alert type='help'>
-        <h3>Instructions</h3>
+        <h3>How to test:</h3>
         <p>
-          Open the documentation besides the testlab-window. Navigate to the
-          documentation page of <strong>{testData.component}</strong>.
-        </p>
-        {testData.alternativeComponentNames !== "" &&
-          testData.alternativeComponentNames !== undefined && (
-            <p>
-              Alternative name(s) for the component could be:{" "}
-              <strong>{testData.alternativeComponentNames}</strong>
-            </p>
-          )}
-
-        <p>
-          <a
-            href={linkDocs}
-            className='button button-primary'
-            target='_blank'
-            rel='noreferrer'
-          >
-            Open documentation
+          Check if the criteria apply to an interactive example of the component
+          inside the{" "}
+          <a href={linkDocs} target='_blank' rel='noreferrer'>
+            documentation
           </a>
-        </p>
-        {testData.testMode === "Screenreader" && (
-          <p>
-            To test with a screenreader, please have <strong>NVDA</strong> ready
-            and use <strong>Chrome</strong>. This way, we will have reproducible
-            results. If you're on Mac, you can use{" "}
-            <a href='https://assistivlabs.com/sign-up'>AssistivLabs</a> (14 days
-            free, sign-up required).
-          </p>
-        )}
-        <p>
-          Then check if the criteria apply to an interactive example of the
-          component.
+          .
         </p>
         <p>
           Please use the keyboard to test the criteria (tab, enter, esc, space,
@@ -126,7 +99,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
         <LinkButton
           type='button'
           label='Back'
-          to={"../specify"}
+          to={"../prepare"}
           icon={<BsChevronLeft />}
         />
         <button

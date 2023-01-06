@@ -30,7 +30,7 @@ const TestLabLayout = (props: TestLabLayoutProps) => {
           </ul>
         </div>
       </header>
-      <main>{props.children}</main>
+      <main id='lab-main'>{props.children}</main>
     </div>
   );
 };
