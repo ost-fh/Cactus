@@ -28,8 +28,8 @@ const AddVersion = ({ libraryId, changeVersion }: AddVersionProps) => {
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    setFormState(state.loading);
     event.preventDefault();
+    setFormState(state.loading);
     postNewVersion(newVersionNumber, libraryId, userData!.token)
       .then(() => {
         setFormState(state.success);
@@ -43,24 +43,27 @@ const AddVersion = ({ libraryId, changeVersion }: AddVersionProps) => {
 
   return formOpen ? (
     <div className='add-version-form'>
-      <form className='form' onSubmit={handleSubmit}>
-        <label>New Version Number:</label>
-        <input
-          autoFocus
-          required
-          onChange={(e) => setNewVersionNumber(e.target.value)}
-          type='text'
-          value={newVersionNumber}
-        />
-        <button onClick={toggleForm}>Cancel</button>
-        <button
-          className='button-primary'
-          disabled={formState === state.loading}
-          type='submit'
-        >
-          Save new Version
-        </button>
-      </form>
+      {formState !== state.success && (
+        <form className='form' onSubmit={handleSubmit}>
+          <label htmlFor='newVersionNumber'>New Version Number:</label>
+          <input
+            id='newVersionNumber'
+            autoFocus
+            required
+            onChange={(e) => setNewVersionNumber(e.target.value)}
+            type='text'
+            value={newVersionNumber}
+          />
+          <button onClick={toggleForm}>Cancel</button>
+          <button
+            className='button-primary'
+            disabled={formState === state.loading}
+            type='submit'
+          >
+            Save new Version
+          </button>
+        </form>
+      )}
       {formState === state.loading && (
         <Alert type='info' message='loading...' />
       )}
@@ -68,7 +71,10 @@ const AddVersion = ({ libraryId, changeVersion }: AddVersionProps) => {
         <Alert type='error' message='something went wrong' />
       )}
       {formState === state.success && (
-        <Alert type='success' message='new version created!' />
+        <>
+          <Alert type='success' message='new version created!' />
+          <button onClick={toggleForm}>Close</button>
+        </>
       )}
     </div>
   ) : (
