@@ -77,6 +77,7 @@ export type componentCriteria = {
   component: string;
   alternativeComponentNames: string;
   description: string;
+  imageUrl: string;
   criteria: criteriaGroup[];
 };
 

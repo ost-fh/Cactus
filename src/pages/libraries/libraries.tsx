@@ -34,12 +34,11 @@ const Libraries = () => {
             <h3>Important Note</h3>
             <p>
               The accessibility scores do not neccessarily represent how
-              accessible a finished product using that library is. It only shows
-              how good the baseline is it starts from, according to our
-              criteria.
+              accessible a finished webapplication using that library is. It
+              only shows how good the baseline is it starts from, according to
+              our criteria.
             </p>
           </Alert>
-          {/* <nav>ToDo: Search and Filters and Sorting </nav> */}
         </header>
         <section>
           <Alert type='info'>

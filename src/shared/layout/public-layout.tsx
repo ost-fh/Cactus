@@ -14,6 +14,9 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
 
   return (
     <div className='container'>
+      <a className='skip-link' href='#main'>
+        skip menu
+      </a>
       <header className='page-header'>
         <Link tabIndex={-1} title='Navigate to homepage' to={"/"}>
           <img
@@ -40,9 +43,7 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
             ) : (
               <>
                 <BsFillPersonFill />
-                <Link className={`${activeLink === "login" && ""}`} to='/login'>
-                  Login
-                </Link>
+                <Link to='/login'>Login</Link>
               </>
             )}
           </div>
@@ -82,7 +83,7 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
           </nav>
         </div>
       </header>
-      <main>{children}</main>
+      <main id='main'>{children}</main>
       <footer className='page-footer'></footer>
     </div>
   );

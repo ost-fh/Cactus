@@ -61,6 +61,10 @@ select {
   border: 1px solid lightgray;
 }
 
+select:disabled {
+  color: black;
+}
+
 ol,
 ul {
   list-style: none;

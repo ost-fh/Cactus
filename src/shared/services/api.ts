@@ -27,7 +27,7 @@ export const registerUser = async (credentials: {
     },
     body: JSON.stringify(credentials),
   }).then((data) => {
-    if (data.status === 200) {
+    if (data.status === 201) {
       return data.json();
     } else {
       throw new Error("failed");

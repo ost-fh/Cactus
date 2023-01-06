@@ -71,7 +71,9 @@ const Login = (props: { setUserData: any }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div>
-            <button type='submit'>Log in</button>
+            <button className='button-primary' type='submit'>
+              Log In
+            </button>
           </div>
         </form>
 

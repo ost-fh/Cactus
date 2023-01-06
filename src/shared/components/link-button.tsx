@@ -21,7 +21,7 @@ const LinkButton = ({
   const navigate = useNavigate();
   return (
     <button
-      className={`${className} ${icon && "button-with-icon"}`}
+      className={`${className ? className : ""} ${icon && "button-with-icon"}`}
       disabled={disabled}
       type={type}
       onClick={() => navigate(to)}

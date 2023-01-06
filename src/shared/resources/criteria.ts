@@ -16,7 +16,9 @@ export const criteriaCatalogue: componentCriteria[] = [
   {
     component: "Dialog",
     alternativeComponentNames: "Modal, Promt",
-    description: "",
+    description:
+      "A dialog is a window overlaid over rest of the page. Users cannot interract with content outside of the dialog.",
+    imageUrl: "/dialog.png",
     criteria: [
       {
         testMode: "Keyboard",
@@ -76,7 +78,9 @@ export const criteriaCatalogue: componentCriteria[] = [
   {
     component: "Accordion",
     alternativeComponentNames: "Disclosure",
-    description: "",
+    description:
+      "An accordion is a vertically stacked set of headings each with a collapsible panel",
+    imageUrl: "/accordion.png",
     criteria: [
       {
         testMode: "Screenreader",
@@ -85,6 +89,11 @@ export const criteriaCatalogue: componentCriteria[] = [
             _id: "21",
             text: "Any hidden text is not read",
             help: "Collapse one section of the accordion. Using the arrow keys, it should not be possible to read text that is not visible.",
+          },
+          {
+            _id: "22",
+            text: "The screenreader announces the current state of the accordion header element",
+            help: ".",
           },
         ],
       },
@@ -118,7 +127,9 @@ export const criteriaCatalogue: componentCriteria[] = [
   {
     component: "Tooltip",
     alternativeComponentNames: "Inline Dialog, Popover",
-    description: "",
+    description:
+      "A tooltip is a small popup element that shows additional information when hovering or focusing the tooltip triggering element.",
+    imageUrl: "/tooltip.png",
     criteria: [
       {
         testMode: "Screenreader",

@@ -5,6 +5,8 @@ import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
 import ScoreBubble from "../../../shared/components/score-bubble";
 import ComponentResultDetails from "./component-result-details";
+import { criteriaCatalogue } from "../../../shared/resources/criteria";
+import "./component-result.css";
 
 type ComponentResultProps = {
   component: component;
@@ -13,6 +15,10 @@ type ComponentResultProps = {
 /** This Component is to be used with LibraryDetail */
 const ComponentResult = ({ component }: ComponentResultProps) => {
   const [detailsOpen, setDetailsOpen] = useState(false);
+
+  const componentData = criteriaCatalogue.find(
+    (item) => item.component === component.name
+  );
 
   const screenReaderScores = component.modes.find(
     (mode) => mode.name === "Screenreader"
@@ -28,8 +34,18 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
   return (
     <article className='lib-testresult'>
       <header>
-        <h3>{component.name}</h3>
-        <p>{component.alternativeComponentNames}</p>
+        <img
+          src={componentData?.imageUrl}
+          alt={`schematic of ${component.name}`}
+        />
+        <div>
+          <h3>
+            {component.name}{" "}
+            <small>(or {component.alternativeComponentNames})</small>
+          </h3>
+
+          <p>{componentData?.description}</p>
+        </div>
         {!component.componentTested && (
           <Alert type='info' message='This component needs more testing' />
         )}

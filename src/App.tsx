@@ -41,9 +41,9 @@ function App() {
           <Route index element={<Home />} />
           <Route path='libraries' element={<Libraries />} />
           <Route path='libraries/new' element={<AddLibrary />} />
-          <Route path='libraries/:id/' element={<LibraryDetail />} />
+          <Route path='libraries/:paramsId/' element={<LibraryDetail />} />
           <Route
-            path='libraries/:id/:paramVersion/'
+            path='libraries/:paramsId/:paramsVersion/'
             element={<LibraryDetail />}
           />
           <Route

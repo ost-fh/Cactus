@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { BsChevronDoubleLeft, BsChevronRight } from "react-icons/bs";
 import Alert from "../../../shared/components/alert";
 import LinkButton from "../../../shared/components/link-button";
 import { getLibrary } from "../../../shared/services/api";
@@ -7,6 +7,7 @@ import { criteriaCatalogue } from "../../../shared/resources/criteria";
 import { library, testData } from "../../../shared/resources/types";
 import LabPathDisplay from "../components/lab-path-display";
 import SpecifyTestButton from "../components/specify-test-button";
+import { useNavigate } from "react-router-dom";
 
 type SpecifyTestProps = {
   testData: testData;
@@ -14,12 +15,13 @@ type SpecifyTestProps = {
 };
 
 const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
+  const navigate = useNavigate();
+
   const components = criteriaCatalogue;
   const testModes = ["Keyboard", "Screenreader"];
   const [library, setLibrary] = useState<library | undefined>();
-  const [formValid, setFormValid] = useState(false);
 
-  // load Library
+  // load Library for testnumbers and backlink
   useEffect(() => {
     if (testData.libraryId) {
       getLibrary(testData.libraryId).then((lib: library) => {
@@ -27,15 +29,6 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
       });
     }
   }, [testData.libraryId]);
-
-  // check if form is valid
-  useEffect(() => {
-    if (testData.component === "" || testData.testMode === "") {
-      setFormValid(false);
-    } else {
-      setFormValid(true);
-    }
-  }, [testData]);
 
   const handleChange = (
     component: string,
@@ -50,10 +43,19 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
     });
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    navigate("../prepare");
+  };
+
   return (
-    <div className='lab-start'>
+    <form onSubmit={handleSubmit} className='lab-start'>
       <LabPathDisplay currentPage='specify' />
-      <Alert type='help' message='Choose Component and Testmode to continue.' />
+      <h2>Welcome to the Testlab. </h2>
+      <p>
+        Here in the <strong>Cactus Testlab</strong> you can add tests to the
+        chosen library.
+      </p>
       <p>There are two testmodes for every component:</p>
       <p>
         <strong>Keyboard:</strong> this focuses on accessibility with keyboard
@@ -65,7 +67,7 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
         NVDA for this test.
       </p>
       <p>Each testmode displays the amount of tests that were already done.</p>
-      <p>Choose one to continue.</p>
+      <Alert type='help' message='Choose a testmode and continue.' />
 
       {components.map((component) => (
         <div key={component.component} className='specify-component'>
@@ -101,17 +103,17 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
       ))}
 
       <div className='control-group'>
-        <LinkButton label={"Back"} to={"../start"} icon={<BsChevronLeft />} />
         <LinkButton
-          disabled={!formValid}
-          label='Next'
-          className='button-primary'
-          icon={<BsChevronRight />}
-          to='../test'
-        ></LinkButton>
-        {!formValid && <p className='text-red'>Please choose a test.</p>}
+          type='button'
+          label={"Cancel and close Testlab"}
+          to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
+          icon={<BsChevronDoubleLeft />}
+        />
+        <button type='submit' className='button-primary button-with-icon'>
+          <BsChevronRight /> Next
+        </button>
       </div>
-    </div>
+    </form>
   );
 };
 

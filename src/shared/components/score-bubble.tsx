@@ -2,9 +2,6 @@ import React from "react";
 import "./bubble.css";
 
 type ScoreBubbleProps = {
-  /**
-   * without percent-sign
-   */
   score: number | undefined;
   label?: string;
 };
@@ -15,7 +12,7 @@ const ScoreBubble = ({
 }: ScoreBubbleProps) => {
   return (
     <div className='score-bubble'>
-      {score ? (
+      {score !== undefined ? (
         <>
           <span className='score-score'>{Math.floor(score)}%</span> {label}
         </>

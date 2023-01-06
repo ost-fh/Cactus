@@ -31,7 +31,7 @@ const ComponentResultDetails = ({
               label='Agreement Score'
               count={keyboardScores.agreementScore}
             />
-            <h4 className='count-list-br'>Keyboard Criteria Evaluation:</h4>
+            <h4 className='count-list-break'>Keyboard Criteria Evaluation:</h4>
             {keyboardScores.scoresPerCriterium.map((item) => {
               return (
                 <CriteriumResult
@@ -58,7 +58,9 @@ const ComponentResultDetails = ({
               label='Agreement Score'
               count={screenReaderScores.agreementScore}
             />
-            <h4 className='count-list-br'>Screenreader Criteria Evaluation:</h4>
+            <h4 className='count-list-break'>
+              Screenreader Criteria Evaluation:
+            </h4>
 
             {screenReaderScores.scoresPerCriterium.map((item) => {
               return (
