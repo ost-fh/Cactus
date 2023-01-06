@@ -32,11 +32,17 @@ const Alert = ({
 
   return (
     <div className={`alert-${type} alert alert-with-icon`}>
-      {type === "error" && <BsFillExclamationOctagonFill />}
-      {type === "help" && <BsFillExclamationTriangleFill />}
-      {type === "info" && <BsInfoCircleFill />}
-      {type === "success" && <BsCheckCircleFill />}
-      <strong>{title}</strong> <span>{message}</span>
+      <p>
+        {type === "error" && (
+          <BsFillExclamationOctagonFill title='Error Message:' />
+        )}
+        {type === "help" && (
+          <BsFillExclamationTriangleFill title='Help Message:' />
+        )}
+        {type === "info" && <BsInfoCircleFill title='Information Message:' />}
+        {type === "success" && <BsCheckCircleFill title='Success Message:' />}
+        <strong>{title}</strong> <span>{message}</span>
+      </p>
     </div>
   );
 };

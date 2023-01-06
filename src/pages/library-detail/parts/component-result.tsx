@@ -59,7 +59,13 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
         <CountBubble label='Agreement Score' count={component.agreementScore} />
       </div>
       <div>
-        <button className='button-with-icon' onClick={toggleDetails}>
+        <button
+          className='button-with-icon'
+          aria-label={`${
+            detailsOpen ? "Hide" : "Show"
+          } detailed evaluation of ${component.name}`}
+          onClick={toggleDetails}
+        >
           {detailsOpen ? (
             <>
               <BsChevronUp /> Hide

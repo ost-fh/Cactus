@@ -32,7 +32,7 @@ const TestItem = ({ criterium, handleChange }: TestItemProps) => {
 
   return (
     <div className='test-item'>
-      <p className='test-item-criteria'>{criterium.text}</p>
+      <h3 className='test-item-criteria'>{criterium.text}</h3>
       <p>Detailed description: {criterium.help}</p>
       <div className='button-group'>
         <TestItemButton

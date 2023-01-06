@@ -42,7 +42,7 @@ const AddVersion = ({ libraryId, changeVersion }: AddVersionProps) => {
   };
 
   return formOpen ? (
-    <div className='add-version-form'>
+    <div aria-live='polite' className='add-version-form'>
       {formState !== state.success && (
         <form className='form' onSubmit={handleSubmit}>
           <label htmlFor='newVersionNumber'>New Version Number:</label>

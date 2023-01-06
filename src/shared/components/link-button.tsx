@@ -8,6 +8,7 @@ type LinkButtonProps = {
   disabled?: boolean;
   icon?: ReactElement;
   type?: "button" | "submit" | "reset";
+  ariaLabel?: string;
 };
 
 const LinkButton = ({
@@ -17,10 +18,12 @@ const LinkButton = ({
   icon,
   disabled = false,
   type,
+  ariaLabel = undefined,
 }: LinkButtonProps) => {
   const navigate = useNavigate();
   return (
     <button
+      aria-label={ariaLabel}
       className={`${className ? className : ""} ${icon && "button-with-icon"}`}
       disabled={disabled}
       type={type}

@@ -14,9 +14,11 @@ type ResultBubbleProps = {
 const ResultBubble = (props: ResultBubbleProps) => {
   return (
     <div className='criterium-result'>
-      {props.positive} <BsHandThumbsUp title='Positive' /> | {props.negative}{" "}
-      <BsHandThumbsDown title='negative' /> | {props.not_decided}{" "}
-      <BsPatchQuestion title='not decided' />
+      <span>
+        {props.positive} <BsHandThumbsUp title='Positive' /> | {props.negative}{" "}
+        <BsHandThumbsDown title='negative' /> | {props.not_decided}{" "}
+        <BsPatchQuestion title='not decided' />
+      </span>
     </div>
   );
 };

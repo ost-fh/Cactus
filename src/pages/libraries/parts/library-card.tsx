@@ -46,6 +46,7 @@ const LibraryCard = ({ library }: LibraryCardProps) => {
           to={library._id}
           className='button-wide'
           label='Show More'
+          ariaLabel={`${library.title} show more`}
         />
       </div>
     </article>
