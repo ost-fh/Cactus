@@ -5,6 +5,7 @@ import PublicLayout from "../../shared/layout/public-layout";
 import "./login.css";
 import Alert from "../../shared/components/alert";
 import LinkButton from "../../shared/components/link-button";
+import Heading from "../../shared/components/heading";
 
 const Login = (props: { setUserData: any }) => {
   const [username, setUserName] = useState("");
@@ -35,7 +36,6 @@ const Login = (props: { setUserData: any }) => {
       password,
     })
       .then((result) => {
-        console.log(result);
         if (result.message) {
           setFormError(result.message);
         } else {
@@ -52,7 +52,7 @@ const Login = (props: { setUserData: any }) => {
   return (
     <PublicLayout activeLink='login'>
       <div className='login'>
-        <h2>Login</h2>
+        <Heading noFocus>Login</Heading>
 
         <form className='form' onSubmit={handleSubmit}>
           <label htmlFor='login-username'>Username</label>
@@ -76,26 +76,27 @@ const Login = (props: { setUserData: any }) => {
             </button>
           </div>
         </form>
-
-        {formState === state.loading && (
-          <Alert type='info' message={`Login in progress...`} />
-        )}
-        {formState === state.error && (
-          <Alert type='error' message={`Login failed: ${error}`} />
-        )}
-        {formState === state.success && (
-          <>
-            <Alert
-              type='info'
-              message='Login succeeded, you will be redirected in 3 seconds'
-            />
-            <LinkButton
-              to='/libraries'
-              className='button-primary'
-              label='Go to the libraries overview'
-            />
-          </>
-        )}
+        <div aria-live='assertive'>
+          {formState === state.loading && (
+            <Alert type='info' message={`Login in progress...`} />
+          )}
+          {formState === state.error && (
+            <Alert type='error' message={`Login failed: ${error}`} />
+          )}
+          {formState === state.success && (
+            <>
+              <Alert
+                type='info'
+                message='Login succeeded, you will be redirected in 3 seconds'
+              />
+              <LinkButton
+                to='/libraries'
+                className='button-primary'
+                label='Go to the libraries overview'
+              />
+            </>
+          )}
+        </div>
       </div>
     </PublicLayout>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Heading from "../../shared/components/heading";
 import PublicLayout from "../../shared/layout/public-layout";
 import "./home.css";
 
@@ -7,7 +8,7 @@ const home = () => {
   return (
     <PublicLayout activeLink='home'>
       <div className='home-intro'>
-        <h2>Welcome to Project Cactus</h2>
+        <Heading>Welcome to Project Cactus</Heading>
         {/* <p>
           We provide a platform to test and provide results to qualify UI
           libraries in terms of accessibility.

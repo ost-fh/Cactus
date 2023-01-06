@@ -9,6 +9,7 @@ import Alert from "../../../shared/components/alert";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import LabPathDisplay from "../components/lab-path-display";
 import TestItem from "../components/test-item";
+import Heading from "../../../shared/components/heading";
 
 type TestFormProps = {
   testData: testData;
@@ -65,7 +66,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   return (
     <form onSubmit={handleSubmit} className='component-test'>
       <LabPathDisplay currentPage='test' />
-      <h2>Testing the Component</h2>
+      <Heading>Testing the Component</Heading>
       <Alert type='help'>
         <h3>How to test:</h3>
         <p>

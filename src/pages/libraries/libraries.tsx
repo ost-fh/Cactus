@@ -9,6 +9,7 @@ import PublicLayout from "../../shared/layout/public-layout";
 
 import "./libraries.css";
 import { library } from "../../shared/resources/types";
+import Heading from "../../shared/components/heading";
 
 const Libraries = () => {
   const userData = useContext(UserContext);
@@ -23,7 +24,7 @@ const Libraries = () => {
 
   return (
     <PublicLayout activeLink='libraries'>
-      <h2>Libraries</h2>
+      <Heading>Libraries</Heading>
       <div className='layout-split'>
         <header className='library-header'>
           <p>

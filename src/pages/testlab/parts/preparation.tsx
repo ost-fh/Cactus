@@ -4,6 +4,7 @@ import { testData } from "../../../shared/resources/types";
 import Alert from "../../../shared/components/alert";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import LabPathDisplay from "../components/lab-path-display";
+import Heading from "../../../shared/components/heading";
 
 type PreparationProps = {
   testData: testData;
@@ -16,7 +17,7 @@ const Preparation = ({ testData, linkDocs }: PreparationProps) => {
   return (
     <div className='component-test'>
       <LabPathDisplay currentPage='preparation' />
-      <h2>Test Preparation</h2>
+      <Heading>Test Preparation</Heading>
       <Alert
         type='help'
         message='Please follow the instructions to prepare for the test.'

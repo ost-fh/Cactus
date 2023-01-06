@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 import Alert from "../../shared/components/alert";
+import Heading from "../../shared/components/heading";
 import PublicLayout from "../../shared/layout/public-layout";
 import { registerUser } from "../../shared/services/api";
 
@@ -37,7 +38,7 @@ const Contribute = (props: { setUserData: any }) => {
     <PublicLayout activeLink='contribute'>
       <div className='layout-split'>
         <div>
-          <h2>Would you like to contribute?</h2>
+          <Heading>Would you like to contribute?</Heading>
           <p>
             You can register now to help us and the community to improve the
             catalogue of libraries and rated components.{" "}
@@ -83,20 +84,22 @@ const Contribute = (props: { setUserData: any }) => {
               </div>
             </form>
           )}
-          {formState === "loading" && <Alert message='Please wait...' />}
-          {formState === "error" && (
-            <Alert
-              type='error'
-              message='Something went wrong. Please try again later.'
-            />
-          )}
-          {formState === "success" && (
-            <Alert type='success'>
-              You are logged in now. Go to{" "}
-              <Link to={"/libraries"}>libraries</Link> to add new libraries and
-              tests.
-            </Alert>
-          )}
+          <div aria-live='assertive'>
+            {formState === "loading" && <Alert message='Please wait...' />}
+            {formState === "error" && (
+              <Alert
+                type='error'
+                message='Something went wrong. Please try again later.'
+              />
+            )}
+            {formState === "success" && (
+              <Alert type='success'>
+                You are logged in now. Go to{" "}
+                <Link to={"/libraries"}>libraries</Link> to add new libraries
+                and tests.
+              </Alert>
+            )}
+          </div>
           {formState === "logged_in" && (
             <Alert message='You are already registered and logged in' />
           )}

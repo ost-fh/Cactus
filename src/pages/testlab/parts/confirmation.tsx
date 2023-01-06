@@ -1,4 +1,5 @@
 import React from "react";
+import Heading from "../../../shared/components/heading";
 import LinkButton from "../../../shared/components/link-button";
 import { testData } from "../../../shared/resources/types";
 import LabPathDisplay from "../components/lab-path-display";
@@ -11,7 +12,7 @@ const Confirmation = ({ testData }: ConfirmationProps) => {
   return (
     <div className='test-confirmation'>
       <LabPathDisplay currentPage={"confirm"} />
-      <h2>Thank you very much!</h2>
+      <Heading>Thank you very much!</Heading>
       <p>Your evaluation was added to the library-results.</p>
       <LinkButton
         label={"Go to library overview"}

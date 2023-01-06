@@ -8,6 +8,7 @@ import { library, testData } from "../../../shared/resources/types";
 import LabPathDisplay from "../components/lab-path-display";
 import SpecifyTestButton from "../components/specify-test-button";
 import { useNavigate } from "react-router-dom";
+import Heading from "../../../shared/components/heading";
 
 type SpecifyTestProps = {
   testData: testData;
@@ -51,7 +52,7 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
   return (
     <form onSubmit={handleSubmit} className='lab-start'>
       <LabPathDisplay currentPage='specify' />
-      <h2>Welcome to the Testlab. </h2>
+      <Heading>Welcome to the Testlab</Heading>
       <p>
         Here in the <strong>Cactus Testlab</strong> you can add tests to the
         chosen library.

@@ -17,6 +17,7 @@ import ComponentResult from "./parts/component-result";
 import "./library-detail.css";
 import CountBubble from "../../shared/components/count-bubble";
 import ResultBubble from "../../shared/components/result-bubble";
+import Heading from "../../shared/components/heading";
 
 const LibraryDetail = () => {
   const navigate = useNavigate();
@@ -40,7 +41,6 @@ const LibraryDetail = () => {
 
   // load library
   useEffect(() => {
-    console.log(paramsId, library);
     if (paramsId && !library) {
       setPageLoadingState(state.loading);
       getLibrary(paramsId)
@@ -91,7 +91,7 @@ const LibraryDetail = () => {
     <PublicLayout activeLink='libraries'>
       <>
         <header className='lib-detail-header'>
-          <h2>{library?.title}</h2>
+          {library && <Heading>{library ? library.title : ""}</Heading>}
           <div className='lib-score'>
             {version?.accessibilityScore !== undefined && (
               <ScoreBubble

@@ -6,6 +6,7 @@ import PublicLayout from "../../shared/layout/public-layout";
 import { newLibrary } from "../../shared/resources/types";
 import LinkButton from "../../shared/components/link-button";
 import "./add-library.css";
+import Heading from "../../shared/components/heading";
 
 const AddLibrary = () => {
   const userData = useContext(UserContext);
@@ -38,7 +39,7 @@ const AddLibrary = () => {
 
   return (
     <PublicLayout activeLink='libraries'>
-      <h2>Add a new Library</h2>
+      <Heading noFocus>Add a new Library</Heading>
       <p>To add a new Library, please fill out the form below.</p>
       <form className='add-library-form' onSubmit={handleSubmit}>
         <div className='form'>
