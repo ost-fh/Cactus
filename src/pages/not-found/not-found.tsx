@@ -7,7 +7,7 @@ const NotFound = () => {
   return (
     <PublicLayout>
       <Alert type='error'>
-        <Heading>Page not Found!</Heading>
+        <Heading>Error 404: Page not Found!</Heading>
       </Alert>
     </PublicLayout>
   );

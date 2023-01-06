@@ -139,3 +139,7 @@ button:disabled {
   /* padding-top: 1rem; */
   align-items: baseline;
 }
+
+.form label {
+  text-align: right;
+}
