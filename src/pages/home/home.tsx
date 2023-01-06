@@ -42,7 +42,7 @@ const home = () => {
           </div>
           <div className='home-cact-item'>
             <img
-              src='/components.jpeg'
+              src='/components.png'
               alt='symbolic representation of a group of UI Components'
               className='home-cact-image'
             />
