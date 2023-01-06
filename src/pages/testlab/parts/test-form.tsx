@@ -64,7 +64,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='component-test'>
+    <form onSubmit={handleSubmit} className='lab-layout'>
       <LabPathDisplay currentPage='test' />
       <Heading>Testing the Component</Heading>
       <Alert type='help'>
@@ -85,16 +85,15 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
           <p>{criteriaGroup.additionalHint}</p>
         )}
       </Alert>
-      <section className='test-list'>
-        {testResult &&
-          testResult.map((criterium) => (
-            <TestItem
-              key={criterium._id}
-              criterium={criterium}
-              handleChange={handleChange}
-            />
-          ))}
-      </section>
+
+      {testResult &&
+        testResult.map((criterium) => (
+          <TestItem
+            key={criterium._id}
+            criterium={criterium}
+            handleChange={handleChange}
+          />
+        ))}
 
       <div className='control-group'>
         <LinkButton

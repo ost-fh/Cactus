@@ -15,7 +15,7 @@ const Preparation = ({ testData, linkDocs }: PreparationProps) => {
   const screenreader = testData.testMode === "Screenreader";
 
   return (
-    <div className='component-test'>
+    <div className='lab-layout'>
       <LabPathDisplay currentPage='preparation' />
       <Heading>Test Preparation</Heading>
       <Alert

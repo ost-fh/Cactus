@@ -8,6 +8,8 @@ import TestLabLayout from "./layout/lab-layout";
 import Confirmation from "./parts/confirmation";
 import NotFound from "../not-found/not-found";
 import Preparation from "./parts/preparation";
+import Alert from "../../shared/components/alert";
+import Heading from "../../shared/components/heading";
 
 const TestLab = () => {
   const { id, version } = useParams();
@@ -65,7 +67,14 @@ const TestLab = () => {
           path='confirmation/'
           element={<Confirmation testData={testData} />}
         />
-        <Route path='*' element={<NotFound />} />
+        <Route
+          path='*'
+          element={
+            <Alert type='error'>
+              <Heading>Error 404: Page not Found!</Heading>
+            </Alert>
+          }
+        />
       </Routes>
     </TestLabLayout>
   );

@@ -16,9 +16,9 @@ const Heading = ({ children, noFocus = false }: HeadingProps) => {
     }
   }, [noFocus]);
 
-  // separate to not refocuse on propchange
+  // separate from focus to not refocus on propchange
   useEffect(() => {
-    document.title = children;
+    document.title = `Project Cactus - ${children}`;
   }, [children]);
 
   return (

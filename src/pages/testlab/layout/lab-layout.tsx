@@ -1,4 +1,5 @@
 import React from "react";
+import Alert from "../../../shared/components/alert";
 import "./lab-layout.css";
 
 type TestLabLayoutProps = {
@@ -15,7 +16,7 @@ const TestLabLayout = (props: TestLabLayoutProps) => {
       <header className='page-header'>
         <img className='logo' alt='logo' src='/cactus_logo.png' />
         <h1>Cactus Testlab</h1>
-        <div>
+        <Alert type='help'>
           <ul>
             <li>Library: {props.libraryTitle}</li>
             <li>Version: {props.libraryVersion}</li>
@@ -28,7 +29,7 @@ const TestLabLayout = (props: TestLabLayoutProps) => {
               {props.testmode === "" ? "not yet chosen" : props.testmode}
             </li>
           </ul>
-        </div>
+        </Alert>
       </header>
       <main id='lab-main'>{props.children}</main>
     </div>

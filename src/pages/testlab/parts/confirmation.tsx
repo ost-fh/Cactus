@@ -10,15 +10,17 @@ type ConfirmationProps = {
 
 const Confirmation = ({ testData }: ConfirmationProps) => {
   return (
-    <div className='test-confirmation'>
+    <div className='lab-layout'>
       <LabPathDisplay currentPage={"confirm"} />
       <Heading>Thank you very much!</Heading>
       <p>Your evaluation was added to the library-results.</p>
-      <LinkButton
-        label={"Go to library overview"}
-        className='button-primary'
-        to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
-      />
+      <div className='control-group'>
+        <LinkButton
+          label={"Go to library overview"}
+          className='button-primary'
+          to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
+        />
+      </div>
     </div>
   );
 };

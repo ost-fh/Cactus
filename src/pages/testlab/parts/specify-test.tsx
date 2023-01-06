@@ -50,7 +50,7 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='lab-start'>
+    <form onSubmit={handleSubmit} className='lab-layout'>
       <LabPathDisplay currentPage='specify' />
       <Heading>Welcome to the Testlab</Heading>
       <p>
@@ -72,33 +72,37 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
 
       {components.map((component) => (
         <div key={component.component} className='specify-component'>
-          <div className='specify-component-header'>
-            <h3>{component.component}</h3>
-            <p>{component.alternativeComponentNames}</p>
-          </div>
-          <div className='specify-component-options'>
-            {testModes.map((testMode) => (
-              <div key={`${component}-${testMode}`}>
-                <SpecifyTestButton
-                  testData={testData}
-                  testMode={testMode}
-                  component={component}
-                  handleChange={handleChange}
-                  amountOfTests={
-                    library?.versions
-                      .find(
-                        (version) => version.version === testData.libraryVersion
-                      )
-                      ?.components.find(
-                        (foundComponent) =>
-                          foundComponent.name === component.component
-                      )
-                      ?.modes.find((mode) => mode.name === testMode)?.testScores
-                      ?.amountOfTests
-                  }
-                />
-              </div>
-            ))}
+          <img src={component.imageUrl} alt={component.component} />
+          <div className='specify-component-content'>
+            <div className='specify-component-header'>
+              <h3>{component.component}</h3>
+              <p>{component.alternativeComponentNames}</p>
+            </div>
+            <div className='specify-component-options'>
+              {testModes.map((testMode) => (
+                <div key={`${component}-${testMode}`}>
+                  <SpecifyTestButton
+                    testData={testData}
+                    testMode={testMode}
+                    component={component}
+                    handleChange={handleChange}
+                    amountOfTests={
+                      library?.versions
+                        .find(
+                          (version) =>
+                            version.version === testData.libraryVersion
+                        )
+                        ?.components.find(
+                          (foundComponent) =>
+                            foundComponent.name === component.component
+                        )
+                        ?.modes.find((mode) => mode.name === testMode)
+                        ?.testScores?.amountOfTests
+                    }
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       ))}
