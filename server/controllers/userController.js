@@ -4,7 +4,6 @@ const User = require("../models/userModel");
 
 const registerUser = async (req, res) => {
   const { username, email, password } = req.body;
-  console.log(username, email, password);
 
   // input valitation
   if (!username || !email || !password) {
@@ -31,6 +30,7 @@ const registerUser = async (req, res) => {
   });
 
   if (user) {
+    console.log(`user ${user.username} created`);
     res.status(201).json({
       _id: user._id,
       username: user.username,

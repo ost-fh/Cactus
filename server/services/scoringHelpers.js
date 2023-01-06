@@ -3,7 +3,10 @@ const gini = require("gini");
 const calculateAverage = (values) => {
   // filter values to skip undefined values
   const filteredValues = values.filter((item) => item);
-  return filteredValues.reduce((a, b) => a + b, 0) / filteredValues.length;
+  const average =
+    filteredValues.reduce((a, b) => a + b, 0) / filteredValues.length;
+  const result = isNaN(average) ? 0 : average;
+  return result;
 };
 
 const combinePerCriteria = (scorePerCriterium) => {

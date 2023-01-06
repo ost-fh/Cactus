@@ -15,11 +15,6 @@ const getLibrary = async (req, res) => {
     res.json({ message: "Library not found" });
     return;
   }
-  // if (!library) {
-  //   res.status(400);
-  //   res.json({ message: "Library not found" });
-  //   return;
-  // }
 };
 
 const postLibrary = async (req, res) => {
