@@ -5,10 +5,11 @@
     "main": "server.js",
     "scripts": {
         "hinweis": "start mit npm run <command>",
-        "start": "node server/server.js",
-        "dev": "nodemon server/server.js"
+        "start": "node server/index.js",
+        "dev": "nodemon server/index.js"
     },
     "keywords": [],
+    "type": "module",
     "author": "",
     "license": "MIT",
     "devDependencies": {

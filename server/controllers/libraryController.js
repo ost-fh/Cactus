@@ -1,14 +1,14 @@
-const { Library, Version } = require("../models/libraryModel");
-const { scoreLibrary } = require("../services/scoring");
+import { libraryModel, versionModel } from "../models/libraryModel.js";
+import { scoreLibrary } from "../services/scoring.js";
 
-const getLibraries = async (req, res) => {
-  const libraries = await Library.find();
+export const getLibraries = async (req, res) => {
+  const libraries = await libraryModel.find();
   res.status(200).json(libraries);
 };
 
-const getLibrary = async (req, res) => {
+export const getLibrary = async (req, res) => {
   try {
-    const library = await Library.findById(req.params.id);
+    const library = await libraryModel.findById(req.params.id);
     res.status(200).json(library);
   } catch (error) {
     res.status(400);
@@ -17,14 +17,14 @@ const getLibrary = async (req, res) => {
   }
 };
 
-const postLibrary = async (req, res) => {
+export const postLibrary = async (req, res) => {
   const { title, linkHome, linkDocs, currentVersion } = req.body;
   if (!(title && linkHome && linkDocs && currentVersion)) {
     res.status(400);
     res.json({ message: "please add all required fields" });
     return;
   }
-  const library = await Library.create({
+  const library = await libraryModel.create({
     title,
     linkHome,
     linkDocs,
@@ -34,21 +34,21 @@ const postLibrary = async (req, res) => {
   res.status(200).json(library);
 };
 
-const postNewVersion = async (req, res) => {
+export const postNewVersion = async (req, res) => {
   const { newVersion } = req.body;
   if (!newVersion) {
     res.status(400);
     res.json({ message: "please provide a new version number" });
     return;
   }
-  const library = await Library.findById(req.params.id);
+  const library = await libraryModel.findById(req.params.id);
   if (library.versions.find((item) => item.version === newVersion)) {
     console.log("version already exists");
     res.status(400);
     res.json({ message: "version already exists" });
     return;
   }
-  library.versions.push(await Version.create({ version: newVersion }));
+  library.versions.push(await versionModel.create({ version: newVersion }));
   library.currentVersion = newVersion;
   await library.save();
   console.log(
@@ -57,15 +57,7 @@ const postNewVersion = async (req, res) => {
   res.status(200).json(library);
 };
 
-const rescoreLibrary = async (req, res) => {
+export const rescoreLibrary = async (req, res) => {
   scoreLibrary(req.params.id);
   res.status(200).json({ message: "success" });
-};
-
-module.exports = {
-  getLibraries,
-  postLibrary,
-  postNewVersion,
-  getLibrary,
-  rescoreLibrary,
 };

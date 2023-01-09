@@ -1,8 +1,8 @@
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const User = require("../models/userModel");
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import User from "../models/userModel.js";
 
-const registerUser = async (req, res) => {
+export const registerUser = async (req, res) => {
   const { username, email, password } = req.body;
 
   // input valitation
@@ -43,7 +43,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-const loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
   const { username, password } = req.body;
   // input validation
   if (!username || !password) {
@@ -70,5 +70,3 @@ const loginUser = async (req, res) => {
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "2d" });
 };
-
-module.exports = { registerUser, loginUser };

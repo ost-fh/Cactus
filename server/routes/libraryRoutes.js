@@ -1,14 +1,14 @@
-const express = require("express");
-const { protect } = require("../middleware/authMiddleware");
+import express from "express";
 
-const {
+const router = express.Router();
+import { protect } from "../middleware/authMiddleware.js";
+import {
   getLibraries,
   postLibrary,
   getLibrary,
   postNewVersion,
   rescoreLibrary,
-} = require("../controllers/libraryController");
-const router = express.Router();
+} from "../controllers/libraryController.js";
 
 router.get("/", getLibraries);
 
@@ -20,4 +20,4 @@ router.get("/:id/score", protect, rescoreLibrary);
 
 router.post("/:id/", protect, postNewVersion);
 
-module.exports = router;
+export const libraryRoutes = router;

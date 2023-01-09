@@ -1,6 +1,6 @@
-const { Library, Criterium } = require("../models/libraryModel");
-const User = require("../models/userModel");
-const { scoreLibrary } = require("../services/scoring");
+import { libraryModel, criteriumModel } from "../models/libraryModel.js";
+import User from "../models/userModel.js";
+import { scoreLibrary } from "../services/scoring.js";
 
 const postTestResult = async (req, res) => {
   const data = req.body.testData;
@@ -8,7 +8,7 @@ const postTestResult = async (req, res) => {
   // prepare criteria
   const criteria = req.body.criteria.map(
     (item) =>
-      new Criterium({
+      new criteriumModel({
         criterium_id: item._id,
         text: item.text,
         help: item.help,
@@ -17,7 +17,7 @@ const postTestResult = async (req, res) => {
       })
   );
 
-  const library = await Library.findById(data.libraryId);
+  const library = await libraryModel.findById(data.libraryId);
   if (!library) {
     console.error("Library not found: ID invalid");
   }
@@ -68,4 +68,4 @@ const postTestResult = async (req, res) => {
   res.status(200);
 };
 
-module.exports = postTestResult;
+export default postTestResult;

@@ -1,8 +1,9 @@
-const express = require("express");
+import express from "express";
+
 const router = express.Router();
-const { protect } = require("../middleware/authMiddleware");
-const postTestResult = require("../controllers/testingController");
+import { protect } from "../middleware/authMiddleware.js";
+import postTestResult from "../controllers/testingController.js";
 
 router.post("/", protect, postTestResult);
 
-module.exports = router;
+export const testingRoutes = router;
