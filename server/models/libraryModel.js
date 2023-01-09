@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 // Scoring
 const criteriumScore = mongoose.Schema({
@@ -98,8 +98,6 @@ const librarySchema = mongoose.Schema(
   }
 );
 
-module.exports = {
-  Library: mongoose.model("Library", librarySchema),
-  Version: mongoose.model("Version", versionSchema),
-  Criterium: mongoose.model("Criterium", criteriumSchema),
-};
+export const libraryModel = mongoose.model("Library", librarySchema);
+export const versionModel = mongoose.model("Version", versionSchema);
+export const criteriumModel = mongoose.model("Criterium", criteriumSchema);

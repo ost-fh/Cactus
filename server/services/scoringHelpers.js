@@ -1,6 +1,6 @@
-const gini = require("gini");
+import gini from "gini";
 
-const calculateAverage = (values) => {
+export const calculateAverage = (values) => {
   // filter values to skip undefined values
   const filteredValues = values.filter((item) => item);
   const average =
@@ -9,7 +9,7 @@ const calculateAverage = (values) => {
   return result;
 };
 
-const combinePerCriteria = (scorePerCriterium) => {
+export const combinePerCriteria = (scorePerCriterium) => {
   const results = [];
   for (const test of scorePerCriterium) {
     for (const criterium of test) {
@@ -30,7 +30,7 @@ const combinePerCriteria = (scorePerCriterium) => {
 };
 
 // Calculates normalized Gini Coefficient
-const calculateAgreementScores = (scoresPerCriterium) => {
+export const calculateAgreementScores = (scoresPerCriterium) => {
   scoresPerCriterium.forEach((item) => {
     const giniArray = [item.positive, item.negative, item.notDecided];
     const giniResult = gini.unordered(giniArray);
@@ -52,7 +52,7 @@ const combineCriteria = (criterium1, criterium2) => {
   };
 };
 
-const extractCriteria = (criterium) => {
+export const extractCriteria = (criterium) => {
   const score = choiceToScore(criterium.choice);
   return {
     criterium_id: criterium.criterium_id,
@@ -62,7 +62,7 @@ const extractCriteria = (criterium) => {
   };
 };
 
-const calculateScorePercentage = (score) => {
+export const calculateScorePercentage = (score) => {
   if (score.positive === 0 && score.negative === 0) {
     return undefined;
   }
@@ -70,7 +70,7 @@ const calculateScorePercentage = (score) => {
   return Math.floor((score.positive * 100) / total);
 };
 
-const combineScore = (scores) => {
+export const combineScore = (scores) => {
   const resultingScore = {
     positive: 0,
     negative: 0,
@@ -91,7 +91,7 @@ const combineScore = (scores) => {
   return resultingScore;
 };
 
-const choiceToScore = (choice) => {
+export const choiceToScore = (choice) => {
   if (!(choice === "yes" || choice === "no" || choice === "not_decidable")) {
     console.error("invalid choice value: " + choice);
   }
@@ -101,14 +101,4 @@ const choiceToScore = (choice) => {
     notDecided: choice === "not_decidable" ? 1 : 0,
     amountOfTests: 0,
   };
-};
-
-module.exports = {
-  calculateAverage,
-  combinePerCriteria,
-  calculateAgreementScores,
-  extractCriteria,
-  calculateScorePercentage,
-  combineScore,
-  choiceToScore,
 };

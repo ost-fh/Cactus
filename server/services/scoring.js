@@ -1,5 +1,5 @@
-const { Library } = require("../models/libraryModel");
-const {
+import { libraryModel } from "../models/libraryModel.js";
+import {
   calculateAverage,
   combinePerCriteria,
   calculateAgreementScores,
@@ -7,12 +7,12 @@ const {
   calculateScorePercentage,
   combineScore,
   choiceToScore,
-} = require("./scoringHelpers");
+} from "./scoringHelpers.js";
 
 const AMOUNT_OF_MODES = 2;
 
-const scoreLibrary = async (libraryId) => {
-  const library = await Library.findById(libraryId);
+export const scoreLibrary = async (libraryId) => {
+  const library = await libraryModel.findById(libraryId);
   console.log(`SCORING ${library.title}, id: ${library._id}`);
 
   for (const version of library.versions) {
@@ -113,5 +113,3 @@ const scoreTest = (test) => {
     );
   }
 };
-
-module.exports = { scoreLibrary };
