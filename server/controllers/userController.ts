@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import User from "../models/userModel.js";
+import User from "../models/userModel";
+import { Request, Response } from "express";
 
-export const registerUser = async (req, res) => {
+export const registerUser = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
 
   // input valitation
@@ -34,7 +35,7 @@ export const registerUser = async (req, res) => {
     res.status(201).json({
       _id: user._id,
       username: user.username,
-      token: generateToken(user._id),
+      token: generateToken(user._id.toString()),
     });
   } else {
     res.status(400);
@@ -43,7 +44,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
-export const loginUser = async (req, res) => {
+export const loginUser = async (req: Request, res: Response) => {
   const { username, password } = req.body;
   // input validation
   if (!username || !password) {
@@ -55,11 +56,12 @@ export const loginUser = async (req, res) => {
   const user = await User.findOne({ username });
 
   if (user && (await bcrypt.compare(password, user.password))) {
+    console.log(`LOGIN for ${user.username} succeeded`);
     res.json({
       _id: user._id,
       username: user.username,
       email: user.email,
-      token: generateToken(user._id),
+      token: generateToken(user._id.toString()),
     });
   } else {
     res.status(400);
@@ -67,6 +69,6 @@ export const loginUser = async (req, res) => {
   }
 };
 
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "2d" });
+const generateToken = (id: string) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET!, { expiresIn: "2d" });
 };

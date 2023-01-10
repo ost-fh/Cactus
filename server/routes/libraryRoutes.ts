@@ -1,14 +1,14 @@
 import express from "express";
 
 const router = express.Router();
-import { protect } from "../middleware/authMiddleware.js";
+import { protect } from "../middleware/authMiddleware";
 import {
   getLibraries,
   postLibrary,
   getLibrary,
   postNewVersion,
   rescoreLibrary,
-} from "../controllers/libraryController.js";
+} from "../controllers/libraryController";
 
 router.get("/", getLibraries);
 
