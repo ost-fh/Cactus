@@ -66,7 +66,7 @@ export const calculateAgreementScores = (
   });
 };
 
-const combineCriteria = (
+export const combineCriteria = (
   criterium1: ICriteriumScoreSchema,
   criterium2: ICriteriumScoreSchema
 ) => {
