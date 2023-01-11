@@ -1,4 +1,3 @@
-// import gini from "gini";
 import {
   IAggregatedScoreSchema,
   ICriteriumSchema,

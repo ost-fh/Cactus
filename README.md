@@ -2,17 +2,17 @@
 
 ## Installation
 
-1. Make a copy of ` mv .env .env.local`
-2. Set mongoDB path in .env.local to your installation
-3. Run `npm install`
-4. Optional: change port of server in .env.local
-5. Optional: import libraries.json
+1. Make a copy of `mv .env .env.local`
+2. Create a database in MongoDB
+3. Set `MONGO_URI` in .env.local to your installation: `mongodb://<host>/<database>`
+4. Run `npm install`
+5. Optional: import libraries.json in a collection called `libraries`
 
-## Run
+## Running the server
 
 `npm run dev` for development (nodemon)
 
-`npm run start` für normalen Betrieb
+`npm start` for regular usage
 
 ## Test
 
