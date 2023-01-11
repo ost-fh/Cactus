@@ -17,3 +17,8 @@
 ## Test
 
 `npm test` to run tests
+
+## Other useful commands
+
+`prettier --check ./src` checks the formatting on all files
+`prettier --write ./src` formats all files
