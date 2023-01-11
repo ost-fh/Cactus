@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { BsBoxArrowUpRight } from "react-icons/bs";
 
 import { getLibrary } from "../../shared/services/api";
 import { component, library, version } from "../../shared/resources/types";
@@ -127,7 +126,6 @@ const LibraryDetail = () => {
                 to={`/testlab/${library?._id}/${version?.version}`}
                 className='button-primary button-wide'
                 label='Add a Component Test'
-                icon={<BsBoxArrowUpRight />}
               />
             ) : (
               <Alert type='info'>

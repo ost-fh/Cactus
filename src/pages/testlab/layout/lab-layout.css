@@ -10,9 +10,6 @@
   gap: 0.7rem;
 }
 
-.lab-start {
-}
-
 .specify-component {
   padding: 0.7rem;
   border: 1px gray solid;
@@ -51,9 +48,6 @@
   gap: 1rem;
 }
 
-.component-test {
-}
-
 .test-general {
   display: flex;
   flex-direction: column;
@@ -67,9 +61,6 @@
   display: flex;
   gap: 1rem;
   margin: 1rem 0;
-}
-
-.test-list {
 }
 
 .test-instructions {
