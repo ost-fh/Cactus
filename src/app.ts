@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
-import connectDB from "./config/db.js";
-import { errorHandler } from "./middleware/errorMiddleware.js";
-import { userRoutes } from "./routes/userRoutes.js";
-import { libraryRoutes } from "./routes/libraryRoutes.js";
-import { testingRoutes } from "./routes/testingRoutes.js";
+import connectDB from "./config/db";
+import { errorHandler } from "./middleware/errorMiddleware";
+import { userRoutes } from "./routes/userRoutes";
+import { libraryRoutes } from "./routes/libraryRoutes";
+import { testingRoutes } from "./routes/testingRoutes";
 
 export const app = express();
 

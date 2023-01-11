@@ -1,7 +1,18 @@
 import jwt from "jsonwebtoken";
-import User from "../models/userModel.js";
+import User from "../models/userModel";
+import { Request, Response, NextFunction } from "express";
 
-export const protect = async (req, res, next) => {
+declare module "express-serve-static-core" {
+  interface Request {
+    user?: any;
+  }
+}
+
+export const protect = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     if (!req.headers.authorization) {
       throw new Error("no authorization header");
@@ -15,7 +26,10 @@ export const protect = async (req, res, next) => {
       throw new Error("no token");
     }
 
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    const decodedToken = jwt.verify(
+      token,
+      process.env.JWT_SECRET!
+    ) as jwt.JwtPayload;
 
     req.user = await User.findById(decodedToken.id).select("-password");
 

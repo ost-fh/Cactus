@@ -1,8 +1,8 @@
 import express from "express";
 
 const router = express.Router();
-import { protect } from "../middleware/authMiddleware.js";
-import postTestResult from "../controllers/testingController.js";
+import { protect } from "../middleware/authMiddleware";
+import postTestResult from "../controllers/testingController";
 
 router.post("/", protect, postTestResult);
 

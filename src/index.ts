@@ -5,7 +5,7 @@ dotenv.config({
 });
 
 (async () => {
-  const app = (await import("./app.js")).app;
+  const app = (await import("./app")).app;
   const port = process.env.PORT;
 
   app.listen(port, () =>
