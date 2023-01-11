@@ -2,10 +2,10 @@
     "name": "ba-backend",
     "version": "1.0.0",
     "description": "",
-    "main": "server.js",
+    "main": "src/index.js",
     "scripts": {
-        "start": "ts-node server/index.js",
-        "dev": "nodemon server/index.js",
+        "start": "ts-node src/index.ts",
+        "dev": "nodemon src/index.ts",
         "test": "jest"
     },
     "keywords": [],
