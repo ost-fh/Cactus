@@ -31,7 +31,7 @@ export const registerUser = async (req: Request, res: Response) => {
   });
 
   if (user) {
-    console.log(`user ${user.username} created`);
+    console.log(`POST user: ${user.username} registered`);
     res.status(201).json({
       _id: user._id,
       username: user.username,

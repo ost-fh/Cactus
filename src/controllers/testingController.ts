@@ -76,7 +76,11 @@ const postTestResult = async (req: Request, res: Response) => {
     }
   }
   await library.save();
-  // scoreLibrary(data.libraryId);
+  console.log(
+    `POST testlab: added tests to library ${library.title} - ${library._id}`
+  );
+
+  scoreLibrary(data.libraryId);
 
   res.status(200);
 };

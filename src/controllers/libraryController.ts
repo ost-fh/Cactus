@@ -32,6 +32,9 @@ export const postLibrary = async (req: Request, res: Response) => {
     currentVersion,
     versions: [{ version: currentVersion }],
   });
+  console.log(
+    `POST library: added new library ${library.title} id: ${library._id}`
+  );
   res.status(200).json(library);
 };
 
@@ -45,7 +48,6 @@ export const postNewVersion = async (req: Request, res: Response) => {
   const library = await libraryModel.findById(req.params.id);
   if (library) {
     if (library.versions.find((item) => item.version === newVersion)) {
-      console.log("version already exists");
       res.status(400);
       res.json({ message: "version already exists" });
       return;
@@ -54,7 +56,7 @@ export const postNewVersion = async (req: Request, res: Response) => {
     library.currentVersion = newVersion;
     await library.save();
     console.log(
-      `library POST: added new version ${newVersion} to ${library.title}, id: ${library._id}`
+      `POST library/:id: added new version ${newVersion} to ${library.title}, id: ${library._id}`
     );
     res.status(200).json(library);
   }
