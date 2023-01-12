@@ -66,14 +66,6 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
             </Link>
             <Link
               className={`nav-link ${
-                activeLink === "about" ? "nav-link-active" : ""
-              }`}
-              to='/about'
-            >
-              About
-            </Link>
-            <Link
-              className={`nav-link ${
                 activeLink === "contribute" ? "nav-link-active" : ""
               }`}
               to='/contribute'

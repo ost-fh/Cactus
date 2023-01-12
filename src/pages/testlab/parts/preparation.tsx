@@ -26,11 +26,23 @@ const Preparation = ({ testData, linkDocs }: PreparationProps) => {
         <div>
           <h3>Step 1: Set up Browser and Screenreader</h3>
           <p>
-            To test with a screenreader, please have <strong>NVDA</strong> ready
-            and use <strong>Chrome</strong>. This way, we will have reproducible
-            results. If you're on Mac, you can use{" "}
-            <a href='https://assistivlabs.com/sign-up'>AssistivLabs</a> (14 days
-            free, sign-up required).
+            To test with a screenreader, please have{" "}
+            <a href='https://www.nvaccess.org/'>
+              <strong>NVDA</strong>
+            </a>{" "}
+            ready and use <strong>Chrome</strong>. This way, we will have
+            reproducible results. If you're on Mac, you can use{" "}
+            <a href='https://assistivlabs.com/sign-up'>
+              the service AssistivLabs
+            </a>{" "}
+            (14 days free, sign-up required) to access Chrome and NVDA.
+          </p>
+          <p>
+            If you never used NVDA before, here is a great{" "}
+            <a href='https://webaim.org/articles/nvda/'>
+              Tutorial on webaim.org
+            </a>
+            .
           </p>
         </div>
       )}
@@ -48,10 +60,14 @@ const Preparation = ({ testData, linkDocs }: PreparationProps) => {
               target='_blank'
               rel='noreferrer'
             >
-              Open documentation
+              Open documentation in new tab
             </a>
           </div>
-          <img src='/instr2.png' alt='showing two windows besides each other' />
+          <img
+            className='test-instruction-img'
+            src='/instruction.png'
+            alt='showing two windows besides each other'
+          />
         </div>
       </div>
       <div>

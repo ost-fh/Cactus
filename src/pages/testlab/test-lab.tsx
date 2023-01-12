@@ -6,7 +6,6 @@ import SpecifyTest from "./parts/specify-test";
 import TestForm from "./parts/test-form";
 import TestLabLayout from "./layout/lab-layout";
 import Confirmation from "./parts/confirmation";
-import NotFound from "../not-found/not-found";
 import Preparation from "./parts/preparation";
 import Alert from "../../shared/components/alert";
 import Heading from "../../shared/components/heading";

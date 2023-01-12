@@ -3,14 +3,14 @@
 @font-face {
   font-family: "AtkinsonHyperlegible";
   src: local("AtkinsonHyperlegible-Regular"),
-    url("./shared/fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+    url("../fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "AtkinsonHyperlegible";
   src: local("AtkinsonHyperlegible-Bold"),
-    url("./shared/fonts/AtkinsonHyperlegible-Bold.ttf") format("truetype");
+    url("../fonts/AtkinsonHyperlegible-Bold.ttf") format("truetype");
   font-weight: bold;
 }
 
@@ -142,4 +142,9 @@ button:disabled {
 
 .form label {
   text-align: right;
+}
+
+.form-control-center {
+  grid-column-start: span 2;
+  text-align: center;
 }

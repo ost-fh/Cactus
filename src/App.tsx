@@ -2,21 +2,20 @@ import React, { createContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import "./shared/layout/reset.css";
-import "./App.css";
+import "./shared/layout/general.css";
 import "./shared/fonts/AtkinsonHyperlegible-Regular.ttf";
 import "./shared/fonts/AtkinsonHyperlegible-Bold.ttf";
 
-import NotFound from "./pages/not-found/not-found";
 import AddLibrary from "./pages/add-library/add-library";
-import About from "./pages/about/about";
 import TestLab from "./pages/testlab/test-lab";
-import { useUserData } from "./shared/services/use-token";
 import LogOut from "./pages/logout/logout";
 import Home from "./pages/home/home";
 import Libraries from "./pages/libraries/libraries";
 import LibraryDetail from "./pages/library-detail/library-detail";
 import Login from "./pages/login/login";
 import Contribute from "./pages/contribute/contribute";
+import NotFound from "./pages/not-found/not-found";
+import { useUserData } from "./shared/services/use-token";
 
 export type UserData = {
   _id: string;
@@ -50,7 +49,6 @@ function App() {
             path='contribute'
             element={<Contribute setUserData={setUserData} />}
           />
-          <Route path='about' element={<About />} />
           <Route path='login' element={<Login setUserData={setUserData} />} />
           <Route path='logout' element={<LogOut logOut={logOut} />} />
         </Route>

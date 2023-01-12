@@ -13,7 +13,7 @@ const Confirmation = ({ testData }: ConfirmationProps) => {
     <div className='lab-layout'>
       <LabPathDisplay currentPage={"confirm"} />
       <Heading>Thank you very much!</Heading>
-      <p>Your evaluation was added to the library-results.</p>
+      <p>Your evaluation was added to the library results.</p>
       <div className='control-group'>
         <LinkButton
           label={"Go to library overview"}

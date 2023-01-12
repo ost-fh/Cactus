@@ -100,29 +100,15 @@ const home = () => {
       </div>
       <div className='home-section '>
         <div className='home-title'>
-          <h3>How does it work?</h3>
-        </div>
-        <div className='home-text'>
-          <p>
-            Our community tests UI libraries to see, if they provide a baseline
-            of accessibility. There is a criteria-catalogue specially developed
-            for this, that is manually checked against different components of
-            the libraries.
-          </p>
-          <Link to='/about' className='button'>
-            Find out how it works
-          </Link>
-        </div>
-      </div>
-      <div className='home-section '>
-        <div className='home-title'>
           <h3>We need your help!</h3>
         </div>
         <div className='home-text'>
           <p>
             There are a lot of UI libraries with a lot of components. It takes a
             lot of time to test them all. Therefore we made the testing
-            crowdsourced. Are you interested to help out?
+            crowdsourced. We hav ea criteria-catalogue specially developed for
+            this, and you can check it against different components of the
+            libraries. Are you interested to help out?
           </p>
           <Link to='/contribute' className='button'>
             See how you can contribute

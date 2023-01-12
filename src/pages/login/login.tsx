@@ -53,29 +53,30 @@ const Login = (props: { setUserData: any }) => {
     <PublicLayout activeLink='login'>
       <div className='login'>
         <Heading noFocus>Login</Heading>
-
-        <form className='form' onSubmit={handleSubmit}>
-          <label htmlFor='login-username'>Username</label>
-          <input
-            autoFocus
-            required
-            id='login-username'
-            type='text'
-            onChange={(e) => setUserName(e.target.value)}
-          />
-          <label htmlFor='login-password'>Password</label>
-          <input
-            required
-            id='login-password'
-            type='password'
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <div>
-            <button className='button-primary' type='submit'>
-              Log In
-            </button>
-          </div>
-        </form>
+        {formState !== state.success && (
+          <form className='form' onSubmit={handleSubmit}>
+            <label htmlFor='login-username'>Username</label>
+            <input
+              autoFocus
+              required
+              id='login-username'
+              type='text'
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <label htmlFor='login-password'>Password</label>
+            <input
+              required
+              id='login-password'
+              type='password'
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <div className='form-control-center'>
+              <button className='button-primary' type='submit'>
+                Log In
+              </button>
+            </div>
+          </form>
+        )}
         <div aria-live='assertive'>
           {formState === state.loading && (
             <Alert type='info' message={`Login in progress...`} />

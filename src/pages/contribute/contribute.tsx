@@ -36,21 +36,23 @@ const Contribute = (props: { setUserData: any }) => {
 
   return (
     <PublicLayout activeLink='contribute'>
+      <header>
+        <Heading>Would you like to contribute?</Heading>
+      </header>
       <div className='layout-split'>
         <div>
-          <Heading>Would you like to contribute?</Heading>
           <p>
-            You can register now to help us and the community to improve the
-            catalogue of libraries and rated components.{" "}
+            You can register now to help improving the catalogue of libraries
+            and rated components.{" "}
           </p>
           <p>
-            It would be best if you already have basic knowledge of web
-            development and also a little knowledge of accessibility.
+            It would be best if you have a basic knowledge of web development
+            and also a little knowledge of accessibility.
           </p>
         </div>
-        <div>
-          <h2>Registration</h2>
-          <p>Please register to contribute to the Cactus Project</p>
+        <Alert type='help'>
+          <h3>Registration</h3>
+          <p>Please register to be able to contribute to Project Cactus.</p>
 
           {formState === "new" && (
             <form className='form' onSubmit={handleSubmit}>
@@ -77,7 +79,7 @@ const Contribute = (props: { setUserData: any }) => {
                 type='password'
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <div>
+              <div className='form-control-center'>
                 <button className='button-primary' type='submit'>
                   Register
                 </button>
@@ -103,7 +105,7 @@ const Contribute = (props: { setUserData: any }) => {
           {formState === "logged_in" && (
             <Alert message='You are already registered and logged in' />
           )}
-        </div>
+        </Alert>
       </div>
     </PublicLayout>
   );

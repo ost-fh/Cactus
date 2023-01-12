@@ -1,14 +1,16 @@
+/** general **/
+
 #lab-main {
   margin-bottom: 2rem;
 }
-
-/** lab-start **/
 
 .lab-layout {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
 }
+
+/* specify-test */
 
 .specify-component {
   padding: 0.7rem;
@@ -41,42 +43,13 @@
 
 /** component tests **/
 
-.test-outcome {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.test-general {
-  display: flex;
-  flex-direction: column;
-}
-
-.test-instruction img {
-  max-height: 50vh;
-}
-
-.test-instruction > section {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.test-instructions {
-  border: grey solid 1px;
-  border-radius: 0.4rem;
-  padding: 1rem;
-  background-color: rgb(213, 244, 213);
-  margin-bottom: 1rem;
+.test-instruction-img {
+  max-height: 10rem;
+  justify-self: center;
 }
 
 .control-group {
   display: flex;
   gap: 0.7rem;
   align-items: center;
-}
-
-.text-red {
-  color: rgb(202, 0, 0);
 }
