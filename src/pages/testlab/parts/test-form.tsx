@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postTestResult } from "../../../shared/services/api";
-import { UserContext } from "../../../App";
 import LinkButton from "../../../shared/components/link-button";
 import { criteriumResult, testData } from "../../../shared/resources/types";
 import { criteriaCatalogue } from "../../../shared/resources/criteria";
@@ -17,7 +16,6 @@ type TestFormProps = {
 };
 
 const TestForm = ({ testData, linkDocs }: TestFormProps) => {
-  const userData = useContext(UserContext);
   const navigate = useNavigate();
 
   const [testResult, setTestResult] = useState<criteriumResult[]>();
@@ -54,10 +52,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (testResult) {
-      postTestResult(
-        { testData: testData, criteria: testResult },
-        userData!.token
-      );
+      postTestResult({ testData: testData, criteria: testResult });
       navigate("../confirmation");
     }
   };

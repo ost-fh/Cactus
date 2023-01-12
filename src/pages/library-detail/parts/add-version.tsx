@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../../../App";
+import React, { useState } from "react";
 import { postNewVersion } from "../../../shared/services/api";
 import "./add-version.css";
 import Alert from "../../../shared/components/alert";
@@ -10,7 +9,6 @@ type AddVersionProps = {
 };
 
 const AddVersion = ({ libraryId, changeVersion }: AddVersionProps) => {
-  const userData = useContext(UserContext);
   const [newVersionNumber, setNewVersionNumber] = useState("");
 
   enum state {
@@ -30,7 +28,7 @@ const AddVersion = ({ libraryId, changeVersion }: AddVersionProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFormState(state.loading);
-    postNewVersion(newVersionNumber, libraryId, userData!.token)
+    postNewVersion(newVersionNumber, libraryId)
       .then(() => {
         setFormState(state.success);
         changeVersion(newVersionNumber);

@@ -1,18 +1,39 @@
+import { UserData } from "../../App";
 import { newLibrary, testResultTransmission } from "../resources/types";
 
 const API_URL = "http://localhost:3010/api";
+
+const getUserData = (): UserData | undefined => {
+  const userDataString = sessionStorage.getItem("userData");
+  if (userDataString) {
+    return JSON.parse(userDataString);
+  } else {
+    return undefined;
+  }
+};
+
+const httpService = (method: "GET" | "POST", url: string, data?: any) => {
+  const userData = getUserData();
+  const fetchHeaders = new Headers({ "content-type": "application/json" });
+
+  if (userData && userData.token) {
+    fetchHeaders.append("authorization", "Bearer " + userData.token);
+  }
+
+  return fetch(url, {
+    method: method,
+    headers: fetchHeaders,
+    body: JSON.stringify(data),
+  });
+};
 
 export const loginUser = async (credentials: {
   username: string;
   password: string;
 }) => {
-  return fetch(`${API_URL}/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
+  return httpService("POST", `${API_URL}/auth/login`, credentials).then(
+    (data) => data.json()
+  );
 };
 
 export const registerUser = async (credentials: {
@@ -20,79 +41,48 @@ export const registerUser = async (credentials: {
   email: string;
   password: string;
 }) => {
-  return fetch(`${API_URL}/auth/register`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => {
-    if (data.status === 201) {
-      return data.json();
-    } else {
-      throw new Error("failed");
+  return httpService("POST", `${API_URL}/auth/register`, credentials).then(
+    (data) => {
+      if (data.status === 201) {
+        return data.json();
+      } else {
+        throw new Error("failed");
+      }
     }
-  });
+  );
 };
 
 export const getLibraries = async () => {
-  return fetch(`${API_URL}/libraries`)
+  return httpService("GET", `${API_URL}/libraries`)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
 
 export const getLibrary = async (id: string) => {
-  return fetch(`${API_URL}/libraries/${id}`).then((data) => {
+  return httpService("GET", `${API_URL}/libraries/${id}`).then((data) => {
     if (data.status === 200) {
       return data.json();
     } else {
       throw new Error("failed");
     }
   });
-  // .catch((error) => console.error(error));
 };
 
-export const createLibrary = async (newLibrary: newLibrary, token: string) => {
-  return fetch(`${API_URL}/libraries`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newLibrary),
-  })
+export const createLibrary = async (newLibrary: newLibrary) => {
+  return httpService("POST", `${API_URL}/libraries`, newLibrary)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
 
-export const postTestResult = async (
-  testResult: testResultTransmission,
-  token: string
-) => {
-  return fetch(`${API_URL}/testlab`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(testResult),
-  })
+export const postTestResult = async (testResult: testResultTransmission) => {
+  return httpService("POST", `${API_URL}/testlab`, testResult)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
 
-export const postNewVersion = (
-  newVersion: string,
-  library: string,
-  token: string
-) => {
-  return fetch(`${API_URL}/libraries/${library}`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ newVersion: newVersion }),
+export const postNewVersion = (newVersion: string, library: string) => {
+  return httpService("POST", `${API_URL}/libraries/${library}`, {
+    newVersion: newVersion,
   }).then((data) => {
     if (data.status === 200) {
       return data.json();

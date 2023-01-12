@@ -32,7 +32,7 @@ const AddLibrary = () => {
     if (!userData) {
       throw new Error("missing userData");
     }
-    createLibrary(newLibrary, userData.token).then((res) => {
+    createLibrary(newLibrary).then((res) => {
       navigate(`/libraries/${res._id}`);
     });
   };
