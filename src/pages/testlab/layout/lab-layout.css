@@ -44,7 +44,8 @@
 /** component tests **/
 
 .test-instruction-img {
-  max-height: 10rem;
+  height: 10rem;
+  width: min-content;
   justify-self: center;
 }
 

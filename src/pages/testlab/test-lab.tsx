@@ -9,6 +9,12 @@ import Confirmation from "./parts/confirmation";
 import Preparation from "./parts/preparation";
 import Alert from "../../shared/components/alert";
 import Heading from "../../shared/components/heading";
+import {
+  browserName,
+  browserVersion,
+  osName,
+  osVersion,
+} from "react-device-detect";
 
 const TestLab = () => {
   const { id, version } = useParams();
@@ -19,7 +25,17 @@ const TestLab = () => {
     alternativeComponentNames: "",
     component: "",
     testMode: "",
+    userBrowser: "",
+    userOs: "",
   });
+
+  useEffect(() => {
+    if (testData.userBrowser === "") {
+      const userBrowser = `${browserName} ${browserVersion}`;
+      const userOs = `${osName} ${osVersion}`;
+      setTestData({ ...testData, userBrowser: userBrowser, userOs: userOs });
+    }
+  }, [testData]);
 
   useEffect(() => {
     if (id) {

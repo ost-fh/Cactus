@@ -71,6 +71,8 @@ export type testData = {
   component: string;
   alternativeComponentNames: string;
   testMode: string;
+  userOs: string;
+  userBrowser: string;
 };
 
 export type componentCriteria = {

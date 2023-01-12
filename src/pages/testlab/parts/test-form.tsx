@@ -54,7 +54,6 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (testResult) {
-      // console.log({ testData: testData, criteria: testResult });
       postTestResult(
         { testData: testData, criteria: testResult },
         userData!.token
