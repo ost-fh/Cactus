@@ -66,12 +66,17 @@ const postTestResult = async (req: Request, res: Response) => {
       const mode = component.modes.find((item) => item.name === data.testMode);
       if (mode) {
         const userdata = await User.findById(req.user.id);
-        mode.tests.push({ testedBy: userdata!.username, criteria: criteria });
+        mode.tests.push({
+          testedBy: userdata!.username,
+          criteria: criteria,
+          userBrowser: data.userBrowser,
+          userOs: data.userOs,
+        });
       }
     }
   }
   await library.save();
-  scoreLibrary(data.libraryId);
+  // scoreLibrary(data.libraryId);
 
   res.status(200);
 };

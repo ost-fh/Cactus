@@ -51,6 +51,8 @@ const criteriumSchema = new mongoose.Schema<ICriteriumSchema>({
 
 export interface ITestSchema {
   testedBy: string;
+  userOs: string;
+  userBrowser: string;
   criteria: ICriteriumSchema[];
   testScore?: IAggregatedScoreSchema;
   scorePerCriterium?: ICriteriumScoreSchema[];
@@ -61,6 +63,8 @@ const testSchema = new mongoose.Schema<ITestSchema>({
     type: String,
     required: true,
   },
+  userBrowser: String,
+  userOs: String,
   criteria: [criteriumSchema],
   testScore: aggregatedScoreSchema,
   scorePerCriterium: [criteriumScoreSchema],
