@@ -102,8 +102,12 @@ const LibraryDetail = () => {
         </header>
         <section className='lib-info layout-split'>
           <div className='lib-infos'>
-            <a href={library?.linkHome}>Homepage</a>
-            <a href={library?.linkDocs}>Documentation</a>
+            <a href={library?.linkHome} target='_blank' rel='noreferrer'>
+              Homepage (opens in new Tab)
+            </a>
+            <a href={library?.linkDocs} target='_blank' rel='noreferrer'>
+              Documentation (opens in new Tab)
+            </a>
             <label>
               Version:{" "}
               <select

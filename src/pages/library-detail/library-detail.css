@@ -6,6 +6,15 @@
   margin-top: 2rem;
 }
 
+@media print {
+  .page-header {
+    display: none;
+  }
+  .lib-info {
+    display: none;
+  }
+}
+
 .lib-detail-help {
   display: flex;
   flex-direction: column;
