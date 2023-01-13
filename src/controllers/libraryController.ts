@@ -61,8 +61,3 @@ export const postNewVersion = async (req: Request, res: Response) => {
     res.status(200).json(library);
   }
 };
-
-export const rescoreLibrary = async (req: Request, res: Response) => {
-  scoreLibrary(req.params.id);
-  res.status(200).json({ message: "success" });
-};
