@@ -61,6 +61,7 @@ const Login = (props: { setUserData: any }) => {
               required
               id='login-username'
               type='text'
+              value={username}
               onChange={(e) => setUserName(e.target.value)}
             />
             <label htmlFor='login-password'>Password</label>
@@ -68,6 +69,7 @@ const Login = (props: { setUserData: any }) => {
               required
               id='login-password'
               type='password'
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <div className='form-control-center'>
