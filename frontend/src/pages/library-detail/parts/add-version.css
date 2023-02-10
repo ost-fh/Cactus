@@ -1,0 +1,8 @@
+.add-version-form {
+  border: solid rgb(212, 212, 212) 1px;
+  border-radius: 0.5rem;
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}

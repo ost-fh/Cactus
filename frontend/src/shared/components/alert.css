@@ -1,0 +1,41 @@
+.alert {
+  border-radius: 0.4rem;
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.alert-info {
+  background-color: rgb(255, 250, 216);
+  /* border: rgb(247, 241, 126) solid 1px; */
+}
+
+.alert-help {
+  background-color: rgb(232, 242, 254);
+  /* border: rgb(171, 212, 249) solid 1px; */
+}
+
+.alert-success {
+  background-color: rgb(227, 255, 219);
+  /* border: rgb(161, 241, 139) solid 1px; */
+}
+
+.alert-error {
+  background-color: rgb(253, 217, 217);
+  /* border: rgb(240, 121, 121) solid 1px; */
+}
+
+.alert-with-icon {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.alert-with-icon > p {
+  margin: 0;
+}
+
+.alert-with-icon > svg {
+  width: 1rem;
+  flex-shrink: 0;
+}

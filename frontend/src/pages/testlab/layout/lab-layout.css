@@ -1,0 +1,56 @@
+/** general **/
+
+#lab-main {
+  margin-bottom: 2rem;
+}
+
+.lab-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* specify-test */
+
+.specify-component {
+  padding: 0.7rem;
+  border: 1px gray solid;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.specify-component img {
+  width: 6rem;
+}
+
+.specify-component-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.specify-component-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.specify-component-options {
+  display: flex;
+  gap: 0.7rem;
+}
+
+/** component tests **/
+
+.test-instruction-img {
+  height: 10rem;
+  width: min-content;
+  justify-self: center;
+}
+
+.control-group {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}

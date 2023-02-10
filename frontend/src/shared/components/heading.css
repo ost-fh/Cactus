@@ -1,0 +1,4 @@
+/*hide outline on h2 auto-focus*/
+.heading-h2:focus {
+  outline: none;
+}

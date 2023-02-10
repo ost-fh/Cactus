@@ -1,3 +1,6 @@
-node_modules/
-package-lock.json
-package.json
+# Files to ignore
+/node_modules
+/coverage
+/build
+/logs
+**/*.json

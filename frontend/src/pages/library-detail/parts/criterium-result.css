@@ -1,0 +1,16 @@
+.criterium-detail {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: baseline;
+  gap: 1rem;
+  width: 100%;
+}
+
+.criterium-result {
+  background-color: rgb(238, 238, 238);
+  padding: 0.4rem 0.7rem;
+  border-radius: 1rem / 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
