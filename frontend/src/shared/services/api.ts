@@ -1,7 +1,7 @@
 import { UserData } from "../../App";
 import { newLibrary, testResultTransmission } from "../resources/types";
 
-const API_URL = "http://localhost:3010/api";
+const API_URL = (window as any).env?.REACT_APP_BACKEND_BASE_URI || process.env.REACT_APP_BACKEND_BASE_URI || "";
 
 const getUserData = (): UserData | undefined => {
   const userDataString = sessionStorage.getItem("userData");

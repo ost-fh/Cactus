@@ -1,25 +1,23 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  #frontend:
-  #  image: $CONTAINER_REGISTRY_PATH/smart-factory/techpark/ipc/sap-proxy/stable:latest
-  #  environment:
-  #    - REACT_APP_FRONTEND_PROTOCOL=${FRONTEND_PROTOCOL}
-  #    - REACT_APP_FRONTEND_HOST=${FRONTEND_HOST}
-  #    - REACT_APP_FRONTEND_PORT=${FRONTEND_PORT}
-  #    - REACT_APP_BACKEND_PROTOCOL=${BACKEND_PROTOCOL}
-  #    - REACT_APP_BACKEND_HOST=${BACKEND_HOST}
-  #    - REACT_APP_BACKEND_PORT=${BACKEND_PORT}
-  #  networks:
-  #    - web
-  #    - default
-  #  deploy:
-  #    labels:
-  #      caddy: sapproxy.sifs0003.infs.ch
-  #      caddy.reverse_proxy: "{{upstreams $SERVICE_PORT}}"
-  #    restart_policy:
-  #      condition: "on-failure"
-                
+  frontend:
+    image: $CONTAINER_REGISTRY_PATH/frontend:latest
+    environment:
+      - REACT_APP_BACKEND_BASE_URI=https://cactus-api.sifs0003.infs.ch/api
+      #- REACT_APP_FRONTEND_PROTOCOL=${FRONTEND_PROTOCOL}
+      #- REACT_APP_FRONTEND_HOST=${FRONTEND_HOST}
+      #- REACT_APP_FRONTEND_PORT=${FRONTEND_PORT}
+    networks:
+      - web
+      - default
+    deploy:
+      labels:
+        caddy: cactus.sifs0003.infs.ch
+        caddy.reverse_proxy: "{{upstreams $SERVICE_PORT}}"
+      restart_policy:
+        condition: "on-failure"
+
   backend:
     image: $CONTAINER_REGISTRY_PATH/backend:latest
     environment:
@@ -40,7 +38,7 @@ services:
         caddy.reverse_proxy: "{{upstreams 5566}}"
       restart_policy:
         condition: "on-failure"
-        
+
   database:
     image: mongo:6.0.4-focal
     networks:
@@ -50,8 +48,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
     deploy:
       restart_policy:
-        condition: "on-failure"  
-  
+        condition: "on-failure"
+
 networks:
   web:
     external: true

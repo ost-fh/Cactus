@@ -13,12 +13,13 @@ RUN npm run build
 FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+
+
 EXPOSE 80
 
-#WORKDIR /usr/share/nginx/html
-#COPY ./inject-env.sh .
-#RUN chmod +x inject-env.sh
+WORKDIR /usr/share/nginx/html
+COPY ./inject-env-at-runtime.sh .
+RUN chmod +x inject-env-at-runtime.sh
 
-#CMD ["/bin/sh", "-c", "/usr/share/nginx/html/inject-env.sh && nginx -g \"daemon off;\""]
-CMD ["nginx", "-g", "daemon off;"]
-
+CMD ["/bin/sh", "-c", "/usr/share/nginx/html/inject-env-at-runtime.sh && nginx -g \"daemon off;\""]
