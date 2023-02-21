@@ -8,7 +8,7 @@ import {
   combineScore,
   extractCriteria,
 } from './scoring-helpers';
-import { AggregatedScore } from 'src/libraries/models/aggregated-score.schema';
+import AggregatedScore from 'src/libraries/models/aggregated-score.schema';
 import LibraryVersion from 'src/libraries/models/library-version.schema';
 import { LibraryDocument } from 'src/libraries/models/library.schema';
 import TestResult from 'src/libraries/models/test-result.schema';
@@ -38,7 +38,7 @@ export class ScoringService {
     }
   }
 
-  private runScoring(library: LibraryDocument) {
+  public runScoring(library: LibraryDocument) {
     if (library.versions) {
       for (const version of library.versions) {
         for (const component of version.components) {

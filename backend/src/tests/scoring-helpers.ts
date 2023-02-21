@@ -1,4 +1,4 @@
-import { AggregatedScore } from 'src/libraries/models/aggregated-score.schema';
+import AggregatedScore from 'src/libraries/models/aggregated-score.schema';
 import CriteriumScore from 'src/libraries/models/criterium-score.schema';
 import Criterium from 'src/libraries/models/criterium.schema';
 

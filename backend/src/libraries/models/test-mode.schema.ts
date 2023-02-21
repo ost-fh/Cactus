@@ -1,5 +1,4 @@
-import {
-  AggregatedScore,
+import AggregatedScore, {
   AggregatedScoreSchema,
 } from './aggregated-score.schema';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';

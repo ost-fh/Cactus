@@ -3,7 +3,7 @@ import {
   calculateGini,
   combineCriteria,
   sumOfArray,
-} from '../src/tests/scoring-helpers';
+} from './scoring-helpers';
 
 test('should sum up values correctly', () => {
   expect(sumOfArray([1, 2, 3, 4])).toBe(10);

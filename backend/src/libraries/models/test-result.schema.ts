@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import {
-  AggregatedScore,
+import AggregatedScore, {
   AggregatedScoreSchema,
 } from './aggregated-score.schema';
 import CriteriumScore, { CriteriumScoreSchema } from './criterium-score.schema';
