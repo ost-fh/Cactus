@@ -21,6 +21,7 @@ services:
       - PORT=3010
       - DATABASE_URL=mongodb://${DB_USERNAME}:${DB_PASSWORD}@database:27017/cactus
       - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
+      - FRONTEND_ORIGIN=https://cactus.sifs0003.infs.ch
     networks:
       - web
       - default

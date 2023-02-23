@@ -16,6 +16,10 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   const port = configService.get<EnvironmentVariables>('PORT', { infer: true });
   const corsConfig = configService.get<CorsConfig>('cors', { infer: true });
+  const frontendOrigin = configService.get<EnvironmentVariables>(
+    'FRONTEND_ORIGIN',
+    { infer: true },
+  );
 
   // Documentation
   const swaggerConfig = configService.get<SwaggerConfig>('swagger');
@@ -35,11 +39,7 @@ async function bootstrap() {
   // Cors
   if (corsConfig?.enabled) {
     app.enableCors({
-      origin: [
-        'http://localhost:3000',
-        //`${EnvVariableHelper.VARIABLES.FRONTEND_PROTOCOL}://${EnvVariableHelper.VARIABLES.FRONTEND_HOST}`,
-        //`${EnvVariableHelper.VARIABLES.FRONTEND_PROTOCOL}://www.${EnvVariableHelper.VARIABLES.FRONTEND_HOST}`,
-      ],
+      origin: ['http://localhost:3000', frontendOrigin],
       methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
       credentials: true,
       maxAge: 600,
