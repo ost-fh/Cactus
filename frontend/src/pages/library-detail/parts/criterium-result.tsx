@@ -1,9 +1,9 @@
-import React from "react";
-import { getCriterium } from "../../../shared/resources/criteria";
-import { criteriumScore } from "../../../shared/resources/types";
+import { criterium, criteriumScore } from "../../../shared/resources/types";
 import CountBubble from "../../../shared/components/count-bubble";
 import ResultBubble from "../../../shared/components/result-bubble";
 import "./criterium-result.css";
+import { useEffect, useState } from "react";
+import { getCriterium } from "../../../shared/services/api";
 
 type CriteriumResultProps = {
   item: criteriumScore;
@@ -11,7 +11,11 @@ type CriteriumResultProps = {
 
 /** This Component is to be used with ComponentResultDetails */
 const CriteriumResult = ({ item }: CriteriumResultProps) => {
-  const criterium = getCriterium(item.criterium_id);
+  const [criterium, setCriterium] = useState<criterium>();
+
+  useEffect(() => {
+    getCriterium(item.criterium_id).then((item) => setCriterium(item));
+  }, [item.criterium_id]);
 
   return (
     <div className='criterium-detail'>

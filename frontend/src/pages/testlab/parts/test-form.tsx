@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { postTestResult } from "../../../shared/services/api";
+import { getComponents, postTestResult } from "../../../shared/services/api";
 import LinkButton from "../../../shared/components/link-button";
-import { criteriumResult, testData } from "../../../shared/resources/types";
-import { criteriaCatalogue } from "../../../shared/resources/criteria";
+import {
+  componentCriteria,
+  criteriaGroup,
+  criterium,
+  criteriumResult,
+  testData,
+} from "../../../shared/resources/types";
 import Alert from "../../../shared/components/alert";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import LabPathDisplay from "../components/lab-path-display";
@@ -19,16 +24,12 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   const navigate = useNavigate();
 
   const [testResult, setTestResult] = useState<criteriumResult[]>();
-
-  // get the relevant criteria-group
-  const criteriaGroup = criteriaCatalogue
-    .find((item) => item.component === testData.component)
-    ?.criteria.find((item) => item.testMode === testData.testMode);
+  const [criteriaGroup, setCriteriaGroup] = useState<criteriaGroup>();
 
   // transform criteria in criteria with results (criteriumResult). save in testResult
   useEffect(() => {
     if (criteriaGroup && !testResult) {
-      const results = criteriaGroup.criteria.map((criterium: any) => {
+      const results = criteriaGroup.criteria.map((criterium: criterium) => {
         const result = { ...criterium, choice: "", comment: "" };
         return result;
       });
@@ -36,6 +37,20 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
     }
     return () => {};
   }, [criteriaGroup, testResult]);
+
+  // get the relevant criteria-group
+  useEffect(() => {
+    getComponents().then((items) => {
+      const res: criteriaGroup = items // get the relevant criteria-group
+        .find(
+          (item: componentCriteria) => item.component === testData.component
+        )
+        ?.testModes.find(
+          (item: criteriaGroup) => item.testMode === testData.testMode
+        );
+      setCriteriaGroup(res);
+    });
+  }, [testData.component, testData.testMode]);
 
   const handleChange = (newCriteriumData: criteriumResult) => {
     if (testResult) {

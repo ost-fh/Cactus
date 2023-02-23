@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { BsChevronDoubleLeft, BsChevronRight } from "react-icons/bs";
 import Alert from "../../../shared/components/alert";
 import LinkButton from "../../../shared/components/link-button";
-import { getLibrary } from "../../../shared/services/api";
-import { criteriaCatalogue } from "../../../shared/resources/criteria";
-import { library, testData } from "../../../shared/resources/types";
+import { getComponents, getLibrary } from "../../../shared/services/api";
+import {
+  componentCriteria,
+  library,
+  testData,
+} from "../../../shared/resources/types";
 import LabPathDisplay from "../components/lab-path-display";
 import SpecifyTestButton from "../components/specify-test-button";
 import { useNavigate } from "react-router-dom";
@@ -18,9 +21,9 @@ type SpecifyTestProps = {
 const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
   const navigate = useNavigate();
 
-  const components = criteriaCatalogue;
   const testModes = ["Keyboard", "Screenreader"];
   const [library, setLibrary] = useState<library | undefined>();
+  const [components, setComponents] = useState<componentCriteria[]>([]);
 
   // load Library for testnumbers and backlink
   useEffect(() => {
@@ -30,6 +33,10 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
       });
     }
   }, [testData.libraryId]);
+
+  useEffect(() => {
+    getComponents().then((items) => setComponents(items));
+  }, []);
 
   const handleChange = (
     component: string,

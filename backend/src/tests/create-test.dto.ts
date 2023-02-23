@@ -1,4 +1,4 @@
-import { Type } from 'class-transformer';
+import { Type, Transform } from 'class-transformer';
 import {
   IsDefined,
   IsString,
@@ -32,6 +32,7 @@ class TestDataDto {
 
 class CriteriaDto {
   @IsString()
+  @Transform(({ value }) => `${value}`)
   _id: string;
 
   @IsString()
