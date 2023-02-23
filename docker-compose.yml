@@ -5,9 +5,6 @@ services:
     image: $CONTAINER_REGISTRY_PATH/frontend:latest
     environment:
       - REACT_APP_BACKEND_BASE_URI=https://cactus-api.sifs0003.infs.ch/api
-      #- REACT_APP_FRONTEND_PROTOCOL=${FRONTEND_PROTOCOL}
-      #- REACT_APP_FRONTEND_HOST=${FRONTEND_HOST}
-      #- REACT_APP_FRONTEND_PORT=${FRONTEND_PORT}
     networks:
       - web
     deploy:
@@ -20,14 +17,10 @@ services:
   backend:
     image: $CONTAINER_REGISTRY_PATH/backend:latest
     environment:
-      - FRONTEND_ORIGIN=${FRONTEND_PROTOCOL}://${FRONTEND_HOST}:${FRONTEND_PORT}
-      - API_HOST=${BACKEND_HOST}
-      - API_PORT=3010
-      - DB_HOST=database
-      - DB_PORT=${CONTAINER_SERVICE_DB_PORT}
-      - DB_NAME=${BACKEND_DB_NAME}
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
+      #- FRONTEND_ORIGIN=${FRONTEND_PROTOCOL}://${FRONTEND_HOST}:${FRONTEND_PORT}
+      - PORT=3010
+      - DATABASE_URL=mongodb://${DB_USERNAME}:${DB_PASSWORD}@database:27017/cactus
+      - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
     networks:
       - web
       - default

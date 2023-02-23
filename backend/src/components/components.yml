@@ -1,0 +1,15 @@
+components: 
+  - component: Dialog
+    alternativeComponentNames: Modal, Promt
+    description: A dialog is a window overlaid over rest of the page. Users cannot interract with content outside of the dialog.
+    imageUrl: media/components/dialog.png # recommend rename to iconSrc
+    testModes: # changed name from criteria
+      - testMode: Keyboard
+        criteria:
+          - _id: 1,
+            text: The focus (style) of interactive elements is visible,
+            help: The focus is usually a ring around an interactive element, that shows what element is selected. To test this, navigate to an interactive example of a dialog inside the documentation. It usually opens with a button of some sort. Click besides it and try to navigate to it with the 'tab' key.
+  - component: Accordion
+    alternativeComponentNames: Disclosure,
+    description: An accordion is a vertically stacked set of headings each with a collapsible panel,
+    imageUrl: media/components/accordion.png
