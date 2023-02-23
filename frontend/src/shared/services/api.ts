@@ -1,5 +1,5 @@
 import { UserData } from "../../App";
-import { newLibrary, testResultTransmission } from "../resources/types";
+import { componentCriteria, criterium, newLibrary, testResultTransmission } from "../resources/types";
 
 const API_URL =
   (window as any).env?.REACT_APP_BACKEND_BASE_URI ||
@@ -61,6 +61,26 @@ export const getLibraries = async () => {
     .catch((error) => console.error(error));
 };
 
+export const getComponents = async () => {
+  return httpService("GET", `${API_URL}/components`)
+    .then((data) => data.json())
+    .catch((error) => console.error(error));
+};
+
+export const getAllCriteria = async (): Promise<criterium[]> => {
+  const allCriteria: componentCriteria[] = await getComponents();
+  const res = allCriteria.map((component) => {
+    return component.testModes.map((group) => group.criteria);
+  });
+  return res.flat(2);
+};
+
+export const getCriterium = async (id: string): Promise<criterium | undefined> => {
+  const allCriteria = await getAllCriteria();
+  return allCriteria.find((item) => item._id === id);
+};
+
+
 export const getLibrary = async (id: string) => {
   return httpService("GET", `${API_URL}/libraries/${id}`).then((data) => {
     if (data.status === 200) {
@@ -92,7 +112,7 @@ export const postNewVersion = (newVersion: string, library: string) => {
   return httpService("POST", `${API_URL}/libraries/${library}`, {
     name: newVersion,
   }).then((data) => {
-    if (data.status === 200) {
+    if (data.status === 200 || data.status === 201) {
       return data.json();
     } else {
       throw new Error("Post failed");
