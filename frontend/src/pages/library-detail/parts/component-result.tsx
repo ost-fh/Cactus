@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
-import { component } from "../../../shared/resources/types";
+import { component, componentCriteria } from "../../../shared/resources/types";
 import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
 import ScoreBubble from "../../../shared/components/score-bubble";
 import ComponentResultDetails from "./component-result-details";
-import { criteriaCatalogue } from "../../../shared/resources/criteria";
 import "./component-result.css";
+import { getComponents } from "../../../shared/services/api";
 
 type ComponentResultProps = {
   component: component;
@@ -15,10 +15,15 @@ type ComponentResultProps = {
 /** This Component is to be used with LibraryDetail */
 const ComponentResult = ({ component }: ComponentResultProps) => {
   const [detailsOpen, setDetailsOpen] = useState(false);
+  const [componentData, setComponentData] = useState<componentCriteria>();
 
-  const componentData = criteriaCatalogue.find(
-    (item) => item.component === component.name
-  );
+  useEffect(() => {
+    getComponents().then((items) => {
+      const res = items.find((item: componentCriteria) => item.component === component.name);
+
+      setComponentData(res);
+    });
+  }, [component.name]);
 
   const screenReaderScores = component.modes.find(
     (mode) => mode.name === "Screenreader"

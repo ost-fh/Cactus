@@ -80,7 +80,7 @@ export type componentCriteria = {
   alternativeComponentNames: string;
   description: string;
   imageUrl: string;
-  criteria: criteriaGroup[];
+  testModes: criteriaGroup[];
 };
 
 export type criteriaGroup = {

@@ -101,10 +101,6 @@ export class TestsService {
       });
     }
 
-    console.log('com', component);
-    console.log('mode', mode);
-    console.log('lib', library.versions[0].components[0].modes[0].tests);
-
     await library.save();
     console.log(
       `POST testlab: added tests to library ${library.title} - ${library._id}`,
