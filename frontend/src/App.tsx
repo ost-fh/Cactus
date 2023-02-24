@@ -17,6 +17,7 @@ import Contribute from "./pages/contribute/contribute";
 import NotFound from "./pages/not-found/not-found";
 import { useUserData } from "./shared/services/use-token";
 import ProtectedRoute from "./shared/components/protected-route";
+import Impressum from "./pages/impressum/impressum";
 
 export type UserData = {
   _id: string;
@@ -56,6 +57,10 @@ function App() {
           <Route
             path='contribute'
             element={<Contribute setUserData={setUserData} />}
+          />
+          <Route
+            path='impressum'
+            element={<Impressum />}
           />
           <Route path='login' element={<Login setUserData={setUserData} />} />
           <Route path='logout' element={<LogOut logOut={logOut} />} />
