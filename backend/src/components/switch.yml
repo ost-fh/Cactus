@@ -1,0 +1,32 @@
+component: Switch
+alternativeComponentNames:
+description: A switch is a control element that allows users to switch between two states, usually "on" and "off".
+imageUrl: media/components/switch.png
+testModes:
+  - testMode: Screenreader
+    criteria:
+      - _id: 1
+        text: The label of the switch is read upon focus
+        help: .
+      - _id: 2
+        text: The screenreader announces the new state upon switching
+        help: .
+      - _id: 3
+        text: The switch is announced as a switch or as a checkbox
+        help: .
+  - testMode: Keyboard
+    criteria:
+      - _id: 1
+        text: The switch control is focusable
+        help: EDIT Since the header/title elements are interactive and are used to open and close the accordion, they should be focusable. This means, by clicking the tab key repeatedly, you should reach the header element.
+      - _id: 2
+        text: The switch control does not change on focus
+        help: .
+        source: WCAG 3.2.1
+      - _id: 3
+        text: The switch control uses symbols or text in addition to color to signify the on/off state
+        help: .
+        source: WCAG 1.4.1 (?)
+      - _id: 4
+        text: The switch control can be toggled with the 'space' or the 'enter' key
+        help: .
