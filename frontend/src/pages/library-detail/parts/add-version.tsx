@@ -48,10 +48,17 @@ const AddVersion = ({ libraryId, changeVersion }: AddVersionProps) => {
             id='newVersionNumber'
             autoFocus
             required
+            pattern='^[A-Za-z0-9\\-\\.]+$'
             onChange={(e) => setNewVersionNumber(e.target.value)}
             type='text'
             value={newVersionNumber}
           />
+          <label
+            className='add-version-form-small-label'
+            htmlFor='newVersionNumber'
+          >
+            Please don't use whitespaces
+          </label>
           <button onClick={toggleForm}>Cancel</button>
           <button
             className='button-primary'

@@ -6,3 +6,9 @@
   flex-direction: column;
   gap: 0.7rem;
 }
+
+.add-version-form-small-label {
+  grid-column: 1 / span 2;
+  text-align: left;
+  font-size: 0.9rem;
+}

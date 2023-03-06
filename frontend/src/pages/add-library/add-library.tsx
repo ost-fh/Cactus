@@ -40,7 +40,10 @@ const AddLibrary = () => {
   return (
     <PublicLayout activeLink='libraries'>
       <Heading noFocus>Add a new Library</Heading>
-      <p>To add a new Library, please fill out the form below.</p>
+      <p>
+        To add a new Library, please fill out the form below. Only add libraries
+        that do not yet exit on cactus.
+      </p>
       <form className='add-library-form' onSubmit={handleSubmit}>
         <div className='form'>
           <label htmlFor='lib-title'>Name of the Library</label>
@@ -48,6 +51,7 @@ const AddLibrary = () => {
             required
             autoFocus
             onChange={handleChange}
+            pattern='[A-Za-z0-9\s]*'
             type='text'
             name='title'
             id='lib-title'
@@ -56,23 +60,28 @@ const AddLibrary = () => {
           <input
             required
             onChange={handleChange}
+            pattern='^[A-Za-z0-9\\-\\.]+$'
             type='text'
             name='currentVersion'
             id='lib-version'
           />
-          <label htmlFor='lib-link-home'>Link to Homepage</label>
+          <label htmlFor='lib-link-home'>Link to Homepage (https://...)</label>
           <input
             required
             onChange={handleChange}
-            type='text'
+            type='url'
+            pattern='http(s)?:\/\/(www\.)?[a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
             name='linkHome'
             id='lib-link-home'
           />
-          <label htmlFor='lib-link-docs'>Link to Documentation</label>
+          <label htmlFor='lib-link-docs'>
+            Link to Documentation (https://...)
+          </label>
           <input
             required
+            pattern='http(s)?:\/\/(www\.)?[a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
             onChange={handleChange}
-            type='text'
+            type='url'
             name='linkDocs'
             id='lib-link-docs'
           />

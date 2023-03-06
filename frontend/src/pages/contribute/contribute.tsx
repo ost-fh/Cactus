@@ -84,6 +84,9 @@ const Contribute = (props: { setUserData: any }) => {
                   Register
                 </button>
               </div>
+              <div className='form-control-center'>
+                <Link to='/login'>Already registered? Click here to login</Link>
+              </div>
             </form>
           )}
           <div aria-live='assertive'>
