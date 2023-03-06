@@ -12,13 +12,13 @@ import CreateLibraryVersionDto from './create-library-version.dto';
 
 export default class CreateLibraryDto {
   @IsString()
-  @Matches(/[A-Za-z0-9]/)
+  @Matches(RegExp('^[A-Za-z0-9 ]+$'))
   title: string;
 
-  @IsUrl()
+  @IsUrl({ require_protocol: true, protocols: ['http', 'https'] })
   linkHome: string;
 
-  @IsUrl()
+  @IsUrl({ require_protocol: true, protocols: ['http', 'https'] })
   linkDocs: string;
 
   @IsDefined()
