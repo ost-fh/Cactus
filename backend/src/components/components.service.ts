@@ -16,16 +16,28 @@ export class ComponentsService {
       files
         .filter((f) => f.endsWith('.yml') || f.endsWith('.yaml'))
         .forEach((file) => {
-          const ymlFileContent = yaml.load(
+          const component = yaml.load(
             readFileSync(join(__dirname, file), 'utf8'),
           ) as Component;
-          this.components.push(ymlFileContent);
+          const edited = {
+            ...component,
+            testModes: component.testModes.map((testMode) => {
+              return {
+                ...testMode,
+                criteria: testMode.criteria.map((criterium) => {
+                  return {
+                    ...criterium,
+                    _id: `${component.component.toLowerCase()}-${testMode.testMode.toLowerCase()}-${
+                      criterium._id
+                    }`,
+                  };
+                }),
+              };
+            }),
+          };
+          this.components.push(edited);
         });
     });
-    /*const ymlFileContent = yaml.load(
-      readFileSync(join(__dirname, YAML_COMPONENTS_FILENAME), 'utf8'),
-    ) as Record<'components', Component[]>;
-    this.components = ymlFileContent.components;*/
   }
 
   async findAll(): Promise<Component[]> {

@@ -5,20 +5,20 @@ imageUrl: /tooltip.png
 testModes:
   - testMode: Screenreader
     criteria: 
-      - _id: 41
+      - _id: 1
         text: The tooltip is read upon focus of the element
         help: Once the element that tiggers the tooltip is focused, the content of the tooltip is read. the tooltip itself never recieves focus.
   - testMode: Keyboard
     criteria:
-      - _id: 51
+      - _id: 1
         text: The element with the tooltip is focusable
         help: To access the information in the tooltip, the tooltip must be focusable. By clicking the tab key repeatedly, you should reach the tooltip-triggering element.
-      - _id: 52
+      - _id: 2
         text: The focus (style) of the triggering element is visible
         help: If you reached the triggering element with tab, you should (easily) be able to tell that the element is currently focused.
-      - _id: 53
+      - _id: 3
         text: The tooltip is shown upon focus
         help: Once the element with the tooltip recieves focus with the tab key, the tooltip should be shown. This may happen with a small delay
-      - _id: 54
+      - _id: 4
         text: The tooltip closes with the `esc` key
         help: The tooltip should dissapear when pressing the escape key. It should also dissapear if the focus leaves the element, but that is not the focus here.

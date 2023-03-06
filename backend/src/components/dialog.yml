@@ -25,12 +25,12 @@ testModes: # changed name from criteria
         help: To help with seamless navigation, the focus should return to the element that opened a dialog. So open the modal with a button or link that you selected with 'tab', then cancel or close the modal. the focus should return to the calling button.
   - testMode: Screenreader
     criteria:
-      - _id: 11
+      - _id: 1
         text: The [x] button of the dialog is announced as the close button (or similar).
         help: If you select the close button with tab, the screenreader should read out to you, that this is a close button or similar. Not all modals have a close button. You might need to check different implementations
-      - _id: 12
+      - _id: 2
         text: The content of the dialog is read upon opening
         help: If a dialog opens, the text or at least the heading of the modal should automatically be read. A blind person otherwise can't know, that a dialog opened.
-      - _id: 13
+      - _id: 3
         text: It should not be possible to leave the modal using the arrow up and down keys
         help: The contents and non interactive elements of the dialog are read by navigating with the arrow up and down keys. To align with the keyboard accessibility, it should not be possible to accidently leave the modal using the the screenreader's reading function.
