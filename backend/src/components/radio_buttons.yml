@@ -1,0 +1,24 @@
+component: Radio Buttons
+alternativeComponentNames: Radio Group
+description: Radio Buttons are a set of checkable buttons, where no more than one of the buttons can be selected at a time.
+imageUrl: media/components/radio.png
+testModes:
+  - testMode: Screenreader
+    criteria:
+      - _id: 21
+        text: The radio group is announced with a title and as a grouping
+        help: .
+      - _id: 22
+        text: On focus and on change of the selected radio button, the button is announced with the title of the button, the state (checked/unchecked) and the position (e.g. 1 of 3)
+        help: .
+  - testMode: Keyboard
+    criteria:
+      - _id: 31
+        text: The group of radio buttons is focusable with 'tab'
+        help: Only the first radio button is selected, with another click on 'tab' you leave the radio button group.
+      - _id: 32
+        text: If the radio button is not checked, it can be checked with 'space'
+        help: .
+      - _id: 33
+        text: The selected radio button can be changed with the arrow keys
+        help: .
