@@ -115,6 +115,23 @@ const home = () => {
           </Link>
         </div>
       </div>
+      <div className='home-section '>
+        <div className='home-title'>
+          <h3>The Sponsor</h3>
+        </div>
+        <div className='home-text'>
+          <p>
+            fsdifdasf dkfjadk ds fdafd kfajds kfjsdalsjd fksjd sdk jdksda jfdskj sdl sdsaDS
+             SDS SADSdsdsA D DSA SA DSA SAdsa fd dsdfd sdsda
+            <a href='https://www.ost.ch'>
+              <img src='ost-logo-en.svg' alt='OST Logo'></img>
+            </a>
+          </p>
+          <a href='https://www.ost.ch/en/' className='button'>
+            See who supports us
+          </a>
+        </div>
+      </div>
     </PublicLayout>
   );
 };

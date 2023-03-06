@@ -86,3 +86,7 @@ main {
 .page-footer {
   height: 2rem;
 }
+
+.nav-icon img {
+  height: 33px;
+}

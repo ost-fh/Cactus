@@ -18,7 +18,7 @@ const config: Config = {
     path: 'api',
   },
   security: {
-    expiresIn: '60m',
+    expiresIn: '2d',
     refreshIn: '7d',
     //accessTokenSecret: () => process.env.ACCESS_TOKEN_SECRET || '',
     bcryptSaltOrRound: 10,

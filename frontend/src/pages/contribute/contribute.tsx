@@ -39,6 +39,7 @@ const Contribute = (props: { setUserData: any }) => {
       <header>
         <Heading>Would you like to contribute?</Heading>
       </header>
+      <h3>Rate libraries or expand the library list</h3>
       <div className='layout-split'>
         <div>
           <p>
@@ -110,6 +111,8 @@ const Contribute = (props: { setUserData: any }) => {
           )}
         </Alert>
       </div>
+      <h3>Expand and discuss criteria catalogue</h3>
+      <p>https://github.com/ost-fh/Cactus</p>
     </PublicLayout>
   );
 };

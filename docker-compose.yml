@@ -33,15 +33,23 @@ services:
         condition: "on-failure"
 
   database:
+  # *portainer: sh -c 'exec mongodump -d cactus --archive --out /backup/' > /some/path/on/your/host/all-collections.archive
     image: mongo:6.0.4-focal
     networks:
       - default
     environment:
       MONGO_INITDB_ROOT_USERNAME: $DB_USERNAME
       MONGO_INITDB_ROOT_PASSWORD: $DB_PASSWORD
+    volumes:
+      - cactus-database:/data/db
+      - cactus-database-backup:/backup
     deploy:
       restart_policy:
         condition: "on-failure"
+
+volumes:
+  cactus-database: null
+  cactus-database-backup: null
 
 networks:
   web:

@@ -42,7 +42,7 @@ class CriteriaDto {
   help: string;
 
   @IsString()
-  choice: string;
+  choice: string; // TODO yes no not_decidable
 
   @IsString()
   comment: string;

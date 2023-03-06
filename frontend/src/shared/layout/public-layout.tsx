@@ -72,6 +72,12 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
             >
               Contribute
             </Link>
+            <Link className={`nav-link ${
+                activeLink === "impressum" ? "nav-link-active" : ""
+              }`} to='/impressum'>Impressum</Link>
+            <a className='nav-icon' href='https://github.com/ost-fh/Cactus'>
+              <img src='/github-mark.svg' alt='GitHub Mark'></img>
+            </a>
           </nav>
         </div>
       </header>

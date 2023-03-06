@@ -1,0 +1,27 @@
+component: Accordion
+alternativeComponentNames: Disclosure
+description: An accordion is a vertically stacked set of headings each with a collapsible panel
+imageUrl: media/components/accordion.png
+testModes: 
+  - testMode: Screenreader
+    criteria:
+      - _id: 1
+        text: Any hidden text is not read
+        help: Collapse one section of the accordion. Using the arrow keys, it should not be possible to read text that is not visible.
+      - _id: 2
+        text: The screenreader announces the current state of the accordion header element
+        help: .
+  - testMode: Keyboard
+    criteria:
+      - _id: 1
+        text: The header elements are focusable
+        help: Since the header/title elements are interactive and are used to open and close the accordion, they should be focusable. This means, by clicking the tab key repeatedly, you should reach the header element.
+      - _id: 2
+        text: The focus (style) of the header elements is visible
+        help: If you reached the header element with tab, you should (easily) be able to recognize, what header element is currently focused.
+      - _id: 3
+        text: The panel opens/closes with `space` or `enter` keys upon focus of a header element
+        help: To interact with the accordion, it should be possible to open and close it.
+      - _id: 4
+        text: Navigation between panel headers is possible with `tab`
+        help: To open and close the different panels of the accordion, it is neccessary to be able to change between the different panels to open and close them

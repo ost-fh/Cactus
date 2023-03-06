@@ -1,14 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import os from 'os';
 
+@Controller('api')
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('hostname')
-  @Get('host')
+  @Get('test')
   getHostname(): string {
-    return os.hostname();
+    return 'Server successfully reached!';
   }
 }
