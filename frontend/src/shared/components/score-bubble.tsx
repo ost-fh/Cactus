@@ -8,7 +8,7 @@ type ScoreBubbleProps = {
 
 const ScoreBubble = ({
   score,
-  label = "Accessibility Score",
+  label = "Cactus Score",
 }: ScoreBubbleProps) => {
   return (
     <div className='score-bubble'>

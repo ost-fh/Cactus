@@ -94,7 +94,7 @@ const LibraryDetail = () => {
           <div className='lib-score'>
             {version?.accessibilityScore !== undefined && (
               <ScoreBubble
-                label='Library Accessibility Score'
+                label='Library Cactus Score'
                 score={version.accessibilityScore}
               />
             )}
@@ -151,7 +151,7 @@ const LibraryDetail = () => {
                 <h3>What do these numbers mean?</h3>
                 <div className='lib-detail-help'>
                   <ScoreBubble
-                    label='Accessibility Score (example)'
+                    label='Cactus Score (example)'
                     score={100}
                   />
                   <p>
