@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../shared/services/api";
 import PublicLayout from "../../shared/layout/public-layout";
 import "./login.css";
@@ -99,6 +99,11 @@ const Login = (props: { setUserData: any }) => {
               />
             </>
           )}
+        </div>
+        <div>
+          <Link to='/contribute'>
+            Not registered yet? Click here to register
+          </Link>
         </div>
       </div>
     </PublicLayout>
