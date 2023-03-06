@@ -27,7 +27,9 @@ export class ComponentsService {
                 criteria: testMode.criteria.map((criterium) => {
                   return {
                     ...criterium,
-                    _id: `${component.component.toLowerCase()}-${testMode.testMode.toLowerCase()}-${
+                    _id: `${component.component
+                      .toLowerCase()
+                      .replace(' ', '')}-${testMode.testMode.toLowerCase()}-${
                       criterium._id
                     }`,
                   };
