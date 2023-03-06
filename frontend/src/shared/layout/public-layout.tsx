@@ -72,17 +72,50 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
             >
               Contribute
             </Link>
-            <Link className={`nav-link ${
-                activeLink === "impressum" ? "nav-link-active" : ""
-              }`} to='/impressum'>Impressum</Link>
-            <a className='nav-icon' href='https://github.com/ost-fh/Cactus'>
-              <img src='/github-mark.svg' alt='GitHub Mark'></img>
-            </a>
           </nav>
         </div>
       </header>
       <main id='main'>{children}</main>
-      <footer className='page-footer'></footer>
+      <hr />
+      <footer className='page-footer'>
+        <div>
+          <p>
+            Project Cactus is developed and maintained
+            <br /> by{" "}
+            <a href='https://www.ost.ch/en/'>OST Ostschweizer Fachhochschule</a>
+          </p>{" "}
+          <a href='https://www.ost.ch'>
+            <img
+              src='/ost-logo-en.svg'
+              className='footer-ost-img'
+              alt='OST Logo'
+            />
+          </a>
+        </div>
+        <div>
+          <p>Sponsors</p>
+          <p>Stiftung sowieso (Logo)</p>
+        </div>
+        <div>
+          <ul className='footer-links'>
+            <li>
+              <Link to='/impressum'>Impressum</Link>
+            </li>
+            <li>
+              <a href='#main'>Accessibility Statement</a>
+            </li>
+            <li>
+              <a href='#main'>Privacy Policy</a>
+            </li>
+            <li>
+              <a className='nav-icon' href='https://github.com/ost-fh/Cactus'>
+                The project's github repository{" "}
+                <img src='/github-mark.svg' alt='GitHub Mark' />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </div>
   );
 };

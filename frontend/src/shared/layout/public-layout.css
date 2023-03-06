@@ -84,9 +84,25 @@ main {
 }
 
 .page-footer {
-  height: 2rem;
+  min-height: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  padding-bottom: 2rem;
+  margin-top: 1rem;
 }
 
-.nav-icon img {
-  height: 33px;
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 0.3rem;
+}
+
+.page-footer .footer-ost-img {
+  max-height: 8rem;
+}
+
+.page-footer .nav-icon img {
+  height: 1rem;
 }
