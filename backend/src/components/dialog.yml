@@ -1,7 +1,7 @@
 component: Dialog
 alternativeComponentNames: Modal, Promt
 description: A dialog is a window overlaid over rest of the page. Users cannot interract with content outside of the dialog.
-imageUrl: media/components/dialog.png # recommend rename to iconSrc
+imageUrl: /dialog.png # recommend rename to iconSrc
 testModes: # changed name from criteria
   - testMode: Keyboard
     criteria:

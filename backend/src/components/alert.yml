@@ -1,7 +1,7 @@
 component: Alert
 alternativeComponentNames: Toast, Snackbar
 description: An alert is an element that displays a brief, important message in a way that attracts the user's attention without interrupting the user's task
-imageUrl: media/components/alert.png
+imageUrl: /alert.png
 testModes:
   - testMode: Screenreader
     criteria:
@@ -10,12 +10,12 @@ testModes:
         help: .
   - testMode: Keyboard
     criteria:
-      - _id: 11
+      - _id: 1
         text: The triggered alert does not affect keyboard focus
         help: .
-      - _id: 12
+      - _id: 2
         text: The triggered alert is next in the focus order after the triggering element
         help: .
-      - _id: 13
+      - _id: 3
         text: The triggered alert can be closed with esc, without having the focus on the alert
         help: .
