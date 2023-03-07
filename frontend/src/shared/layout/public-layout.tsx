@@ -23,6 +23,8 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
             className='logo'
             alt='logo of project cactus'
             src='/cactus_logo.png'
+            height='705'
+            width='705'
           />
         </Link>
         <Link
@@ -80,21 +82,23 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
       <footer className='page-footer'>
         <div>
           <p>
-            Project Cactus is developed and maintained
+            Developed and maintained
             <br /> by{" "}
             <a href='https://www.ost.ch/en/'>OST Ostschweizer Fachhochschule</a>
           </p>{" "}
           <a href='https://www.ost.ch'>
-            <img
-              src='/ost-logo-en.svg'
-              className='footer-ost-img'
-              alt='OST Logo'
-            />
+            <img src='/ost-logo-en.svg' className='footer-img' alt='OST Logo' />
           </a>
         </div>
-        <div>
-          <p>Sponsors</p>
-          <p>Stiftung sowieso (Logo)</p>
+        <div id='footer-row-center'>
+          <p>Sponsor</p>
+          <a href='https://frh-fondation.ch/de/'>
+            <img
+              src='/FRH-logo.png'
+              className='footer-img-sponsor'
+              alt='Logo: Fondation pour la Recherche pour les personnes avec Handicap'
+            />
+          </a>
         </div>
         <div>
           <ul className='footer-links'>
@@ -109,7 +113,7 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
             </li>
             <li>
               <a className='nav-icon' href='https://github.com/ost-fh/Cactus'>
-                The project's github repository{" "}
+                Cactus on Github{" "}
                 <img src='/github-mark.svg' alt='GitHub Mark' />
               </a>
             </li>

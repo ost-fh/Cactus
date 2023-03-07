@@ -4,6 +4,7 @@
 
 main {
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .skip-link {
@@ -99,8 +100,19 @@ main {
   gap: 0.3rem;
 }
 
-.page-footer .footer-ost-img {
+.page-footer .footer-img {
   max-height: 8rem;
+}
+
+#footer-row-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-footer .footer-img-sponsor {
+  max-height: 6rem;
+  margin: 0 auto;
 }
 
 .page-footer .nav-icon img {
