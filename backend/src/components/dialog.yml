@@ -1,8 +1,8 @@
 component: Dialog
 alternativeComponentNames: Modal, Promt
 description: A dialog is a window overlaid over rest of the page. Users cannot interract with content outside of the dialog.
-imageUrl: /dialog.png # recommend rename to iconSrc
-testModes: # changed name from criteria
+imageUrl: /dialog.svg
+testModes:
   - testMode: Keyboard
     criteria:
       - _id: 1
@@ -13,9 +13,6 @@ testModes: # changed name from criteria
         help: All interactive elements should be reachable only using the 'tab' key. You can click buttons with 'enter' or sometimes with 'space'. If you could reach a button with tab, also inside the open dialog, this criteria is fulfilled.
       - _id: 3
         text: The focus does not leave the dialog
-        # "The focus is trapped inside the dialog",
-        # "With the dialog open, elements outside of the dialog are not reachable"
-        # "The focus does not leave the dialog"
         help: The focus should not leave the dialog. This means, all other interactive elements on the page are not reachable with the 'tab' key and are therefore outside of the taborder.
       - _id: 4
         text: The dialog closes with the `esc` key
