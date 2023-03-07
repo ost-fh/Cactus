@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { getLibraries } from "../../shared/services/api";
+import { getComponents, getLibraries } from "../../shared/services/api";
 import { UserContext } from "../../App";
 
 import Alert from "../../shared/components/alert";
@@ -8,12 +8,20 @@ import LibraryCard from "./parts/library-card";
 import PublicLayout from "../../shared/layout/public-layout";
 
 import "./libraries.css";
-import { library } from "../../shared/resources/types";
+import {
+  component,
+  componentCriteria,
+  library,
+} from "../../shared/resources/types";
 import Heading from "../../shared/components/heading";
+import LibraryList from "./parts/library-list";
 
 const Libraries = () => {
   const userData = useContext(UserContext);
   const [libraries, setLibraries] = useState<library[]>();
+  const [components, setComponents] = useState<string[]>();
+  const [focusMode, setFocusMode] = useState(false);
+  const [componentFilters, setComponentFilters] = useState<string[]>([]);
 
   // Fetch Libraries
   useEffect(() => {
@@ -21,6 +29,31 @@ const Libraries = () => {
       setLibraries(items);
     });
   }, []);
+
+  useEffect(() => {
+    getComponents().then((items: componentCriteria[]) => {
+      const onlyComponents = items.map((item) => item.name);
+      setComponents(onlyComponents);
+    });
+  }, []);
+
+  const toggleFocusMode = () => {
+    setFocusMode(!focusMode);
+  };
+
+  // removes and adds components to filter
+  const changeComponentFilter = (componentName: string) => {
+    if (componentFilters.find((component) => component === componentName)) {
+      const newFilters = componentFilters.filter(
+        (component) => component !== componentName
+      );
+      setComponentFilters(newFilters);
+    } else {
+      setComponentFilters([...componentFilters, componentName]);
+    }
+  };
+
+  // function to filter the libraries
 
   return (
     <PublicLayout activeLink='libraries'>
@@ -72,19 +105,58 @@ const Libraries = () => {
         </section>
       </div>
       <hr />
-      <section className='library-list'>
-        {libraries ? (
-          libraries.length === 0 ? (
-            <Alert message='Currently, there are no libraries.' />
-          ) : (
-            libraries.map((library: library) => (
-              <LibraryCard key={library._id} library={library} />
-            ))
-          )
-        ) : (
-          <Alert message='Libraries are loading ...' />
-        )}
-      </section>
+      <form id='filters'>
+        <label>
+          Sort by{" "}
+          <select name='sorting' id=''>
+            <option value='name'>name</option>
+            <option value='name'>score</option>
+          </select>
+        </label>
+        <div className='spacer'></div>
+        <label htmlFor='filters'>Filter by components: </label>
+        {components &&
+          components.map((component) => (
+            <label key={component}>
+              <input
+                type='checkbox'
+                onChange={() => changeComponentFilter(component)}
+                name='filters'
+                id=''
+              />
+              {component}
+            </label>
+          ))}
+        <div className='spacer-flex'></div>
+        <label className='button button-primary'>
+          <input
+            type='checkbox'
+            checked={focusMode}
+            onChange={toggleFocusMode}
+          />
+          Focus Mode
+        </label>
+      </form>
+      {focusMode && (
+        <Alert
+          type='help'
+          message='Focus mode calculates an additional score based on the selected components.'
+        />
+      )}
+      <hr />
+      {!libraries ? (
+        <Alert message='Libraries are loading ...' />
+      ) : libraries.length === 0 ? (
+        <Alert message='Currently, there are no libraries.' />
+      ) : (
+        <LibraryList
+          libraries={libraries}
+          sorting={""}
+          filters={componentFilters}
+          focusMode={focusMode}
+        />
+      )}
+
       <hr />
     </PublicLayout>
   );
