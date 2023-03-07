@@ -1,5 +1,11 @@
 import { UserData } from "../../App";
-import { componentCriteria, criterium, newLibrary, testResultTransmission } from "../resources/types";
+import {
+  component,
+  componentCriteria,
+  criterium,
+  newLibrary,
+  testResultTransmission,
+} from "../resources/types";
 
 const API_URL =
   (window as any).env?.REACT_APP_BACKEND_BASE_URI ||
@@ -61,7 +67,7 @@ export const getLibraries = async () => {
     .catch((error) => console.error(error));
 };
 
-export const getComponents = async () => {
+export const getComponents = async (): Promise<componentCriteria[]> => {
   return httpService("GET", `${API_URL}/components`)
     .then((data) => data.json())
     .catch((error) => console.error(error));
@@ -75,11 +81,12 @@ export const getAllCriteria = async (): Promise<criterium[]> => {
   return res.flat(2);
 };
 
-export const getCriterium = async (id: string): Promise<criterium | undefined> => {
+export const getCriterium = async (
+  id: string
+): Promise<criterium | undefined> => {
   const allCriteria = await getAllCriteria();
   return allCriteria.find((item) => item._id === id);
 };
-
 
 export const getLibrary = async (id: string) => {
   return httpService("GET", `${API_URL}/libraries/${id}`).then((data) => {

@@ -27,7 +27,7 @@ export class ComponentsService {
                 criteria: testMode.criteria.map((criterium) => {
                   return {
                     ...criterium,
-                    _id: `${component.component
+                    _id: `${component.name
                       .toLowerCase()
                       .replace(' ', '')}-${testMode.testMode.toLowerCase()}-${
                       criterium._id
@@ -47,6 +47,6 @@ export class ComponentsService {
   }
 
   async findOne(id: string): Promise<Component | undefined> {
-    return this.components.find((c) => c.component === id);
+    return this.components.find((c) => c.name === id);
   }
 }
