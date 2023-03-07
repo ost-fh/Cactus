@@ -1,7 +1,7 @@
 component: Switch
 alternativeComponentNames:
 description: A switch is a control element that allows users to switch between two states, usually "on" and "off".
-imageUrl: /switch.png
+imageUrl: /switch.svg
 testModes:
   - testMode: Screenreader
     criteria:

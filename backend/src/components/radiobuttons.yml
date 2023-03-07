@@ -1,7 +1,7 @@
 component: Radio Buttons
 alternativeComponentNames: Radio Group
 description: Radio Buttons are a set of checkable buttons, where no more than one of the buttons can be selected at a time.
-imageUrl: /radio.png
+imageUrl: /radio.svg
 testModes:
   - testMode: Screenreader
     criteria:
