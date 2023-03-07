@@ -87,7 +87,11 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
             <a href='https://www.ost.ch/en/'>OST Ostschweizer Fachhochschule</a>
           </p>{" "}
           <a href='https://www.ost.ch'>
-            <img src='/ost-logo-en.svg' className='footer-img' alt='OST Logo' />
+            <img
+              src='/ost-logo-en.svg'
+              className='footer-img-ost'
+              alt='OST Logo'
+            />
           </a>
         </div>
         <div id='footer-row-center'>

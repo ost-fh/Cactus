@@ -4,7 +4,7 @@
 <svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 1024 1024" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs/>
 <g id="Ebene-5" vectornator:layerName="Ebene 5">
-<path d="M114.652 388.008L909.348 388.008C942.101 388.008 968.652 414.559 968.652 447.312L968.652 592.513C968.652 625.266 942.101 651.817 909.348 651.817L114.652 651.817C81.8988 651.817 55.3475 625.266 55.3475 592.513L55.3475 447.312C55.3475 414.559 81.8988 388.008 114.652 388.008Z" fill="#adadad" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M114.652 388.008L909.348 388.008C942.101 388.008 968.652 414.559 968.652 447.312L968.652 592.513C968.652 625.266 942.101 651.817 909.348 651.817L114.652 651.817C81.8988 651.817 55.3475 625.266 55.3475 592.513L55.3475 447.312C55.3475 414.559 81.8988 388.008 114.652 388.008Z" fill="#dddddd" fill-rule="nonzero" opacity="1" stroke="none"/>
 <g opacity="1">
 <path d="M788.749 476.42L875.735 563.405" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="bevel" stroke-width="24.6313"/>
 <path d="M875.735 476.42L788.749 563.405" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="bevel" stroke-width="24.6313"/>

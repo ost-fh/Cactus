@@ -2,9 +2,10 @@
   max-height: 5rem;
 }
 
-main {
+#main {
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  min-height: 80vh;
 }
 
 .skip-link {
@@ -100,8 +101,8 @@ main {
   gap: 0.3rem;
 }
 
-.page-footer .footer-img {
-  max-height: 8rem;
+.page-footer .footer-img-ost {
+  height: 5rem;
 }
 
 #footer-row-center {
