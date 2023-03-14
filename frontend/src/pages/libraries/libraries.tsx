@@ -10,12 +10,10 @@ import Heading from "../../shared/components/heading";
 import LibraryList from "./parts/library-list";
 import LibrariesHeader from "./parts/libraries-header";
 import Bubble from "../../shared/components/bubble";
-import { BsCheckSquare, BsSquare } from "react-icons/bs";
 
 const Libraries = () => {
   const [libraries, setLibraries] = useState<library[]>();
   const [components, setComponents] = useState<string[]>();
-  const [focusMode, setFocusMode] = useState(false);
   const [componentFilters, setComponentFilters] = useState<string[]>([]);
 
   // Fetch Libraries
@@ -25,22 +23,13 @@ const Libraries = () => {
     });
   }, []);
 
+  // get all component names
   useEffect(() => {
     getComponents().then((items: componentCriteria[]) => {
       const onlyComponentName = items.map((item) => item.name);
       setComponents(onlyComponentName);
     });
   }, []);
-
-  useEffect(() => {
-    if (componentFilters.length === 0) {
-      setFocusMode(false);
-    }
-  }, [componentFilters.length]);
-
-  const toggleFocusMode = () => {
-    setFocusMode(!focusMode);
-  };
 
   // removes and adds components to filter
   const changeComponentFilter = (componentName: string) => {
@@ -53,8 +42,6 @@ const Libraries = () => {
       setComponentFilters([...componentFilters, componentName]);
     }
   };
-
-  // function to filter the libraries
 
   return (
     <PublicLayout activeLink='libraries'>
@@ -70,7 +57,7 @@ const Libraries = () => {
           </select>
         </label>
         <div className='spacer'></div>
-        <label htmlFor='filters'>Filter by components: </label>
+        <label htmlFor='filters'>Evaluate by components: </label>
         {components &&
           components.map((component) => (
             <label key={component}>
@@ -96,20 +83,11 @@ const Libraries = () => {
               setComponentFilters([]);
             }}
           >
-            Reset Filters
+            Reset Selection
           </button>
         )}
-        <button
-          type='button'
-          onClick={toggleFocusMode}
-          disabled={componentFilters.length === 0}
-          className='button button-primary button-with-icon'
-        >
-          {focusMode ? <BsCheckSquare /> : <BsSquare />}
-          Focus Mode
-        </button>
       </form>
-      {focusMode && componentFilters.length > 0 && (
+      {componentFilters.length > 0 && (
         <Alert type='help'>
           <div
             style={{
@@ -120,9 +98,9 @@ const Libraries = () => {
               flexWrap: "wrap",
             }}
           >
-            Focus mode calculates an additional{" "}
-            <Bubble value='100%' color='blue' label={"Focus Score"} /> based on
-            the selected components
+            A distinct{" "}
+            <Bubble value='100%' color='blue' label={"Focus Score"} /> is
+            calculated based on the selected components.
           </div>
         </Alert>
       )}
@@ -136,7 +114,6 @@ const Libraries = () => {
           libraries={libraries}
           sorting={""}
           filters={componentFilters}
-          focusMode={focusMode}
         />
       )}
 

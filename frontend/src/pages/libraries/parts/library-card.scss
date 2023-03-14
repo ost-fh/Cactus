@@ -52,7 +52,6 @@
 }
 
 .library-card-neutral {
-  // background-color: rgb(252, 252, 252);
   border: 0.2rem solid colors.$yellow-light;
   .header {
     color: rgb(66, 66, 66);
@@ -60,7 +59,6 @@
 }
 
 .library-card-false {
-  // background-color: rgb(246, 246, 246);
   border: 0.2rem solid colors.$red-light;
 
   .header {

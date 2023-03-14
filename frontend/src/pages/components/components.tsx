@@ -51,7 +51,7 @@ const Components = () => {
           library={libraryExample}
           filterState='neutral'
           filters={["Tooltip", "Accordion"]}
-          focusScore={31}
+          focusScore={"31"}
         />
         <LibraryCard library={libraryExample} filterState='false' />
       </main>

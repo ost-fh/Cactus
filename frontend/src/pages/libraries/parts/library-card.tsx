@@ -11,7 +11,7 @@ import Bubble from "../../../shared/components/bubble";
 type LibraryCardProps = {
   library: library;
   filters?: string[];
-  focusScore?: number;
+  focusScore?: string;
   filterState?: "true" | "neutral" | "false";
 };
 
@@ -50,14 +50,12 @@ const LibraryCard = ({
             filterState: "true",
             score: component.accessibilityScore,
           };
-          // console.log(newFilterScore);
           newFilterScores.push(newFilterScore);
         } else {
           const newFilterScore: filterScore = {
             name: filter,
             filterState: "neutral",
           };
-          // console.log(newFilterScore);
           newFilterScores.push(newFilterScore);
         }
       });
@@ -137,7 +135,7 @@ const LibraryCard = ({
             </div>
             <div className='messages'>
               {filterState === "neutral" && (
-                <Alert message='Not all or none of the selected components are tested yet.' />
+                <Alert message='Not all or none of the selected components are tested yet or night not be in the library.' />
               )}
               {filterState === "false" && (
                 <Alert message='One or more of the selected components are not available in this library.' />
