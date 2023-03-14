@@ -2,7 +2,7 @@
 name: Add a criterium
 about: Describe this issue template's purpose here.
 title: 'Criterium: [COMPONENT] [TESTMODE] [CRITERIUM HEADLINE]'
-labels: ''
+labels: criterium, enhancement
 assignees: ''
 
 ---
