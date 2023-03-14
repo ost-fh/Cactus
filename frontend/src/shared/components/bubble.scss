@@ -1,0 +1,52 @@
+@use "../layout/colors";
+
+.bubble,
+.bubble-value {
+  padding: 0.4rem 0.7rem;
+  border-radius: 1rem / 50%;
+}
+
+.bubble {
+  display: flex;
+  background-color: rgb(248, 248, 248);
+  max-height: 2.05rem;
+}
+
+.bubble-value {
+  margin: -0.4rem -0.7rem;
+  margin-right: 0.4rem;
+  background-color: rgb(233, 233, 233);
+}
+
+.bubble-green .bubble-value {
+  background-color: colors.$green-light;
+}
+
+.bubble-green {
+  background-color: colors.$green-xlight;
+}
+
+.bubble-blue .bubble-value {
+  background-color: colors.$blue-dark;
+}
+
+.bubble-blue {
+  color: white;
+  background-color: colors.$blue;
+}
+
+.bubble-red .bubble-value {
+  background-color: colors.$red;
+}
+
+.bubble-red {
+  background-color: colors.$red-light;
+}
+
+.bubble-yellow {
+  background-color: colors.$yellow-light;
+}
+
+.bubble-yellow .bubble-value {
+  background-color: colors.$yellow;
+}
