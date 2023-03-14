@@ -1,23 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getComponents, getLibraries } from "../../shared/services/api";
-import { UserContext } from "../../App";
 
 import Alert from "../../shared/components/alert";
-import LinkButton from "../../shared/components/link-button";
-import LibraryCard from "./parts/library-card";
 import PublicLayout from "../../shared/layout/public-layout";
 
 import "./libraries.css";
-import {
-  component,
-  componentCriteria,
-  library,
-} from "../../shared/resources/types";
+import { componentCriteria, library } from "../../shared/resources/types";
 import Heading from "../../shared/components/heading";
 import LibraryList from "./parts/library-list";
+import LibrariesHeader from "./parts/libraries-header";
+import Bubble from "../../shared/components/bubble";
+import { BsCheckSquare, BsSquare } from "react-icons/bs";
 
 const Libraries = () => {
-  const userData = useContext(UserContext);
   const [libraries, setLibraries] = useState<library[]>();
   const [components, setComponents] = useState<string[]>();
   const [focusMode, setFocusMode] = useState(false);
@@ -32,10 +27,16 @@ const Libraries = () => {
 
   useEffect(() => {
     getComponents().then((items: componentCriteria[]) => {
-      const onlyComponents = items.map((item) => item.name);
-      setComponents(onlyComponents);
+      const onlyComponentName = items.map((item) => item.name);
+      setComponents(onlyComponentName);
     });
   }, []);
+
+  useEffect(() => {
+    if (componentFilters.length === 0) {
+      setFocusMode(false);
+    }
+  }, [componentFilters.length]);
 
   const toggleFocusMode = () => {
     setFocusMode(!focusMode);
@@ -58,59 +59,14 @@ const Libraries = () => {
   return (
     <PublicLayout activeLink='libraries'>
       <Heading>Libraries</Heading>
-      <div className='layout-split'>
-        <header className='library-header'>
-          <p>
-            Down below you can find all libraries that have been added to
-            Project Cactus.
-          </p>
-          <Alert type='help'>
-            <h3>Important Note</h3>
-            <p>
-              The accessibility scores do not neccessarily represent how
-              accessible a finished webapplication using that library is. It
-              only shows how good the baseline is it starts from, according to
-              our criteria.
-            </p>
-          </Alert>
-        </header>
-        <section>
-          <Alert type='info'>
-            <h3>Do you miss a UI library?</h3>
-            {userData?.token ? (
-              <>
-                <p>
-                  Add a library, after that test its components to immediatly
-                  compare it to other libraries:
-                </p>
-                <LinkButton
-                  to='new'
-                  label='Add a new library'
-                  className='button-primary'
-                />
-              </>
-            ) : (
-              <>
-                <p>
-                  We are always looking for help. And you might be able to
-                  improve this directory for yourself and for others.
-                </p>
-                <LinkButton
-                  to='/contribute'
-                  label='Find out how to contribute'
-                />
-              </>
-            )}
-          </Alert>
-        </section>
-      </div>
+      <LibrariesHeader />
       <hr />
       <form id='filters'>
         <label>
-          Sort by{" "}
+          Sort by:{" "}
           <select name='sorting' id=''>
-            <option value='name'>name</option>
-            <option value='name'>score</option>
+            <option value='name'>Name</option>
+            <option value='name'>Score</option>
           </select>
         </label>
         <div className='spacer'></div>
@@ -121,6 +77,11 @@ const Libraries = () => {
               <input
                 type='checkbox'
                 onChange={() => changeComponentFilter(component)}
+                checked={
+                  componentFilters.find((filter) => filter === component)
+                    ? true
+                    : false
+                }
                 name='filters'
                 id=''
               />
@@ -128,20 +89,42 @@ const Libraries = () => {
             </label>
           ))}
         <div className='spacer-flex'></div>
-        <label className='button button-primary'>
-          <input
-            type='checkbox'
-            checked={focusMode}
-            onChange={toggleFocusMode}
-          />
+        {componentFilters.length > 0 && (
+          <button
+            type='button'
+            onClick={() => {
+              setComponentFilters([]);
+            }}
+          >
+            Reset Filters
+          </button>
+        )}
+        <button
+          type='button'
+          onClick={toggleFocusMode}
+          disabled={componentFilters.length === 0}
+          className='button button-primary button-with-icon'
+        >
+          {focusMode ? <BsCheckSquare /> : <BsSquare />}
           Focus Mode
-        </label>
+        </button>
       </form>
-      {focusMode && (
-        <Alert
-          type='help'
-          message='Focus mode calculates an additional score based on the selected components.'
-        />
+      {focusMode && componentFilters.length > 0 && (
+        <Alert type='help'>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "baseline",
+              gap: "0.5rem",
+              flexWrap: "wrap",
+            }}
+          >
+            Focus mode calculates an additional{" "}
+            <Bubble value='100%' color='blue' label={"Focus Score"} /> based on
+            the selected components
+          </div>
+        </Alert>
       )}
       <hr />
       {!libraries ? (

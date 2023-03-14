@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Alert from "../../../shared/components/alert";
 import { library } from "../../../shared/resources/types";
 import LibraryCard from "./library-card";
 
@@ -8,6 +9,16 @@ type LibraryListProps = {
   filters: string[];
   focusMode: boolean;
 };
+enum filterResults {
+  true,
+  neutral,
+  false,
+}
+
+interface focusScore {
+  library_id: string;
+  score: number;
+}
 
 const LibraryList = ({
   libraries,
@@ -15,21 +26,19 @@ const LibraryList = ({
   filters,
   focusMode,
 }: LibraryListProps) => {
+  // Library Buckets
+  const [noFilter, setNoFilter] = useState<library[]>([]);
   const [filterTrue, setFilterTrue] = useState<library[]>([]);
   const [filterNeutral, setFilterNeutral] = useState<library[]>([]);
   const [filterFalse, setFilterFalse] = useState<library[]>([]);
-  enum filterResults {
-    true,
-    neutral,
-    false,
-  }
+  const [focusScores, setFocusScores] = useState<focusScore[]>([]);
 
   useEffect(() => {
-    console.log(filters);
-
     // reset buckets if no filters are applied
     if (filters.length === 0) {
-      setFilterTrue(libraries);
+      // sorting toDo
+      setNoFilter(libraries);
+      setFilterTrue([]);
       setFilterNeutral([]);
       setFilterFalse([]);
       return;
@@ -39,10 +48,11 @@ const LibraryList = ({
     let trueTemp: library[] = [];
     let neutralTemp: library[] = [];
     let falseTemp: library[] = [];
+    let focusScores: focusScore[] = [];
 
     libraries.forEach((library) => {
       // standard filter true
-      let filterResult = filterResults.true;
+      let filterResult: filterResults = filterResults.true;
 
       // get data from current version
       const currentVersion = library.versions.find(
@@ -50,18 +60,33 @@ const LibraryList = ({
       );
 
       // if a component from the filters is not found, it sorts into neutral
-      filters.forEach((filter) => {
+      for (const filter of filters) {
         if (
           !currentVersion?.components.find(
             (component) => component.name === filter
           )
         ) {
-          // -> differentiate between completed and not completly tested component
           filterResult = filterResults.neutral;
+          break;
+          // TODO -> differentiate between completed and not completly tested component
         }
+        // TODO later differentiate component exists/does not exist
+      }
 
-        // später unterscheiden component exists/does not exist
-      });
+      if (focusMode && filterResult === filterResults.true) {
+        let scores: number[] = [];
+        for (const filter of filters) {
+          const component = currentVersion?.components.find(
+            (component) => component.name === filter
+          );
+          component && scores.push(component.accessibilityScore);
+        }
+        const average = scores.reduce((a, b) => a + b, 0) / scores.length;
+        focusScores.push({
+          library_id: library._id,
+          score: average,
+        });
+      }
 
       // sort into buckets
       if (filterResult === filterResults.true) {
@@ -70,37 +95,67 @@ const LibraryList = ({
       if (filterResult === filterResults.neutral) {
         neutralTemp = [...neutralTemp, library];
       }
-      if (filterResult === filterResults.false) {
-        falseTemp = [...falseTemp, library];
-      }
+      // TODO Enable once exclusion is implemented
+      // if (filterResult === filterResults.false) {
+      //   falseTemp = [...falseTemp, library];
+      // }
     });
+
+    // sorting TODO
+
+    setFocusScores(focusScores);
+    setNoFilter([]);
     setFilterFalse(falseTemp);
     setFilterNeutral(neutralTemp);
     setFilterTrue(trueTemp);
-  }, [
-    filterResults.false,
-    filterResults.neutral,
-    filterResults.true,
-    filters,
-    libraries,
-  ]);
+  }, [filters, focusMode, libraries]);
 
   return (
     <section className='library-list'>
-      <p>true</p>
-      {filterTrue &&
-        filterTrue.map((library: library) => (
+      {noFilter &&
+        noFilter.map((library: library) => (
           <LibraryCard key={library._id} library={library} />
         ))}
-      <p>neutral</p>
+      {filterTrue &&
+        filterTrue.map((library: library) => {
+          const focusScore = focusScores.find(
+            (scores) => scores.library_id === library._id
+          );
+          return (
+            <LibraryCard
+              filterState='true'
+              filters={filters}
+              key={library._id}
+              library={library}
+              focusScore={focusMode ? focusScore?.score : undefined}
+            />
+          );
+        })}
+      {filters.length !== 0 && filterTrue.length === 0 && (
+        <Alert
+          type='error'
+          message={`There is no library that fits all filters ${
+            focusMode ? "and therefore no focusmode is calculated" : ""
+          }`}
+        />
+      )}
       {filterNeutral &&
         filterNeutral.map((library: library) => (
-          <LibraryCard key={library._id} library={library} />
+          <LibraryCard
+            filterState='neutral'
+            filters={filters}
+            key={library._id}
+            library={library}
+          />
         ))}
-      <p>false</p>
       {filterFalse &&
         filterFalse.map((library: library) => (
-          <LibraryCard key={library._id} library={library} />
+          <LibraryCard
+            filterState='false'
+            filters={filters}
+            key={library._id}
+            library={library}
+          />
         ))}
     </section>
   );

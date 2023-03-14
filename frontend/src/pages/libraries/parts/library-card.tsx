@@ -1,47 +1,152 @@
-import React from "react";
-import { library } from "../../../shared/resources/types";
+import React, { useEffect, useState } from "react";
+import { library, version } from "../../../shared/resources/types";
 import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
 import LinkButton from "../../../shared/components/link-button";
 import ScoreBubble from "../../../shared/components/score-bubble";
 
-import "./library-card.css";
+import "./library-card.scss";
+import Bubble from "../../../shared/components/bubble";
 
 type LibraryCardProps = {
   library: library;
+  filters?: string[];
+  focusScore?: number;
+  filterState?: "true" | "neutral" | "false";
 };
 
-const LibraryCard = ({ library }: LibraryCardProps) => {
-  const currentVersion = library.versions.find(
-    (version) => library.currentVersion === version.version
-  );
+type filterScore = {
+  name: string;
+  filterState: "true" | "neutral" | "false";
+  score?: number;
+};
+
+const LibraryCard = ({
+  library,
+  filterState,
+  filters = [],
+  focusScore,
+}: LibraryCardProps) => {
+  const [filterScores, setFilterScores] = useState<filterScore[]>([]);
+  const [currentVersion, setCurrentVersion] = useState<version>();
+
+  useEffect(() => {
+    const currentVersion = library.versions.find(
+      (version) => library.currentVersion === version.version
+    );
+    setCurrentVersion(currentVersion);
+  }, [library]);
+
+  useEffect(() => {
+    if (filters.length > 0) {
+      let newFilterScores: filterScore[] = [];
+      filters.forEach((filter) => {
+        const component = currentVersion?.components.find(
+          (component) => component.name === filter
+        );
+        if (component) {
+          const newFilterScore: filterScore = {
+            name: filter,
+            filterState: "true",
+            score: component.accessibilityScore,
+          };
+          // console.log(newFilterScore);
+          newFilterScores.push(newFilterScore);
+        } else {
+          const newFilterScore: filterScore = {
+            name: filter,
+            filterState: "neutral",
+          };
+          // console.log(newFilterScore);
+          newFilterScores.push(newFilterScore);
+        }
+      });
+      setFilterScores(newFilterScores);
+    }
+  }, [currentVersion, filters]);
 
   return (
-    <article key={library._id.toString()} className='library-card'>
-      <header className='library-card-header'>
+    <article
+      key={library._id.toString()}
+      className={`library-card ${
+        filterState ? `library-card-${filterState}` : ""
+      }`}
+    >
+      <header className='header'>
         <h3>{library.title}</h3> Version: {library.currentVersion}{" "}
         {library.versions.length > 1 && (
           <small>(older versions available)</small>
         )}
       </header>
-      <div className='library-card-main'>
-        {currentVersion &&
-        currentVersion.amountOfComponentsTested !== 0 &&
-        currentVersion.amountOfComponentsTested !== undefined &&
-        currentVersion.accessibilityScore !== undefined ? (
+      <div className='main'>
+        <div className='main-scores'>
+          {focusScore && (
+            <Bubble value={focusScore + "%"} label='Focus Score' color='blue' />
+          )}
+          {currentVersion &&
+          currentVersion.amountOfComponentsTested !== 0 &&
+          currentVersion.amountOfComponentsTested !== undefined &&
+          currentVersion.accessibilityScore !== undefined ? (
+            <>
+              <ScoreBubble score={currentVersion.accessibilityScore} />
+              <CountBubble count={currentVersion.amountOfComponentsTested} />
+            </>
+          ) : (
+            <Alert
+              message={`There are currently no tested components for this  ${
+                library.versions.length > 1 ? "version" : "library"
+              }`}
+            />
+          )}
+        </div>
+
+        {filterScores.length > 0 && (
           <>
-            <ScoreBubble score={currentVersion.accessibilityScore} />
-            <CountBubble count={currentVersion.amountOfComponentsTested} />
+            <div className='filter-scores'>
+              <p>Components: </p>
+              {filterScores.map((filterScore) => {
+                if (filterScore.filterState === "true")
+                  return (
+                    <Bubble
+                      key={filterScore.name + library._id}
+                      value={filterScore.score + "%"}
+                      label={filterScore.name}
+                      color='green'
+                    />
+                  );
+                if (filterScore.filterState === "neutral")
+                  return (
+                    <Bubble
+                      key={filterScore.name + library._id}
+                      value={"?"}
+                      label={filterScore.name}
+                      color='yellow'
+                    />
+                  );
+                if (filterScore.filterState === "false")
+                  return (
+                    <Bubble
+                      key={filterScore.name + library._id}
+                      value={"X"}
+                      label={filterScore.name}
+                    />
+                  );
+
+                return "error";
+              })}
+            </div>
+            <div className='messages'>
+              {filterState === "neutral" && (
+                <Alert message='Not all or none of the selected components are tested yet.' />
+              )}
+              {filterState === "false" && (
+                <Alert message='One or more of the selected components are not available in this library.' />
+              )}
+            </div>
           </>
-        ) : (
-          <Alert
-            message={`There are currently no tested components for this  ${
-              library.versions.length > 1 ? "version" : "library"
-            }`}
-          />
         )}
       </div>
-      <div className='library-card-aside'>
+      <div className='aside'>
         <LinkButton
           to={library._id}
           className='button-wide'
