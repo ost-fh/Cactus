@@ -106,7 +106,7 @@ const home = () => {
           <p>
             There are a lot of UI libraries with a lot of components. It takes a
             lot of time to test them all. Therefore we made the testing
-            crowdsourced. We hav ea criteria-catalogue specially developed for
+            crowdsourced. We have a criteria-catalogue specially developed for
             this, and you can check it against different components of the
             libraries. Are you interested to help out?
           </p>
@@ -121,8 +121,8 @@ const home = () => {
         </div>
         <div className='home-text'>
           <p>
-            fsdifdasf dkfjadk ds fdafd kfajds kfjsdalsjd fksjd sdk jdksda jfdskj sdl sdsaDS
-             SDS SADSdsdsA D DSA SA DSA SAdsa fd dsdfd sdsda
+            fsdifdasf dkfjadk ds fdafd kfajds kfjsdalsjd fksjd sdk jdksda jfdskj
+            sdl sdsaDS SDS SADSdsdsA D DSA SA DSA SAdsa fd dsdfd sdsda
             <a href='https://www.ost.ch'>
               <img src='ost-logo-en.svg' alt='OST Logo'></img>
             </a>
