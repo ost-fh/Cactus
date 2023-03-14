@@ -29,9 +29,9 @@ export class ComponentsService {
                     ...criterium,
                     _id: `${component.component
                       .toLowerCase()
-                      .replace(' ', '')}-${testMode.testMode.toLowerCase()}-${
-                      criterium._id
-                    }`,
+                      .replace(' ', '')}-${testMode.testMode
+                      .toLowerCase()
+                      .replace(' ', '')}-${criterium._id}`,
                   };
                 }),
               };
