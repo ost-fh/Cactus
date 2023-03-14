@@ -1,6 +1,6 @@
 export default interface Component {
   component: string;
-  alternativeComponentNames: string;
+  alternativeComponentNames?: string;
   description: string;
   imageUrl: string;
   testModes: TestMode[];
