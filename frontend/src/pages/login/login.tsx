@@ -5,7 +5,7 @@ import "./login.scss";
 import Heading from "../../shared/components/heading";
 import Oauth from "../../shared/components/oauth";
 
-const Login = (props: { setUserData: any }) => {
+const Login = () => {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {

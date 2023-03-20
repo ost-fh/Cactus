@@ -60,13 +60,7 @@ function App() {
           <Route path='impressum' element={<Impressum />} />
           <Route
             path='login'
-            element={
-              userData ? (
-                <Navigate to={"/"} />
-              ) : (
-                <Login setUserData={setUserData} />
-              )
-            }
+            element={userData ? <Navigate to={"/"} /> : <Login />}
           />
           <Route
             path='login-redirect'
