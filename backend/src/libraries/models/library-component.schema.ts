@@ -9,7 +9,7 @@ export default class LibraryComponent {
   name: string;
 
   @Prop()
-  alternativeComponentNames: string;
+  alternativeComponentNames?: string;
 
   @Prop({ type: [TestModeSchema], required: true, default: [] })
   modes: TestMode[] = [];

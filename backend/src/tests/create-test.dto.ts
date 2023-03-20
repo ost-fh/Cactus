@@ -18,7 +18,7 @@ class TestDataDto {
   component: string;
 
   @IsString()
-  alternativeComponentNames: string;
+  alternativeComponentNames?: string;
 
   @IsString()
   testMode: string;

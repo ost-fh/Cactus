@@ -9,6 +9,8 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
 import { PasswordService } from './services/password.service';
 import { AuthController } from './auth.controller';
+import { GitHubOauthStrategy } from './strategies/github-oauth.strategy';
+import { GoogleOauthStrategy } from './strategies/google-oauth.strategy';
 
 @Module({
   imports: [
@@ -35,7 +37,14 @@ import { AuthController } from './auth.controller';
       inject: [ConfigService],
     }),
   ],
-  providers: [AuthService, PasswordService, LocalStrategy, JwtStrategy],
+  providers: [
+    AuthService,
+    PasswordService,
+    LocalStrategy,
+    JwtStrategy,
+    GitHubOauthStrategy,
+    GoogleOauthStrategy,
+  ],
   exports: [AuthService],
   controllers: [AuthController],
 })

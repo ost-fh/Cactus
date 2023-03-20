@@ -22,6 +22,13 @@ services:
       - DATABASE_URL=mongodb://${DB_USERNAME}:${DB_PASSWORD}@database:27017/cactus
       - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
       - FRONTEND_ORIGIN=https://cactus.sifs0003.infs.ch
+      - GITHUB_OAUTH_CLIENT_ID=${GITHUB_OAUTH_CLIENT_ID}
+      - GITHUB_OAUTH_CLIENT_SECRET=${GITHUB_OAUTH_CLIENT_SECRET}
+      - GITHUB_OAUTH_CALLBACK_BASE_URL=https://cactus-api.sifs0003.infs.ch/api
+      - GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID}
+      - GOOGLE_OAUTH_CLIENT_SECRET=${GOOGLE_OAUTH_CLIENT_SECRET}
+      - GOOGLE_OAUTH_CALLBACK_BASE_URL=https://cactus-api.sifs0003.infs.ch/api
+
     networks:
       - web
       - default

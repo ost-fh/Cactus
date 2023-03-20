@@ -4,7 +4,7 @@ import Heading from "../../shared/components/heading";
 import PublicLayout from "../../shared/layout/public-layout";
 import "./home.css";
 
-const home = () => {
+const Home = () => {
   return (
     <PublicLayout activeLink='home'>
       <div className='home-intro'>
@@ -119,4 +119,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;

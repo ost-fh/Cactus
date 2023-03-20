@@ -45,7 +45,12 @@ export class AuthService {
       user.password,
     );
 
-    const result = await this.usersService.create({ ...user, hashedPassword });
+    const result = await this.usersService.create({
+      ...user,
+      hashedPassword,
+      provider: 'local',
+      providerId: 'local-id-of-table-account',
+    });
     return {
       id: result._id as any,
       username: result.username,

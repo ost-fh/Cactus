@@ -1,5 +1,10 @@
 import { UserData } from "../../App";
-import { componentCriteria, criterium, newLibrary, testResultTransmission } from "../resources/types";
+import {
+  componentCriteria,
+  criterium,
+  newLibrary,
+  testResultTransmission,
+} from "../resources/types";
 
 const API_URL =
   (window as any).env?.REACT_APP_BACKEND_BASE_URI ||
@@ -7,7 +12,7 @@ const API_URL =
   "";
 
 const getUserData = (): UserData | undefined => {
-  const userDataString = sessionStorage.getItem("userData");
+  const userDataString = localStorage.getItem("userData");
   if (userDataString) {
     return JSON.parse(userDataString);
   } else {
@@ -34,9 +39,8 @@ export const loginUser = async (credentials: {
   username: string;
   password: string;
 }) => {
-  return httpService("POST", `${API_URL}/auth/login`, credentials).then(
-    (data) => data.json()
-  );
+  return httpService("POST", `${API_URL}/auth/login`, credentials)
+    .then((data) => data.json());
 };
 
 export const registerUser = async (credentials: {
@@ -75,14 +79,25 @@ export const getAllCriteria = async (): Promise<criterium[]> => {
   return res.flat(2);
 };
 
-export const getCriterium = async (id: string): Promise<criterium | undefined> => {
+export const getCriterium = async (
+  id: string
+): Promise<criterium | undefined> => {
   const allCriteria = await getAllCriteria();
   return allCriteria.find((item) => item._id === id);
 };
 
-
 export const getLibrary = async (id: string) => {
   return httpService("GET", `${API_URL}/libraries/${id}`).then((data) => {
+    if (data.status === 200) {
+      return data.json();
+    } else {
+      throw new Error("failed");
+    }
+  });
+};
+
+export const getUserProfile = async () => {
+  return httpService("GET", `${API_URL}/users`).then((data) => {
     if (data.status === 200) {
       return data.json();
     } else {
