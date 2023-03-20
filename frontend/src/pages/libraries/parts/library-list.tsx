@@ -9,16 +9,16 @@ import {
 
 type LibraryListProps = {
   libraries: library[];
-  sorting: string;
+  sortBy: string;
   filters: string[];
 };
 
-const LibraryList = ({ libraries, sorting, filters }: LibraryListProps) => {
+const LibraryList = ({ libraries, sortBy, filters }: LibraryListProps) => {
   const [libraryBuckets, setLibraryBuckets] = useState<LibraryBuckets>();
 
   useEffect(() => {
-    setLibraryBuckets(sortLibrariesIntoBuckets(libraries, filters));
-  }, [filters, libraries]);
+    setLibraryBuckets(sortLibrariesIntoBuckets(libraries, sortBy, filters));
+  }, [filters, libraries, sortBy]);
 
   return (
     <section className='library-list'>

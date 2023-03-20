@@ -59,6 +59,7 @@ export type LibraryBuckets = {
 
 export const sortLibrariesIntoBuckets = (
   libraries: library[],
+  sortBy: string,
   filters: string[]
 ): LibraryBuckets => {
   let noFilters: library[] = [];
@@ -71,13 +72,10 @@ export const sortLibrariesIntoBuckets = (
     noFilters = libraries;
   } else {
     libraries.forEach((library) => {
-      // standard filter true
       let filterResult: filterResults = filterResults.true;
 
       // get data from current version
-      const currentVersion = library.versions.find(
-        (version) => library.currentVersion === version.version
-      );
+      const currentVersion = getCurrentVersion(library);
 
       // if a component from the filters is not found, it sorts into neutral
       for (const filter of filters) {
@@ -114,7 +112,10 @@ export const sortLibrariesIntoBuckets = (
     });
   }
 
-  // sorting TODO
+  sortLibraryArray(noFilters, sortBy);
+  sortLibraryArray(trueFiltered, sortBy);
+  sortLibraryArray(neutralFiltered, sortBy);
+  sortLibraryArray(falseFiltered, sortBy);
 
   const buckets: LibraryBuckets = {
     noFilter: noFilters,
@@ -124,4 +125,39 @@ export const sortLibrariesIntoBuckets = (
     focusScores: focusScores,
   };
   return buckets;
+};
+
+const sortLibraryArray = (libraryArray: library[], sortBy: string) => {
+  sortBy = sortBy.toLowerCase();
+  if (sortBy === "score") {
+    libraryArray.sort((a, b) => {
+      const aCurrentVersion = getCurrentVersion(a);
+      const bCurrentVersion = getCurrentVersion(b);
+      return (
+        (bCurrentVersion?.accessibilityScore || 0) -
+        (aCurrentVersion?.accessibilityScore || 0)
+      );
+    });
+  } else if (sortBy === "name") {
+    libraryArray.sort((a, b) => {
+      const aTitle = a.title.toLowerCase();
+      const bTitle = b.title.toLowerCase();
+      if (aTitle > bTitle) {
+        return 1;
+      }
+      if (aTitle < bTitle) {
+        return -1;
+      }
+      return 0;
+    });
+  } else {
+    console.error("invalid sort parameter");
+    return libraryArray;
+  }
+};
+
+const getCurrentVersion = (library: library) => {
+  return library.versions.find(
+    (version) => library.currentVersion === version.version
+  );
 };

@@ -15,6 +15,7 @@ const Libraries = () => {
   const [libraries, setLibraries] = useState<library[]>();
   const [components, setComponents] = useState<string[]>();
   const [componentFilters, setComponentFilters] = useState<string[]>([]);
+  const [sortBy, setSortBy] = useState<string>("score");
 
   // Fetch Libraries
   useEffect(() => {
@@ -51,9 +52,16 @@ const Libraries = () => {
       <form id='filters'>
         <label>
           Sort by:{" "}
-          <select name='sorting' id=''>
+          <select
+            name='sorting'
+            id=''
+            onChange={(e) => {
+              setSortBy(e.target.value);
+            }}
+            defaultValue={sortBy}
+          >
+            <option value='score'>Score</option>
             <option value='name'>Name</option>
-            <option value='name'>Score</option>
           </select>
         </label>
         <div className='spacer'></div>
@@ -76,18 +84,19 @@ const Libraries = () => {
             </label>
           ))}
         <div className='spacer-flex'></div>
-        {componentFilters.length > 0 && (
-          <button
-            type='button'
-            onClick={() => {
-              setComponentFilters([]);
-            }}
-          >
-            Reset Selection
-          </button>
-        )}
+        <button
+          style={{
+            visibility: `${componentFilters.length > 0 ? "visible" : "hidden"}`,
+          }}
+          type='button'
+          onClick={() => {
+            setComponentFilters([]);
+          }}
+        >
+          Reset Selection
+        </button>
       </form>
-      {componentFilters.length > 0 && (
+      {componentFilters.length < 0 && (
         <Alert type='help'>
           <div
             style={{
@@ -112,7 +121,7 @@ const Libraries = () => {
       ) : (
         <LibraryList
           libraries={libraries}
-          sorting={""}
+          sortBy={sortBy}
           filters={componentFilters}
         />
       )}

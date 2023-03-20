@@ -37,6 +37,7 @@ const LibraryCard = ({
     setCurrentVersion(currentVersion);
   }, [library]);
 
+  // extract scores of evaluated components
   useEffect(() => {
     if (filters.length > 0) {
       let newFilterScores: filterScore[] = [];
