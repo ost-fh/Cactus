@@ -125,8 +125,6 @@ const Libraries = () => {
           filters={componentFilters}
         />
       )}
-
-      <hr />
     </PublicLayout>
   );
 };
