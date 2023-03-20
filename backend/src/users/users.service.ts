@@ -24,7 +24,7 @@ export default class UsersService {
       if (!user) {
         return user;
       }
-      return { ...user?.toObject(), hashedPassword: '' };
+      return user?.toObject();
     } catch {
       return undefined;
     }
@@ -48,12 +48,10 @@ export default class UsersService {
     email: string,
   ): Promise<User> {
     let user = await this.findOneByProviderId(providerId, provider);
-    console.log('okdfads');
     if (!user) {
       user = await this.create({
         username,
         email,
-        hashedPassword: 'dfafdf',
         provider: provider,
         providerId: providerId,
       });

@@ -12,7 +12,9 @@ export class ComponentsService {
   constructor() {
     const fullPath = join(__dirname);
     fs.readdir(fullPath, (error, files) => {
-      if (error) console.log(error);
+      if (error) {
+        console.log(error);
+      }
       files
         .filter((f) => f.endsWith('.yml') || f.endsWith('.yaml'))
         .forEach((file) => {

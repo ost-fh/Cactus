@@ -17,9 +17,6 @@ export class User {
   email: string;
 
   @Prop({ required: true })
-  hashedPassword: string; // TODO move to separate document account
-
-  @Prop({ required: true })
   /** With which social login provider the user has logged in */
   provider: AuthProvider;
 
