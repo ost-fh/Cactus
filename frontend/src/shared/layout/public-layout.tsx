@@ -40,12 +40,16 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
               <>
                 <BsFillPersonFill /> Logged in as {userData.username}
                 {" - "}
-                <Link to='/logout'>Logout</Link>
+                <Link to={`/logout?path=${window.location.pathname}`}>
+                  Logout
+                </Link>
               </>
             ) : (
               <>
                 <BsFillPersonFill />
-                <Link to='/login'>Login</Link>
+                <Link to={`/login?path=${window.location.pathname}`}>
+                  Login
+                </Link>
               </>
             )}
           </div>

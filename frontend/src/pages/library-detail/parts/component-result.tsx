@@ -43,6 +43,8 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
       <header>
         <img
           src={componentData?.imageUrl}
+          width={150}
+          height={150}
           alt={`schematic of ${component.name}`}
         />
         <div>

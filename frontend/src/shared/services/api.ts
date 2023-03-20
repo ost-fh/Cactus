@@ -1,4 +1,3 @@
-import { UserData } from "../../App";
 import {
   componentCriteria,
   criterium,
@@ -11,21 +10,25 @@ export const API_BASE_URL =
   process.env.REACT_APP_BACKEND_BASE_URI ||
   "";
 
-const getUserData = (): UserData | undefined => {
+const getToken = (): string | undefined => {
   const userDataString = localStorage.getItem("userData");
   if (userDataString) {
-    return JSON.parse(userDataString);
+    return JSON.parse(userDataString).token;
   } else {
     return undefined;
   }
 };
 
-const httpService = (method: "GET" | "POST", url: string, data?: any) => {
-  const userData = getUserData();
+const httpService = (
+  method: "GET" | "POST",
+  url: string,
+  data?: any,
+  token: string | undefined = getToken()
+) => {
   const fetchHeaders = new Headers({ "content-type": "application/json" });
 
-  if (userData && userData.token) {
-    fetchHeaders.append("authorization", "Bearer " + userData.token);
+  if (token) {
+    fetchHeaders.append("authorization", "Bearer " + token);
   }
 
   return fetch(url, {
@@ -97,14 +100,16 @@ export const getLibrary = async (id: string) => {
   });
 };
 
-export const getUserProfile = async () => {
-  return httpService("GET", `${API_BASE_URL}/users`).then((data) => {
-    if (data.status === 200) {
-      return data.json();
-    } else {
-      throw new Error("failed");
+export const getUserProfile = async (token?: string) => {
+  return httpService("GET", `${API_BASE_URL}/users`, undefined, token).then(
+    (data) => {
+      if (data.status === 200) {
+        return data.json();
+      } else {
+        throw new Error("failed");
+      }
     }
-  });
+  );
 };
 
 export const createLibrary = async (newLibrary: newLibrary) => {

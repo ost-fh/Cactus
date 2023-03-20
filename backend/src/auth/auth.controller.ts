@@ -65,7 +65,7 @@ export class AuthController {
     res.redirect(
       `${this.configService.get<EnvironmentVariables>('FRONTEND_ORIGIN', {
         infer: true,
-      })}/login?accessToken=${test.token}`,
+      })}/login-redirect?accessToken=${test.token}`,
     );
   }
 
@@ -82,7 +82,7 @@ export class AuthController {
     res.redirect(
       `${this.configService.get<EnvironmentVariables>('FRONTEND_ORIGIN', {
         infer: true,
-      })}/login?accessToken=${test.token}`,
+      })}/login-redirect?accessToken=${test.token}`,
     );
   }
 }

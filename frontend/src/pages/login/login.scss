@@ -3,8 +3,12 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-}
 
-.login form {
-  min-width: 25rem;
+  .oauth {
+    max-width: 25rem;
+  }
+
+  form {
+    min-width: 25rem;
+  }
 }

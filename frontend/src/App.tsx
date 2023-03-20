@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import "./shared/layout/reset.css";
 import "./shared/layout/general.scss";
@@ -19,6 +19,7 @@ import { useUserData } from "./shared/services/use-token";
 import ProtectedRoute from "./shared/components/protected-route";
 import Impressum from "./pages/impressum/impressum";
 import Components from "./pages/components/components";
+import LoginRedirect from "./pages/login-redirect/login-redirect";
 
 export type UserData = {
   _id: string;
@@ -55,12 +56,22 @@ function App() {
             path='libraries/:paramsId/:paramsVersion/'
             element={<LibraryDetail />}
           />
-          <Route
-            path='contribute'
-            element={<Contribute setUserData={setUserData} />}
-          />
+          <Route path='contribute' element={<Contribute />} />
           <Route path='impressum' element={<Impressum />} />
-          <Route path='login' element={<Login setUserData={setUserData} />} />
+          <Route
+            path='login'
+            element={
+              userData ? (
+                <Navigate to={"/"} />
+              ) : (
+                <Login setUserData={setUserData} />
+              )
+            }
+          />
+          <Route
+            path='login-redirect'
+            element={<LoginRedirect setUserData={setUserData} />}
+          />
           <Route path='logout' element={<LogOut logOut={logOut} />} />
         </Route>
         <Route
