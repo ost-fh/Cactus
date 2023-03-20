@@ -1,4 +1,4 @@
-component: Switch
+name: Switch
 alternativeComponentNames: Toggle
 description: A switch is a control element that allows users to switch between two states, usually "on" and "off".
 imageUrl: /switch.svg

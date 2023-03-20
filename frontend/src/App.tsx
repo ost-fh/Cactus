@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "./shared/layout/reset.css";
-import "./shared/layout/general.css";
+import "./shared/layout/general.scss";
 import "./shared/fonts/AtkinsonHyperlegible-Regular.ttf";
 import "./shared/fonts/AtkinsonHyperlegible-Bold.ttf";
 
@@ -19,6 +19,7 @@ import { useUserData } from "./shared/services/use-token";
 import ProtectedRoute from "./shared/components/protected-route";
 import Impressum from "./pages/impressum/impressum";
 import PrivacyPolicy from "./pages/privacy-policy/privacy-policy";
+import Components from "./pages/components/components";
 
 export type UserData = {
   _id: string;
@@ -75,6 +76,7 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
+        <Route path='components' element={<Components />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </UserContext.Provider>

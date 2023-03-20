@@ -76,7 +76,7 @@ export type testData = {
 };
 
 export type componentCriteria = {
-  component: string;
+  name: string;
   alternativeComponentNames: string;
   description: string;
   imageUrl: string;

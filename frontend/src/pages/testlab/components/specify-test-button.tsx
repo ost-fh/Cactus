@@ -17,8 +17,7 @@ const SpecifyTestButton = ({
   amountOfTests,
 }: SpecifyTestButtonProps) => {
   const active =
-    testData.component === component.component &&
-    testData.testMode === testMode;
+    testData.component === component.name && testData.testMode === testMode;
 
   return (
     <label className={`button button-with-icon ${active && "button-selected"}`}>
@@ -28,13 +27,13 @@ const SpecifyTestButton = ({
         required
         onChange={() =>
           handleChange(
-            component.component,
+            component.name,
             component.alternativeComponentNames,
             testMode
           )
         }
         checked={active}
-        id={`${testMode}-${component.component}`}
+        id={`${testMode}-${component.name}`}
       />
       <div>
         {testMode} <br />

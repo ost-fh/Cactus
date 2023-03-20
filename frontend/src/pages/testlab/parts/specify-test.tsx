@@ -78,11 +78,11 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
       <Alert type='help' message='Choose a testmode and continue.' />
 
       {components.map((component) => (
-        <div key={component.component} className='specify-component'>
-          <img src={component.imageUrl} alt={component.component} />
+        <div key={component.name} className='specify-component'>
+          <img src={component.imageUrl} alt={component.name} />
           <div className='specify-component-content'>
             <div className='specify-component-header'>
-              <h3>{component.component}</h3>
+              <h3>{component.name}</h3>
               <p>{component.alternativeComponentNames}</p>
             </div>
             <div className='specify-component-options'>
@@ -101,7 +101,7 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
                         )
                         ?.components.find(
                           (foundComponent) =>
-                            foundComponent.name === component.component
+                            foundComponent.name === component.name
                         )
                         ?.modes.find((mode) => mode.name === testMode)
                         ?.testScores?.amountOfTests

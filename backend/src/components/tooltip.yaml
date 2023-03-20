@@ -1,4 +1,4 @@
-component: Tooltip
+name: Tooltip
 alternativeComponentNames: Inline Dialog
 description: A tooltip is a small popup element that shows additional information when hovering or focusing the tooltip triggering element.
 imageUrl: /tooltip.svg

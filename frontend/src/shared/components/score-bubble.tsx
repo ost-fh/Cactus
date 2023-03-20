@@ -1,26 +1,22 @@
 import React from "react";
-import "./bubble.css";
+import Bubble from "./bubble";
+import "./bubble.scss";
 
 type ScoreBubbleProps = {
   score: number | undefined;
   label?: string;
+  color?: "green" | "yellow" | "red" | "blue";
 };
 
 const ScoreBubble = ({
   score,
   label = "Cactus Score",
+  color = "green",
 }: ScoreBubbleProps) => {
-  return (
-    <div className='score-bubble'>
-      {score !== undefined ? (
-        <>
-          <span className='score-score'>{Math.floor(score)}%</span> {label}
-        </>
-      ) : (
-        "not scored yet"
-      )}
-    </div>
-  );
+  if (score === undefined) {
+    return <Bubble label='not scored yet' />;
+  }
+  return <Bubble label={label} value={`${Math.floor(score)}%`} color={color} />;
 };
 
 export default ScoreBubble;

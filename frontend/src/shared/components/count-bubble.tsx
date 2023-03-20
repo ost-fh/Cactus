@@ -1,4 +1,5 @@
 import React from "react";
+import Bubble from "./bubble";
 
 type CountBubbleProps = {
   count: number | undefined;
@@ -13,12 +14,10 @@ const CountBubble = ({
     count && (count < 1 ? count.toPrecision(2) : count.toString());
 
   return (
-    <div className='count-bubble'>
-      <span className='count-count'>
-        {countString !== undefined ? countString : "undefined"}
-      </span>{" "}
-      {label}
-    </div>
+    <Bubble
+      value={countString !== undefined ? countString : "undefined"}
+      label={label}
+    />
   );
 };
 
