@@ -18,6 +18,7 @@ import NotFound from "./pages/not-found/not-found";
 import { useUserData } from "./shared/services/use-token";
 import ProtectedRoute from "./shared/components/protected-route";
 import Impressum from "./pages/impressum/impressum";
+import PrivacyPolicy from "./pages/privacy-policy/privacy-policy";
 
 export type UserData = {
   _id: string;
@@ -62,6 +63,7 @@ function App() {
             path='impressum'
             element={<Impressum />}
           />
+          <Route path='privacy-policy' element={<PrivacyPolicy/>} />
           <Route path='login' element={<Login setUserData={setUserData} />} />
           <Route path='logout' element={<LogOut logOut={logOut} />} />
         </Route>
