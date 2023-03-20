@@ -111,8 +111,12 @@ const Contribute = (props: { setUserData: any }) => {
           )}
         </Alert>
       </div>
-      <h3>Expand and discuss criteria catalogue</h3>
-      <p>https://github.com/ost-fh/Cactus</p>
+      <h3>Add or modify a component and its criteria</h3>
+      <p>
+        The components and its criteria are described through yaml files directly in the source code of this <a href="https://github.com/ost-fh/Cactus">GitHub repository</a>.
+        But luckily the whole application is open source and therefore everyone
+        is invited to contribute. This <a href='https://github.com/ost-fh/Cactus/blob/main/CONTRIBUTING.md'>manual</a> explains you the correct process. 
+      </p>      
     </PublicLayout>
   );
 };

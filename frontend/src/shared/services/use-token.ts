@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const useUserData = () => {
   const getUserData = () => {
-    const userDataString = sessionStorage.getItem("userData");
+    const userDataString = localStorage.getItem("userData");
     if (userDataString) {
       const userData = JSON.parse(userDataString);
       return userData;
@@ -13,9 +13,9 @@ export const useUserData = () => {
   const [userData, setUserData] = useState(getUserData());
   const saveUserData = (userData: any) => {
     if (userData === undefined) {
-      sessionStorage.removeItem("userData");
+      localStorage.removeItem("userData");
     } else {
-      sessionStorage.setItem("userData", JSON.stringify(userData));
+      localStorage.setItem("userData", JSON.stringify(userData));
     }
 
     setUserData(userData);

@@ -4,7 +4,7 @@ import Heading from "../../shared/components/heading";
 import PublicLayout from "../../shared/layout/public-layout";
 import "./home.css";
 
-const home = () => {
+const Home = () => {
   return (
     <PublicLayout activeLink='home'>
       <div className='home-intro'>
@@ -115,25 +115,8 @@ const home = () => {
           </Link>
         </div>
       </div>
-      <div className='home-section '>
-        <div className='home-title'>
-          <h3>The Sponsor</h3>
-        </div>
-        <div className='home-text'>
-          <p>
-            fsdifdasf dkfjadk ds fdafd kfajds kfjsdalsjd fksjd sdk jdksda jfdskj
-            sdl sdsaDS SDS SADSdsdsA D DSA SA DSA SAdsa fd dsdfd sdsda
-            <a href='https://www.ost.ch'>
-              <img src='ost-logo-en.svg' alt='OST Logo'></img>
-            </a>
-          </p>
-          <a href='https://www.ost.ch/en/' className='button'>
-            See who supports us
-          </a>
-        </div>
-      </div>
     </PublicLayout>
   );
 };
 
-export default home;
+export default Home;

@@ -1,6 +1,10 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../../shared/services/api";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  API_BASE_URL,
+  getUserProfile,
+  loginUser,
+} from "../../shared/services/api";
 import PublicLayout from "../../shared/layout/public-layout";
 import "./login.css";
 import Alert from "../../shared/components/alert";
@@ -10,6 +14,7 @@ import Heading from "../../shared/components/heading";
 const Login = (props: { setUserData: any }) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
 
   enum state {
     new,
@@ -17,6 +22,22 @@ const Login = (props: { setUserData: any }) => {
     loading,
     success,
   }
+
+  useEffect(() => {
+    const accessToken = searchParams.get("accessToken");
+
+    if (!accessToken) {
+      return;
+    }
+
+    props.setUserData({ token: accessToken });
+
+    getUserProfile().then((user) => {
+      props.setUserData({ ...user, token: accessToken });
+      setFormState(state.success);
+      setTimeout(() => navigate("/libraries"), 2500);
+    });
+  }, []);
 
   const [formState, setFormState] = useState<state>(state.new);
   const [error, setError] = useState("");
@@ -76,6 +97,10 @@ const Login = (props: { setUserData: any }) => {
               <button className='button-primary' type='submit'>
                 Log In
               </button>
+              <br />
+              <a href={`${API_BASE_URL}/auth/github`}>Continue with GitHub</a>
+              <br />
+              <a href={`${API_BASE_URL}/auth/google`}>Continue with Google</a>
             </div>
           </form>
         )}
