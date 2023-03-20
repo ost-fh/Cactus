@@ -6,7 +6,7 @@ import {
   testResultTransmission,
 } from "../resources/types";
 
-const API_URL =
+export const API_BASE_URL =
   (window as any).env?.REACT_APP_BACKEND_BASE_URI ||
   process.env.REACT_APP_BACKEND_BASE_URI ||
   "";
@@ -39,7 +39,7 @@ export const loginUser = async (credentials: {
   username: string;
   password: string;
 }) => {
-  return httpService("POST", `${API_URL}/auth/login`, credentials)
+  return httpService("POST", `${API_BASE_URL}/auth/login`, credentials)
     .then((data) => data.json());
 };
 
@@ -48,7 +48,7 @@ export const registerUser = async (credentials: {
   email: string;
   password: string;
 }) => {
-  return httpService("POST", `${API_URL}/auth/register`, credentials).then(
+  return httpService("POST", `${API_BASE_URL}/auth/register`, credentials).then(
     (data) => {
       if (data.status === 201) {
         return data.json();
@@ -60,13 +60,13 @@ export const registerUser = async (credentials: {
 };
 
 export const getLibraries = async () => {
-  return httpService("GET", `${API_URL}/libraries`)
+  return httpService("GET", `${API_BASE_URL}/libraries`)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
 
 export const getComponents = async () => {
-  return httpService("GET", `${API_URL}/components`)
+  return httpService("GET", `${API_BASE_URL}/components`)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
@@ -87,7 +87,7 @@ export const getCriterium = async (
 };
 
 export const getLibrary = async (id: string) => {
-  return httpService("GET", `${API_URL}/libraries/${id}`).then((data) => {
+  return httpService("GET", `${API_BASE_URL}/libraries/${id}`).then((data) => {
     if (data.status === 200) {
       return data.json();
     } else {
@@ -97,7 +97,7 @@ export const getLibrary = async (id: string) => {
 };
 
 export const getUserProfile = async () => {
-  return httpService("GET", `${API_URL}/users`).then((data) => {
+  return httpService("GET", `${API_BASE_URL}/users`).then((data) => {
     if (data.status === 200) {
       return data.json();
     } else {
@@ -107,7 +107,7 @@ export const getUserProfile = async () => {
 };
 
 export const createLibrary = async (newLibrary: newLibrary) => {
-  return httpService("POST", `${API_URL}/libraries`, {
+  return httpService("POST", `${API_BASE_URL}/libraries`, {
     title: newLibrary.title,
     linkHome: newLibrary.linkHome,
     linkDocs: newLibrary.linkDocs,
@@ -118,13 +118,13 @@ export const createLibrary = async (newLibrary: newLibrary) => {
 };
 
 export const postTestResult = async (testResult: testResultTransmission) => {
-  return httpService("POST", `${API_URL}/testlab`, testResult)
+  return httpService("POST", `${API_BASE_URL}/testlab`, testResult)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
 
 export const postNewVersion = (newVersion: string, library: string) => {
-  return httpService("POST", `${API_URL}/libraries/${library}`, {
+  return httpService("POST", `${API_BASE_URL}/libraries/${library}`, {
     name: newVersion,
   }).then((data) => {
     if (data.status === 200 || data.status === 201) {
