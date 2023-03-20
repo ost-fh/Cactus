@@ -39,8 +39,9 @@ export const loginUser = async (credentials: {
   username: string;
   password: string;
 }) => {
-  return httpService("POST", `${API_BASE_URL}/auth/login`, credentials)
-    .then((data) => data.json());
+  return httpService("POST", `${API_BASE_URL}/auth/login`, credentials).then(
+    (data) => data.json()
+  );
 };
 
 export const registerUser = async (credentials: {
@@ -65,7 +66,7 @@ export const getLibraries = async () => {
     .catch((error) => console.error(error));
 };
 
-export const getComponents = async () => {
+export const getComponents = async (): Promise<componentCriteria[]> => {
   return httpService("GET", `${API_BASE_URL}/components`)
     .then((data) => data.json())
     .catch((error) => console.error(error));

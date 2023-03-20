@@ -5,7 +5,7 @@ import {
   BsFillExclamationTriangleFill,
   BsInfoCircleFill,
 } from "react-icons/bs";
-import "./alert.css";
+import "./alert.scss";
 
 type AlertProps = {
   title?: string;

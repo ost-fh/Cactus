@@ -106,7 +106,7 @@ const Home = () => {
           <p>
             There are a lot of UI libraries with a lot of components. It takes a
             lot of time to test them all. Therefore we made the testing
-            crowdsourced. We hav ea criteria-catalogue specially developed for
+            crowdsourced. We have a criteria-catalogue specially developed for
             this, and you can check it against different components of the
             libraries. Are you interested to help out?
           </p>

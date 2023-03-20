@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "./shared/layout/reset.css";
-import "./shared/layout/general.css";
+import "./shared/layout/general.scss";
 import "./shared/fonts/AtkinsonHyperlegible-Regular.ttf";
 import "./shared/fonts/AtkinsonHyperlegible-Bold.ttf";
 
@@ -18,6 +18,7 @@ import NotFound from "./pages/not-found/not-found";
 import { useUserData } from "./shared/services/use-token";
 import ProtectedRoute from "./shared/components/protected-route";
 import Impressum from "./pages/impressum/impressum";
+import Components from "./pages/components/components";
 
 export type UserData = {
   _id: string;
@@ -58,10 +59,7 @@ function App() {
             path='contribute'
             element={<Contribute setUserData={setUserData} />}
           />
-          <Route
-            path='impressum'
-            element={<Impressum />}
-          />
+          <Route path='impressum' element={<Impressum />} />
           <Route path='login' element={<Login setUserData={setUserData} />} />
           <Route path='logout' element={<LogOut logOut={logOut} />} />
         </Route>
@@ -73,6 +71,7 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
+        <Route path='components' element={<Components />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </UserContext.Provider>

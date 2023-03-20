@@ -1,5 +1,5 @@
 export default interface Component {
-  component: string;
+  name: string;
   alternativeComponentNames?: string;
   description: string;
   imageUrl: string;

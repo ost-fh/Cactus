@@ -41,14 +41,12 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   // get the relevant criteria-group
   useEffect(() => {
     getComponents().then((items) => {
-      const res: criteriaGroup = items // get the relevant criteria-group
-        .find(
-          (item: componentCriteria) => item.component === testData.component
-        )
+      const result = items
+        .find((item: componentCriteria) => item.name === testData.component)
         ?.testModes.find(
           (item: criteriaGroup) => item.testMode === testData.testMode
         );
-      setCriteriaGroup(res);
+      setCriteriaGroup(result);
     });
   }, [testData.component, testData.testMode]);
 

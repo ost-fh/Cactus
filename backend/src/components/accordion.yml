@@ -1,4 +1,4 @@
-component: Accordion
+name: Accordion
 alternativeComponentNames: Disclosure
 description: An accordion is a vertically stacked set of headings each with a collapsible panel
 imageUrl: /accordion.svg

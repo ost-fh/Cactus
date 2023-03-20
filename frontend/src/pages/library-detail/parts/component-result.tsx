@@ -19,7 +19,9 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
 
   useEffect(() => {
     getComponents().then((items) => {
-      const res = items.find((item: componentCriteria) => item.component === component.name);
+      const res = items.find(
+        (item: componentCriteria) => item.name === component.name
+      );
 
       setComponentData(res);
     });

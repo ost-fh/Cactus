@@ -1,5 +1,6 @@
 import React from "react";
 import Alert from "../../../shared/components/alert";
+import Bubble from "../../../shared/components/bubble";
 import CountBubble from "../../../shared/components/count-bubble";
 import ScoreBubble from "../../../shared/components/score-bubble";
 import { mode } from "../../../shared/resources/types";

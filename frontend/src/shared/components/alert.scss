@@ -1,3 +1,5 @@
+@use "src/shared/layout/colors";
+
 .alert {
   border-radius: 0.4rem;
   padding: 0.7rem 0.9rem;
@@ -5,23 +7,19 @@
 }
 
 .alert-info {
-  background-color: rgb(255, 250, 216);
-  /* border: rgb(247, 241, 126) solid 1px; */
+  background-color: colors.$yellow-light;
 }
 
 .alert-help {
-  background-color: rgb(232, 242, 254);
-  /* border: rgb(171, 212, 249) solid 1px; */
+  background-color: colors.$blue-light;
 }
 
 .alert-success {
-  background-color: rgb(227, 255, 219);
-  /* border: rgb(161, 241, 139) solid 1px; */
+  background-color: colors.$green-xlight;
 }
 
 .alert-error {
-  background-color: rgb(253, 217, 217);
-  /* border: rgb(240, 121, 121) solid 1px; */
+  background-color: colors.$red-light;
 }
 
 .alert-with-icon {
