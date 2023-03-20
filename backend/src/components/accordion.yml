@@ -1,7 +1,7 @@
 component: Accordion
 alternativeComponentNames: Disclosure
 description: An accordion is a vertically stacked set of headings each with a collapsible panel
-imageUrl: /accordion.png
+imageUrl: /accordion.svg
 testModes:
   - testMode: Screenreader
     criteria:
