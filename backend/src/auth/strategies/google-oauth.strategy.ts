@@ -24,12 +24,12 @@ export class GoogleOauthStrategy extends PassportStrategy(Strategy, 'google') {
           infer: true,
         },
       ),
-      callbackURL: configService.get<EnvironmentVariables>(
-        'GOOGLE_OAUTH_CALLBACK_URL',
+      callbackURL: `${configService.get<EnvironmentVariables>(
+        'GOOGLE_OAUTH_CALLBACK_BASE_URL',
         {
           infer: true,
         },
-      ),
+      )}/auth/google/callback`,
       scope: ['profile', 'email'],
     });
   }
@@ -40,8 +40,6 @@ export class GoogleOauthStrategy extends PassportStrategy(Strategy, 'google') {
     profile: Profile,
   ): Promise<any> {
     const { id, name, emails, photos } = profile;
-
-    console.log('profile', profile);
 
     if (!name || !emails) {
       throw new UnauthorizedException();

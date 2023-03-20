@@ -5,7 +5,7 @@ const Impressum = () => {
   return (
     <PublicLayout activeLink='impressum'>
       <header>
-        <Heading>Impressung</Heading>
+        <Heading>Impressum</Heading>
       </header>
       <h3>Contact</h3>
       <p>
@@ -77,11 +77,6 @@ const Impressum = () => {
         prior written consent of OST – Eastern Switzerland University of Applied
         Sciences is prohibited.
       </p>
-      <h3>Privacy</h3>
-      Hosting through IFS
-      TODO
-      <p>https://www.ost.ch/en/systemseiten/privacy-policy</p>
-      https://www.digitec.ch/en/wiki/2791
     </PublicLayout>
   );
 };

@@ -23,12 +23,12 @@ export class GitHubOauthStrategy extends PassportStrategy(Strategy, 'github') {
           infer: true,
         },
       ),
-      callbackURL: configService.get<EnvironmentVariables>(
-        'GITHUB_OAUTH_CALLBACK_URL',
+      callbackURL: `${configService.get<EnvironmentVariables>(
+        'GITHUB_OAUTH_CALLBACK_BASE_URL',
         {
           infer: true,
         },
-      ),
+      )}/auth/github/callback`,
       scope: ['public_profile', 'user:email'],
     });
   }
