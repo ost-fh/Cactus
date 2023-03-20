@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { getUserProfile, loginUser } from "../../shared/services/api";
+import {
+  API_BASE_URL,
+  getUserProfile,
+  loginUser,
+} from "../../shared/services/api";
 import PublicLayout from "../../shared/layout/public-layout";
 import "./login.css";
 import Alert from "../../shared/components/alert";
@@ -94,13 +98,9 @@ const Login = (props: { setUserData: any }) => {
                 Log In
               </button>
               <br />
-              <a href='http://localhost:3010/api/auth/github'>
-                Continue with GitHub
-              </a>
+              <a href={`${API_BASE_URL}/auth/github`}>Continue with GitHub</a>
               <br />
-              <a href='http://localhost:3010/api/auth/google'>
-                Continue with Google
-              </a>
+              <a href={`${API_BASE_URL}/auth/google`}>Continue with Google</a>
             </div>
           </form>
         )}
