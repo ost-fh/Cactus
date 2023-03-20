@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 1024 1024" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path d="M103.262 268.119C103.262 216.757 144.899 175.12 196.261 175.12C247.622 175.12 289.259 216.757 289.259 268.119C289.259 319.481 247.622 361.118 196.261 361.118C144.899 361.118 103.262 319.481 103.262 268.119Z" id="Fill"/>
+<path d="M102.243 512C102.243 460.638 143.88 419.001 195.242 419.001C246.604 419.001 288.241 460.638 288.241 512C288.241 563.362 246.604 604.999 195.242 604.999C143.88 604.999 102.243 563.362 102.243 512Z" id="Fill_2"/>
+<path d="M101.591 755.881C101.591 704.519 143.228 662.882 194.59 662.882C245.952 662.882 287.589 704.519 287.589 755.881C287.589 807.243 245.952 848.88 194.59 848.88C143.228 848.88 101.591 807.243 101.591 755.881Z" id="Fill_3"/>
+</defs>
+<g id="Ebene-4" vectornator:layerName="Ebene 4">
+<g opacity="1">
+<use fill="#ffffff" fill-rule="nonzero" stroke="none" xlink:href="#Fill"/>
+<mask height="185.997" id="StrokeMask" maskUnits="userSpaceOnUse" width="185.997" x="103.262" y="175.12">
+<rect fill="#000000" height="185.997" stroke="none" width="185.997" x="103.262" y="175.12"/>
+<use fill="#ffffff" fill-rule="evenodd" stroke="none" xlink:href="#Fill"/>
+</mask>
+<use fill="none" mask="url(#StrokeMask)" stroke="#b7b7b7" stroke-linecap="butt" stroke-linejoin="bevel" stroke-width="60.8548" xlink:href="#Fill"/>
+</g>
+<path d="M409.499 268.119L825.574 268.119" fill="none" opacity="1" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="72.2478"/>
+<path d="M113.486 391.656L910.514 391.656C947.467 391.656 977.423 420.438 977.423 455.943L977.423 568.057C977.423 603.562 947.467 632.344 910.514 632.344L113.486 632.344C76.5331 632.344 46.577 603.562 46.577 568.057L46.577 455.943C46.577 420.438 76.5331 391.656 113.486 391.656Z" fill="#dfdfdf" fill-rule="nonzero" opacity="1" stroke="none"/>
+<g opacity="1">
+<use fill="#ffffff" fill-rule="nonzero" stroke="none" xlink:href="#Fill_2"/>
+<mask height="185.997" id="StrokeMask_2" maskUnits="userSpaceOnUse" width="185.997" x="102.243" y="419.001">
+<rect fill="#000000" height="185.997" stroke="none" width="185.997" x="102.243" y="419.001"/>
+<use fill="#ffffff" fill-rule="evenodd" stroke="none" xlink:href="#Fill_2"/>
+</mask>
+<use fill="none" mask="url(#StrokeMask_2)" stroke="#2f2e2e" stroke-linecap="butt" stroke-linejoin="bevel" stroke-width="108.408" xlink:href="#Fill_2"/>
+</g>
+<path d="M409.499 512L763.047 512" fill="none" opacity="1" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="72.2478"/>
+<path d="M409.499 755.881L868.207 755.881" fill="none" opacity="1" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="72.2478"/>
+<g opacity="1">
+<use fill="#ffffff" fill-rule="nonzero" stroke="none" xlink:href="#Fill_3"/>
+<mask height="185.997" id="StrokeMask_3" maskUnits="userSpaceOnUse" width="185.997" x="101.591" y="662.882">
+<rect fill="#000000" height="185.997" stroke="none" width="185.997" x="101.591" y="662.882"/>
+<use fill="#ffffff" fill-rule="evenodd" stroke="none" xlink:href="#Fill_3"/>
+</mask>
+<use fill="none" mask="url(#StrokeMask_3)" stroke="#b7b7b7" stroke-linecap="butt" stroke-linejoin="bevel" stroke-width="60.8548" xlink:href="#Fill_3"/>
+</g>
+</g>
+</svg>

@@ -85,7 +85,6 @@ const Libraries = () => {
           <Alert message='Libraries are loading ...' />
         )}
       </section>
-      <hr />
     </PublicLayout>
   );
 };

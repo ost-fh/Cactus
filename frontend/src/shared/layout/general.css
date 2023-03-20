@@ -36,6 +36,14 @@ main {
   outline-color: rgb(209, 7, 7);
 }
 
+:link {
+  color: rgb(0, 101, 0);
+}
+
+:visited {
+  color: rgb(1, 73, 1);
+}
+
 /* responsive 2 column layout class */
 .layout-split {
   display: grid;
