@@ -34,12 +34,13 @@ const LoginRedirect = ({ setUserData }: any) => {
 
     getUserProfile(accessToken)
       .then((user) => {
-        const beforeLoginUrl = sessionStorage.getItem("beforeLogin");
+        const beforeLoginUrl = `${sessionStorage.getItem("beforeLogin")}`;
         setUserData({ ...user, token: accessToken });
         setPageState(state.success);
-        setTimeout(() => navigate(beforeLoginUrl || "/contribute"), 3000);
-        // TODO: Potential Bug - session storage is not removed, breaks redirect
-        // sessionStorage.removeItem("beforeLogin");
+        setTimeout(() => {
+          navigate(beforeLoginUrl || "/contribute");
+          sessionStorage.removeItem("beforeLogin");
+        }, 3000);
       })
 
       .catch(() => {
