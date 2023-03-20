@@ -71,7 +71,7 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
-        <Route path='filters' element={<Components />} />
+        <Route path='components' element={<Components />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </UserContext.Provider>

@@ -12,12 +12,15 @@ const Components = () => {
         id='main'
         style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
       >
+        <h1>Components</h1>
+        <h2>Alerts</h2>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <Alert type='info' message='asdf' />
           <Alert type='error' message='asdf' />
           <Alert type='success' message='asdf' />
           <Alert type='help' message='asdf' />
         </div>
+        <h2>Buttons</h2>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <button>Button</button>
           <button className='button-selected'>Button</button>
@@ -26,6 +29,7 @@ const Components = () => {
             Button
           </button>
         </div>
+        <h2>Bubbles</h2>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <Bubble value={5} label='asdf' />
           <Bubble label='asd' />
@@ -41,6 +45,7 @@ const Components = () => {
           <CountBubble count={4} />
           {/* Remove Count Bubble */}
         </div>
+        <h2>Library Cards</h2>
         <LibraryCard library={libraryExample} />
         <LibraryCard
           library={libraryExample}
