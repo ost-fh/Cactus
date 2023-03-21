@@ -52,15 +52,6 @@ export class AuthController {
   ) {
     const user = req.user as User;
 
-    // TODO delete
-    console.log(
-      `${this.gitHubAuthCallback.name}(): req.user = ${JSON.stringify(
-        user,
-        null,
-        4,
-      )}`,
-    );
-
     const test = await this.authService.getAccessToken(user);
     res.redirect(
       `${this.configService.get<EnvironmentVariables>('FRONTEND_ORIGIN', {
