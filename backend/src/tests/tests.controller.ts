@@ -12,6 +12,6 @@ export class TestsController {
   @ApiBearerAuth()
   @Post()
   async create(@Req() req: any, @Body() createTestDto: CreateTestDto) {
-    return this.testsService.create(createTestDto, req.user.userId);
+    return this.testsService.createOrUpdate(createTestDto, req.user.userId);
   }
 }
