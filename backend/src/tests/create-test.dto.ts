@@ -6,6 +6,7 @@ import {
   ValidateNested,
   IsObject,
   IsOptional,
+  IsBoolean,
 } from 'class-validator';
 
 class TestDataDto {
@@ -31,6 +32,7 @@ class TestDataDto {
   @IsString()
   userOs: string;
 
+  @IsBoolean()
   componentExists: boolean; // TODO only true if componentLinkDocs exist
 
   @IsString()

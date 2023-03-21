@@ -13,7 +13,10 @@ export class TestsService {
     private readonly scoringService: ScoringService,
   ) {}
 
-  async create(dto: CreateTestDto, userId: string): Promise<LibraryDocument> {
+  async createOrUpdate(
+    dto: CreateTestDto,
+    userId: string,
+  ): Promise<LibraryDocument> {
     const criteria = dto.criteria.map((item: any) => {
       return {
         criterium_id: item._id,
@@ -29,20 +32,6 @@ export class TestsService {
     if (!library) {
       throw new HttpException('Library not found', HttpStatus.NOT_FOUND);
     }
-
-    /*
-    if (
-      library.versions.length === 0 ||
-      !library.versions.find(
-        (item) => item.version === dto.testData.libraryVersion,
-      )
-    ) {
-      library.versions.push({
-        version: dto.testData.libraryVersion,
-        components: [],
-      });
-    }
-    */
 
     const version = library.versions.find(
       (item) => item.version === dto.testData.libraryVersion,
@@ -102,17 +91,24 @@ export class TestsService {
       (item) => item.name === dto.testData.testMode,
     );
 
-    if (mode) {
-      const userdata = await this.usersService.findById(userId);
-      mode.tests.push({
-        testedBy: userdata!.username, // TODO change to _id
-        criteria: criteria,
-        userBrowser: dto.testData.userBrowser,
-        userOs: dto.testData.userOs,
-      });
+    if (!mode) {
+      throw new HttpException('Test mode not found', HttpStatus.NOT_FOUND);
     }
 
+    const index = mode.tests.findIndex((t) => t.testedBy === userId);
+    if (index > -1) {
+      mode.tests.splice(index, 1);
+    }
+
+    mode.tests.push({
+      testedBy: userId,
+      criteria: criteria,
+      userBrowser: dto.testData.userBrowser,
+      userOs: dto.testData.userOs,
+    });
+
     await library.save();
+
     console.log(
       `POST testlab: added tests to library ${library.title} - ${library._id}`,
     );
