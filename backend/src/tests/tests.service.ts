@@ -63,6 +63,8 @@ export class TestsService {
         name: dto.testData.component,
         alternativeComponentNames: dto.testData.alternativeComponentNames,
         modes: [],
+        exists: dto.testData.componentExists,
+        linkDocs: dto.testData.componentLinkDocs,
       });
     }
 
@@ -94,7 +96,7 @@ export class TestsService {
     if (mode) {
       const userdata = await this.usersService.findById(userId);
       mode.tests.push({
-        testedBy: userdata!.username,
+        testedBy: userdata!.username, // TODO change to _id
         criteria: criteria,
         userBrowser: dto.testData.userBrowser,
         userOs: dto.testData.userOs,

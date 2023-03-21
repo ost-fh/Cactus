@@ -5,6 +5,7 @@ import {
   IsArray,
   ValidateNested,
   IsObject,
+  IsOptional,
 } from 'class-validator';
 
 class TestDataDto {
@@ -18,6 +19,7 @@ class TestDataDto {
   component: string;
 
   @IsString()
+  @IsOptional()
   alternativeComponentNames?: string;
 
   @IsString()
@@ -28,6 +30,13 @@ class TestDataDto {
 
   @IsString()
   userOs: string;
+
+  @IsString()
+  componentExists: boolean; // TODO only true if componentLinkDocs exist
+
+  @IsString()
+  @IsOptional()
+  componentLinkDocs?: string;
 }
 
 class CriteriaDto {
