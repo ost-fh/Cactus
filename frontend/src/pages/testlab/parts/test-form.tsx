@@ -25,6 +25,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
 
   const [testResult, setTestResult] = useState<criteriumResult[]>();
   const [criteriaGroup, setCriteriaGroup] = useState<criteriaGroup>();
+  const [error, setError] = useState("");
 
   // transform criteria in criteria with results (criteriumResult). save in testResult
   useEffect(() => {
@@ -65,8 +66,14 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (testResult) {
-      postTestResult({ testData: testData, criteria: testResult });
-      navigate("../confirmation");
+      postTestResult({ testData: testData, criteria: testResult })
+        .then(() => {
+          navigate("../confirmation");
+        })
+        .catch((e) => {
+          console.error(e);
+          setError("Submit failed.");
+        });
     }
   };
 
@@ -102,6 +109,8 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
           />
         ))}
 
+      {error !== "" && <Alert type='error' message={error} />}
+
       <div className='control-group'>
         <LinkButton
           type='button'
@@ -109,11 +118,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
           to={"../prepare"}
           icon={<BsChevronLeft />}
         />
-        <button
-          type='submit'
-          className='button-primary button-with-icon'
-          // disabled={!testFormValid}
-        >
+        <button type='submit' className='button-primary button-with-icon'>
           <BsChevronRight /> Finish Test
         </button>
       </div>

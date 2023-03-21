@@ -1,6 +1,6 @@
 import React from "react";
 import Alert from "../../../shared/components/alert";
-import "./lab-layout.css";
+import "./lab-layout.scss";
 
 type TestLabLayoutProps = {
   libraryTitle: string;

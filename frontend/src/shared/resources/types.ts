@@ -23,6 +23,19 @@ export type library = {
   linkDocs: string;
 };
 
+export const getCurrentVersion = (library: library): version | undefined => {
+  return getVersion(library, library.currentVersion);
+};
+
+export const getVersion = (
+  library: library,
+  demandedVersion: string
+): version | undefined => {
+  return library.versions.find(
+    (version) => demandedVersion === version.version
+  );
+};
+
 export type newLibrary = {
   title: string;
   currentVersion: string;
@@ -45,7 +58,15 @@ export type component = {
   accessibilityScore: number;
   agreementScore: number;
   amountOfTests: number;
+  linkDocs?: string;
+  exists?: boolean;
   componentTested: boolean;
+};
+
+export const getComponent = (version: version, componentName: string) => {
+  return version.components.find(
+    (component) => component.name === componentName
+  );
 };
 
 export type mode = {
@@ -71,6 +92,8 @@ export type testData = {
   component: string;
   alternativeComponentNames: string;
   testMode: string;
+  componentLinkDocs: string;
+  componentExists: boolean;
   userOs: string;
   userBrowser: string;
 };

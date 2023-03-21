@@ -79,6 +79,15 @@ export class TestsService {
       );
     }
 
+    // update values
+    component.linkDocs = dto.testData.componentLinkDocs;
+    component.exists = dto.testData.componentExists;
+
+    if (!dto.testData.componentExists) {
+      await library.save();
+      return library;
+    }
+
     if (
       component.modes.length === 0 ||
       !component.modes.find((item) => item.name === dto.testData.testMode)

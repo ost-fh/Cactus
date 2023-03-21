@@ -1,4 +1,8 @@
-import { library, version } from "../../../shared/resources/types";
+import {
+  getCurrentVersion,
+  library,
+  version,
+} from "../../../shared/resources/types";
 
 export interface focusScore {
   library_id: string;
@@ -154,10 +158,4 @@ const sortLibraryArray = (libraryArray: library[], sortBy: string) => {
     console.error("invalid sort parameter");
     return libraryArray;
   }
-};
-
-const getCurrentVersion = (library: library) => {
-  return library.versions.find(
-    (version) => library.currentVersion === version.version
-  );
 };

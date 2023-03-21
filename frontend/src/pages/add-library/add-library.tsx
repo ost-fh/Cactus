@@ -70,7 +70,7 @@ const AddLibrary = () => {
             required
             onChange={handleChange}
             type='url'
-            pattern='http(s)?:\/\/(www\.)?[a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
+            pattern='http(s)?:\/\/(www\.)?[-a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
             name='linkHome'
             id='lib-link-home'
           />
@@ -79,7 +79,7 @@ const AddLibrary = () => {
           </label>
           <input
             required
-            pattern='http(s)?:\/\/(www\.)?[a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
+            pattern='http(s)?:\/\/(www\.)?[-a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
             onChange={handleChange}
             type='url'
             name='linkDocs'

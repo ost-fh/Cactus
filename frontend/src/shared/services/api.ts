@@ -119,9 +119,15 @@ export const createLibrary = async (newLibrary: newLibrary) => {
 };
 
 export const postTestResult = async (testResult: testResultTransmission) => {
-  return httpService("POST", `${API_BASE_URL}/testlab`, testResult)
-    .then((data) => data.json())
-    .catch((error) => console.error(error));
+  return httpService("POST", `${API_BASE_URL}/testlab`, testResult).then(
+    (data) => {
+      if (data.status === 201) {
+        return data.json();
+      } else {
+        throw new Error(data.status + data.statusText);
+      }
+    }
+  );
 };
 
 export const postNewVersion = (newVersion: string, library: string) => {

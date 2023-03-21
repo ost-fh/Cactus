@@ -31,7 +31,6 @@ class TestDataDto {
   @IsString()
   userOs: string;
 
-  @IsString()
   componentExists: boolean; // TODO only true if componentLinkDocs exist
 
   @IsString()
