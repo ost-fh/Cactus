@@ -1,0 +1,92 @@
+/** general **/
+
+#lab-main {
+  margin-bottom: 2rem;
+}
+
+.lab-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* specify-test */
+
+.specify-component {
+  padding: 0.7rem;
+  border: 1px rgb(194, 194, 194) solid;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  img {
+    width: 6rem;
+  }
+
+  .alert {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.7rem;
+  }
+
+  @media (max-width: 700px) {
+    .alert {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.specify-component-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.specify-component-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.specify-component-options {
+  display: flex;
+  gap: 0.7rem;
+}
+
+#testlab-preparation {
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    // align-items: flex-start;
+  }
+
+  p {
+    max-width: 40rem;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+  }
+
+  input[type="text"] {
+    max-width: 35rem;
+  }
+
+  .test-instruction-img {
+    height: 10rem;
+    width: min-content;
+    justify-self: center;
+  }
+}
+
+/** component tests **/
+
+.control-group {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}

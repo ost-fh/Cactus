@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { getComponents, postTestResult } from "../../../shared/services/api";
 import LinkButton from "../../../shared/components/link-button";
 import {
-  componentCriteria,
-  criteriaGroup,
-  criterium,
-  criteriumResult,
-  testData,
+  ComponentCriteria,
+  CriteriaGroup,
+  CriteriumResult,
+  TestData,
 } from "../../../shared/resources/types";
 import Alert from "../../../shared/components/alert";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
@@ -16,20 +15,21 @@ import TestItem from "../components/test-item";
 import Heading from "../../../shared/components/heading";
 
 type TestFormProps = {
-  testData: testData;
+  testData: TestData;
   linkDocs: string;
 };
 
 const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   const navigate = useNavigate();
 
-  const [testResult, setTestResult] = useState<criteriumResult[]>();
-  const [criteriaGroup, setCriteriaGroup] = useState<criteriaGroup>();
+  const [testResult, setTestResult] = useState<CriteriumResult[]>();
+  const [criteriaGroup, setCriteriaGroup] = useState<CriteriaGroup>();
+  const [error, setError] = useState("");
 
   // transform criteria in criteria with results (criteriumResult). save in testResult
   useEffect(() => {
     if (criteriaGroup && !testResult) {
-      const results = criteriaGroup.criteria.map((criterium: criterium) => {
+      const results = criteriaGroup.criteria.map((criterium) => {
         const result = { ...criterium, choice: "", comment: "" };
         return result;
       });
@@ -42,15 +42,15 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   useEffect(() => {
     getComponents().then((items) => {
       const result = items
-        .find((item: componentCriteria) => item.name === testData.component)
+        .find((item: ComponentCriteria) => item.name === testData.component)
         ?.testModes.find(
-          (item: criteriaGroup) => item.testMode === testData.testMode
+          (item: CriteriaGroup) => item.testMode === testData.testMode
         );
       setCriteriaGroup(result);
     });
   }, [testData.component, testData.testMode]);
 
-  const handleChange = (newCriteriumData: criteriumResult) => {
+  const handleChange = (newCriteriumData: CriteriumResult) => {
     if (testResult) {
       const newResults = testResult.map((result) => {
         if (result._id === newCriteriumData._id) {
@@ -65,8 +65,14 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (testResult) {
-      postTestResult({ testData: testData, criteria: testResult });
-      navigate("../confirmation");
+      postTestResult({ testData: testData, criteria: testResult })
+        .then(() => {
+          navigate("../confirmation");
+        })
+        .catch((e) => {
+          console.error(e);
+          setError("Submit failed.");
+        });
     }
   };
 
@@ -102,6 +108,8 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
           />
         ))}
 
+      {error !== "" && <Alert type='error' message={error} />}
+
       <div className='control-group'>
         <LinkButton
           type='button'
@@ -109,11 +117,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
           to={"../prepare"}
           icon={<BsChevronLeft />}
         />
-        <button
-          type='submit'
-          className='button-primary button-with-icon'
-          // disabled={!testFormValid}
-        >
+        <button type='submit' className='button-primary button-with-icon'>
           <BsChevronRight /> Finish Test
         </button>
       </div>

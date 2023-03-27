@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { getLibrary } from "../../shared/services/api";
-import { component, library, version } from "../../shared/resources/types";
+import { Component, Library, Version } from "../../shared/resources/types";
 import { UserContext } from "../../App";
 
 import PublicLayout from "../../shared/layout/public-layout";
@@ -31,8 +31,8 @@ const LibraryDetail = () => {
   }
   const [pageLoadingState, setPageLoadingState] = useState<state>(state.new);
 
-  const [library, setLibrary] = useState<library>();
-  const [version, setVersion] = useState<version | undefined>();
+  const [library, setLibrary] = useState<Library>();
+  const [version, setVersion] = useState<Version | undefined>();
 
   const changeVersion = (newVersion: string) => {
     navigate(`/libraries/${library?._id}/${newVersion}`, { replace: true });
@@ -43,7 +43,7 @@ const LibraryDetail = () => {
     if (paramsId && !library) {
       setPageLoadingState(state.loading);
       getLibrary(paramsId)
-        .then((library: library) => {
+        .then((library: Library) => {
           setPageLoadingState(state.success);
           setLibrary(library);
         })

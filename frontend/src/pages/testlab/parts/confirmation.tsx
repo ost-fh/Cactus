@@ -1,20 +1,37 @@
 import React from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 import Heading from "../../../shared/components/heading";
 import LinkButton from "../../../shared/components/link-button";
-import { testData } from "../../../shared/resources/types";
+import { TestData } from "../../../shared/resources/types";
 import LabPathDisplay from "../components/lab-path-display";
 
 type ConfirmationProps = {
-  testData: testData;
+  testData: TestData;
+  resetTestlab: () => void;
 };
 
-const Confirmation = ({ testData }: ConfirmationProps) => {
+const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
+  const navigate = useNavigate();
+  let [searchParams] = useSearchParams();
+
+  const startOver = () => {
+    resetTestlab();
+    navigate("../specify");
+  };
+
   return (
     <div className='lab-layout'>
       <LabPathDisplay currentPage={"confirm"} />
       <Heading>Thank you very much!</Heading>
-      <p>Your evaluation was added to the library results.</p>
+
+      <p>
+        {searchParams.get("source") === "exclude"
+          ? "The component was marked as not available."
+          : "Your evaluation was added to the library results."}
+      </p>
       <div className='control-group'>
+        <button onClick={startOver}>Add another Test</button>
         <LinkButton
           label={"Go to library overview"}
           className='button-primary'

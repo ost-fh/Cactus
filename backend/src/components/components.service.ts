@@ -44,11 +44,13 @@ export class ComponentsService {
     });
   }
 
-  async findAll(): Promise<Component[]> {
+  findAll(): Component[] {
     return this.components;
   }
 
-  async findOne(id: string): Promise<Component | undefined> {
-    return this.components.find((c) => c.name === id);
+  findOne(id: string): Component | undefined {
+    return this.components.find(
+      (c) => c.name.toLowerCase() === id.toLowerCase(),
+    );
   }
 }

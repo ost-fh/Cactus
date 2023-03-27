@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { criteriumResult } from "../../../shared/resources/types";
+import { CriteriumResult } from "../../../shared/resources/types";
 import TestItemButton from "./test-item-button";
 import "./test-item.css";
 
 type TestItemProps = {
-  criterium: criteriumResult;
+  criterium: CriteriumResult;
   handleChange: Function;
 };
 

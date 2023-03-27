@@ -5,14 +5,14 @@ import Alert from "../../shared/components/alert";
 import PublicLayout from "../../shared/layout/public-layout";
 
 import "./libraries.css";
-import { componentCriteria, library } from "../../shared/resources/types";
+import { ComponentCriteria, Library } from "../../shared/resources/types";
 import Heading from "../../shared/components/heading";
 import LibraryList from "./parts/library-list";
 import LibrariesHeader from "./parts/libraries-header";
 import Bubble from "../../shared/components/bubble";
 
 const Libraries = () => {
-  const [libraries, setLibraries] = useState<library[]>();
+  const [libraries, setLibraries] = useState<Library[]>();
   const [components, setComponents] = useState<string[]>();
   const [componentFilters, setComponentFilters] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<string>("score");
@@ -26,7 +26,7 @@ const Libraries = () => {
 
   // get all component names
   useEffect(() => {
-    getComponents().then((items: componentCriteria[]) => {
+    getComponents().then((items: ComponentCriteria[]) => {
       const onlyComponentName = items.map((item) => item.name);
       setComponents(onlyComponentName);
     });

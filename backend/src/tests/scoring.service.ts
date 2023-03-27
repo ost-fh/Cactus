@@ -16,12 +16,14 @@ import TestMode from 'src/libraries/models/test-mode.schema';
 import CriteriumScore from 'src/libraries/models/criterium-score.schema';
 import LibraryComponent from 'src/libraries/models/library-component.schema';
 import { LibraryService } from 'src/libraries/libraries.service';
+import { ComponentsService } from 'src/components/components.service';
 
 @Injectable()
 export class ScoringService {
-  private AMOUNT_OF_MODES = 2; // TODO refactor
-
-  constructor(private readonly libraryService: LibraryService) {}
+  constructor(
+    private readonly libraryService: LibraryService,
+    private readonly componentService: ComponentsService,
+  ) {}
 
   async scoreLibrary(libraryId: string): Promise<LibraryDocument> {
     try {
@@ -122,7 +124,8 @@ export class ScoringService {
       .reduce((a, b) => a + b, 0);
 
     // mark component as tested, if all modes were tested
-    if (component.modes.length === this.AMOUNT_OF_MODES) {
+    const co = this.componentService.findOne(component.name);
+    if (component.modes.length === co?.testModes.length) {
       component.componentTested = true;
     } else {
       component.componentTested = false;

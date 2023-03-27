@@ -1,4 +1,4 @@
-import { criterium, criteriumScore } from "../../../shared/resources/types";
+import { Criterium, CriteriumScore } from "../../../shared/resources/types";
 import CountBubble from "../../../shared/components/count-bubble";
 import ResultBubble from "../../../shared/components/result-bubble";
 import "./criterium-result.css";
@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 import { getCriterium } from "../../../shared/services/api";
 
 type CriteriumResultProps = {
-  item: criteriumScore;
+  item: CriteriumScore;
 };
 
 /** This Component is to be used with ComponentResultDetails */
 const CriteriumResult = ({ item }: CriteriumResultProps) => {
-  const [criterium, setCriterium] = useState<criterium>();
+  const [criterium, setCriterium] = useState<Criterium>();
 
   useEffect(() => {
     getCriterium(item.criterium_id).then((item) => setCriterium(item));
