@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import "./shared/layout/reset.css";
 import "./shared/layout/general.scss";
@@ -21,6 +21,7 @@ import Impressum from "./pages/impressum/impressum";
 import PrivacyPolicy from "./pages/privacy-policy/privacy-policy";
 import Components from "./pages/components/components";
 import AccessibilityStatement from "./pages/accessibility-statement/accessibility-statement";
+import LoginRedirect from "./pages/login-redirect/login-redirect";
 
 export type UserData = {
   _id: string;
@@ -57,9 +58,14 @@ function App() {
             path='libraries/:paramsId/:paramsVersion/'
             element={<LibraryDetail />}
           />
+          <Route path='contribute' element={<Contribute />} />
           <Route
-            path='contribute'
-            element={<Contribute setUserData={setUserData} />}
+            path='login'
+            element={userData ? <Navigate to={"/"} /> : <Login />}
+          />
+          <Route
+            path='login-redirect'
+            element={<LoginRedirect setUserData={setUserData} />}
           />
           <Route
             path='impressum'
@@ -70,7 +76,6 @@ function App() {
             element={<AccessibilityStatement />}
           />
           <Route path='privacy-policy' element={<PrivacyPolicy/>} />
-          <Route path='login' element={<Login setUserData={setUserData} />} />
           <Route path='logout' element={<LogOut logOut={logOut} />} />
         </Route>
         <Route

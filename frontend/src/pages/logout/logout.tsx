@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import Alert from "../../shared/components/alert";
+import PublicLayout from "../../shared/layout/public-layout";
 
 type LogOutProps = {
   logOut: Function;
@@ -7,13 +9,19 @@ type LogOutProps = {
 
 const LogOut = ({ logOut }: LogOutProps) => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     logOut();
-    navigate("/");
+    const beforeLogoutUrl = searchParams.get("path");
+    navigate(beforeLogoutUrl ?? "/");
   });
 
-  return <div>please wait, you are redirected</div>;
+  return (
+    <PublicLayout>
+      <Alert type='info'>Please wait, you will be redirected</Alert>{" "}
+    </PublicLayout>
+  );
 };
 
 export default LogOut;

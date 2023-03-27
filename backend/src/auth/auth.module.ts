@@ -6,8 +6,6 @@ import { SecurityConfig } from 'src/common/configs/config.interface';
 import { UsersModule } from 'src/users/users.module';
 import { AuthService } from './services/auth.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { LocalStrategy } from './strategies/local.strategy';
-import { PasswordService } from './services/password.service';
 import { AuthController } from './auth.controller';
 import { GitHubOauthStrategy } from './strategies/github-oauth.strategy';
 import { GoogleOauthStrategy } from './strategies/google-oauth.strategy';
@@ -39,8 +37,6 @@ import { GoogleOauthStrategy } from './strategies/google-oauth.strategy';
   ],
   providers: [
     AuthService,
-    PasswordService,
-    LocalStrategy,
     JwtStrategy,
     GitHubOauthStrategy,
     GoogleOauthStrategy,

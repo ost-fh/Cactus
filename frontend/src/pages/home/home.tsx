@@ -18,6 +18,8 @@ const Home = () => {
           <div className='home-cact-item'>
             <img
               src='/crowd.jpeg'
+              width={150}
+              height={150}
               alt='symbolic representation of a group of people'
               className='home-cact-image'
             />
@@ -31,6 +33,8 @@ const Home = () => {
           <div className='home-cact-item'>
             <img
               src='/accessibility.jpeg'
+              width={150}
+              height={150}
               alt='symbol for web accessibility'
               className='home-cact-image'
             />
@@ -44,6 +48,8 @@ const Home = () => {
           <div className='home-cact-item'>
             <img
               src='/components.png'
+              width={150}
+              height={150}
               alt='symbolic representation of a group of UI Components'
               className='home-cact-image'
             />
@@ -59,6 +65,8 @@ const Home = () => {
               src='/testing.jpeg'
               alt='a checklist'
               className='home-cact-image'
+              width={150}
+              height={150}
             />
             <p className='home-cact-highlight'>
               <span>T</span>esting
@@ -69,6 +77,8 @@ const Home = () => {
           </div>
           <div className='home-cact-item'>
             <img
+              width={150}
+              height={150}
               src='/cactus_logo.png'
               alt='the project cactus logo'
               className='home-cact-image'
