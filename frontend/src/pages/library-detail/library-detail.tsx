@@ -178,9 +178,11 @@ const LibraryDetail = () => {
           {!version || version.components.length === 0 ? (
             <Alert message='There are currently no component testresults for this library.' />
           ) : (
-            version.components.map((component: Component) => (
-              <ComponentResult key={component.name} component={component} />
-            ))
+            version.components
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((component: Component) => (
+                <ComponentResult key={component.name} component={component} />
+              ))
           )}
         </section>
       </>

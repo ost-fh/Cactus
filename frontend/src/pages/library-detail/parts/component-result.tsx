@@ -37,7 +37,30 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
     setDetailsOpen(!detailsOpen);
   };
 
-  // if (componentData.exists)
+  if (component.exists === false) {
+    return (
+      <article className='lib-testresult-disabled lib-testresult'>
+        <header>
+          <img
+            src={componentData?.imageUrl}
+            alt={`schematic of ${component.name}`}
+          />
+          <div>
+            <h3>
+              {component.name}{" "}
+              <small>(or {component.alternativeComponentNames})</small>
+            </h3>
+
+            <p>{componentData?.description}</p>
+          </div>
+          <Alert
+            type='info'
+            message='This component is not available in this library.'
+          />
+        </header>
+      </article>
+    );
+  }
 
   return (
     <article className='lib-testresult'>
