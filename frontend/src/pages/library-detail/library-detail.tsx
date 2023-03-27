@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { getLibrary } from "../../shared/services/api";
-import { Component, Library, Version } from "../../shared/resources/types";
+import { Library, Version } from "../../shared/resources/types";
 import { UserContext } from "../../App";
 
 import PublicLayout from "../../shared/layout/public-layout";
@@ -161,7 +161,7 @@ const LibraryDetail = () => {
             <div className='lib-infos'>
               {!version || version.components.length === 0 || (
                 <Alert type='help'>
-                  <h3>What do these numbers mean?</h3>
+                  <h3>Scoring System</h3>
                   <div className='lib-detail-help'>
                     <ScoreBubble label='Cactus Score (example)' score={100} />
                     <p>
@@ -193,7 +193,7 @@ const LibraryDetail = () => {
             {!version || version.components.length === 0 ? (
               <Alert message='There are currently no component testresults for this library.' />
             ) : (
-              version.components.map((component: component) => (
+              version.components.map((component) => (
                 <ComponentResult key={component.name} component={component} />
               ))
             )}
