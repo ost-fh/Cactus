@@ -20,6 +20,7 @@ import ProtectedRoute from "./shared/components/protected-route";
 import Impressum from "./pages/impressum/impressum";
 import PrivacyPolicy from "./pages/privacy-policy/privacy-policy";
 import Components from "./pages/components/components";
+import AccessibilityStatement from "./pages/accessibility-statement/accessibility-statement";
 
 export type UserData = {
   _id: string;
@@ -63,6 +64,10 @@ function App() {
           <Route
             path='impressum'
             element={<Impressum />}
+          />
+          <Route
+            path='accessibility-statement'
+            element={<AccessibilityStatement />}
           />
           <Route path='privacy-policy' element={<PrivacyPolicy/>} />
           <Route path='login' element={<Login setUserData={setUserData} />} />
