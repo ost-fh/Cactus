@@ -18,6 +18,7 @@ import NotFound from "./pages/not-found/not-found";
 import { useUserData } from "./shared/services/use-token";
 import ProtectedRoute from "./shared/components/protected-route";
 import Impressum from "./pages/impressum/impressum";
+import PrivacyPolicy from "./pages/privacy-policy/privacy-policy";
 import Components from "./pages/components/components";
 import LoginRedirect from "./pages/login-redirect/login-redirect";
 
@@ -57,7 +58,6 @@ function App() {
             element={<LibraryDetail />}
           />
           <Route path='contribute' element={<Contribute />} />
-          <Route path='impressum' element={<Impressum />} />
           <Route
             path='login'
             element={userData ? <Navigate to={"/"} /> : <Login />}
@@ -66,6 +66,11 @@ function App() {
             path='login-redirect'
             element={<LoginRedirect setUserData={setUserData} />}
           />
+          <Route
+            path='impressum'
+            element={<Impressum />}
+          />
+          <Route path='privacy-policy' element={<PrivacyPolicy/>} />
           <Route path='logout' element={<LogOut logOut={logOut} />} />
         </Route>
         <Route

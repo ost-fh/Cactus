@@ -117,7 +117,7 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
               <a href='#main'>Accessibility Statement</a>
             </li>
             <li>
-              <a href='#main'>Privacy Policy</a>
+              <Link to="/privacy-policy">Privacy Policy</Link>
             </li>
             <li>
               <a className='nav-icon' href='https://github.com/ost-fh/Cactus'>
