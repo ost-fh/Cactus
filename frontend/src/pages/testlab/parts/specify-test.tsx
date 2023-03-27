@@ -2,37 +2,36 @@ import React, { useEffect, useState } from "react";
 import { BsChevronDoubleLeft, BsChevronRight } from "react-icons/bs";
 import Alert from "../../../shared/components/alert";
 import LinkButton from "../../../shared/components/link-button";
-import { getComponents, getLibrary } from "../../../shared/services/api";
+import { getComponents } from "../../../shared/services/api";
 import {
-  componentCriteria,
-  library,
-  testData,
+  ComponentCriteria,
+  getVersion,
+  Library,
+  TestData,
+  Version,
 } from "../../../shared/resources/types";
 import LabPathDisplay from "../components/lab-path-display";
 import SpecifyTestButton from "../components/specify-test-button";
 import { useNavigate } from "react-router-dom";
 import Heading from "../../../shared/components/heading";
+import SpecifyComponentField from "../components/specify-component-field";
 
 type SpecifyTestProps = {
-  testData: testData;
+  testData: TestData;
   setTestData: Function;
+  library: Library | undefined;
 };
 
-const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
+const SpecifyTest = ({ testData, library, setTestData }: SpecifyTestProps) => {
   const navigate = useNavigate();
 
   const testModes = ["Keyboard", "Screenreader"];
-  const [library, setLibrary] = useState<library | undefined>();
-  const [components, setComponents] = useState<componentCriteria[]>([]);
+  const [components, setComponents] = useState<ComponentCriteria[]>([]);
+  const [version, setVersion] = useState<Version>();
 
-  // load Library for testnumbers and backlink
   useEffect(() => {
-    if (testData.libraryId) {
-      getLibrary(testData.libraryId).then((lib: library) => {
-        setLibrary(lib);
-      });
-    }
-  }, [testData.libraryId]);
+    if (library) setVersion(getVersion(library, testData.libraryVersion));
+  }, [library, testData.libraryVersion]);
 
   useEffect(() => {
     getComponents().then((items) => setComponents(items));
@@ -45,6 +44,7 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
   ) => {
     setTestData({
       ...testData,
+      componentLinkDocs: "",
       component: component,
       alternativeComponentNames: alternativeComponentNames,
       testMode: testMode,
@@ -55,6 +55,10 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
     event.preventDefault();
     navigate("../prepare");
   };
+
+  if (!library) {
+    return <>loading...</>;
+  }
 
   return (
     <form onSubmit={handleSubmit} className='lab-layout'>
@@ -78,40 +82,30 @@ const SpecifyTest = ({ testData, setTestData }: SpecifyTestProps) => {
       <Alert type='help' message='Choose a testmode and continue.' />
 
       {components.map((component) => (
-        <div key={component.name} className='specify-component'>
-          <img src={component.imageUrl} alt={component.name} />
-          <div className='specify-component-content'>
-            <div className='specify-component-header'>
-              <h3>{component.name}</h3>
-              <p>{component.alternativeComponentNames}</p>
+        <SpecifyComponentField
+          key={component.name}
+          componentCriteria={component}
+          version={getVersion(library, testData.libraryVersion)}
+        >
+          {testModes.map((testMode) => (
+            <div key={`${component}-${testMode}`}>
+              <SpecifyTestButton
+                testData={testData}
+                testMode={testMode}
+                component={component}
+                handleChange={handleChange}
+                amountOfTests={
+                  version?.components
+                    .find(
+                      (foundComponent) => foundComponent.name === component.name
+                    )
+                    ?.modes.find((mode) => mode.name === testMode)?.testScores
+                    ?.amountOfTests
+                }
+              />
             </div>
-            <div className='specify-component-options'>
-              {testModes.map((testMode) => (
-                <div key={`${component}-${testMode}`}>
-                  <SpecifyTestButton
-                    testData={testData}
-                    testMode={testMode}
-                    component={component}
-                    handleChange={handleChange}
-                    amountOfTests={
-                      library?.versions
-                        .find(
-                          (version) =>
-                            version.version === testData.libraryVersion
-                        )
-                        ?.components.find(
-                          (foundComponent) =>
-                            foundComponent.name === component.name
-                        )
-                        ?.modes.find((mode) => mode.name === testMode)
-                        ?.testScores?.amountOfTests
-                    }
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+          ))}
+        </SpecifyComponentField>
       ))}
 
       <div className='control-group'>

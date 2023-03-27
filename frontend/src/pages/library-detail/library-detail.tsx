@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { getLibrary } from "../../shared/services/api";
-import { component, library, version } from "../../shared/resources/types";
+import { Component, Library, Version } from "../../shared/resources/types";
 import { UserContext } from "../../App";
 
 import PublicLayout from "../../shared/layout/public-layout";
@@ -31,8 +31,8 @@ const LibraryDetail = () => {
   }
   const [pageLoadingState, setPageLoadingState] = useState<state>(state.new);
 
-  const [library, setLibrary] = useState<library>();
-  const [version, setVersion] = useState<version | undefined>();
+  const [library, setLibrary] = useState<Library>();
+  const [version, setVersion] = useState<Version | undefined>();
 
   const changeVersion = (newVersion: string) => {
     navigate(`/libraries/${library?._id}/${newVersion}`, { replace: true });
@@ -43,7 +43,7 @@ const LibraryDetail = () => {
     if (paramsId && !library) {
       setPageLoadingState(state.loading);
       getLibrary(paramsId)
-        .then((library: library) => {
+        .then((library: Library) => {
           setPageLoadingState(state.success);
           setLibrary(library);
         })
@@ -150,10 +150,7 @@ const LibraryDetail = () => {
               <Alert type='help'>
                 <h3>What do these numbers mean?</h3>
                 <div className='lib-detail-help'>
-                  <ScoreBubble
-                    label='Cactus Score (example)'
-                    score={100}
-                  />
+                  <ScoreBubble label='Cactus Score (example)' score={100} />
                   <p>
                     This is an average score over all the tests that were made
                     for a component, testmode or library. It gives an idea about
@@ -181,9 +178,11 @@ const LibraryDetail = () => {
           {!version || version.components.length === 0 ? (
             <Alert message='There are currently no component testresults for this library.' />
           ) : (
-            version.components.map((component: component) => (
-              <ComponentResult key={component.name} component={component} />
-            ))
+            version.components
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((component: Component) => (
+                <ComponentResult key={component.name} component={component} />
+              ))
           )}
         </section>
       </>

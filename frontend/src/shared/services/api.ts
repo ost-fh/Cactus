@@ -1,9 +1,9 @@
 import { UserData } from "../../App";
 import {
-  componentCriteria,
-  criterium,
-  newLibrary,
-  testResultTransmission,
+  ComponentCriteria,
+  Criterium,
+  NewLibrary,
+  TestResultTransmission,
 } from "../resources/types";
 
 export const API_BASE_URL =
@@ -66,14 +66,14 @@ export const getLibraries = async () => {
     .catch((error) => console.error(error));
 };
 
-export const getComponents = async (): Promise<componentCriteria[]> => {
+export const getComponents = async (): Promise<ComponentCriteria[]> => {
   return httpService("GET", `${API_BASE_URL}/components`)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
 
-export const getAllCriteria = async (): Promise<criterium[]> => {
-  const allCriteria: componentCriteria[] = await getComponents();
+export const getAllCriteria = async (): Promise<Criterium[]> => {
+  const allCriteria: ComponentCriteria[] = await getComponents();
   const res = allCriteria.map((component) => {
     return component.testModes.map((group) => group.criteria);
   });
@@ -82,7 +82,7 @@ export const getAllCriteria = async (): Promise<criterium[]> => {
 
 export const getCriterium = async (
   id: string
-): Promise<criterium | undefined> => {
+): Promise<Criterium | undefined> => {
   const allCriteria = await getAllCriteria();
   return allCriteria.find((item) => item._id === id);
 };
@@ -107,7 +107,7 @@ export const getUserProfile = async () => {
   });
 };
 
-export const createLibrary = async (newLibrary: newLibrary) => {
+export const createLibrary = async (newLibrary: NewLibrary) => {
   return httpService("POST", `${API_BASE_URL}/libraries`, {
     title: newLibrary.title,
     linkHome: newLibrary.linkHome,
@@ -118,10 +118,16 @@ export const createLibrary = async (newLibrary: newLibrary) => {
     .catch((error) => console.error(error));
 };
 
-export const postTestResult = async (testResult: testResultTransmission) => {
-  return httpService("POST", `${API_BASE_URL}/testlab`, testResult)
-    .then((data) => data.json())
-    .catch((error) => console.error(error));
+export const postTestResult = async (testResult: TestResultTransmission) => {
+  return httpService("POST", `${API_BASE_URL}/testlab`, testResult).then(
+    (data) => {
+      if (data.status === 201) {
+        return data.json();
+      } else {
+        throw new Error(data.status + data.statusText);
+      }
+    }
+  );
 };
 
 export const postNewVersion = (newVersion: string, library: string) => {

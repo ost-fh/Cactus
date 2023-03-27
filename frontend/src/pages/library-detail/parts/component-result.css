@@ -7,6 +7,10 @@
   gap: 1rem;
 }
 
+.lib-testresult-disabled {
+  background-color: rgb(243, 243, 243);
+}
+
 .lib-testresult h2 {
   margin: 0;
 }

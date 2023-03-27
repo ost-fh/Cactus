@@ -1,10 +1,10 @@
 import React from "react";
-import { componentCriteria, testData } from "../../../shared/resources/types";
+import { ComponentCriteria, TestData } from "../../../shared/resources/types";
 
 type SpecifyTestButtonProps = {
-  testData: testData; // to check if active
+  testData: TestData; // to check if active
   testMode: string;
-  component: componentCriteria;
+  component: ComponentCriteria;
   handleChange: Function;
   amountOfTests?: number;
 };

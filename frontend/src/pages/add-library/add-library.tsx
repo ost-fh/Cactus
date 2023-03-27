@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
 import { createLibrary } from "../../shared/services/api";
 import PublicLayout from "../../shared/layout/public-layout";
-import { newLibrary } from "../../shared/resources/types";
+import { NewLibrary } from "../../shared/resources/types";
 import LinkButton from "../../shared/components/link-button";
 import "./add-library.css";
 import Heading from "../../shared/components/heading";
@@ -12,7 +12,7 @@ const AddLibrary = () => {
   const userData = useContext(UserContext);
 
   const navigate = useNavigate();
-  const [newLibrary, setNewLibrary] = useState<newLibrary>({
+  const [newLibrary, setNewLibrary] = useState<NewLibrary>({
     title: "",
     currentVersion: "",
     linkDocs: "",
@@ -70,7 +70,7 @@ const AddLibrary = () => {
             required
             onChange={handleChange}
             type='url'
-            pattern='http(s)?:\/\/(www\.)?[a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
+            pattern='http(s)?:\/\/(www\.)?[-a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
             name='linkHome'
             id='lib-link-home'
           />
@@ -79,7 +79,7 @@ const AddLibrary = () => {
           </label>
           <input
             required
-            pattern='http(s)?:\/\/(www\.)?[a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
+            pattern='http(s)?:\/\/(www\.)?[-a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
             onChange={handleChange}
             type='url'
             name='linkDocs'

@@ -25,6 +25,12 @@ export default class LibraryComponent {
 
   @Prop()
   componentTested?: boolean;
+
+  @Prop()
+  linkDocs?: string;
+
+  @Prop()
+  exists: boolean; // TODO maybe computed
 }
 
 export const LibraryComponentSchema =
