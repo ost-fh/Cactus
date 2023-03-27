@@ -41,10 +41,10 @@ const Impressum = () => {
         <br />
       </p>
       <p>
-        <a href='+41 58 257 47 46'>+41 58 257 47 46</a>
+        <a href='+41 58 257 46 63'>+41 58 257 46 63</a>
         <br />
-        <a href='mailto:stefan.keller@ost.ch?subject=Project Cactus'>
-          stefan.keller@ost.ch
+        <a href='mailto:markus.stolze@ost.ch?subject=Project Cactus'>
+          markus.stolze@ost.ch
         </a>
       </p>
       <h3>Exclusion of liability</h3>

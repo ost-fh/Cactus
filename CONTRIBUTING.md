@@ -58,16 +58,16 @@ _If you need further instructions, the process is more detailed described in thi
 
 For a new component, it's required to add a suitable component icon in the folder `frontend/public/`
 
-### Modify the cactus score
+## Modify the cactus score
 
 If you are interested to update the cactus score of a library, you have to do some tests on the [website](https://cactus.sifs0003.infs.ch/libraries)
 
 
-### Suggest a missing library or library version
+## Suggest a missing library or library version
 
 New libraries can be added on the [library overview page](https://cactus.sifs0003.infs.ch/libraries), a new version in the library detail page.
 
-### Suggest new features or improve solution
+## Suggest new features or improve solution
 
 The following steps will get you setup to contribute changes to this repo:
 

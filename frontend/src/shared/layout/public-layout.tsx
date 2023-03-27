@@ -114,10 +114,10 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
               <Link to='/impressum'>Impressum</Link>
             </li>
             <li>
-              <a href='#main'>Accessibility Statement</a>
+              <Link to='/accessibility-statement'>Accessibility Statement</Link>
             </li>
             <li>
-              <Link to="/privacy-policy">Privacy Policy</Link>
+              <Link to='/privacy-policy'>Privacy Policy</Link>
             </li>
             <li>
               <a className='nav-icon' href='https://github.com/ost-fh/Cactus'>
