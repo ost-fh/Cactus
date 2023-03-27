@@ -3,11 +3,11 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 import Heading from "../../../shared/components/heading";
 import LinkButton from "../../../shared/components/link-button";
-import { testData } from "../../../shared/resources/types";
+import { TestData } from "../../../shared/resources/types";
 import LabPathDisplay from "../components/lab-path-display";
 
 type ConfirmationProps = {
-  testData: testData;
+  testData: TestData;
   resetTestlab: () => void;
 };
 

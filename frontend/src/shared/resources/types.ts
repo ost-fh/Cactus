@@ -1,4 +1,4 @@
-export type criteriumScore = {
+export type CriteriumScore = {
   criterium_id: string;
   positive: number;
   negative: number;
@@ -6,52 +6,52 @@ export type criteriumScore = {
   agreementScore: number;
 };
 
-export type aggregatedScore = {
+export type AggregatedScore = {
   positive: number;
   negative: number;
   notDecided: number;
   amountOfTests: number;
 };
 
-export type library = {
+export type Library = {
   _id: string;
   title: string;
   currentVersion: string;
-  versions: version[];
+  versions: Version[];
   // merge with library detail type
   linkHome: string;
   linkDocs: string;
 };
 
-export const getCurrentVersion = (library: library): version | undefined => {
+export const getCurrentVersion = (library: Library): Version | undefined => {
   return getVersion(library, library.currentVersion);
 };
 
 export const getVersion = (
-  library: library,
+  library: Library,
   demandedVersion: string
-): version | undefined => {
+): Version | undefined => {
   return library.versions.find(
     (version) => demandedVersion === version.version
   );
 };
 
-export type newLibrary = {
+export type NewLibrary = {
   title: string;
   currentVersion: string;
   linkHome: string;
   linkDocs: string;
 };
 
-export type version = {
+export type Version = {
   version: string;
-  components: component[];
+  components: Component[];
   accessibilityScore?: number;
   agreementScore?: number;
   amountOfComponentsTested?: number;
 };
 
-export type component = {
+export type Component = {
   name: string;
   alternativeComponentNames: string;
   modes: mode[];
@@ -63,7 +63,7 @@ export type component = {
   componentTested: boolean;
 };
 
-export const getComponent = (version: version, componentName: string) => {
+export const getComponent = (version: Version, componentName: string) => {
   return version.components.find(
     (component) => component.name === componentName
   );
@@ -72,21 +72,21 @@ export const getComponent = (version: version, componentName: string) => {
 export type mode = {
   name: string;
   tests: test[];
-  scoresPerCriterium: criteriumScore[];
+  scoresPerCriterium: CriteriumScore[];
   accessibilityScore: number;
   agreementScore: number;
-  testScores: aggregatedScore;
+  testScores: AggregatedScore;
 };
 
 export type test = {
   testedBy: string;
-  criteria: criteriumResult[];
-  testScore: aggregatedScore;
+  criteria: CriteriumResult[];
+  testScore: AggregatedScore;
 };
 
 // Test / Criteria Data
 
-export type testData = {
+export type TestData = {
   libraryId: string;
   libraryVersion: string;
   component: string;
@@ -98,27 +98,27 @@ export type testData = {
   userBrowser: string;
 };
 
-export type componentCriteria = {
+export type ComponentCriteria = {
   name: string;
   alternativeComponentNames: string;
   description: string;
   imageUrl: string;
-  testModes: criteriaGroup[];
+  testModes: CriteriaGroup[];
 };
 
-export type criteriaGroup = {
+export type CriteriaGroup = {
   testMode: string;
   additionalHint?: string;
-  criteria: criterium[];
+  criteria: Criterium[];
 };
 
-export type criterium = {
+export type Criterium = {
   _id: string;
   text: string;
   help: string;
 };
 
-export type criteriumResult = {
+export type CriteriumResult = {
   _id: string;
   text: string;
   help: string;
@@ -126,7 +126,7 @@ export type criteriumResult = {
   comment: string;
 };
 
-export type testResultTransmission = {
-  testData: testData;
-  criteria: criteriumResult[];
+export type TestResultTransmission = {
+  testData: TestData;
+  criteria: CriteriumResult[];
 };

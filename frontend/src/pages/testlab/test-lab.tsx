@@ -3,8 +3,8 @@ import { getLibrary } from "../../shared/services/api";
 import {
   getComponent,
   getVersion,
-  library,
-  testData,
+  Library,
+  TestData,
 } from "../../shared/resources/types";
 import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import SpecifyTest from "./parts/specify-test";
@@ -24,8 +24,8 @@ import Exclude from "./parts/exclude";
 
 const TestLab = () => {
   const { id, version } = useParams();
-  const [library, setLibrary] = useState<library>();
-  const [testData, setTestData] = useState<testData>({
+  const [library, setLibrary] = useState<Library>();
+  const [testData, setTestData] = useState<TestData>({
     libraryId: id ? id : "0",
     libraryVersion: version ? version : "0",
     alternativeComponentNames: "",

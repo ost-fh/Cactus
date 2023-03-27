@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { library, version } from "../../../shared/resources/types";
+import { Library, Version } from "../../../shared/resources/types";
 import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
 import LinkButton from "../../../shared/components/link-button";
@@ -9,7 +9,7 @@ import "./library-card.scss";
 import Bubble from "../../../shared/components/bubble";
 
 type LibraryCardProps = {
-  library: library;
+  library: Library;
   filters?: string[];
   focusScore?: string;
   filterState?: "true" | "neutral" | "false";
@@ -28,7 +28,7 @@ const LibraryCard = ({
   focusScore,
 }: LibraryCardProps) => {
   const [filterScores, setFilterScores] = useState<filterScore[]>([]);
-  const [currentVersion, setCurrentVersion] = useState<version>();
+  const [currentVersion, setCurrentVersion] = useState<Version>();
 
   useEffect(() => {
     const currentVersion = library.versions.find(

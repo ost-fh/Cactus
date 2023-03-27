@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { testData } from "../../../shared/resources/types";
+import { TestData } from "../../../shared/resources/types";
 import { Navigate } from "react-router-dom";
 import { postTestResult } from "../../../shared/services/api";
 
 type ExcludeProps = {
-  testData: testData;
+  testData: TestData;
 };
 const Exclude = ({ testData }: ExcludeProps) => {
   useEffect(() => {

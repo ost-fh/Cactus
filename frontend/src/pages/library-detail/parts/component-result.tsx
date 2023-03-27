@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
-import { component, componentCriteria } from "../../../shared/resources/types";
+import { Component, ComponentCriteria } from "../../../shared/resources/types";
 import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
 import ScoreBubble from "../../../shared/components/score-bubble";
@@ -9,21 +9,20 @@ import "./component-result.css";
 import { getComponents } from "../../../shared/services/api";
 
 type ComponentResultProps = {
-  component: component;
+  component: Component;
 };
 
-/** This Component is to be used with LibraryDetail */
+/** This component is used by LibraryDetail */
 const ComponentResult = ({ component }: ComponentResultProps) => {
   const [detailsOpen, setDetailsOpen] = useState(false);
-  const [componentData, setComponentData] = useState<componentCriteria>();
+  const [componentData, setComponentData] = useState<ComponentCriteria>();
 
   useEffect(() => {
     getComponents().then((items) => {
-      const res = items.find(
-        (item: componentCriteria) => item.name === component.name
-      );
+      const result = items.find((item) => item.name === component.name);
+      console.log(result);
 
-      setComponentData(res);
+      setComponentData(result);
     });
   }, [component.name]);
 
@@ -37,6 +36,8 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
   const toggleDetails = () => {
     setDetailsOpen(!detailsOpen);
   };
+
+  // if (componentData.exists)
 
   return (
     <article className='lib-testresult'>

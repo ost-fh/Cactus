@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Alert from "../../../shared/components/alert";
-import { library } from "../../../shared/resources/types";
+import { Library } from "../../../shared/resources/types";
 import LibraryCard from "./library-card";
 import {
   LibraryBuckets,
@@ -8,7 +8,7 @@ import {
 } from "./library-list-helpers";
 
 type LibraryListProps = {
-  libraries: library[];
+  libraries: Library[];
   sortBy: string;
   filters: string[];
 };
@@ -23,11 +23,11 @@ const LibraryList = ({ libraries, sortBy, filters }: LibraryListProps) => {
   return (
     <section className='library-list'>
       {libraryBuckets &&
-        libraryBuckets.noFilter.map((library: library) => (
+        libraryBuckets.noFilter.map((library: Library) => (
           <LibraryCard key={library._id} library={library} />
         ))}
       {libraryBuckets &&
-        libraryBuckets.trueFiltered.map((library: library) => {
+        libraryBuckets.trueFiltered.map((library: Library) => {
           const focusScore = libraryBuckets.focusScores.find(
             (scores) => scores.library_id === library._id
           );
@@ -49,7 +49,7 @@ const LibraryList = ({ libraries, sortBy, filters }: LibraryListProps) => {
           }
         />
       )}
-      {libraryBuckets?.neutralFiltered.map((library: library) => {
+      {libraryBuckets?.neutralFiltered.map((library: Library) => {
         const focusScore = libraryBuckets.focusScores.find(
           (scores) => scores.library_id === library._id
         );
@@ -63,7 +63,7 @@ const LibraryList = ({ libraries, sortBy, filters }: LibraryListProps) => {
           />
         );
       })}
-      {libraryBuckets?.falseFiltered.map((library: library) => (
+      {libraryBuckets?.falseFiltered.map((library: Library) => (
         <LibraryCard
           filterState='false'
           filters={filters}

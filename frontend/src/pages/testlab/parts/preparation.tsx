@@ -7,12 +7,12 @@ import LinkButton from "../../../shared/components/link-button";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 import LabPathDisplay from "../components/lab-path-display";
-import { library, testData } from "../../../shared/resources/types";
+import { Library, TestData } from "../../../shared/resources/types";
 
 type PreparationProps = {
-  testData: testData;
+  testData: TestData;
   linkDocs: string;
-  library: library | undefined;
+  library: Library | undefined;
   changeLinkDocs: (linkDocs: string) => void;
   changeExists: (exists: boolean) => void;
 };

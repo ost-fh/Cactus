@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Alert from "../../../shared/components/alert";
 import {
-  componentCriteria,
+  ComponentCriteria,
   getComponent,
-  version,
+  Version,
 } from "../../../shared/resources/types";
 
 type SpecifyComponentFieldProps = {
-  componentCriteria: componentCriteria;
-  version: version | undefined;
+  componentCriteria: ComponentCriteria;
+  version: Version | undefined;
   children: any;
 };
 

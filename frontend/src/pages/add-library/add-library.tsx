@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
 import { createLibrary } from "../../shared/services/api";
 import PublicLayout from "../../shared/layout/public-layout";
-import { newLibrary } from "../../shared/resources/types";
+import { NewLibrary } from "../../shared/resources/types";
 import LinkButton from "../../shared/components/link-button";
 import "./add-library.css";
 import Heading from "../../shared/components/heading";
@@ -12,7 +12,7 @@ const AddLibrary = () => {
   const userData = useContext(UserContext);
 
   const navigate = useNavigate();
-  const [newLibrary, setNewLibrary] = useState<newLibrary>({
+  const [newLibrary, setNewLibrary] = useState<NewLibrary>({
     title: "",
     currentVersion: "",
     linkDocs: "",

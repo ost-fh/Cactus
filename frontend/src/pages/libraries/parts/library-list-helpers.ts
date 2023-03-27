@@ -1,7 +1,7 @@
 import {
   getCurrentVersion,
-  library,
-  version,
+  Library,
+  Version,
 } from "../../../shared/resources/types";
 
 export interface focusScore {
@@ -11,7 +11,7 @@ export interface focusScore {
 
 export const calculateFocusScore = (
   filters: string[],
-  currentVersion: version
+  currentVersion: Version
 ): string => {
   let result: string | undefined = undefined;
   let scores: number[] = [];
@@ -54,22 +54,22 @@ export enum filterResults {
 }
 
 export type LibraryBuckets = {
-  noFilter: library[];
-  trueFiltered: library[];
-  neutralFiltered: library[];
-  falseFiltered: library[];
+  noFilter: Library[];
+  trueFiltered: Library[];
+  neutralFiltered: Library[];
+  falseFiltered: Library[];
   focusScores: focusScore[];
 };
 
 export const sortLibrariesIntoBuckets = (
-  libraries: library[],
+  libraries: Library[],
   sortBy: string,
   filters: string[]
 ): LibraryBuckets => {
-  let noFilters: library[] = [];
-  let trueFiltered: library[] = [];
-  let neutralFiltered: library[] = [];
-  let falseFiltered: library[] = [];
+  let noFilters: Library[] = [];
+  let trueFiltered: Library[] = [];
+  let neutralFiltered: Library[] = [];
+  let falseFiltered: Library[] = [];
   let focusScores: focusScore[] = [];
 
   if (filters.length === 0) {
@@ -131,7 +131,7 @@ export const sortLibrariesIntoBuckets = (
   return buckets;
 };
 
-const sortLibraryArray = (libraryArray: library[], sortBy: string) => {
+const sortLibraryArray = (libraryArray: Library[], sortBy: string) => {
   sortBy = sortBy.toLowerCase();
   if (sortBy === "score") {
     libraryArray.sort((a, b) => {

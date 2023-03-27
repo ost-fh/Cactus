@@ -4,11 +4,11 @@ import Alert from "../../../shared/components/alert";
 import LinkButton from "../../../shared/components/link-button";
 import { getComponents } from "../../../shared/services/api";
 import {
-  componentCriteria,
+  ComponentCriteria,
   getVersion,
-  library,
-  testData,
-  version,
+  Library,
+  TestData,
+  Version,
 } from "../../../shared/resources/types";
 import LabPathDisplay from "../components/lab-path-display";
 import SpecifyTestButton from "../components/specify-test-button";
@@ -17,17 +17,17 @@ import Heading from "../../../shared/components/heading";
 import SpecifyComponentField from "../components/specify-component-field";
 
 type SpecifyTestProps = {
-  testData: testData;
+  testData: TestData;
   setTestData: Function;
-  library: library | undefined;
+  library: Library | undefined;
 };
 
 const SpecifyTest = ({ testData, library, setTestData }: SpecifyTestProps) => {
   const navigate = useNavigate();
 
   const testModes = ["Keyboard", "Screenreader"];
-  const [components, setComponents] = useState<componentCriteria[]>([]);
-  const [version, setVersion] = useState<version>();
+  const [components, setComponents] = useState<ComponentCriteria[]>([]);
+  const [version, setVersion] = useState<Version>();
 
   useEffect(() => {
     if (library) setVersion(getVersion(library, testData.libraryVersion));
