@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { getLibrary } from "../../shared/services/api";
-import { Component, Library, Version } from "../../shared/resources/types";
+import { Library, Version } from "../../shared/resources/types";
 import { UserContext } from "../../App";
 
 import PublicLayout from "../../shared/layout/public-layout";
@@ -88,108 +88,117 @@ const LibraryDetail = () => {
 
   return (
     <PublicLayout activeLink='libraries'>
-      <>
-        <header className='lib-detail-header'>
-          {library && <Heading>{library ? library.title : ""}</Heading>}
-          <div className='lib-score'>
-            {version?.accessibilityScore !== undefined && (
-              <ScoreBubble
-                label='Library Cactus Score'
-                score={version.accessibilityScore}
-              />
-            )}
-          </div>
-        </header>
-        <section className='lib-info layout-split'>
-          <div className='lib-infos'>
-            <a href={library?.linkHome} target='_blank' rel='noreferrer'>
-              Homepage (opens in new Tab)
-            </a>
-            <a href={library?.linkDocs} target='_blank' rel='noreferrer'>
-              Documentation (opens in new Tab)
-            </a>
-            <label>
-              Version:{" "}
-              <select
-                onChange={(e) => handleChangeVersion(e)}
-                disabled={library?.versions.length === 1}
-                value={paramsVersion || library?.currentVersion}
-              >
-                {library?.versions.map((version) => (
-                  <option key={version.version} value={version.version}>
-                    {version.version}
-                  </option>
-                ))}
-              </select>
-            </label>
-            {userData?.token && paramsId && (
-              <AddVersion changeVersion={changeVersion} libraryId={paramsId} />
-            )}
-            {userData?.token ? (
-              <LinkButton
-                to={`/testlab/${library?._id}/${version?.version}`}
-                className='button-primary button-wide'
-                label='Add a Component Test'
-              />
-            ) : (
-              <Alert type='info'>
-                <h3>Would you like to help?</h3>
-                <p>
-                  You can review components yourself and help us to improve the
-                  quality of the scores
-                </p>
-                <LinkButton
-                  to='/contribute'
-                  label='Find out how to contribute'
+      {!library ? (
+        <>
+          {pageLoadingState === state.loading && (
+            <Alert message='Library is loading ...' />
+          )}
+          {pageLoadingState === state.error && (
+            <Alert type='error' message='Library not found.'></Alert>
+          )}
+        </>
+      ) : (
+        <>
+          <header className='lib-detail-header'>
+            <Heading>{library.title}</Heading>
+            <div className='lib-score'>
+              {version?.accessibilityScore !== undefined && (
+                <ScoreBubble
+                  label='Library Cactus Score'
+                  score={version.accessibilityScore}
                 />
-              </Alert>
-            )}
-          </div>
-          <div className='lib-infos'>
-            {!version || version.components.length === 0 || (
-              <Alert type='help'>
-                <h3>What do these numbers mean?</h3>
-                <div className='lib-detail-help'>
-                  <ScoreBubble label='Cactus Score (example)' score={100} />
+              )}
+            </div>
+          </header>
+          <section className='lib-info layout-split'>
+            <div className='lib-infos'>
+              <a href={library.linkHome} target='_blank' rel='noreferrer'>
+                Homepage (opens in new Tab)
+              </a>
+              <a href={library.linkDocs} target='_blank' rel='noreferrer'>
+                Documentation (opens in new Tab)
+              </a>
+              <label>
+                Version:{" "}
+                <select
+                  onChange={(e) => handleChangeVersion(e)}
+                  disabled={library.versions.length === 1}
+                  value={paramsVersion || library.currentVersion}
+                >
+                  {library.versions.map((version) => (
+                    <option key={version.version} value={version.version}>
+                      {version.version}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {userData?.token && paramsId && (
+                <AddVersion
+                  changeVersion={changeVersion}
+                  libraryId={paramsId}
+                />
+              )}
+              {userData?.token ? (
+                <LinkButton
+                  to={`/testlab/${library?._id}/${version?.version}`}
+                  className='button-primary button-wide'
+                  label='Add a Component Test'
+                />
+              ) : (
+                <Alert type='info'>
+                  <h3>Would you like to help?</h3>
                   <p>
-                    This is an average score over all the tests that were made
-                    for a component, testmode or library. It gives an idea about
-                    how good a library performs in terms of accessibility.
+                    You can review components yourself and help us to improve
+                    the quality of the scores
                   </p>
+                  <LinkButton
+                    to='/contribute'
+                    label='Find out how to contribute'
+                  />
+                </Alert>
+              )}
+            </div>
+            <div className='lib-infos'>
+              {!version || version.components.length === 0 || (
+                <Alert type='help'>
+                  <h3>Scoring System</h3>
+                  <div className='lib-detail-help'>
+                    <ScoreBubble label='Cactus Score (example)' score={100} />
+                    <p>
+                      This is an average score over all the tests that were made
+                      for a component, testmode or library. It gives an idea
+                      about how good a library performs in terms of
+                      accessibility.
+                    </p>
 
-                  <ResultBubble positive={4} negative={0} not_decided={0} />
-                  <p>
-                    This shows how many testers voted if a criterium was
-                    fullfilled, not fulfilled or not decidable. (exemplary
-                    numbers used)
-                  </p>
-                  <CountBubble label='Agreement Score (example)' count={1} />
-                  <p>
-                    This number between 0 and 1 shows how much different testers
-                    agree with each other. A number closer to 1 is better.
-                  </p>
-                </div>
-              </Alert>
-            )}
-          </div>
-        </section>
+                    <ResultBubble positive={4} negative={0} not_decided={0} />
+                    <p>
+                      This shows how many testers voted if a criterium was
+                      fullfilled, not fulfilled or not decidable. (exemplary
+                      numbers used)
+                    </p>
+                    <CountBubble label='Agreement Score (example)' count={1} />
+                    <p>
+                      This number between 0 and 1 shows how much different
+                      testers agree with each other. A number closer to 1 is
+                      better.
+                    </p>
+                  </div>
+                </Alert>
+              )}
+            </div>
+          </section>
 
-        <section className='lib-testresults'>
-          {!version || version.components.length === 0 ? (
-            <Alert message='There are currently no component testresults for this library.' />
-          ) : (
-            version.components
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map((component: Component) => (
+          <section className='lib-testresults'>
+            {!version || version.components.length === 0 ? (
+              <Alert message='There are currently no component testresults for this library.' />
+            ) : (
+              version.components.map((component) => (
                 <ComponentResult key={component.name} component={component} />
               ))
-          )}
-        </section>
-      </>
-
-      {pageLoadingState === state.loading && <Alert>Library loading...</Alert>}
-      {pageLoadingState === state.error && (
-        <Alert type='error'>Library not found.</Alert>
+            )}
+          </section>
+        </>
       )}
     </PublicLayout>
   );

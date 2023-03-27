@@ -1,16 +1,6 @@
-import {
-  Body,
-  Controller,
-  Req,
-  Res,
-  Post,
-  Get,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Req, Res, Get, UseGuards } from '@nestjs/common';
 import { AuthService } from 'src/auth/services/auth.service';
-import CreateUserDto from '../users/create-user.dto';
 import { GitHubOauthGuard } from './guards/github-oauth-guard';
-import { LocalAuthGuard } from './guards/local-auth.guard';
 import { Request, Response } from 'express';
 import User from 'src/users/user';
 import { GoogleOauthGuard } from './guards/google-oauth-guard';
@@ -22,19 +12,6 @@ export class AuthController {
     private readonly authService: AuthService,
     private readonly configService: ConfigService,
   ) {}
-
-  @Post('register')
-  async registerUser(@Body() createUserDto: CreateUserDto) {
-    const user = await this.authService.register(createUserDto);
-
-    return this.authService.getAccessToken(user);
-  }
-
-  @UseGuards(LocalAuthGuard)
-  @Post('login')
-  async loginUser(@Req() req: any) {
-    return this.authService.getAccessToken(req.user);
-  }
 
   @Get('github')
   @UseGuards(GitHubOauthGuard)
@@ -56,7 +33,7 @@ export class AuthController {
     res.redirect(
       `${this.configService.get<EnvironmentVariables>('FRONTEND_ORIGIN', {
         infer: true,
-      })}/login?accessToken=${test.token}`,
+      })}/login-redirect?accessToken=${test.token}`,
     );
   }
 
@@ -73,7 +50,7 @@ export class AuthController {
     res.redirect(
       `${this.configService.get<EnvironmentVariables>('FRONTEND_ORIGIN', {
         infer: true,
-      })}/login?accessToken=${test.token}`,
+      })}/login-redirect?accessToken=${test.token}`,
     );
   }
 }

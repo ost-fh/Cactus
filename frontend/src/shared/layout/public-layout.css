@@ -5,7 +5,7 @@
 #main {
   margin-top: 1rem;
   margin-bottom: 2rem;
-  min-height: 80vh;
+  min-height: calc(100vh - 15rem);
 }
 
 .skip-link {
@@ -97,7 +97,7 @@
 .footer-links {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
   gap: 0.3rem;
 }
 

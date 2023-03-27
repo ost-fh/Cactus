@@ -1,2 +1,2 @@
-type AuthProvider = 'github' | 'google' | 'local';
+type AuthProvider = 'github' | 'google';
 export default AuthProvider;
