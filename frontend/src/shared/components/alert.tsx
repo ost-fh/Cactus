@@ -24,23 +24,27 @@ const Alert = ({
 }: AlertProps) => {
   if (children) {
     return (
-      <div className={`alert-${type} alert ${className && className}`}>
+      <div className={`alert-${type} alert ${className ? className : ""}`}>
         {children}
       </div>
     );
   }
 
   return (
-    <div className={`alert-${type} alert alert-with-icon`}>
+    <div
+      className={`alert-${type}  alert alert-with-icon ${
+        className ? className : ""
+      }`}
+    >
+      {type === "error" && (
+        <BsFillExclamationOctagonFill title='Error Message:' />
+      )}
+      {type === "help" && (
+        <BsFillExclamationTriangleFill title='Help Message:' />
+      )}
+      {type === "info" && <BsInfoCircleFill title='Information Message:' />}
+      {type === "success" && <BsCheckCircleFill title='Success Message:' />}
       <p>
-        {type === "error" && (
-          <BsFillExclamationOctagonFill title='Error Message:' />
-        )}
-        {type === "help" && (
-          <BsFillExclamationTriangleFill title='Help Message:' />
-        )}
-        {type === "info" && <BsInfoCircleFill title='Information Message:' />}
-        {type === "success" && <BsCheckCircleFill title='Success Message:' />}
         <strong>{title}</strong> <span>{message}</span>
       </p>
     </div>
