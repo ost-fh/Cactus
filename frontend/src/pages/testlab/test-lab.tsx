@@ -59,11 +59,9 @@ const TestLab = () => {
   useEffect(() => {
     if (library) {
       const v = getVersion(library, testData.libraryVersion);
-      if (v) {
-        const c = getComponent(v, testData.component);
-        if (c?.linkDocs && !testData.componentLinkDocs)
-          setTestData({ ...testData, componentLinkDocs: c.linkDocs });
-      }
+      const c = getComponent(testData.component, v);
+      if (c?.linkDocs && !testData.componentLinkDocs)
+        setTestData({ ...testData, componentLinkDocs: c.linkDocs });
     }
   }, [library, testData]);
 

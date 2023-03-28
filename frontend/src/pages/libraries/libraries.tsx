@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getComponents, getLibraries } from "../../shared/services/api";
+import { getComponentCriteria, getLibraries } from "../../shared/services/api";
 
 import Alert from "../../shared/components/alert";
 import PublicLayout from "../../shared/layout/public-layout";
@@ -26,7 +26,7 @@ const Libraries = () => {
 
   // get all component names
   useEffect(() => {
-    getComponents().then((items: ComponentCriteria[]) => {
+    getComponentCriteria().then((items: ComponentCriteria[]) => {
       const onlyComponentName = items.map((item) => item.name);
       setComponents(onlyComponentName);
     });

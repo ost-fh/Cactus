@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getComponents, postTestResult } from "../../../shared/services/api";
+import {
+  getComponentCriteria,
+  postTestResult,
+} from "../../../shared/services/api";
 import LinkButton from "../../../shared/components/link-button";
 import {
   ComponentCriteria,
@@ -40,7 +43,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
 
   // get the relevant criteria-group
   useEffect(() => {
-    getComponents().then((items) => {
+    getComponentCriteria().then((items) => {
       const result = items
         .find((item: ComponentCriteria) => item.name === testData.component)
         ?.testModes.find(

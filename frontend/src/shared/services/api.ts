@@ -69,14 +69,14 @@ export const getLibraries = async () => {
     .catch((error) => console.error(error));
 };
 
-export const getComponents = async (): Promise<ComponentCriteria[]> => {
+export const getComponentCriteria = async (): Promise<ComponentCriteria[]> => {
   return httpService("GET", `${API_BASE_URL}/components`)
     .then((data) => data.json())
     .catch((error) => console.error(error));
 };
 
 export const getAllCriteria = async (): Promise<Criterium[]> => {
-  const allCriteria: ComponentCriteria[] = await getComponents();
+  const allCriteria: ComponentCriteria[] = await getComponentCriteria();
   const res = allCriteria.map((component) => {
     return component.testModes.map((group) => group.criteria);
   });

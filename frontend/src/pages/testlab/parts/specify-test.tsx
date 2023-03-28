@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { BsChevronDoubleLeft, BsChevronRight } from "react-icons/bs";
 import Alert from "../../../shared/components/alert";
 import LinkButton from "../../../shared/components/link-button";
-import { getComponents } from "../../../shared/services/api";
+import LabPathDisplay from "../components/lab-path-display";
+import Heading from "../../../shared/components/heading";
+import SpecifyComponentField from "../components/specify-component-field";
+import { getComponentCriteria } from "../../../shared/services/api";
 import {
   ComponentCriteria,
+  getComponent,
   getVersion,
   Library,
   TestData,
   Version,
 } from "../../../shared/resources/types";
-import LabPathDisplay from "../components/lab-path-display";
-import SpecifyTestButton from "../components/specify-test-button";
-import { useNavigate } from "react-router-dom";
-import Heading from "../../../shared/components/heading";
-import SpecifyComponentField from "../components/specify-component-field";
 
 type SpecifyTestProps = {
   testData: TestData;
@@ -26,7 +26,9 @@ const SpecifyTest = ({ testData, library, setTestData }: SpecifyTestProps) => {
   const navigate = useNavigate();
 
   const testModes = ["Keyboard", "Screenreader"];
-  const [components, setComponents] = useState<ComponentCriteria[]>([]);
+  const [componentCriteria, setComponentCriteria] = useState<
+    ComponentCriteria[]
+  >([]);
   const [version, setVersion] = useState<Version>();
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const SpecifyTest = ({ testData, library, setTestData }: SpecifyTestProps) => {
   }, [library, testData.libraryVersion]);
 
   useEffect(() => {
-    getComponents().then((items) => setComponents(items));
+    getComponentCriteria().then((items) => setComponentCriteria(items));
   }, []);
 
   const handleChange = (
@@ -79,35 +81,18 @@ const SpecifyTest = ({ testData, library, setTestData }: SpecifyTestProps) => {
         NVDA for this test.
       </p>
       <p>Each testmode displays the amount of tests that were already done.</p>
-      <Alert type='help' message='Choose a testmode and continue.' />
+      <Alert type='help' message='Choose a testmode and continue below.' />
 
-      {components.map((component) => (
+      {componentCriteria.map((componentCriteria) => (
         <SpecifyComponentField
-          key={component.name}
-          componentCriteria={component}
-          version={getVersion(library, testData.libraryVersion)}
-        >
-          {testModes.map((testMode) => (
-            <div key={`${component}-${testMode}`}>
-              <SpecifyTestButton
-                testData={testData}
-                testMode={testMode}
-                component={component}
-                handleChange={handleChange}
-                amountOfTests={
-                  version?.components
-                    .find(
-                      (foundComponent) => foundComponent.name === component.name
-                    )
-                    ?.modes.find((mode) => mode.name === testMode)?.testScores
-                    ?.amountOfTests
-                }
-              />
-            </div>
-          ))}
-        </SpecifyComponentField>
+          key={componentCriteria.name}
+          componentCriteria={componentCriteria}
+          component={getComponent(componentCriteria.name, version)}
+          testModes={testModes}
+          testData={testData}
+          handleChange={handleChange}
+        />
       ))}
-
       <div className='control-group'>
         <LinkButton
           type='button'
