@@ -1,6 +1,7 @@
 /** general **/
 
 #lab-main {
+  padding-top: 1.3rem;
   margin-bottom: 2rem;
 }
 
@@ -16,18 +17,26 @@
   padding: 0.7rem;
   border: 1px rgb(194, 194, 194) solid;
   border-radius: 0.3rem;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto 1fr;
   gap: 1rem;
 
   img {
     width: 6rem;
   }
 
-  .alert {
+  .disabled-alert {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 0.7rem;
+  }
+
+  .redo {
+    grid-column: span 2;
+  }
+
+  .tested {
+    font-style: oblique;
   }
 
   @media (max-width: 700px) {

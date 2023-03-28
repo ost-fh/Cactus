@@ -5,8 +5,8 @@ import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
 import ScoreBubble from "../../../shared/components/score-bubble";
 import ComponentResultDetails from "./component-result-details";
-import "./component-result.css";
-import { getComponents } from "../../../shared/services/api";
+import "./component-result.scss";
+import { getComponentCriteria } from "../../../shared/services/api";
 
 type ComponentResultProps = {
   component: Component;
@@ -18,10 +18,8 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
   const [componentData, setComponentData] = useState<ComponentCriteria>();
 
   useEffect(() => {
-    getComponents().then((items) => {
+    getComponentCriteria().then((items) => {
       const result = items.find((item) => item.name === component.name);
-      console.log(result);
-
       setComponentData(result);
     });
   }, [component.name]);
@@ -44,6 +42,8 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
           <img
             src={componentData?.imageUrl}
             alt={`schematic of ${component.name}`}
+            width={150}
+            height={150}
           />
           <div>
             <h3>

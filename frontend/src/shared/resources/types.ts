@@ -18,7 +18,6 @@ export type Library = {
   title: string;
   currentVersion: string;
   versions: Version[];
-  // merge with library detail type
   linkHome: string;
   linkDocs: string;
 };
@@ -63,10 +62,13 @@ export type Component = {
   componentTested: boolean;
 };
 
-export const getComponent = (version: Version, componentName: string) => {
-  return version.components.find(
-    (component) => component.name === componentName
-  );
+export const getComponent = (
+  name: string,
+  version: Version | undefined
+): Component | undefined => {
+  if (version) {
+    return version.components.find((component) => component.name === name);
+  }
 };
 
 export type mode = {
