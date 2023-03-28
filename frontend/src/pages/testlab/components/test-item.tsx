@@ -32,8 +32,8 @@ const TestItem = ({ criterium, handleChange }: TestItemProps) => {
 
   return (
     <div className='test-item'>
-      <h3 className='test-item-criteria'>{criterium.text}</h3>
-      <p>Detailed description: {criterium.help}</p>
+      <h3 className='test-item-criteria'>{criterium.title}</h3>
+      <p>{criterium.help}</p>
       <div className='button-group'>
         <TestItemButton
           id={criterium._id}

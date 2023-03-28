@@ -14,6 +14,7 @@ export type TestMode = {
 
 export type Criterium = {
   _id: string;
-  text: string;
+  title: string;
   help: string;
+  sources?: string[];
 };
