@@ -30,7 +30,7 @@ The newest production-ready release of this application is hosted by the Eastern
 
 We appreciate your interest in contributing to our project. There are two mainly focused ways to contribute this project showed in this visualization.
 
-<img src="docs/contribution-workflows.png" style="zoom:70%;" />
+![](docs/contribution-workflows.png | width=100)
 
 All possible ways how you can contribute and the appropriate guidelines will you find in [CONTRIBUTING.md](/CONTRIBUTING.md)
 
@@ -38,11 +38,11 @@ All possible ways how you can contribute and the appropriate guidelines will you
 
 **Funding**
 
-<img src="docs/frh-logo.png" style="zoom: 15%;" />
+![](docs/frh-logo.png | width=100)
 
 **Maintaining and Development**
 
-<img src="docs/logo-ost.jpg" style="zoom:5%;" />
+![](docs/logo-ost.jpg | width=100)
 
 ## License
 
