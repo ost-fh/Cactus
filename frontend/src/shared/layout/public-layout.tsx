@@ -100,7 +100,7 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
         </div>
         <div id='footer-row-center'>
           <p>Sponsor</p>
-          <a href='https://frh-fondation.ch/de/'>
+          <a href='https://frh-fondation.ch/en/'>
             <img
               src='/FRH-logo.png'
               className='footer-img-sponsor'
