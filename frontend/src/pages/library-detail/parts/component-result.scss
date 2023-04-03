@@ -1,3 +1,5 @@
+@use "src/shared/layout/colors";
+
 .lib-testresult {
   border: 2px solid rgb(237, 237, 237);
   padding: 0.7rem;
@@ -15,7 +17,7 @@
 }
 
 .lib-testresult-disabled {
-  background-color: rgb(243, 243, 243);
+  border-color: colors.$red-light;
 }
 
 .lib-testresult > header {

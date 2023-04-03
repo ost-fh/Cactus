@@ -75,64 +75,66 @@ const LibraryCard = ({
           )}
         </div>
 
-        {filterScores.length > 0 && (
-          <>
-            <div className='filter-scores'>
-              <p>Components: </p>
-              {filterScores.map((filterScore) => {
-                if (filterScore.filterState === "true")
-                  return (
-                    <Bubble
-                      key={filterScore.name + library._id}
-                      value={filterScore.score + "%"}
-                      label={filterScore.name}
-                      color='green'
-                    />
-                  );
-                if (filterScore.filterState === "incomplete")
-                  return (
-                    <Bubble
-                      key={filterScore.name + library._id}
-                      value={"incomplete"}
-                      label={filterScore.name}
-                      color='yellow'
-                    />
-                  );
-                if (filterScore.filterState === "neutral")
-                  return (
-                    <Bubble
-                      key={filterScore.name + library._id}
-                      value={"?"}
-                      label={filterScore.name}
-                      color='yellow'
-                    />
-                  );
-                if (filterScore.filterState === "false")
-                  return (
-                    <Bubble
-                      key={filterScore.name + library._id}
-                      value={"X"}
-                      label={filterScore.name}
-                      color='red'
-                    />
-                  );
+        {currentVersion &&
+          currentVersion?.components.length > 0 &&
+          filterScores.length > 0 && (
+            <>
+              <div className='filter-scores'>
+                <p>Components: </p>
+                {filterScores.map((filterScore) => {
+                  if (filterScore.filterState === "true")
+                    return (
+                      <Bubble
+                        key={filterScore.name + library._id}
+                        value={filterScore.score + "%"}
+                        label={filterScore.name}
+                        color='green'
+                      />
+                    );
+                  if (filterScore.filterState === "incomplete")
+                    return (
+                      <Bubble
+                        key={filterScore.name + library._id}
+                        value={"incomplete"}
+                        label={filterScore.name}
+                        color='yellow'
+                      />
+                    );
+                  if (filterScore.filterState === "neutral")
+                    return (
+                      <Bubble
+                        key={filterScore.name + library._id}
+                        value={"?"}
+                        label={filterScore.name}
+                        color='yellow'
+                      />
+                    );
+                  if (filterScore.filterState === "false")
+                    return (
+                      <Bubble
+                        key={filterScore.name + library._id}
+                        value={"X"}
+                        label={filterScore.name}
+                        color='red'
+                      />
+                    );
 
-                return "error";
-              })}
-            </div>
-            <div className='messages'>
-              {filterState === "neutral" && (
-                <Alert message='Not all or none of the selected components are tested yet or might not be in the library.' />
-              )}
-              {filterState === "false" && (
-                <Alert
-                  type='error'
-                  message='One or more of the selected components are not available in this library.'
-                />
-              )}
-            </div>
-          </>
-        )}
+                  return "error";
+                })}
+              </div>
+              <div className='messages'>
+                {filterState === "neutral" && (
+                  <Alert message='Not all or none of the selected components are tested yet or might not be in the library.' />
+                )}
+                {filterState === "false" && (
+                  <Alert
+                    type='error'
+                    message='One or more of the selected components are not available in this library.'
+                  />
+                )}
+              </div>
+            </>
+          )}
       </div>
       <div className='aside'>
         <LinkButton
