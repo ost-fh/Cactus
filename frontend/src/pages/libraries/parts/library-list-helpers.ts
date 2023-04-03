@@ -13,9 +13,6 @@ export const calculateFocusScore = (
   filters: string[],
   version: Version
 ): string => {
-  console.log(version);
-  console.log(filters);
-
   // let result: string | undefined = undefined;
   let scores: number[] = [];
   let untested: number = 0;
@@ -23,11 +20,9 @@ export const calculateFocusScore = (
     const component = version.components.find(
       (component) => component.name === filter
     );
-    if (component === undefined) {
-      untested++;
-    } else {
-      scores.push(component.accessibilityScore);
-    }
+    component && component.exists
+      ? scores.push(component.accessibilityScore)
+      : untested++;
   }
   if (untested === 0) {
     const average = calculateAverage(scores);
@@ -88,16 +83,23 @@ export const sortLibrariesIntoBuckets = (
 
       // if a component from the filters is not found, it sorts into neutral
       for (const filter of filters) {
+        const component = currentVersion?.components.find(
+          (component) => component.name === filter
+        );
+        if (!component) {
+          filterResult = filterResults.neutral;
+        }
         if (
-          !currentVersion?.components.find(
-            (component) => component.name === filter
-          )
+          component &&
+          component.exists === true &&
+          component.componentTested === false
         ) {
           filterResult = filterResults.neutral;
-          break;
-          // TODO -> differentiate between completed and not completly tested component
         }
-        // TODO later differentiate component exists/does not exist
+        if (component && component.exists === false) {
+          filterResult = filterResults.false;
+          break;
+        }
       }
 
       if (currentVersion) {
@@ -114,10 +116,9 @@ export const sortLibrariesIntoBuckets = (
       if (filterResult === filterResults.neutral) {
         neutralFiltered.push(library);
       }
-      // TODO Enable once exclusion is implemented
-      // if (filterResult === filterResults.false) {
-      //   falseTemp = [...falseTemp, library];
-      // }
+      if (filterResult === filterResults.false) {
+        falseFiltered.push(library);
+      }
     });
   }
 

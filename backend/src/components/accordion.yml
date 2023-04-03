@@ -6,22 +6,35 @@ testModes:
   - testMode: Screenreader
     criteria:
       - _id: 1
-        text: Any hidden text is not read
-        help: Collapse one section of the accordion. Using the arrow keys, it should not be possible to read text that is not visible.
+        title: The sceenreader announces the heading as a 'button'
+        help: Navigate to a heading. The screenreader should announce it as a 'button'. In this way, screen reader users can recognize the heading as an interactive element.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
       - _id: 2
-        text: The screenreader announces the current state of the accordion header element
-        help: .
+        title: The screenreader announces the current state of the accordion header element
+        help: Move the focus between the heading element of one of the sections. The screenreader should announce the section as 'expanded' or 'collapsed', or similar.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
   - testMode: Keyboard
     criteria:
       - _id: 1
-        text: The header elements are focusable
-        help: Since the header/title elements are interactive and are used to open and close the accordion, they should be focusable. This means, by clicking the tab key repeatedly, you should reach the header element.
+        title: The header elements are focusable
+        help: Since the header/title elements are interactive and are used to open and close the accordion, they should be focusable. Navigate to a header element by clicking the 'tab' key repeatedly.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
       - _id: 2
-        text: The focus (style) of the header elements is visible
-        help: If you reached the header element with tab, you should (easily) be able to recognize, what header element is currently focused.
+        title: The focus style of the header elements is visible
+        help: Navigate to a header element with 'tab'. you should (easily) be able to recognize which header element is currently focused. This is usually done with an outline.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html
       - _id: 3
-        text: The panel opens/closes with `space` or `enter` keys upon focus of a header element
+        title: The panel opens/closes with `space` or `enter` keys upon focus of a header element
         help: To interact with the accordion, it should be possible to open and close it.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
       - _id: 4
-        text: Navigation between panel headers is possible with `tab`
+        title: Navigation between panel headers is possible with 'tab'
         help: To open and close the different panels of the accordion, it is neccessary to be able to change between the different panels to open and close them
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html

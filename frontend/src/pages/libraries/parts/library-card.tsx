@@ -7,18 +7,13 @@ import ScoreBubble from "../../../shared/components/score-bubble";
 
 import "./library-card.scss";
 import Bubble from "../../../shared/components/bubble";
+import { createFilterScores, filterScore } from "./library-card-helpers";
 
 type LibraryCardProps = {
   library: Library;
   filters?: string[];
   focusScore?: string;
-  filterState?: "true" | "neutral" | "false";
-};
-
-type filterScore = {
-  name: string;
-  filterState: "true" | "neutral" | "false";
-  score?: number;
+  filterState?: "true" | "incomplete" | "neutral" | "false";
 };
 
 const LibraryCard = ({
@@ -39,27 +34,8 @@ const LibraryCard = ({
 
   // extract scores of evaluated components
   useEffect(() => {
-    if (filters.length > 0) {
-      let newFilterScores: filterScore[] = [];
-      filters.forEach((filter) => {
-        const component = currentVersion?.components.find(
-          (component) => component.name === filter
-        );
-        if (component) {
-          const newFilterScore: filterScore = {
-            name: filter,
-            filterState: "true",
-            score: component.accessibilityScore,
-          };
-          newFilterScores.push(newFilterScore);
-        } else {
-          const newFilterScore: filterScore = {
-            name: filter,
-            filterState: "neutral",
-          };
-          newFilterScores.push(newFilterScore);
-        }
-      });
+    if (filters.length > 0 && currentVersion) {
+      const newFilterScores = createFilterScores(filters, currentVersion);
       setFilterScores(newFilterScores);
     }
   }, [currentVersion, filters]);
@@ -113,6 +89,15 @@ const LibraryCard = ({
                       color='green'
                     />
                   );
+                if (filterScore.filterState === "incomplete")
+                  return (
+                    <Bubble
+                      key={filterScore.name + library._id}
+                      value={"incomplete"}
+                      label={filterScore.name}
+                      color='yellow'
+                    />
+                  );
                 if (filterScore.filterState === "neutral")
                   return (
                     <Bubble
@@ -128,6 +113,7 @@ const LibraryCard = ({
                       key={filterScore.name + library._id}
                       value={"X"}
                       label={filterScore.name}
+                      color='red'
                     />
                   );
 
@@ -136,10 +122,13 @@ const LibraryCard = ({
             </div>
             <div className='messages'>
               {filterState === "neutral" && (
-                <Alert message='Not all or none of the selected components are tested yet or night not be in the library.' />
+                <Alert message='Not all or none of the selected components are tested yet or might not be in the library.' />
               )}
               {filterState === "false" && (
-                <Alert message='One or more of the selected components are not available in this library.' />
+                <Alert
+                  type='error'
+                  message='One or more of the selected components are not available in this library.'
+                />
               )}
             </div>
           </>

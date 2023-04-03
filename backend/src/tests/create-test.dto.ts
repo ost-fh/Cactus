@@ -46,7 +46,7 @@ class CriteriaDto {
   _id: string;
 
   @IsString()
-  text: string;
+  title: string;
 
   @IsString()
   help: string;

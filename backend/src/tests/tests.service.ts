@@ -20,7 +20,7 @@ export class TestsService {
     const criteria = dto.criteria.map((item: any) => {
       return {
         criterium_id: item._id,
-        text: item.text,
+        title: item.text,
         help: item.help,
         choice: item.choice,
         comment: item.comment,

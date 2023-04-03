@@ -6,27 +6,44 @@ testModes:
   - testMode: Screenreader
     criteria:
       - _id: 1
-        text: The label of the switch is read upon focus
-        help: .
+        title: The label of the switch is read upon focus
+        help: Upon focusing the switch, the label of the switchbox is announced.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html
       - _id: 2
-        text: The screenreader announces the new state upon switching
-        help: .
+        title: The switch is announced as a switch or as a checkbox
+        help: Upon focusing the switch, it is announced as switch or checkbox.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/switch/
       - _id: 3
-        text: The switch is announced as a switch or as a checkbox
-        help: .
+        title: The screenreader announces the new state upon switching
+        help: Navigate to the switch control with tab. Change the state of the switch with 'enter' or 'space'. Upon every state change, the change should be announced.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/switch/
   - testMode: Keyboard
     criteria:
       - _id: 1
-        text: The switch control is focusable
-        help: EDIT Since the header/title elements are interactive and are used to open and close the accordion, they should be focusable. This means, by clicking the tab key repeatedly, you should reach the header element.
+        title: The switch control is focusable
+        help: Navigate to the switch control with tab. You should be able to focus the switch control.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
       - _id: 2
-        text: The switch control does not change on focus
-        help: .
-        source: WCAG 3.2.1
+        title: The focus style of the switch is visible
+        help: Navigate to the switch control with tab. you should (easily) be able to recognize which header element is currently focused. This is usually done with an outline.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html
       - _id: 3
-        text: The switch control uses symbols or text in addition to color to signify the on/off state
-        help: .
-        source: WCAG 1.4.1 (?)
+        title: The switch control does not change on focus
+        help: Navigate to the switch control with tab. Upon receiving focus, it should not change state (on/off).
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/on-focus.html
       - _id: 4
-        text: The switch control can be toggled with the 'space' or the 'enter' key
-        help: .
+        title: The switch control uses symbols or text in addition to color to signify the on/off state
+        help: If you toggle the switch control, you should be able to tell if it's on or off, without relying purely on color. This can also be a label next to the switch.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html
+      - _id: 5
+        title: The switch control can be toggled with the 'space' or the 'enter' keys
+        help: Navigate to the switch control with tab. Change the state of the switch with the 'space' or the 'enter' keys.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/switch/

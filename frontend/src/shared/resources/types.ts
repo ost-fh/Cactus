@@ -116,13 +116,14 @@ export type CriteriaGroup = {
 
 export type Criterium = {
   _id: string;
-  text: string;
+  title: string;
   help: string;
+  sources?: string[];
 };
 
 export type CriteriumResult = {
   _id: string;
-  text: string;
+  title: string;
   help: string;
   choice: string;
   comment: string;

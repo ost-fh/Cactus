@@ -6,16 +6,24 @@ testModes:
   - testMode: Screenreader
     criteria:
       - _id: 1
-        text: The triggered alert is read as a notification or alert to the user
-        help: .
+        title: The triggered alert is read as a notification or alert to the user
+        help: Click on an interactive example to trigger an alert.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/alert/
   - testMode: Keyboard
     criteria:
       - _id: 1
-        text: The triggered alert does not affect keyboard focus
-        help: .
-      - _id: 2
-        text: The triggered alert is next in the focus order after the triggering element
-        help: .
-      - _id: 3
-        text: The triggered alert can be closed with esc, without having the focus on the alert
-        help: .
+        title: The triggered alert does not affect keyboard focus
+        help: The keyboard focus should remain on the triggering element.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/alert/
+      # - _id: 2
+      #   title: The triggered alert is next in the focus order after the triggering element
+      #   help: Trigger an alert, then move to the alert with one 'tab' press.
+      #   sources:
+      #     - https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html
+      # - _id: 3
+      #   title: The triggered alert can be closed with esc, without having the focus on the alert
+      #   help: .
+      #   sources:
+      #     -
