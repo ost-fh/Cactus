@@ -11,13 +11,13 @@ export interface focusScore {
 
 export const calculateFocusScore = (
   filters: string[],
-  currentVersion: Version
+  version: Version
 ): string => {
   let result: string | undefined = undefined;
   let scores: number[] = [];
   let untested: number = 0;
   for (const filter of filters) {
-    const component = currentVersion?.components.find(
+    const component = version.components.find(
       (component) => component.name === filter
     );
     component ? scores.push(component.accessibilityScore) : untested++;
