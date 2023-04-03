@@ -29,7 +29,7 @@ export const calculateFocusScore = (
     result = calculateMinMaxScore(scores, untested);
   }
 
-  return result || "hi";
+  return result;
 };
 
 const calculateMinMaxScore = (scores: number[], untested: number): string => {
