@@ -19,7 +19,7 @@ const CriteriumResult = ({ item }: CriteriumResultProps) => {
 
   return (
     <div className='criterium-detail'>
-      <div className='criterium-text'>{criterium?.text}</div>
+      <div className='criterium-text'>{criterium?.title}</div>
       <ResultBubble
         positive={item.positive}
         negative={item.negative}

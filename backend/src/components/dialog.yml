@@ -6,28 +6,45 @@ testModes:
   - testMode: Keyboard
     criteria:
       - _id: 1
-        text: The focus (style) of interactive elements is visible
+        title: The focus (style) of interactive elements is visible
         help: The focus is usually a ring around an interactive element, that shows what element is selected. To test this, navigate to an interactive example of a dialog inside the documentation. It usually opens with a button of some sort. Click besides it and try to navigate to it with the 'tab' key.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html
       - _id: 2
-        text: Buttons are focusable
+        title: Buttons are focusable
         help: All interactive elements should be reachable only using the 'tab' key. You can click buttons with 'enter' or sometimes with 'space'. If you could reach a button with tab, also inside the open dialog, this criteria is fulfilled.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
       - _id: 3
-        text: The focus does not leave the dialog
+        title: The focus does not leave the dialog
         help: The focus should not leave the dialog. This means, all other interactive elements on the page are not reachable with the 'tab' key and are therefore outside of the taborder.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
       - _id: 4
-        text: The dialog closes with the `esc` key
+        title: The dialog closes with the 'esc' key
         help: Have the dialog open. Upon pressing 'esc', the dialog should close. 'esc' is seen as the cancel option.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
       - _id: 5
-        text: The focus returns to the calling button after closing or canceling the dialog with `esc`
+        title: The focus returns to the calling button after closing or canceling the dialog with `esc`
         help: To help with seamless navigation, the focus should return to the element that opened a dialog. So open the modal with a button or link that you selected with 'tab', then cancel or close the modal. the focus should return to the calling button.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
   - testMode: Screenreader
     criteria:
       - _id: 1
-        text: The [x] button of the dialog is announced as the close button (or similar).
+        title: The [x] button of the dialog is announced as the close button (or similar).
         help: If you select the close button with tab, the screenreader should read out to you, that this is a close button or similar. Not all modals have a close button. You might need to check different implementations
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html
       - _id: 2
-        text: The content of the dialog is read upon opening
-        help: If a dialog opens, the text or at least the heading of the modal should automatically be read. A blind person otherwise can't know, that a dialog opened.
+        title: The content of the dialog is read upon opening
+        help: If a dialog opens, the text or at least the heading of the dialog should automatically be read. Otherwise, the screenreader user cannot know that a dialog has opened.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
       - _id: 3
-        text: It should not be possible to leave the modal using the arrow up and down keys
+        title: It should not be possible to leave the modal using the arrow up and down keys
         help: The contents and non interactive elements of the dialog are read by navigating with the arrow up and down keys. To align with the keyboard accessibility, it should not be possible to accidently leave the modal using the the screenreader's reading function.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/

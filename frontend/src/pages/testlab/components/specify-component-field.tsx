@@ -106,11 +106,7 @@ const SpecifyComponentField = ({
             ))}
           </div>
         ) : (
-          <Alert
-            type='info'
-            className='disabled-alert'
-            message='This component is marked as "not available" in this library'
-          >
+          <Alert type='info' className='disabled-alert'>
             This component is marked as "not available" in this library. If you
             find this to be false, reenable the component please.
             <button onClick={() => setExists(true)}>Reenable Component</button>

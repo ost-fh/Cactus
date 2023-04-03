@@ -8,7 +8,7 @@ export default class Criterium {
   criterium_id: string;
 
   @Prop()
-  text: string;
+  title: string;
 
   @Prop()
   help: string;

@@ -6,19 +6,39 @@ testModes:
   - testMode: Screenreader
     criteria:
       - _id: 1
-        text: The radio group is announced with a title and as a grouping
-        help: .
+        title: The radio group is announced with a title and as a grouping
+        help: Navigate to the radiogroup using 'tab'.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html
+          - https://www.w3.org/WAI/ARIA/apg/patterns/radio/
       - _id: 2
-        text: On focus and on change of the selected radio button, the button is announced with the title of the button, the state (checked/unchecked) and the position (e.g. 1 of 3)
-        help: .
+        title: On focus and on change of the selected radio button, the button is announced with the title of the button, the state (checked/unchecked) and the position (e.g. 1 of 3)
+        help: Change the selected radio button using the arrow keys.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html
+          - https://www.w3.org/WAI/ARIA/apg/patterns/radio/
   - testMode: Keyboard
     criteria:
       - _id: 1
-        text: The group of radio buttons is focusable with 'tab'
-        help: Only the first radio button is selected, with another click on 'tab' you leave the radio button group.
+        title: The group of radio buttons is focusable with 'tab'
+        help: Navigate to an example radio group using 'tab'. Only the first radio button is selected, with another click on 'tab' you leave the radio button group.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/radio/
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
       - _id: 2
-        text: If the radio button is not checked, it can be checked with 'space'
-        help: .
+        title: A focused radio button has a visible focus style
+        help: Navigate to an example radio group using 'tab'. You should be able to tell, which radiu button is currently selected.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html
       - _id: 3
-        text: The selected radio button can be changed with the arrow keys
-        help: .
+        title: If the radio button is not checked, it can be checked with 'space'
+        help: Navigate to an example radio group using 'tab'. You can change the radio button inside the radio group with the arrow keys. Press 'space' to check the selected radio button.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/radio/
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+      - _id: 4
+        title: The selected radio button can be changed with the arrow keys
+        help: Use the arrow keys to switch between radio buttons inside of the radio group. At least, either up and down or left and right should work.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/radio/
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
