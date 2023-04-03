@@ -12,6 +12,10 @@ name: ghcr-image-release
 on:
   workflow_call:
     inputs:
+      tag:
+        required: false
+        type: string
+        default: 'latest'
       build-namespace:
         required: true
         type: string
@@ -63,5 +67,5 @@ jobs:
         with:
           context: ./${{ inputs.build-namespace }}
           push: true
-          tags: ${{ steps.meta.outputs.tags }}, ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_LC }}:latest
+          tags: ${{ steps.meta.outputs.tags }}, ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_LC }}:${{ inputs.tag }}
           labels: ${{ steps.meta.outputs.labels }}
