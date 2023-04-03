@@ -145,7 +145,7 @@ export class ScoringService {
     if (version.components.length > 0) {
       // amountOfComponentsTested
       version.amountOfComponentsTested = version.components.filter(
-        (item) => item.componentTested && item.exists,
+        (item) => item.componentTested && item.exists !== false,
       ).length;
 
       // remove scores if components are removed/excluded
@@ -157,7 +157,7 @@ export class ScoringService {
 
       const accessibilityScores = version.components
         // .filter((item) => item.componentTested === true)
-        .filter((item) => item.exists === true)
+        .filter((item) => item.exists !== false)
         .map((component) => component.accessibilityScore)
         .filter((item): item is number => item !== undefined);
 
