@@ -7,8 +7,6 @@ import {
 describe("#calculateFocusScore", () => {
   test("Single tested component returns average score", () => {
     // Arrange
-    console.log("Single tested component returns average score");
-
     const version: Version = {
       version: "v2",
       components: [
@@ -20,6 +18,7 @@ describe("#calculateFocusScore", () => {
           agreementScore: 1,
           amountOfTests: 2,
           componentTested: true,
+          exists: true,
         },
         {
           name: "e",
@@ -29,6 +28,7 @@ describe("#calculateFocusScore", () => {
           agreementScore: 1,
           amountOfTests: 2,
           componentTested: true,
+          exists: true,
         },
       ],
     };
@@ -53,6 +53,7 @@ describe("#calculateFocusScore", () => {
           agreementScore: 1,
           amountOfTests: 2,
           componentTested: true,
+          exists: true,
         },
         {
           name: "e",
@@ -62,6 +63,7 @@ describe("#calculateFocusScore", () => {
           agreementScore: 1,
           amountOfTests: 2,
           componentTested: true,
+          exists: true,
         },
       ],
     };
@@ -86,6 +88,7 @@ describe("#calculateFocusScore", () => {
           agreementScore: 1,
           amountOfTests: 2,
           componentTested: true,
+          exists: true,
         },
         {
           name: "e",
@@ -95,6 +98,7 @@ describe("#calculateFocusScore", () => {
           agreementScore: 1,
           amountOfTests: 2,
           componentTested: true,
+          exists: true,
         },
       ],
     };
@@ -119,6 +123,7 @@ describe("#calculateFocusScore", () => {
           agreementScore: 1,
           amountOfTests: 2,
           componentTested: true,
+          exists: true,
         },
         {
           name: "e",
@@ -128,6 +133,7 @@ describe("#calculateFocusScore", () => {
           agreementScore: 1,
           amountOfTests: 2,
           componentTested: true,
+          exists: true,
         },
       ],
     };
@@ -159,6 +165,7 @@ describe("#sortLibrariesIntoBuckets", () => {
               agreementScore: 1,
               amountOfTests: 2,
               componentTested: true,
+              exists: true,
             },
             {
               name: "switch",
@@ -168,6 +175,7 @@ describe("#sortLibrariesIntoBuckets", () => {
               agreementScore: 1,
               amountOfTests: 2,
               componentTested: true,
+              exists: true,
             },
           ],
           accessibilityScore: 3,
@@ -194,6 +202,7 @@ describe("#sortLibrariesIntoBuckets", () => {
               agreementScore: 1,
               amountOfTests: 2,
               componentTested: true,
+              exists: true,
             },
             {
               name: "button",
@@ -203,6 +212,7 @@ describe("#sortLibrariesIntoBuckets", () => {
               agreementScore: 1,
               amountOfTests: 2,
               componentTested: true,
+              exists: true,
             },
           ],
           accessibilityScore: 10,
@@ -341,6 +351,7 @@ describe("#sortLibrariesIntoBuckets", () => {
               agreementScore: 1,
               amountOfTests: 2,
               componentTested: true,
+              exists: true
             },
             {
               name: "switch",
@@ -350,6 +361,7 @@ describe("#sortLibrariesIntoBuckets", () => {
               agreementScore: 1,
               amountOfTests: 2,
               componentTested: true,
+              exists: true
             },
           ],
           accessibilityScore: 3,
@@ -376,6 +388,7 @@ describe("#sortLibrariesIntoBuckets", () => {
               agreementScore: 1,
               amountOfTests: 2,
               componentTested: true,
+              exists: true
             },
             {
               name: "button",
@@ -385,6 +398,7 @@ describe("#sortLibrariesIntoBuckets", () => {
               agreementScore: 1,
               amountOfTests: 2,
               componentTested: true,
+              exists: true
             },
           ],
           accessibilityScore: 10,
