@@ -13,23 +13,28 @@ export const calculateFocusScore = (
   filters: string[],
   version: Version
 ): string => {
-  let result: string | undefined = undefined;
+  console.log(version);
+  console.log(filters);
+
+  // let result: string | undefined = undefined;
   let scores: number[] = [];
   let untested: number = 0;
   for (const filter of filters) {
     const component = version.components.find(
       (component) => component.name === filter
     );
-    component ? scores.push(component.accessibilityScore) : untested++;
+    if (component === undefined) {
+      untested++;
+    } else {
+      scores.push(component.accessibilityScore);
+    }
   }
   if (untested === 0) {
     const average = calculateAverage(scores);
-    result = Math.floor(average).toString();
+    return Math.floor(average).toString();
   } else {
-    result = calculateMinMaxScore(scores, untested);
+    return calculateMinMaxScore(scores, untested);
   }
-
-  return result;
 };
 
 const calculateMinMaxScore = (scores: number[], untested: number): string => {

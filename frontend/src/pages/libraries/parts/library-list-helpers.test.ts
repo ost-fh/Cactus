@@ -7,6 +7,8 @@ import {
 describe("#calculateFocusScore", () => {
   test("Single tested component returns average score", () => {
     // Arrange
+    console.log("Single tested component returns average score");
+
     const version: Version = {
       version: "v2",
       components: [
