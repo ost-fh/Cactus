@@ -27,7 +27,7 @@ export const testLibrary = {
                   criteria: [
                     {
                       criterium_id: '31',
-                      text: 'The header elements are focusable',
+                      title: 'The header elements are focusable',
                       help: 'Since the header/title elements are interactive and are used to open and close the accordion, they should be focusable. This means, by clicking the tab key repeatedly, you should reach the header element.',
                       choice: 'yes',
                       comment: '',
@@ -37,7 +37,8 @@ export const testLibrary = {
                     },
                     {
                       criterium_id: '32',
-                      text: 'The focus (style) of the header elements is visible',
+                      title:
+                        'The focus (style) of the header elements is visible',
                       help: 'If you reached the header element with tab, you should (easily) be able to recognize, what header element is currently focused.',
                       choice: 'yes',
                       comment: '',
@@ -47,7 +48,8 @@ export const testLibrary = {
                     },
                     {
                       criterium_id: '33',
-                      text: 'The panel opens/closes with `space` or `enter` keys upon focus of a header element',
+                      title:
+                        'The panel opens/closes with `space` or `enter` keys upon focus of a header element',
                       help: 'To interact with the accordion, it should be possible to open and close it.',
                       choice: 'no',
                       comment: '',
@@ -57,7 +59,8 @@ export const testLibrary = {
                     },
                     {
                       criterium_id: '34',
-                      text: 'Navigation between panel headers is possible with `tab`',
+                      title:
+                        'Navigation between panel headers is possible with `tab`',
                       help: 'To open and close the different panels of the accordion, it is neccessary to be able to change between the different panels to open and close them',
                       choice: 'not_decidable',
                       comment: 'test',
@@ -78,7 +81,7 @@ export const testLibrary = {
                   criteria: [
                     {
                       criterium_id: '31',
-                      text: 'The header elements are focusable',
+                      title: 'The header elements are focusable',
                       help: 'Since the header/title elements are interactive and are used to open and close the accordion, they should be focusable. This means, by clicking the tab key repeatedly, you should reach the header element.',
                       choice: 'yes',
                       comment: '',
@@ -88,7 +91,8 @@ export const testLibrary = {
                     },
                     {
                       criterium_id: '32',
-                      text: 'The focus (style) of the header elements is visible',
+                      title:
+                        'The focus (style) of the header elements is visible',
                       help: 'If you reached the header element with tab, you should (easily) be able to recognize, what header element is currently focused.',
                       choice: 'no',
                       comment: '',
@@ -98,7 +102,8 @@ export const testLibrary = {
                     },
                     {
                       criterium_id: '33',
-                      text: 'The panel opens/closes with `space` or `enter` keys upon focus of a header element',
+                      title:
+                        'The panel opens/closes with `space` or `enter` keys upon focus of a header element',
                       help: 'To interact with the accordion, it should be possible to open and close it.',
                       choice: 'no',
                       comment: '',
@@ -108,7 +113,8 @@ export const testLibrary = {
                     },
                     {
                       criterium_id: '34',
-                      text: 'Navigation between panel headers is possible with `tab`',
+                      title:
+                        'Navigation between panel headers is possible with `tab`',
                       help: 'To open and close the different panels of the accordion, it is neccessary to be able to change between the different panels to open and close them',
                       choice: 'not_decidable',
                       comment: 'test',
@@ -138,7 +144,7 @@ export const testLibrary = {
                   criteria: [
                     {
                       criterium_id: '21',
-                      text: 'Any hidden text is not read',
+                      title: 'Any hidden text is not read',
                       help: 'Collapse one section of the accordion. Using the arrow keys, it should not be possible to read text that is not visible.',
                       choice: 'yes',
                       comment: '',
@@ -148,7 +154,8 @@ export const testLibrary = {
                     },
                     {
                       criterium_id: '22',
-                      text: 'The screenreader announces the current state of the accordion header element',
+                      title:
+                        'The screenreader announces the current state of the accordion header element',
                       help: '.',
                       choice: 'no',
                       comment: '',
@@ -169,7 +176,7 @@ export const testLibrary = {
                   criteria: [
                     {
                       criterium_id: '21',
-                      text: 'Any hidden text is not read',
+                      title: 'Any hidden text is not read',
                       help: 'Collapse one section of the accordion. Using the arrow keys, it should not be possible to read text that is not visible.',
                       choice: 'yes',
                       comment: '',
@@ -179,7 +186,8 @@ export const testLibrary = {
                     },
                     {
                       criterium_id: '22',
-                      text: 'The screenreader announces the current state of the accordion header element',
+                      title:
+                        'The screenreader announces the current state of the accordion header element',
                       help: '.',
                       choice: 'yes',
                       comment: '',
