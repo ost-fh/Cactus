@@ -54,7 +54,7 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
             <p>{componentData?.description}</p>
           </div>
           <Alert
-            type='info'
+            type='error'
             message='This component is not available in this library.'
           />
         </header>

@@ -72,7 +72,7 @@ export class ScoringService {
   }
 
   private scoreMode(mode: TestMode) {
-    // testScores
+    // collect testScores
     mode.testScores = combineScore(
       mode.tests
         .map((test) => {
@@ -101,6 +101,14 @@ export class ScoringService {
   }
 
   private scoreComponent(component: LibraryComponent) {
+    // remove metadata if component not exists
+    if (component.exists === false) {
+      component.accessibilityScore = undefined;
+      component.agreementScore = undefined;
+      component.amountOfTests = undefined;
+      component.componentTested = undefined;
+      return;
+    }
     // accessibilityScore
     component.accessibilityScore = calculateAverage(
       component.modes
@@ -135,7 +143,21 @@ export class ScoringService {
   private scoreVersion(version: LibraryVersion) {
     // accessibilityScore
     if (version.components.length > 0) {
+      // amountOfComponentsTested
+      version.amountOfComponentsTested = version.components.filter(
+        (item) => item.componentTested && item.exists,
+      ).length;
+
+      // remove scores if components are removed/excluded
+      if (version.amountOfComponentsTested === 0) {
+        version.accessibilityScore = undefined;
+        version.agreementScore = undefined;
+        return;
+      }
+
       const accessibilityScores = version.components
+        // .filter((item) => item.componentTested === true)
+        .filter((item) => item.exists === true)
         .map((component) => component.accessibilityScore)
         .filter((item): item is number => item !== undefined);
 
@@ -147,11 +169,6 @@ export class ScoringService {
           .map((component) => component.agreementScore)
           .filter((item): item is number => item !== undefined),
       );
-
-      // amountOfComponentsTested
-      version.amountOfComponentsTested = version.components.filter(
-        (item) => item.componentTested === true,
-      ).length;
     }
   }
 }
