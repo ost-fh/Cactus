@@ -11,13 +11,13 @@ export interface focusScore {
 
 export const calculateFocusScore = (
   filters: string[],
-  currentVersion: Version
+  version: Version
 ): string => {
-  let result: string | undefined = undefined;
+  // let result: string | undefined = undefined;
   let scores: number[] = [];
   let untested: number = 0;
   for (const filter of filters) {
-    const component = currentVersion?.components.find(
+    const component = version.components.find(
       (component) => component.name === filter
     );
     component && component.exists
@@ -26,12 +26,10 @@ export const calculateFocusScore = (
   }
   if (untested === 0) {
     const average = calculateAverage(scores);
-    result = Math.floor(average).toString();
+    return Math.floor(average).toString();
   } else {
-    result = calculateMinMaxScore(scores, untested);
+    return calculateMinMaxScore(scores, untested);
   }
-
-  return result || "hi";
 };
 
 const calculateMinMaxScore = (scores: number[], untested: number): string => {
