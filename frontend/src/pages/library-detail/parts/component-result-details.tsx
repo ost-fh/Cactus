@@ -3,6 +3,7 @@ import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
 import ScoreBubble from "../../../shared/components/score-bubble";
 import { mode } from "../../../shared/resources/types";
+import { SHOW_AGREEMENT_SCORE } from "../library-detail";
 
 import CriteriumResult from "./criterium-result";
 
@@ -27,10 +28,12 @@ const ComponentResultDetails = ({
               label='Tests'
               count={keyboardScores.testScores?.amountOfTests}
             />
-            <CountBubble
-              label='Agreement Score'
-              count={keyboardScores.agreementScore}
-            />
+            {SHOW_AGREEMENT_SCORE && (
+              <CountBubble
+                label='Agreement Score'
+                count={keyboardScores.agreementScore}
+              />
+            )}
             <h4 className='count-list-break'>Keyboard Criteria Evaluation:</h4>
             {keyboardScores.scoresPerCriterium.map((item) => {
               return (
@@ -54,10 +57,12 @@ const ComponentResultDetails = ({
               label='Tests'
               count={screenReaderScores.testScores.amountOfTests}
             />
-            <CountBubble
-              label='Agreement Score'
-              count={screenReaderScores.agreementScore}
-            />
+            {SHOW_AGREEMENT_SCORE && (
+              <CountBubble
+                label='Agreement Score'
+                count={screenReaderScores.agreementScore}
+              />
+            )}
             <h4 className='count-list-break'>
               Screenreader Criteria Evaluation:
             </h4>

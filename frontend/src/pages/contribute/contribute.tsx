@@ -4,29 +4,38 @@ import Alert from "../../shared/components/alert";
 import Heading from "../../shared/components/heading";
 import PublicLayout from "../../shared/layout/public-layout";
 import Oauth from "../../shared/components/oauth";
+import FAQ from "./parts/faq";
+import "./contribute.scss";
 
 const Contribute = () => {
   const userData = useContext(UserContext);
 
   return (
-    <PublicLayout activeLink='contribute'>
+    <PublicLayout className='contribute' activeLink='contribute'>
       <header>
         <Heading>Would you like to contribute?</Heading>
       </header>
       <div className='layout-split'>
         <div>
-          <h3>Rate libraries or expand the library list</h3>
+          <h3>Test the accessibility of components</h3>
           <p>
-            You can register now to help improving the catalogue of libraries
-            and rated components.{" "}
+            Have a look at any library interesting to you. Add Component-Tests
+            to on one hand verify for yourself, the results are valid, and on
+            the other hand you can help.
           </p>
+          <h3>Add new libraries and versions</h3>
           <p>
+            If you need scores of a library that is not yet added? Just add the
+            library and add some tests. If a library is only available in an old
+            version, you can add the new major version.
+          </p>
+          {/* <p>
             It would be best if you have a basic knowledge of web development
             and also a little knowledge of accessibility.
-          </p>
+          </p> */}
         </div>
         <Alert type='help'>
-          <h3>Login &amp; Registration</h3>
+          <h3>Sign up here!</h3>
           {userData ? <Alert message='You are already logged in' /> : <Oauth />}
         </Alert>
       </div>
@@ -42,6 +51,8 @@ const Contribute = () => {
         </a>{" "}
         explains how you can contribute or give feedback.
       </p>
+      <hr />
+      <FAQ />
     </PublicLayout>
   );
 };

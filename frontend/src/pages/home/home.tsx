@@ -110,6 +110,21 @@ const Home = () => {
       </div>
       <div className='home-section '>
         <div className='home-title'>
+          <h3>How does it work?</h3>
+        </div>
+        <div className='home-text'>
+          <p>
+            This is a comparison platform for UI Libraries. They are compared by
+            the performance evaluated by users in manual testing. Currently the
+            tests focus on screenreader and keyboard use.
+          </p>
+          <Link to='/contribute#FAQ' className='button'>
+            Visit our FAQ
+          </Link>
+        </div>
+      </div>
+      <div className='home-section '>
+        <div className='home-title'>
           <h3>We need your help!</h3>
         </div>
         <div className='home-text'>

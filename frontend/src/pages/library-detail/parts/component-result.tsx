@@ -7,6 +7,8 @@ import ScoreBubble from "../../../shared/components/score-bubble";
 import ComponentResultDetails from "./component-result-details";
 import "./component-result.scss";
 import { getComponentCriteria } from "../../../shared/services/api";
+import { SHOW_AGREEMENT_SCORE } from "../library-detail";
+import Bubble from "../../../shared/components/bubble";
 
 type ComponentResultProps = {
   component: Component;
@@ -87,9 +89,22 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
         <p>
           <strong>Overall Scores:</strong>
         </p>
-        <ScoreBubble score={component.accessibilityScore} />
+        {component.componentTested ? (
+          <ScoreBubble score={component.accessibilityScore} />
+        ) : (
+          <Bubble
+            value={`${component.accessibilityScore}%`}
+            label='Cactus Score (incomplete)'
+            color='yellow'
+          />
+        )}
         <CountBubble label='Tests total' count={component.amountOfTests} />
-        <CountBubble label='Agreement Score' count={component.agreementScore} />
+        {SHOW_AGREEMENT_SCORE && (
+          <CountBubble
+            label='Agreement Score'
+            count={component.agreementScore}
+          />
+        )}
       </div>
       <div>
         <button

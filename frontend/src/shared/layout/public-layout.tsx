@@ -7,9 +7,14 @@ import "./public-layout.css";
 type PublicLayoutProps = {
   children?: React.ReactNode;
   activeLink?: string;
+  className?: string;
 };
 
-const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
+const PublicLayout = ({
+  children,
+  activeLink,
+  className,
+}: PublicLayoutProps) => {
   const userData = useContext(UserContext);
 
   return (
@@ -81,7 +86,9 @@ const PublicLayout = ({ children, activeLink }: PublicLayoutProps) => {
           </nav>
         </div>
       </header>
-      <main id='main'>{children}</main>
+      <main className={className ? className : ""} id='main'>
+        {children}
+      </main>
       <hr />
       <footer className='page-footer'>
         <div>

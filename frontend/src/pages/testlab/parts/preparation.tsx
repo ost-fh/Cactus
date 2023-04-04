@@ -115,7 +115,10 @@ const Preparation = ({
       )}
 
       <section>
-        <h3>Step {screenreader ? "2" : "1"}: Open the Documentation</h3>
+        <h3>
+          Step {screenreader ? "2" : "1"}: Open the{" "}
+          {testData.componentLinkDocs ? "Component" : "Library"} Documentation
+        </h3>
         <div className='layout-split'>
           <div>
             <p>
@@ -156,8 +159,8 @@ const Preparation = ({
         {!testData.componentLinkDocs ? (
           <>
             <h3>
-              Step {screenreader ? "4" : "3"}: Add link to the component
-              documentation
+              Step {screenreader ? "4" : "3"}: Add Link to the Component
+              Documentation
             </h3>
             <p>
               <label htmlFor='linkDocs'>
@@ -168,7 +171,7 @@ const Preparation = ({
           </>
         ) : (
           <>
-            <h4>Link to documentation incorrect?</h4>
+            <h4>Incorrect Link to Documentation?</h4>
             <p>
               <label htmlFor='linkDocs'>
                 If the link is incorrect, please paste the correct link here:
