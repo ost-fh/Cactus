@@ -1,6 +1,7 @@
 /* General */
 @use "src/shared/layout/colors";
 @use "src/shared/layout/_buttons";
+@use "src/shared/layout/breakpoints";
 
 @font-face {
   font-family: "AtkinsonHyperlegible";
@@ -49,7 +50,7 @@ body {
   gap: 1rem;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: breakpoints.$tablet) {
   .layout-split {
     display: flex;
     flex-direction: column;

@@ -1,3 +1,5 @@
+@use "src/shared/layout/breakpoints";
+
 .library-detail {
   .backnav > a {
     display: flex;
@@ -9,10 +11,15 @@
   }
   .header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    column-gap: 2rem;
+    row-gap: 0.7rem;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    @media screen and (max-width: breakpoints.$tablet) {
+    }
   }
 }
 
