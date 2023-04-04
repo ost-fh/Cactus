@@ -1,5 +1,6 @@
 /* General */
 @use "src/shared/layout/colors";
+@use "src/shared/layout/_buttons";
 
 @font-face {
   font-family: "AtkinsonHyperlegible";
@@ -55,97 +56,12 @@ body {
   }
 }
 
-/** Button Styles **/
-button,
-.button {
-  padding: 0.4rem 0.8rem;
-  background-color: rgb(232, 232, 232);
-  border: solid rgb(224, 224, 224) 0.1rem;
-  border-radius: 0.3rem;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  font-size: 1rem;
-  display: inline-block;
-  transition-duration: 0.3s;
-
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-}
-
-button:hover,
-.button:hover {
-  background-color: rgb(234, 234, 234);
-  border-color: rgb(185, 185, 185);
-}
-
-button:active,
-.button:active {
-  background-color: rgb(195, 193, 193);
-}
-
-button:disabled,
-button:disabled {
-  background-color: rgb(243, 243, 243);
-  border-color: rgb(228, 228, 228);
-  color: grey;
-}
-
-.button-selected {
-  background-color: rgb(141, 202, 127);
-  border-color: rgb(118, 175, 105);
-}
-.button-selected:hover {
-  background-color: rgb(153, 213, 139);
-  border-color: rgb(87, 137, 76);
-}
-
-.button-primary {
-  background-color: rgb(14, 113, 200);
-  border-color: rgb(42, 130, 207);
-  color: white;
-}
-
-.button-primary:disabled {
-  background-color: rgb(71, 108, 141);
-  border-color: rgb(240, 248, 255);
-  color: rgb(201, 216, 222);
-}
-
-.button-primary:hover {
-  border-color: rgb(15, 69, 118);
-  background-color: rgb(25, 115, 194);
-  /* border-color: rgb(240, 248, 255); */
-}
-
-.button-primary:disabled:hover {
-  background-color: rgb(139, 164, 185);
-}
-
-.button-wide {
-  width: 100%;
-}
-
-.button-with-icon {
-  display: flex;
-  gap: 0.7rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.button-group {
-  display: flex;
-  gap: 0.5rem;
-}
-
 /** Forms **/
 
 .form {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.7rem;
-  /* padding-top: 1rem; */
   align-items: baseline;
 }
 
@@ -156,4 +72,12 @@ button:disabled {
 .form-control-center {
   grid-column-start: span 2;
   text-align: center;
+}
+
+hr {
+  background-color: colors.$gray-xlight;
+  border: 0;
+  height: 0.125rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }

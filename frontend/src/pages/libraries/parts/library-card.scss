@@ -6,7 +6,8 @@
   grid-template-areas:
     "title ctrl"
     "score ctrl";
-  border: 1px rgb(224, 224, 224) solid;
+  // border: 1px rgb(224, 224, 224) solid;
+  border: 0.125rem solid rgb(237, 237, 237);
   gap: 0.5rem;
   margin: 0rem;
   padding: 0.7rem 0.9rem;
@@ -48,20 +49,20 @@
 }
 
 .library-card-true {
-  border: 0.2rem solid colors.$green-xlight;
+  border-color: colors.$green-light;
 }
 
 .library-card-neutral {
-  border: 0.2rem solid colors.$yellow-light;
+  border-color: colors.$yellow;
   .header {
     color: rgb(66, 66, 66);
   }
 }
 
 .library-card-false {
-  border: 0.2rem solid colors.$red-light;
+  border-color: colors.$red-light;
 
   .header {
-    color: rgb(102, 102, 102);
+    color: rgb(84, 84, 84);
   }
 }

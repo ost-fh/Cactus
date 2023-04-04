@@ -89,7 +89,7 @@ const LibraryCard = ({
                         key={filterScore.name + library._id}
                         value={filterScore.score + "%"}
                         label={filterScore.name}
-                        color='green'
+                        color='green-light'
                       />
                     );
                   if (filterScore.filterState === "incomplete")
