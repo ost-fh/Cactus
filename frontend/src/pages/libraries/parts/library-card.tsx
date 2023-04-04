@@ -8,6 +8,7 @@ import ScoreBubble from "../../../shared/components/score-bubble";
 import "./library-card.scss";
 import Bubble from "../../../shared/components/bubble";
 import { createFilterScores, filterScore } from "./library-card-helpers";
+import { BsQuestionLg, BsXLg } from "react-icons/bs";
 
 type LibraryCardProps = {
   library: Library;
@@ -104,7 +105,12 @@ const LibraryCard = ({
                     return (
                       <Bubble
                         key={filterScore.name + library._id}
-                        value={"?"}
+                        value={
+                          <BsQuestionLg
+                            size={"0.8rem"}
+                            title='not recorded yet'
+                          />
+                        }
                         label={filterScore.name}
                         color='yellow'
                       />
@@ -113,7 +119,7 @@ const LibraryCard = ({
                     return (
                       <Bubble
                         key={filterScore.name + library._id}
-                        value={"X"}
+                        value={<BsXLg size={"0.8rem"} title='excluded' />}
                         label={filterScore.name}
                         color='red'
                       />
