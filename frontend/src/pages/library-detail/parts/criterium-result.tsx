@@ -16,8 +16,6 @@ const CriteriumResult = ({ item }: CriteriumResultProps) => {
 
   useEffect(() => {
     getCriterium(item.criterium_id).then((result) => {
-      console.log(result);
-
       setCriterium(result);
     });
   }, [item.criterium_id]);
