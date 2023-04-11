@@ -33,21 +33,21 @@
     flex-direction: column;
     gap: 0.5rem;
     grid-area: score;
-  }
 
-  .main-scores {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+    .main-scores {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-  .filter-scores {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    align-items: baseline;
+    .filter-scores {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: baseline;
+    }
   }
 
   .aside {

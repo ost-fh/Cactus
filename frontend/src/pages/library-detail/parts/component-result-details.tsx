@@ -12,18 +12,21 @@ type ComponentResultDetailsProps = {
   keyboardScores: mode | undefined;
 };
 
-/** This Component is to be used with ComponentResult */
+/** This Component is used with ComponentResult */
 const ComponentResultDetails = ({
   screenReaderScores,
   keyboardScores,
 }: ComponentResultDetailsProps) => {
   return (
     <>
-      <div className='count-list'>
+      <div className='scores'>
         <h4>Keyboard Scores:</h4>
         {keyboardScores ? (
           <>
-            <ScoreBubble score={keyboardScores.accessibilityScore} />
+            <ScoreBubble
+              color='green-light'
+              score={keyboardScores.accessibilityScore}
+            />
             <CountBubble
               label='Tests'
               count={keyboardScores.testScores?.amountOfTests}
@@ -34,7 +37,7 @@ const ComponentResultDetails = ({
                 count={keyboardScores.agreementScore}
               />
             )}
-            <h4 className='count-list-break'>Keyboard Criteria Evaluation:</h4>
+            <h4 className='scores-break'>Keyboard Criteria Evaluation:</h4>
             {keyboardScores.scoresPerCriterium.map((item) => {
               return (
                 <CriteriumResult
@@ -48,11 +51,14 @@ const ComponentResultDetails = ({
           <Alert message='There were no keyboard accessibility tests done yet' />
         )}
       </div>
-      <div className='count-list'>
+      <div className='scores'>
         <h4>Screenreader Scores:</h4>
         {screenReaderScores ? (
           <>
-            <ScoreBubble score={screenReaderScores.accessibilityScore} />
+            <ScoreBubble
+              color='green-light'
+              score={screenReaderScores.accessibilityScore}
+            />
             <CountBubble
               label='Tests'
               count={screenReaderScores.testScores.amountOfTests}
@@ -63,9 +69,7 @@ const ComponentResultDetails = ({
                 count={screenReaderScores.agreementScore}
               />
             )}
-            <h4 className='count-list-break'>
-              Screenreader Criteria Evaluation:
-            </h4>
+            <h4 className='scores-break'>Screenreader Criteria Evaluation:</h4>
 
             {screenReaderScores.scoresPerCriterium.map((item) => {
               return (
