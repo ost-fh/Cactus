@@ -1,3 +1,5 @@
+@use "src/shared/layout/breakpoints";
+
 #faq {
   display: flex;
   flex-direction: column;
@@ -9,6 +11,9 @@
     display: grid;
     grid-template-columns: 1fr 2.5fr;
     gap: 1rem;
+    @media screen and (max-width: breakpoints.$tablet) {
+      grid-template-columns: 1fr;
+    }
   }
 
   p {

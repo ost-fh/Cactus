@@ -1,3 +1,5 @@
+@use "src/shared/layout/breakpoints";
+
 .library-detail {
   .backnav > a {
     display: flex;
@@ -9,10 +11,15 @@
   }
   .header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    column-gap: 2rem;
+    row-gap: 0.7rem;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    @media screen and (max-width: breakpoints.$tablet) {
+    }
   }
 }
 
@@ -35,15 +42,4 @@
   flex-direction: column;
   margin-top: 1rem;
   gap: 1rem;
-}
-
-.count-list {
-  display: flex;
-  gap: 0.9rem;
-  align-items: baseline;
-  flex-wrap: wrap;
-}
-
-.count-list-break {
-  width: 100%;
 }

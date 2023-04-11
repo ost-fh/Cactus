@@ -38,9 +38,11 @@ const LoginRedirect = ({ setUserData }: any) => {
         setUserData({ ...user, token: accessToken });
         setPageState(state.success);
         setTimeout(() => {
-          navigate(beforeLoginUrl || "/contribute");
+          navigate(
+            `${beforeLoginUrl}?alert=login` || "/contribute?alert=login"
+          );
           sessionStorage.removeItem("beforeLogin");
-        }, 3000);
+        }, 10);
       })
 
       .catch(() => {
