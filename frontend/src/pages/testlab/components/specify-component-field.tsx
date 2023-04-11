@@ -4,6 +4,8 @@ import { Component, ComponentCriteria } from "../../../shared/resources/types";
 import SpecifyTestButton from "./specify-test-button";
 import { UserContext } from "../../../App";
 import { TestDataContext } from "../test-lab";
+import { getUserTestData } from "../../../shared/services/api";
+
 
 type SpecifyComponentFieldProps = {
   componentCriteria: ComponentCriteria;
@@ -17,10 +19,14 @@ const checkForTestsFromUser = (
   component: Component
 ) => {
   if (userId) {
-    const result = component.modes.filter((mode) =>
-      mode.tests.find((test) => test.testedBy === userId)
-    );
-    return result ? result.map((item) => item.name) : undefined;
+    const tests = getUserTestData();
+    return tests.then((data) => {
+      const ids = data.map((item) => item.testMode);
+      const result = component.modes.filter((mode) => {
+        return ids.find((id) => id === mode._id);
+      });
+      return result ? result.map((item) => item.name) : [];
+    });
   }
 };
 
@@ -45,11 +51,12 @@ const SpecifyComponentField = ({
     }
   }, [component]);
 
-  // check if user already tested this component
+  // check if user already tested modes of this component
   useEffect(() => {
     if (component) {
-      const result = checkForTestsFromUser(userData?._id, component);
-      setAlreadyTestedModes(result);
+      checkForTestsFromUser(userData?._id, component)?.then((result) =>
+        setAlreadyTestedModes(result)
+      );
     }
   }, [component, userData?._id]);
 

@@ -10,7 +10,7 @@ const FAQ = () => {
         <p>
           Project Cactus is an accessibility comparison platform for UI
           Libraries. UI Libraries are libraries of components and styles for use
-          on websites or webapplications. The goal of Cactus is to provide a
+          on websites or web applications. The goal of Cactus is to provide a
           reliable source about which libraries are accessible. The libraries
           are tested with the help of the cactus testlab and a library of
           criteria for each type of component. Our users test libraries and
@@ -20,11 +20,11 @@ const FAQ = () => {
       <div className='question'>
         <h4>Why is Cactus crowdsourced?</h4>
         <p>
-          This is for a variety of reasons. For one, there are very very many
+          This is for a variety of reasons. For one, there are many
           different UI libraries. We hope that with the help of the community we
           can cover as many libraries as possible. By making the testing open to
           everybody, the results are transparent and hopefully understandable.
-          Further we hope that the testing is also an easy way to make clear,
+          Further we hope that the testing is also an easy way to make clear.
         </p>
       </div>
       <div className='question'>
@@ -41,7 +41,7 @@ const FAQ = () => {
         <h4>What kinds of Libraries can be added to Cactus?</h4>
         <p>
           In theory, all kinds of UI libraries, from primitive component
-          libraries to CSS libraries.But since most criteria focus on
+          libraries to CSS libraries. But since most criteria focus on
           interaction, pure CSS libraries would score "not decidable" on most
           criteria.
         </p>
@@ -54,7 +54,7 @@ const FAQ = () => {
         </p>
       </div>
       <div className='question'>
-        <h4>Where can I go if I find issue with ?</h4>
+        <h4>Where can I go if I find issue with?</h4>
         <p>
           Open an Issue on our GitHub Repository and explain what you see as an
           Issue and why that is the case.
@@ -80,7 +80,7 @@ const FAQ = () => {
           You will have to worry. Since the libraries only provide a skeleton,
           and one that often is highly customizable, we can only test that
           skeleton. This means, that our score provides an orientation about
-          where the libraries start from, and you can save (potenitally a lot
+          where the libraries start from, and you can save (potentially a lot
           of) time by not starting at zero, but not more.
         </p>
       </div>

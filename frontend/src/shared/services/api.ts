@@ -2,6 +2,7 @@ import {
   ComponentCriteria,
   Criterium,
   NewLibrary,
+  test,
   TestResultTransmission,
 } from "../resources/types";
 
@@ -110,6 +111,16 @@ export const getUserProfile = async (token?: string) => {
       }
     }
   );
+};
+
+export const getUserTestData = async (): Promise<test[]> => {
+  return httpService("GET", `${API_BASE_URL}/testlab`).then((data) => {
+    if (data.status === 200) {
+      return data.json();
+    } else {
+      throw new Error("failed");
+    }
+  });
 };
 
 export const createLibrary = async (newLibrary: NewLibrary) => {
