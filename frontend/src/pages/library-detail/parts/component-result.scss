@@ -64,7 +64,7 @@
     grid-template-areas:
       "img title title"
       "img description description"
-      "alert alert alert"
+      "img alert alert"
       "scores scores scores";
   }
 
@@ -86,9 +86,6 @@
       "description description description"
       "alert alert alert"
       "scores scores scores";
-
-    .scores {
-    }
   }
 }
 

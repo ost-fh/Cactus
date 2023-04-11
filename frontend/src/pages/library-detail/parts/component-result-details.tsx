@@ -1,6 +1,7 @@
 import React from "react";
 import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
+import LinkButton from "../../../shared/components/link-button";
 import ScoreBubble from "../../../shared/components/score-bubble";
 import { mode } from "../../../shared/resources/types";
 import { SHOW_AGREEMENT_SCORE } from "../library-detail";
@@ -10,12 +11,14 @@ import CriteriumResult from "./criterium-result";
 type ComponentResultDetailsProps = {
   screenReaderScores: mode | undefined;
   keyboardScores: mode | undefined;
+  testlabComponentURL: string;
 };
 
 /** This Component is used with ComponentResult */
 const ComponentResultDetails = ({
   screenReaderScores,
   keyboardScores,
+  testlabComponentURL,
 }: ComponentResultDetailsProps) => {
   return (
     <>
@@ -48,7 +51,14 @@ const ComponentResultDetails = ({
             })}
           </>
         ) : (
-          <Alert message='There were no keyboard accessibility tests done yet' />
+          <Alert className='alert-with-icon'>
+            {/* <Alert message='There were no keyboard accessibility tests done yet' /> */}
+            <p>There were no keyboard accessibility tests done yet.</p>
+            <LinkButton
+              to={`${testlabComponentURL}&mode=Keyboard`}
+              label={"Add tests"}
+            />
+          </Alert>
         )}
       </div>
       <div className='scores'>
@@ -81,7 +91,14 @@ const ComponentResultDetails = ({
             })}
           </>
         ) : (
-          <Alert message='There were no screenreader accessibility tests done yet' />
+          <Alert className='alert-with-icon'>
+            <p>There were no screenreader accessibility tests done yet.</p>
+            <LinkButton
+              to={`${testlabComponentURL}&mode=Screenreader`}
+              label={"Add tests"}
+            />
+          </Alert>
+          // <Alert message='There were no screenreader accessibility tests done yet' />
         )}
       </div>
     </>

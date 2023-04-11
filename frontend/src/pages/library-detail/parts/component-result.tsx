@@ -12,10 +12,14 @@ import Bubble from "../../../shared/components/bubble";
 
 type ComponentResultProps = {
   component: Component;
+  testlabComponentURL: string;
 };
 
 /** This component is used by LibraryDetail */
-const ComponentResult = ({ component }: ComponentResultProps) => {
+const ComponentResult = ({
+  component,
+  testlabComponentURL,
+}: ComponentResultProps) => {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [componentData, setComponentData] = useState<ComponentCriteria>();
 
@@ -134,6 +138,7 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
         <ComponentResultDetails
           screenReaderScores={screenReaderScores}
           keyboardScores={keyboardScores}
+          testlabComponentURL={`${testlabComponentURL}?component=${component.name}`}
         />
       )}
     </section>
