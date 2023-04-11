@@ -107,7 +107,9 @@ export class TestsService {
 
     const index = mode.tests.findIndex((t) => t.testedBy === userId);
     if (index > -1) {
+      const oldTest = mode.tests[index];
       mode.tests.splice(index, 1);
+      await this.testResultModel.findByIdAndRemove(oldTest.id).exec();
     }
 
     const createdTestResult = new this.testResultModel({
