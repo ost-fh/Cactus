@@ -14,7 +14,7 @@ const LogOut = ({ logOut }: LogOutProps) => {
   useEffect(() => {
     logOut();
     const beforeLogoutUrl = searchParams.get("path");
-    navigate(beforeLogoutUrl ?? "/");
+    navigate(`${beforeLogoutUrl}?alert=logout` ?? "/");
   });
 
   return (

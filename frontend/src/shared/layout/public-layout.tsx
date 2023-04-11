@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { UserContext } from "../../App";
+import Alert from "../components/alert";
 import "./public-layout.scss";
 
 type PublicLayoutProps = {
@@ -16,6 +17,18 @@ const PublicLayout = ({
   className,
 }: PublicLayoutProps) => {
   const userData = useContext(UserContext);
+  const [searchParams] = useSearchParams();
+  const [successMessage, setSuccessMessage] = useState<string>();
+
+  useEffect(() => {
+    const alert = searchParams.get("alert");
+    if (alert === "login") {
+      setSuccessMessage("Login succeeded");
+    }
+    if (alert === "logout") {
+      setSuccessMessage("Logout succeeded");
+    }
+  }, [searchParams]);
 
   return (
     <div className='container'>
@@ -85,6 +98,15 @@ const PublicLayout = ({
           </Link>
         </nav>
       </header>
+      <div aria-live='assertive'>
+        {successMessage && (
+          <Alert
+            type='success'
+            className='main-alert'
+            message={successMessage}
+          />
+        )}
+      </div>
       <main className={className ? className : ""} id='main'>
         {children}
       </main>
