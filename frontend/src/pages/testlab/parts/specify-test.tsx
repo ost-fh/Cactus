@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsChevronDoubleLeft, BsChevronRight } from "react-icons/bs";
 import Alert from "../../../shared/components/alert";
@@ -12,17 +12,18 @@ import {
   getComponent,
   getVersion,
   Library,
-  TestData,
   Version,
 } from "../../../shared/resources/types";
+import { TestDataContext } from "../test-lab";
 
 type SpecifyTestProps = {
-  testData: TestData;
   setTestData: Function;
   library: Library | undefined;
 };
 
-const SpecifyTest = ({ testData, library, setTestData }: SpecifyTestProps) => {
+const SpecifyTest = ({ library, setTestData }: SpecifyTestProps) => {
+  const testData = useContext(TestDataContext);
+
   const navigate = useNavigate();
 
   const testModes = ["Keyboard", "Screenreader"];
@@ -89,7 +90,6 @@ const SpecifyTest = ({ testData, library, setTestData }: SpecifyTestProps) => {
           componentCriteria={componentCriteria}
           component={getComponent(componentCriteria.name, version)}
           testModes={testModes}
-          testData={testData}
           handleChange={handleChange}
         />
       ))}
