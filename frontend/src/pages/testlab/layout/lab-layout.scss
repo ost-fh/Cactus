@@ -1,39 +1,4 @@
-@use "src/shared/layout/breakpoints";
-
 /** general **/
-
-.lab-header {
-  .page-header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas:
-      "logo title test-data"
-      "logo title test-data"
-      "logo title test-data";
-    @media screen and (max-width: breakpoints.$phablet) {
-      row-gap: 1rem;
-      grid-template-areas:
-        "logo title title"
-        "test-data test-data test-data"
-        "test-data test-data test-data";
-    }
-  }
-
-  .logo {
-    grid-area: logo;
-    max-height: 5rem;
-    max-width: 5rem;
-  }
-
-  .title {
-    grid-area: title;
-  }
-
-  .test-data {
-    grid-area: test-data;
-    min-width: 14rem;
-  }
-}
 
 #lab-main {
   padding-top: 1.3rem;
@@ -48,49 +13,19 @@
 
 /* specify-test */
 
-.testlab-specify-component {
+.specify-component {
   padding: 0.7rem;
   border: 1px rgb(194, 194, 194) solid;
   border-radius: 0.3rem;
   display: grid;
-  gap: 0.5rem 1rem;
-  grid-template-columns: 6rem 1fr;
-  grid-template-areas:
-    "img header"
-    "img options";
-
-  h3,
-  p {
-    margin: 0;
-  }
-
-  strong {
-    font-weight: 500;
-    font-size: 1.2rem;
-  }
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
 
   img {
-    grid-area: img;
     width: 6rem;
   }
 
-  .header {
-    grid-area: header;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 1rem;
-  }
-
-  .options {
-    grid-area: options;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-  }
-
   .disabled-alert {
-    grid-area: options;
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 0.7rem;
@@ -104,28 +39,28 @@
     font-style: oblique;
   }
 
-  @media screen and (max-width: breakpoints.$tablet) {
+  @media (max-width: 700px) {
     .alert {
       display: flex;
+      flex-direction: column;
     }
   }
-  @media screen and (max-width: breakpoints.$phablet) {
-    grid-template-areas:
-      "img header"
-      "options options";
+}
 
-    .header {
-      align-content: center;
-    }
-  }
-  @media screen and (max-width: breakpoints.$phone) {
-    .options {
-      flex-direction: column;
-    }
-    .disabled-alert {
-      flex-direction: column;
-    }
-  }
+.specify-component-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.specify-component-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.specify-component-options {
+  display: flex;
+  gap: 0.7rem;
 }
 
 #testlab-preparation {
@@ -133,6 +68,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+    // align-items: flex-start;
   }
 
   p {

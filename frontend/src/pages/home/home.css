@@ -1,0 +1,83 @@
+.home-intro {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  gap: 2rem;
+  font-size: 1.4rem;
+}
+
+.home-cact {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.home-cact p {
+  margin-bottom: 0;
+}
+
+.home-cact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.home-cact-highlight {
+  font-size: 1.5rem;
+  color: darkgreen;
+}
+.home-cact-highlight span {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 55rem) {
+  .home-cact-image {
+    max-width: 7rem;
+  }
+}
+@media screen and (max-width: 50rem) {
+  .home-cact {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-cact-item {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.home-cact-description {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.home-intro h2 {
+  color: darkgreen;
+  font-size: 3rem;
+}
+
+.home-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 1rem;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.home-section .button {
+  font-size: 1.2rem;
+}
+
+.home-title {
+  font-size: 2rem;
+  justify-self: right;
+}
+
+.home-text {
+  font-size: 1.3rem;
+}

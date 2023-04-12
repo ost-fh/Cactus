@@ -1,5 +1,4 @@
 @use "src/shared/layout/colors";
-@use "src/shared/layout/breakpoints";
 
 .library-card {
   display: grid;
@@ -7,25 +6,18 @@
   grid-template-areas:
     "title ctrl"
     "score ctrl";
-  // border: 1px rgb(224, 224, 224) solid;
-  border: 0.125rem solid colors.$gray-light;
-  column-gap: 1rem;
-  row-gap: 0.7rem;
+  border: 1px rgb(224, 224, 224) solid;
+  gap: 0.5rem;
   margin: 0rem;
-  padding: 0.9rem 0.9rem;
+  padding: 0.7rem 0.9rem;
   border-radius: 0.5rem;
   align-items: center;
 
   .header {
     grid-area: title;
     display: flex;
-    flex-wrap: wrap;
     gap: 2rem;
     align-items: baseline;
-    h3,
-    p {
-      margin-bottom: 0;
-    }
   }
 
   .main {
@@ -33,60 +25,43 @@
     flex-direction: column;
     gap: 0.5rem;
     grid-area: score;
+  }
 
-    .main-scores {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+  .main-scores {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 
-    .filter-scores {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      align-items: baseline;
-    }
+  .filter-scores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
   }
 
   .aside {
     grid-area: ctrl;
   }
-
-  @media screen and (max-width: breakpoints.$tablet) {
-    grid-template-areas:
-      "title title"
-      "score ctrl";
-
-    .header {
-      gap: 1rem;
-    }
-  }
-
-  @media screen and (max-width: breakpoints.$phone) {
-    grid-template-areas:
-      "title"
-      "score"
-      "ctrl";
-  }
 }
 
 .library-card-true {
-  border-color: colors.$green-light;
+  border: 0.2rem solid colors.$green-xlight;
 }
 
 .library-card-neutral {
-  border-color: colors.$yellow;
+  border: 0.2rem solid colors.$yellow-light;
   .header {
     color: rgb(66, 66, 66);
   }
 }
 
 .library-card-false {
-  border-color: colors.$red-light;
+  border: 0.2rem solid colors.$red-light;
 
   .header {
-    color: rgb(84, 84, 84);
+    color: rgb(102, 102, 102);
   }
 }

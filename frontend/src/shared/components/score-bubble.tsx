@@ -5,7 +5,7 @@ import "./bubble.scss";
 type ScoreBubbleProps = {
   score: number | undefined;
   label?: string;
-  color?: "green" | "yellow" | "red" | "blue" | "green-light";
+  color?: "green" | "yellow" | "red" | "blue";
 };
 
 const ScoreBubble = ({

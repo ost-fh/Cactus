@@ -31,9 +31,9 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
           : "Your evaluation was added to the library results."}
       </p>
       <div className='control-group'>
-        <button onClick={startOver}>Add another Test to this Library</button>
+        <button onClick={startOver}>Add another Test</button>
         <LinkButton
-          label={"Go to Library Overview"}
+          label={"Go to library overview"}
           className='button-primary'
           to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
         />

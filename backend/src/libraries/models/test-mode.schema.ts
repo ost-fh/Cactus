@@ -2,9 +2,8 @@ import AggregatedScore, {
   AggregatedScoreSchema,
 } from './aggregated-score.schema';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import TestResult, { TestResultDocument } from './test-result.schema';
+import TestResult, { TestResultSchema } from './test-result.schema';
 import CriteriumScore, { CriteriumScoreSchema } from './criterium-score.schema';
-import mongoose from 'mongoose';
 
 @Schema({
   timestamps: true,
@@ -13,13 +12,8 @@ export default class TestMode {
   @Prop({ required: true })
   name: string;
 
-  @Prop({
-    type: [mongoose.Schema.Types.ObjectId],
-    required: true,
-    ref: TestResult.name,
-    default: [],
-  })
-  tests: TestResultDocument[] = [];
+  @Prop({ type: [TestResultSchema], required: true, default: [] })
+  tests: TestResult[] = [];
 
   @Prop({ type: AggregatedScoreSchema })
   testScores?: AggregatedScore;

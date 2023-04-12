@@ -8,31 +8,21 @@
 
 .bubble {
   display: flex;
-  background-color: colors.$gray-xlight;
+  background-color: rgb(248, 248, 248);
   max-height: 2.05rem;
 }
 
 .bubble-value {
   margin: -0.4rem -0.7rem;
   margin-right: 0.4rem;
-  min-width: 2.05rem;
-  text-align: center;
-  background-color: colors.$gray-light;
+  background-color: rgb(233, 233, 233);
 }
 
 .bubble-green .bubble-value {
-  background-color: colors.$green;
+  background-color: colors.$green-light;
 }
 
 .bubble-green {
-  background-color: colors.$green-light;
-}
-
-.bubble-green-light .bubble-value {
-  background-color: colors.$green-light;
-}
-
-.bubble-green-light {
   background-color: colors.$green-xlight;
 }
 

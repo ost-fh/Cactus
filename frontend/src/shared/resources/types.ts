@@ -73,20 +73,17 @@ export const getComponent = (
 
 export type mode = {
   name: string;
-  tests: string[]; // _id of tests
+  tests: test[];
   scoresPerCriterium: CriteriumScore[];
   accessibilityScore: number;
   agreementScore: number;
   testScores: AggregatedScore;
-  _id: string;
 };
 
 export type test = {
   testedBy: string;
   criteria: CriteriumResult[];
   testScore: AggregatedScore;
-  testMode: string; // id of the "parental" testmode item
-  _id: string;
 };
 
 // Test / Criteria Data
