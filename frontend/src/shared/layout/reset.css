@@ -75,12 +75,6 @@ img {
   height: auto;
 }
 
-hr {
-  background-color: rgb(250, 250, 250);
-  border: 0;
-  height: 0.1rem;
-}
-
 fieldset {
   display: inline;
   border: 0;

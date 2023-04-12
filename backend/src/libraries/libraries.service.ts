@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import CreateLibraryVersionDto from './controllers/create-library-version.dto';
 import CreateLibraryDto from './controllers/create-library.dto';
 import Library, { LibraryDocument } from './models/library.schema';
+import TestResult from './models/test-result.schema';
 
 @Injectable()
 export class LibraryService {
@@ -11,46 +12,52 @@ export class LibraryService {
     @InjectModel(Library.name) private libraryModel: Model<LibraryDocument>,
   ) {}
 
-  async findAll(): Promise<Library[]> {
-    const libraries = await this.libraryModel.find().exec();
+  async findAll(testResults = false): Promise<Library[]> {
+    if (testResults) {
+      return this.libraryModel
+        .find()
+        .populate([
+          {
+            path: 'versions.components.modes',
+            populate: {
+              path: 'tests',
+              model: TestResult.name,
+            },
+          },
+        ])
+        .exec();
+    }
 
-    /*
-    const res = await Promise.all(
-      libraries.map(async (library) => this.parseLib(library)),
-    );*/
-    return libraries;
+    return this.libraryModel.find().exec();
   }
 
-  /*
-  private async parseLib(lib: LibraryDocument) {
-    const jsonLib = lib.toJSON();
-    const versions = await Promise.all(
-      jsonLib.versions.map(async (version) => {
-        const components = await Promise.all(
-          version.components.map(async (c) => {
-            return {
-              ...c,
-              component: await this.componentService.findOne(c.componentId),
-            };
-          }),
-        );
-
-        return { ...version, components };
-      }),
-    );
-
-    return { ...jsonLib, versions };
-  }
-  */
-
-  async findOne(id: string): Promise<LibraryDocument | null> {
-    const lib = await this.libraryModel.findById(id).exec();
+  async findOne(
+    id: string,
+    testResults = false,
+  ): Promise<LibraryDocument | null> {
+    let lib;
+    if (testResults) {
+      lib = await this.libraryModel
+        .findById(id)
+        .populate([
+          {
+            path: 'versions.components.modes',
+            populate: {
+              path: 'tests',
+              model: TestResult.name,
+            },
+          },
+        ])
+        .exec();
+    } else {
+      lib = await this.libraryModel.findById(id).exec();
+    }
 
     if (!lib) {
       return null;
     }
 
-    return lib; //this.parseLib(lib);
+    return lib;
   }
 
   async create(dto: CreateLibraryDto): Promise<Library> {
@@ -61,7 +68,6 @@ export class LibraryService {
       currentVersion: dto.currentVersion.name,
       versions: [{ version: dto.currentVersion.name, components: [] }],
     });
-
     return createdLibrary.save();
   }
 

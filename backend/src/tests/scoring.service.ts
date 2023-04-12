@@ -11,7 +11,7 @@ import {
 import AggregatedScore from 'src/libraries/models/aggregated-score.schema';
 import LibraryVersion from 'src/libraries/models/library-version.schema';
 import { LibraryDocument } from 'src/libraries/models/library.schema';
-import TestResult from 'src/libraries/models/test-result.schema';
+import { TestResultDocument } from 'src/libraries/models/test-result.schema';
 import TestMode from 'src/libraries/models/test-mode.schema';
 import CriteriumScore from 'src/libraries/models/criterium-score.schema';
 import LibraryComponent from 'src/libraries/models/library-component.schema';
@@ -27,7 +27,7 @@ export class ScoringService {
 
   async scoreLibrary(libraryId: string): Promise<LibraryDocument> {
     try {
-      const library = await this.libraryService.findOne(libraryId);
+      const library = await this.libraryService.findOne(libraryId, true);
       if (!library) {
         throw new Error();
       }
@@ -57,7 +57,7 @@ export class ScoringService {
     }
   }
 
-  private scoreTest(test: TestResult) {
+  private scoreTest(test: TestResultDocument) {
     if (!test.testScore) {
       // calculate testScore from all criteria
       test.testScore = combineScore(
@@ -68,6 +68,7 @@ export class ScoringService {
       test.scorePerCriterium = test.criteria.map((criterium) =>
         extractCriteria(criterium),
       );
+      test.save();
     }
   }
 

@@ -8,6 +8,7 @@ import ScoreBubble from "../../../shared/components/score-bubble";
 import "./library-card.scss";
 import Bubble from "../../../shared/components/bubble";
 import { createFilterScores, filterScore } from "./library-card-helpers";
+import { BsQuestionLg, BsXLg } from "react-icons/bs";
 
 type LibraryCardProps = {
   library: Library;
@@ -48,7 +49,8 @@ const LibraryCard = ({
       }`}
     >
       <header className='header'>
-        <h3>{library.title}</h3> Version: {library.currentVersion}{" "}
+        <h3>{library.title}</h3>
+        <p>Version: {library.currentVersion}</p>
         {library.versions.length > 1 && (
           <small>(older versions available)</small>
         )}
@@ -88,7 +90,7 @@ const LibraryCard = ({
                         key={filterScore.name + library._id}
                         value={filterScore.score + "%"}
                         label={filterScore.name}
-                        color='green'
+                        color='green-light'
                       />
                     );
                   if (filterScore.filterState === "incomplete")
@@ -104,7 +106,12 @@ const LibraryCard = ({
                     return (
                       <Bubble
                         key={filterScore.name + library._id}
-                        value={"?"}
+                        value={
+                          <BsQuestionLg
+                            size={"0.8rem"}
+                            title='not recorded yet'
+                          />
+                        }
                         label={filterScore.name}
                         color='yellow'
                       />
@@ -113,7 +120,7 @@ const LibraryCard = ({
                     return (
                       <Bubble
                         key={filterScore.name + library._id}
-                        value={"X"}
+                        value={<BsXLg size={"0.8rem"} title='excluded' />}
                         label={filterScore.name}
                         color='red'
                       />

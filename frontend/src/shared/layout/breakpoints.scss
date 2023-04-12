@@ -1,0 +1,12 @@
+// @use "src/shared/layout/breakpoints";
+
+// @media screen and (max-width: breakpoints.$phone) {}
+// @media screen and (max-width: breakpoints.$tablet) {}
+// @media screen and (min-width: breakpoints.$desktop) {}
+
+$sub-phone: 350px;
+$phone: 450px;
+$phablet: 550px;
+$tablet: 650px;
+$at800: 800px;
+$desktop: 950px;

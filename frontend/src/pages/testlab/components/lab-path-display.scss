@@ -1,0 +1,84 @@
+@use "src/shared/layout/colors";
+@use "src/shared/layout/breakpoints";
+
+.lab-path-display {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 0;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.path-connector {
+  width: 2rem;
+  height: 0.3rem;
+  border-radius: 0rem;
+  background-color: colors.$gray-dark;
+  @media screen and (max-width: breakpoints.$phablet) {
+    width: 1rem;
+  }
+}
+
+.path-element {
+  border: 0.2rem colors.$gray-light solid;
+  text-align: center;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: breakpoints.$at800) {
+    flex-direction: column;
+  }
+  @media screen and (max-width: breakpoints.$phablet) {
+    font-size: 0.8rem;
+  }
+}
+
+.path-link {
+  text-decoration: none;
+  color: black;
+}
+
+.path-link:hover {
+  text-decoration: underline;
+  border-color: colors.$blue;
+  background-color: colors.$blue-xlight;
+}
+
+.path-element-active {
+  border: solid colors.$green 0.2rem;
+}
+
+// Progress Marker
+.path-element {
+  @mixin circle {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    height: 1.8em;
+    width: 1.8em;
+    padding: 0.15em;
+    border: 0.125rem colors.$gray solid;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .number-circle {
+    @include circle;
+  }
+
+  .circle-active {
+    @include circle();
+    background-color: colors.$green;
+    border-color: colors.$green-dark;
+    color: white;
+  }
+
+  .circle-done {
+    @include circle;
+    background-color: colors.$green;
+    border-color: colors.$green-dark;
+    color: white;
+  }
+}

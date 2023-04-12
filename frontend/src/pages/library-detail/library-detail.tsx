@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 import { getLibrary } from "../../shared/services/api";
 import { Library, Version } from "../../shared/resources/types";
@@ -13,10 +13,13 @@ import Alert from "../../shared/components/alert";
 import AddVersion from "./parts/add-version";
 import ComponentResult from "./parts/component-result";
 
-import "./library-detail.css";
+import "./library-detail.scss";
 import CountBubble from "../../shared/components/count-bubble";
 import ResultBubble from "../../shared/components/result-bubble";
 import Heading from "../../shared/components/heading";
+import { BsChevronLeft } from "react-icons/bs";
+
+export const SHOW_AGREEMENT_SCORE = false;
 
 const LibraryDetail = () => {
   const navigate = useNavigate();
@@ -87,7 +90,7 @@ const LibraryDetail = () => {
   };
 
   return (
-    <PublicLayout activeLink='libraries'>
+    <PublicLayout className='library-detail' activeLink='libraries'>
       {!library ? (
         <>
           {pageLoadingState === state.loading && (
@@ -99,9 +102,14 @@ const LibraryDetail = () => {
         </>
       ) : (
         <>
-          <header className='lib-detail-header'>
+          <div className='backnav'>
+            <Link to='/libraries'>
+              <BsChevronLeft /> Return to Library Overview
+            </Link>{" "}
+          </div>
+          <header className='header'>
             <Heading>{library.title}</Heading>
-            <div className='lib-score'>
+            <div>
               {version?.accessibilityScore !== undefined && (
                 <ScoreBubble
                   label='Library Cactus Score'
@@ -177,12 +185,19 @@ const LibraryDetail = () => {
                       fullfilled, not fulfilled or not decidable. (exemplary
                       numbers used)
                     </p>
-                    <CountBubble label='Agreement Score (example)' count={1} />
-                    <p>
-                      This number between 0 and 1 shows how much different
-                      testers agree with each other. A number closer to 1 is
-                      better.
-                    </p>
+                    {SHOW_AGREEMENT_SCORE && (
+                      <>
+                        <CountBubble
+                          label='Agreement Score (example)'
+                          count={1}
+                        />
+                        <p>
+                          This number between 0 and 1 shows how much different
+                          testers agree with each other. A number closer to 1 is
+                          better.
+                        </p>
+                      </>
+                    )}
                   </div>
                 </Alert>
               )}
@@ -194,7 +209,11 @@ const LibraryDetail = () => {
               <Alert message='There are currently no component testresults for this library.' />
             ) : (
               version.components.map((component) => (
-                <ComponentResult key={component.name} component={component} />
+                <ComponentResult
+                  testlabComponentURL={`/testlab/${library?._id}/${version?.version}`}
+                  key={component.name}
+                  component={component}
+                />
               ))
             )}
           </section>
