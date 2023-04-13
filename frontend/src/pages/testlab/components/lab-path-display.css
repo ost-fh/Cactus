@@ -1,0 +1,43 @@
+.lab-path-display {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 0;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.path-connector {
+  width: 2rem;
+  height: 0.3rem;
+  border-radius: 0rem;
+  background-color: rgb(137, 137, 137);
+}
+
+.path-element {
+  /* background-color: rgb(239, 239, 239); */
+  border: 0.2rem rgb(239, 239, 239) solid;
+  text-align: center;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.path-element-active {
+  border: solid rgb(87, 179, 48) 0.2rem;
+}
+
+.path-element-done {
+  background-color: green;
+}
+
+/* span number*/
+.number-circle {
+  margin-right: 0.5em;
+  height: 1.8em;
+  width: 1.8em;
+  padding: 0.15em;
+  border: 2px rgb(189, 189, 189) solid;
+  border-radius: 50%;
+}

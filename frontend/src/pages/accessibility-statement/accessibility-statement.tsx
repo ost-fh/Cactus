@@ -43,32 +43,32 @@ const AccessibilityStatement = () => {
         website includes several accessibility features to make it easy for all
         users to navigate and use this site. These features include:
       </p>
-      <ul className='disc-list'>
-        <li>Keyboard accessibility for all features and functions </li>
-        <li>Clear and concise language to make content easy to understand</li>
-        <li>
-          High contrast color schemes to improve visibility for users with low
-          vision
-        </li>
-        <li>
-          Alternative text descriptions for images and other visual content
-        </li>
-        <li>
-          Consistent layout and navigation to help users find what they need
-          quickly and easily
-        </li>
-      </ul>
+      <p>
+        <ul className='disc-list'>
+          <li>Keyboard accessibility for all features and functions </li>
+          <li>Clear and concise language to make content easy to understand</li>
+          <li>
+            High contrast color schemes to improve visibility for users with low
+            vision
+          </li>
+          <li>
+            Alternative text descriptions for images and other visual content
+          </li>
+          <li>
+            Consistent layout and navigation to help users find what they need
+            quickly and easily
+          </li>
+        </ul>
+      </p>
       <h3>Contact Us</h3>
       <p>
         We recognize that there may be some limitations to accessibility on this
         website, and we are actively working to address these issues. If you
         encounter any problems using this website or have any suggestions for
         how we can improve accessibility, please contact the community behind
-        this project at{" "}
-        <a href='https://github.com/ost-fh/Cactus/issues'>GitHub Issues</a> or
-        use the contact information provided on the{" "}
-        <Link to='/impressum'>Impressum page</Link>. We are committed to making
-        our website as accessible as possible for all users.
+        this project at <a href='https://github.com/ost-fh/Cactus/issues'>GitHub Issues</a> or use the contact information provided on the <Link to="/impressum">Impressum page</Link>. We
+        are committed to making our website as accessible as possible for all
+        users.
       </p>
       <p>
         This accessibility statement is subject to periodic review and will be

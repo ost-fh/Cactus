@@ -1,17 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 import Alert from "../../../shared/components/alert";
-import { Component, ComponentCriteria } from "../../../shared/resources/types";
+import {
+  Component,
+  ComponentCriteria,
+  TestData,
+} from "../../../shared/resources/types";
 import SpecifyTestButton from "./specify-test-button";
 import { UserContext } from "../../../App";
-import { TestDataContext } from "../test-lab";
-import { getUserTestData } from "../../../shared/services/api";
-
 
 type SpecifyComponentFieldProps = {
   componentCriteria: ComponentCriteria;
   component: Component | undefined;
   testModes: string[];
   handleChange: Function;
+  testData: TestData;
 };
 
 const checkForTestsFromUser = (
@@ -19,14 +21,10 @@ const checkForTestsFromUser = (
   component: Component
 ) => {
   if (userId) {
-    const tests = getUserTestData();
-    return tests.then((data) => {
-      const ids = data.map((item) => item.testMode);
-      const result = component.modes.filter((mode) => {
-        return ids.find((id) => id === mode._id);
-      });
-      return result ? result.map((item) => item.name) : [];
-    });
+    const result = component.modes.filter((mode) =>
+      mode.tests.find((test) => test.testedBy === userId)
+    );
+    return result ? result.map((item) => item.name) : undefined;
   }
 };
 
@@ -34,11 +32,11 @@ const SpecifyComponentField = ({
   componentCriteria,
   component,
   testModes,
+  testData,
   handleChange,
 }: SpecifyComponentFieldProps) => {
   const [exists, setExists] = useState(true);
   const userData = useContext(UserContext);
-  const testData = useContext(TestDataContext);
   const [alreadyTestedModes, setAlreadyTestedModes] = useState<string[]>();
   const [displayRedoTestMessage, setDisplayRedoTestMessage] = useState(false);
 
@@ -51,12 +49,11 @@ const SpecifyComponentField = ({
     }
   }, [component]);
 
-  // check if user already tested modes of this component
+  // check if user already tested this component
   useEffect(() => {
     if (component) {
-      checkForTestsFromUser(userData?._id, component)?.then((result) =>
-        setAlreadyTestedModes(result)
-      );
+      const result = checkForTestsFromUser(userData?._id, component);
+      setAlreadyTestedModes(result);
     }
   }, [component, userData?._id]);
 
@@ -74,47 +71,48 @@ const SpecifyComponentField = ({
   }, [alreadyTestedModes, component, testData.component, testData.testMode]);
 
   return (
-    <div className='testlab-specify-component'>
+    <div className='specify-component'>
       <img
         src={componentCriteria.imageUrl}
         width={150}
         height={150}
         alt={componentCriteria.name}
       />
-      {/* <div className='specify-component-content'> */}
-      <div className='header'>
-        <h3>{componentCriteria.name}</h3>
-        <p>{componentCriteria.alternativeComponentNames}</p>
-      </div>
-      {exists ? (
-        <div className='options'>
-          {testModes.map((testMode) => (
-            <SpecifyTestButton
-              key={`${componentCriteria.name}-${testMode}`}
-              testData={testData}
-              testMode={testMode}
-              componentCriteria={componentCriteria}
-              handleChange={handleChange}
-              alreadyTested={
-                alreadyTestedModes?.find((item) => item === testMode)
-                  ? true
-                  : false
-              }
-              amountOfTests={
-                component?.modes.find((mode) => mode.name === testMode)
-                  ?.testScores?.amountOfTests
-              }
-            />
-          ))}
+      <div className='specify-component-content'>
+        <div className='specify-component-header'>
+          <h3>{componentCriteria.name}</h3>
+          <p>{componentCriteria.alternativeComponentNames}</p>
         </div>
-      ) : (
-        <Alert type='info' className='disabled-alert'>
-          This component is marked as "not available" in this library. If you
-          find this to be false, please reenable and test the component.
-          <button onClick={() => setExists(true)}>Reenable Component</button>
-        </Alert>
-      )}
-      {/* </div> */}
+        {exists ? (
+          <div className='specify-component-options'>
+            {testModes.map((testMode) => (
+              <div key={`${componentCriteria.name}-${testMode}`}>
+                <SpecifyTestButton
+                  testData={testData}
+                  testMode={testMode}
+                  componentCriteria={componentCriteria}
+                  handleChange={handleChange}
+                  alreadyTested={
+                    alreadyTestedModes?.find((item) => item === testMode)
+                      ? true
+                      : false
+                  }
+                  amountOfTests={
+                    component?.modes.find((mode) => mode.name === testMode)
+                      ?.testScores?.amountOfTests
+                  }
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Alert type='info' className='disabled-alert'>
+            This component is marked as "not available" in this library. If you
+            find this to be false, reenable the component please.
+            <button onClick={() => setExists(true)}>Reenable Component</button>
+          </Alert>
+        )}
+      </div>
 
       {displayRedoTestMessage && (
         <Alert

@@ -7,19 +7,13 @@ import ScoreBubble from "../../../shared/components/score-bubble";
 import ComponentResultDetails from "./component-result-details";
 import "./component-result.scss";
 import { getComponentCriteria } from "../../../shared/services/api";
-import { SHOW_AGREEMENT_SCORE } from "../library-detail";
-import Bubble from "../../../shared/components/bubble";
 
 type ComponentResultProps = {
   component: Component;
-  testlabComponentURL: string;
 };
 
 /** This component is used by LibraryDetail */
-const ComponentResult = ({
-  component,
-  testlabComponentURL,
-}: ComponentResultProps) => {
+const ComponentResult = ({ component }: ComponentResultProps) => {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [componentData, setComponentData] = useState<ComponentCriteria>();
 
@@ -43,78 +37,61 @@ const ComponentResult = ({
 
   if (component.exists === false) {
     return (
-      <section className='lib-testresult-disabled lib-testresult'>
-        <img
-          src={componentData?.imageUrl}
-          alt={`schematic of ${component.name}`}
-          width={150}
-          height={150}
-        />
+      <article className='lib-testresult-disabled lib-testresult'>
+        <header>
+          <img
+            src={componentData?.imageUrl}
+            alt={`schematic of ${component.name}`}
+            width={150}
+            height={150}
+          />
+          <div>
+            <h3>
+              {component.name}{" "}
+              <small>(or {component.alternativeComponentNames})</small>
+            </h3>
 
-        <h3 className='title'>
-          {component.name}{" "}
-          <small>(or {component.alternativeComponentNames})</small>
-        </h3>
-
-        <p className='description'>{componentData?.description}</p>
-
-        <Alert
-          className='more-testing-alert'
-          type='error'
-          message='This component is not available in this library.'
-        />
-      </section>
+            <p>{componentData?.description}</p>
+          </div>
+          <Alert
+            type='error'
+            message='This component is not available in this library.'
+          />
+        </header>
+      </article>
     );
   }
 
   return (
-    <section className='lib-testresult'>
-      <img
-        src={componentData?.imageUrl}
-        width={150}
-        height={150}
-        alt={`schematic of ${component.name}`}
-      />
-
-      <h3 className='title'>
-        {component.name}{" "}
-        <small>(or {component.alternativeComponentNames})</small>
-      </h3>
-
-      <p className='description'>{componentData?.description}</p>
-
-      {!component.componentTested && (
-        <Alert
-          className='more-testing-alert'
-          type='info'
-          message='This component needs more testing'
+    <article className='lib-testresult'>
+      <header>
+        <img
+          src={componentData?.imageUrl}
+          width={150}
+          height={150}
+          alt={`schematic of ${component.name}`}
         />
-      )}
-      <div className='main-scores scores'>
+        <div>
+          <h3>
+            {component.name}{" "}
+            <small>(or {component.alternativeComponentNames})</small>
+          </h3>
+
+          <p>{componentData?.description}</p>
+        </div>
+        {!component.componentTested && (
+          <Alert type='info' message='This component needs more testing' />
+        )}
+      </header>
+      <div className='count-list'>
         <p>
           <strong>Overall Scores:</strong>
         </p>
-        {component.componentTested ? (
-          <ScoreBubble
-            color='green-light'
-            score={component.accessibilityScore}
-          />
-        ) : (
-          <Bubble
-            value={`${component.accessibilityScore}%`}
-            label='Cactus Score (incomplete)'
-            color='yellow'
-          />
-        )}
+        <ScoreBubble score={component.accessibilityScore} />
         <CountBubble label='Tests total' count={component.amountOfTests} />
-        {SHOW_AGREEMENT_SCORE && (
-          <CountBubble
-            label='Agreement Score'
-            count={component.agreementScore}
-          />
-        )}
+        <CountBubble label='Agreement Score' count={component.agreementScore} />
       </div>
-      <div className='expand-scores'>
+      <div>
         <button
           className='button-with-icon'
           aria-label={`${
@@ -138,10 +115,9 @@ const ComponentResult = ({
         <ComponentResultDetails
           screenReaderScores={screenReaderScores}
           keyboardScores={keyboardScores}
-          testlabComponentURL={`${testlabComponentURL}?component=${component.name}`}
         />
       )}
-    </section>
+    </article>
   );
 };
 

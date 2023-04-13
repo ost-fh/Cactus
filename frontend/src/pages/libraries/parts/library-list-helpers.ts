@@ -13,13 +13,14 @@ export const calculateFocusScore = (
   filters: string[],
   version: Version
 ): string => {
+  // let result: string | undefined = undefined;
   let scores: number[] = [];
   let untested: number = 0;
   for (const filter of filters) {
     const component = version.components.find(
       (component) => component.name === filter
     );
-    component && component.exists !== false && component.componentTested
+    component && component.exists
       ? scores.push(component.accessibilityScore)
       : untested++;
   }

@@ -4,11 +4,6 @@ import { LibraryDocument } from 'src/libraries/models/library.schema';
 import CreateTestDto from './create-test.dto';
 import UsersService from 'src/users/users.service';
 import { ScoringService } from './scoring.service';
-import { InjectModel } from '@nestjs/mongoose';
-import TestResult, {
-  TestResultDocument,
-} from 'src/libraries/models/test-result.schema';
-import { Model } from 'mongoose';
 
 @Injectable()
 export class TestsService {
@@ -16,8 +11,6 @@ export class TestsService {
     private readonly libraryService: LibraryService,
     private readonly usersService: UsersService,
     private readonly scoringService: ScoringService,
-    @InjectModel(TestResult.name)
-    private testResultModel: Model<TestResultDocument>,
   ) {}
 
   async createOrUpdate(
@@ -34,10 +27,7 @@ export class TestsService {
       };
     });
 
-    const library = await this.libraryService.findOne(
-      dto.testData.libraryId,
-      true,
-    );
+    const library = await this.libraryService.findOne(dto.testData.libraryId);
 
     if (!library) {
       throw new HttpException('Library not found', HttpStatus.NOT_FOUND);
@@ -107,21 +97,16 @@ export class TestsService {
 
     const index = mode.tests.findIndex((t) => t.testedBy === userId);
     if (index > -1) {
-      const oldTest = mode.tests[index];
       mode.tests.splice(index, 1);
-      await this.testResultModel.findByIdAndRemove(oldTest.id).exec();
     }
 
-    const createdTestResult = new this.testResultModel({
+    mode.tests.push({
       testedBy: userId,
       criteria: criteria,
       userBrowser: dto.testData.userBrowser,
       userOs: dto.testData.userOs,
-      testMode: mode,
     });
-    mode.tests.push(createdTestResult);
 
-    await createdTestResult.save();
     await library.save();
 
     console.log(
@@ -129,9 +114,5 @@ export class TestsService {
     );
 
     return this.scoringService.scoreLibrary(dto.testData.libraryId);
-  }
-
-  async findAllOwn(userId: string): Promise<TestResult[]> {
-    return this.testResultModel.find({ testedBy: userId }).exec();
   }
 }

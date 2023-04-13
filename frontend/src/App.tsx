@@ -67,12 +67,15 @@ function App() {
             path='login-redirect'
             element={<LoginRedirect setUserData={setUserData} />}
           />
-          <Route path='impressum' element={<Impressum />} />
+          <Route
+            path='impressum'
+            element={<Impressum />}
+          />
           <Route
             path='accessibility-statement'
             element={<AccessibilityStatement />}
           />
-          <Route path='privacy-policy' element={<PrivacyPolicy />} />
+          <Route path='privacy-policy' element={<PrivacyPolicy/>} />
           <Route path='logout' element={<LogOut logOut={logOut} />} />
         </Route>
         <Route
@@ -83,9 +86,7 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
-        {process.env.NODE_ENV === "development" && (
-          <Route path='components' element={<Components />} />
-        )}
+        <Route path='components' element={<Components />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </UserContext.Provider>
