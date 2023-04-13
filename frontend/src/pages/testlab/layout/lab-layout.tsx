@@ -1,32 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import Alert from "../../../shared/components/alert";
+import { TestDataContext } from "../test-lab";
 import "./lab-layout.scss";
 
 type TestLabLayoutProps = {
   libraryTitle: string;
-  libraryVersion: string;
-  component: string;
-  testmode: string;
   children?: React.ReactNode;
 };
 
 const TestLabLayout = (props: TestLabLayoutProps) => {
+  const testData = useContext(TestDataContext);
+
   return (
-    <div className='container'>
+    <div className='lab-header container'>
       <header className='page-header'>
         <img className='logo' alt='logo' src='/cactus_logo.png' />
-        <h1>Cactus Testlab</h1>
-        <Alert type='help'>
+        <div className='title'>
+          <h1>Cactus Testlab</h1>
+        </div>
+        <Alert className='test-data' type='help'>
           <ul>
             <li>Library: {props.libraryTitle}</li>
-            <li>Version: {props.libraryVersion}</li>
+            <li>Version: {testData.libraryVersion}</li>
             <li>
               Component:{" "}
-              {props.component === "" ? "not yet chosen" : props.component}
+              {testData.component === ""
+                ? "not yet chosen"
+                : testData.component}
             </li>
             <li>
               Testmode:{" "}
-              {props.testmode === "" ? "not yet chosen" : props.testmode}
+              {testData.testMode === "" ? "not yet chosen" : testData.testMode}
             </li>
           </ul>
         </Alert>

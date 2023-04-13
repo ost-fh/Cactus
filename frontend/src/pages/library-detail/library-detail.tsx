@@ -209,7 +209,11 @@ const LibraryDetail = () => {
               <Alert message='There are currently no component testresults for this library.' />
             ) : (
               version.components.map((component) => (
-                <ComponentResult key={component.name} component={component} />
+                <ComponentResult
+                  testlabComponentURL={`/testlab/${library?._id}/${version?.version}`}
+                  key={component.name}
+                  component={component}
+                />
               ))
             )}
           </section>

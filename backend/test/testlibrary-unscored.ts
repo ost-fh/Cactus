@@ -73,6 +73,7 @@ export const testLibrary = {
                     $oid: '63c03e0429454e617af078ca',
                   },
                   scorePerCriterium: [],
+                  save: () => void 0,
                 },
                 {
                   testedBy: 'user1',
@@ -127,6 +128,7 @@ export const testLibrary = {
                     $oid: '63c03e1229454e617af07915',
                   },
                   scorePerCriterium: [],
+                  save: () => void 0,
                 },
               ],
               _id: {
@@ -168,6 +170,7 @@ export const testLibrary = {
                     $oid: '63c03e2029454e617af07982',
                   },
                   scorePerCriterium: [],
+                  save: () => void 0,
                 },
                 {
                   testedBy: 'user1',
@@ -200,6 +203,7 @@ export const testLibrary = {
                     $oid: '63c03e3229454e617af07a08',
                   },
                   scorePerCriterium: [],
+                  save: () => void 0,
                 },
               ],
               _id: {

@@ -1,20 +1,28 @@
 // @use "src/shared/layout/colors";
 
-$green-xlight: rgb(214, 252, 203);
-$green-light: rgb(148, 226, 148);
-$green: rgb(98, 186, 98);
+$green-xlight: rgb(215, 252, 203);
+$green-light: rgb(148, 220, 132);
+$green: rgb(98, 186, 76);
+$green-dark: rgb(35, 127, 35);
+$green-xdark: rgb(0, 101, 0);
 
 /*use white font for enough contrast with blue/blue-dark*/
+$blue-xlight: rgb(240, 248, 255);
 $blue-light: rgb(232, 242, 254);
 $blue: rgb(31, 106, 171);
 $blue-dark: rgb(14, 66, 111);
 
 $red-light: rgb(253, 217, 217);
 $red: rgb(248, 110, 110);
-$red-dark: rgb(248, 110, 110);
+$red-dark: rgb(195, 53, 53);
 
 $yellow: rgb(255, 247, 136);
 $yellow-light: rgb(255, 250, 216);
 
 // $yellow-light: rgb(252, 249, 197);
 // .yellow  rgb(255, 250, 216);
+
+$gray-xlight: rgb(245, 245, 245);
+$gray-light: rgb(232, 232, 232);
+$gray: rgb(218, 218, 218);
+$gray-dark: rgb(138, 138, 138);

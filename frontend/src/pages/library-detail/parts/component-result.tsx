@@ -12,10 +12,14 @@ import Bubble from "../../../shared/components/bubble";
 
 type ComponentResultProps = {
   component: Component;
+  testlabComponentURL: string;
 };
 
 /** This component is used by LibraryDetail */
-const ComponentResult = ({ component }: ComponentResultProps) => {
+const ComponentResult = ({
+  component,
+  testlabComponentURL,
+}: ComponentResultProps) => {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [componentData, setComponentData] = useState<ComponentCriteria>();
 
@@ -39,58 +43,62 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
 
   if (component.exists === false) {
     return (
-      <article className='lib-testresult-disabled lib-testresult'>
-        <header>
-          <img
-            src={componentData?.imageUrl}
-            alt={`schematic of ${component.name}`}
-            width={150}
-            height={150}
-          />
-          <div>
-            <h3>
-              {component.name}{" "}
-              <small>(or {component.alternativeComponentNames})</small>
-            </h3>
+      <section className='lib-testresult-disabled lib-testresult'>
+        <img
+          src={componentData?.imageUrl}
+          alt={`schematic of ${component.name}`}
+          width={150}
+          height={150}
+        />
 
-            <p>{componentData?.description}</p>
-          </div>
-          <Alert
-            type='error'
-            message='This component is not available in this library.'
-          />
-        </header>
-      </article>
+        <h3 className='title'>
+          {component.name}{" "}
+          <small>(or {component.alternativeComponentNames})</small>
+        </h3>
+
+        <p className='description'>{componentData?.description}</p>
+
+        <Alert
+          className='more-testing-alert'
+          type='error'
+          message='This component is not available in this library.'
+        />
+      </section>
     );
   }
 
   return (
-    <article className='lib-testresult'>
-      <header>
-        <img
-          src={componentData?.imageUrl}
-          width={150}
-          height={150}
-          alt={`schematic of ${component.name}`}
-        />
-        <div>
-          <h3>
-            {component.name}{" "}
-            <small>(or {component.alternativeComponentNames})</small>
-          </h3>
+    <section className='lib-testresult'>
+      <img
+        src={componentData?.imageUrl}
+        width={150}
+        height={150}
+        alt={`schematic of ${component.name}`}
+      />
 
-          <p>{componentData?.description}</p>
-        </div>
-        {!component.componentTested && (
-          <Alert type='info' message='This component needs more testing' />
-        )}
-      </header>
-      <div className='count-list'>
+      <h3 className='title'>
+        {component.name}{" "}
+        <small>(or {component.alternativeComponentNames})</small>
+      </h3>
+
+      <p className='description'>{componentData?.description}</p>
+
+      {!component.componentTested && (
+        <Alert
+          className='more-testing-alert'
+          type='info'
+          message='This component needs more testing'
+        />
+      )}
+      <div className='main-scores scores'>
         <p>
           <strong>Overall Scores:</strong>
         </p>
         {component.componentTested ? (
-          <ScoreBubble score={component.accessibilityScore} />
+          <ScoreBubble
+            color='green-light'
+            score={component.accessibilityScore}
+          />
         ) : (
           <Bubble
             value={`${component.accessibilityScore}%`}
@@ -106,7 +114,7 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
           />
         )}
       </div>
-      <div>
+      <div className='expand-scores'>
         <button
           className='button-with-icon'
           aria-label={`${
@@ -130,9 +138,10 @@ const ComponentResult = ({ component }: ComponentResultProps) => {
         <ComponentResultDetails
           screenReaderScores={screenReaderScores}
           keyboardScores={keyboardScores}
+          testlabComponentURL={`${testlabComponentURL}?component=${component.name}`}
         />
       )}
-    </article>
+    </section>
   );
 };
 
