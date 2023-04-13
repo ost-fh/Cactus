@@ -114,9 +114,10 @@ const Home = () => {
         </div>
         <div className='text'>
           <p>
-            This is a comparison platform for UI Libraries. They are compared by
-            the performance evaluated by users in manual testing. Currently the
-            tests focus on screenreader and keyboard use.
+            This is a comparison platform for UI Libraries. The UI Libraries are
+            compared by the performance evaluated by users in manual testing.
+            Currently the tests focus on keyboard and on screenreader (NVDA)
+            usage.
           </p>
         </div>
         <Link to='/contribute#FAQ' className='button'>
