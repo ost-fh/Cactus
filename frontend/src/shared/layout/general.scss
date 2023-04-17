@@ -32,15 +32,16 @@ body {
 }
 
 :focus {
-  outline-color: rgb(209, 7, 7);
+  outline-color: colors.$red-dark;
+  outline-width: 1.75rem;
 }
 
 :link {
-  color: rgb(0, 101, 0);
+  color: colors.$green-xdark;
 }
 
 :visited {
-  color: rgb(1, 73, 1);
+  color: colors.$green-xdark;
 }
 
 /* responsive 2 column layout class */

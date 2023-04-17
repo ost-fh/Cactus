@@ -1,15 +1,16 @@
 import React from "react";
 import "./bubble.scss";
 
-type BubbleProps = {
+export type BubbleProps = {
   value?: React.ReactNode;
-  label: string;
+  label: React.ReactNode;
+  className?: string;
   color?: "none" | "green" | "green-light" | "yellow" | "red" | "blue";
 };
 
-const Bubble = ({ value, label, color = "none" }: BubbleProps) => {
+const Bubble = ({ value, label, color = "none", className }: BubbleProps) => {
   return (
-    <div className={`bubble bubble-${color}`}>
+    <div className={`bubble bubble-${color} ${className || ""}`}>
       {value === undefined ? (
         label
       ) : (

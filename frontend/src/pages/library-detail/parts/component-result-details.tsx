@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BsInfoCircleFill } from "react-icons/bs";
+import { UserContext } from "../../../App";
 import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
 import LinkButton from "../../../shared/components/link-button";
@@ -20,6 +22,8 @@ const ComponentResultDetails = ({
   keyboardScores,
   testlabComponentURL,
 }: ComponentResultDetailsProps) => {
+  const userData = useContext(UserContext);
+
   return (
     <>
       <div className='scores'>
@@ -54,10 +58,12 @@ const ComponentResultDetails = ({
           <Alert className='alert-with-icon'>
             {/* <Alert message='There were no keyboard accessibility tests done yet' /> */}
             <p>There were no keyboard accessibility tests done yet.</p>
-            <LinkButton
-              to={`${testlabComponentURL}&mode=Keyboard`}
-              label={"Add tests"}
-            />
+            {userData && (
+              <LinkButton
+                to={`${testlabComponentURL}&mode=Keyboard`}
+                label={"Add tests"}
+              />
+            )}
           </Alert>
         )}
       </div>
@@ -92,11 +98,14 @@ const ComponentResultDetails = ({
           </>
         ) : (
           <Alert className='alert-with-icon'>
+            <BsInfoCircleFill />
             <p>There were no screenreader accessibility tests done yet.</p>
-            <LinkButton
-              to={`${testlabComponentURL}&mode=Screenreader`}
-              label={"Add tests"}
-            />
+            {userData && (
+              <LinkButton
+                to={`${testlabComponentURL}&mode=Screenreader`}
+                label={"Add tests"}
+              />
+            )}
           </Alert>
           // <Alert message='There were no screenreader accessibility tests done yet' />
         )}
