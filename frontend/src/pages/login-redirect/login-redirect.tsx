@@ -34,12 +34,16 @@ const LoginRedirect = ({ setUserData }: any) => {
 
     getUserProfile(accessToken)
       .then((user) => {
-        const beforeLoginUrl = `${sessionStorage.getItem("beforeLogin")}`;
+        const beforeLoginUrl = sessionStorage.getItem("beforeLogin");
         setUserData({ ...user, token: accessToken });
         setPageState(state.success);
         setTimeout(() => {
+          console.log(beforeLoginUrl);
+
           navigate(
-            `${beforeLoginUrl}?alert=login` || "/contribute?alert=login"
+            beforeLoginUrl
+              ? `${beforeLoginUrl}?alert=login`
+              : "/contribute?alert=login"
           );
           sessionStorage.removeItem("beforeLogin");
         }, 10);

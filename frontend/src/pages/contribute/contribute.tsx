@@ -9,6 +9,7 @@ import "./contribute.scss";
 
 const Contribute = () => {
   const userData = useContext(UserContext);
+  sessionStorage.setItem("beforeLogin", "/contribute");
 
   return (
     <PublicLayout className='contribute' activeLink='contribute'>
