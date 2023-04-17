@@ -1,6 +1,6 @@
 # Cactus
 
-![Tests](https://github.com/ost-fh/Cactus/actions/workflows/tests.yml/badge.svg) ![Frontend Docker image](https://github.com/ost-fh/Cactus/actions/workflows/frontend-release.yml/badge.svg) ![Backend Docker image](https://github.com/ost-fh/Cactus/actions/workflows/backend-release.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Tests](https://github.com/ost-fh/Cactus/actions/workflows/backend-tests.yml/badge.svg) ![Tests](https://github.com/ost-fh/Cactus/actions/workflows/frontend-tests.yml/badge.svg) ![Frontend Docker image](https://github.com/ost-fh/Cactus/actions/workflows/frontend-release.yml/badge.svg) ![Backend Docker image](https://github.com/ost-fh/Cactus/actions/workflows/backend-release.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Welcome to Project Cactus!
 
