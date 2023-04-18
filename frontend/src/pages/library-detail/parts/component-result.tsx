@@ -83,17 +83,10 @@ const ComponentResult = ({
 
       <p className='description'>{componentData?.description}</p>
 
-      {!component.componentTested && (
-        <Alert
-          className='more-testing-alert'
-          type='info'
-          message='This component needs more testing'
-        />
-      )}
       <div className='main-scores scores'>
-        <p>
+        {/* <p>
           <strong>Overall Scores:</strong>
-        </p>
+        </p> */}
         {component.componentTested ? (
           <ScoreBubble
             color='green-light'
@@ -133,6 +126,13 @@ const ComponentResult = ({
           )}{" "}
           detailed evaluation
         </button>
+        {!component.componentTested && (
+          <Alert
+            className='more-testing-alert'
+            type='info'
+            message='This component needs more testing'
+          />
+        )}
       </div>
       {detailsOpen && (
         <ComponentResultDetails

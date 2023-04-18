@@ -5,23 +5,28 @@
   border: 0.125rem solid colors.$gray-xlight;
   padding: 0.8rem;
   border-radius: 0.4rem;
-  // display: flex;
-  // flex-direction: column;
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-rows: auto auto;
   grid-template-areas:
-    "img title alert"
-    "img description alert"
-    "scores scores scores";
+    "img title scores"
+    "img description description"
+    "expand expand expand";
   align-items: center;
   gap: 0.8rem 1rem;
 
-  h2 {
+  h2,
+  h3 {
     margin: 0;
   }
+
+  p {
+    max-width: 32rem;
+  }
+
   img {
-    height: 7rem;
+    height: 6rem;
+    width: 6.5rem;
     grid-area: img;
   }
   .title {
@@ -40,6 +45,14 @@
     grid-area: scores;
   }
 
+  .expand-scores {
+    grid-area: expand;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
   .scores {
     display: flex;
     gap: 0.9rem;
@@ -48,44 +61,45 @@
     h4 {
       margin-bottom: 0;
     }
-    .scores-break {
-      width: 100%;
-    }
   }
 
-  .expand-scores,
-  .scores {
+  .detail-scores {
     grid-column: span 3;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
-  @media screen and (max-width: breakpoints.$desktop) {
-    grid-template-columns: auto 1fr;
-    // grid-template-rows: auto auto;
+  @media screen and (max-width: breakpoints.$at800) {
     grid-template-areas:
       "img title title"
+      "img scores scores"
       "img description description"
-      "img alert alert"
-      "scores scores scores";
+      "expand expand expand";
   }
 
-  @media screen and (max-width: breakpoints.$phone) {
+  @media screen and (max-width: breakpoints.$tablet) {
     grid-template-areas:
       "title title title"
+      "scores scores scores"
       "img description description"
-      "alert alert alert"
-      "scores scores scores";
+      "expand expand expand";
 
     img {
       width: 6rem;
+    }
+    .expand-scores {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 0.8rem;
     }
   }
   @media screen and (max-width: breakpoints.$sub-phone) {
     grid-template-areas:
       "title title title"
+      "scores scores scores"
       "img img img"
       "description description description"
-      "alert alert alert"
-      "scores scores scores";
+      "expand expand expand";
   }
 }
 
@@ -98,12 +112,12 @@
 
   @media screen and (max-width: breakpoints.$desktop) {
     grid-template-columns: auto 1fr;
-    // grid-template-rows: auto auto;
     grid-template-areas:
       "img title title"
       "img description description"
       "alert alert alert";
   }
+
   @media screen and (max-width: breakpoints.$phone) {
     grid-template-areas:
       "title title title"

@@ -78,7 +78,6 @@ const Libraries = () => {
                       : false
                   }
                   name='filters'
-                  id=''
                 />
                 {component}
               </label>

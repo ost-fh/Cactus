@@ -5,6 +5,7 @@ import Heading from "../../shared/components/heading";
 import PublicLayout from "../../shared/layout/public-layout";
 import Oauth from "../../shared/components/oauth";
 import "./contribute.scss";
+import { Link } from "react-router-dom";
 
 const Contribute = () => {
   const userData = useContext(UserContext);
@@ -20,7 +21,9 @@ const Contribute = () => {
             <p>
               Add component tests to libraries that are interesting to you. This
               way you can verify the results for yourself, understand how it is
-              scored and you help other people by increasing the testquality.
+              scored and you help other people by increasing the testquality. To
+              do this, go to the <Link to={"/libraries"}>library overview</Link>
+              , open a library and add a test.
             </p>
             <h3>Add new Libraries and Versions</h3>
             <p>

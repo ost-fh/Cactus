@@ -1,3 +1,5 @@
+@use "src/shared/layout/breakpoints";
+
 .library-header {
   display: flex;
   flex-direction: column;
@@ -17,13 +19,16 @@
   display: flex;
   gap: 0.7rem;
   flex-direction: row;
-  // flex-wrap: wrap;
-  // align-items: ;
+
   .filter-group {
     display: flex;
     gap: 0.7rem;
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: breakpoints.$phone) {
+    flex-direction: column;
   }
 }
 

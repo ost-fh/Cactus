@@ -33,7 +33,7 @@ body {
 
 :focus {
   outline-color: colors.$red-dark;
-  outline-width: 1.75rem;
+  outline-width: 1.25rem;
 }
 
 :link {
@@ -42,6 +42,17 @@ body {
 
 :visited {
   color: colors.$green-xdark;
+}
+
+// accessibility class for span element
+.visually-hidden {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 /* responsive 2 column layout class */
