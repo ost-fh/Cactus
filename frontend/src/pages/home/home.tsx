@@ -116,8 +116,11 @@ const Home = () => {
           <p>
             This is a comparison platform for UI Libraries. The UI Libraries are
             compared by the performance evaluated by users in manual testing.
-            Currently the tests focus on keyboard and on screenreader (NVDA)
-            usage.
+            Currently the tests focus on keyboard and on screenreader (
+            <abbr title='NonVisual Desktop Access, a free screenreader for windows'>
+              NVDA
+            </abbr>
+            ) usage.
           </p>
         </div>
         <Link to='/contribute#FAQ' className='button'>

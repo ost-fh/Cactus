@@ -86,8 +86,8 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
       <Alert type='help'>
         <h3>How to test:</h3>
         <p>
-          Check if the criteria apply to an interactive example of the component
-          inside the{" "}
+          Check if each criterium applies to an interactive example of the
+          component in the{" "}
           <a href={linkDocs} target='_blank' rel='noreferrer'>
             documentation
           </a>

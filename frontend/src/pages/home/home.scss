@@ -40,8 +40,12 @@
         font-size: 1.5rem;
         color: darkgreen;
         span {
-          text-decoration: underline;
+          font-weight: 700;
         }
+      }
+
+      .image {
+        width: 7.5rem;
       }
 
       .description {
