@@ -1,4 +1,11 @@
 @use "src/shared/layout/breakpoints";
+@use "src/shared/layout/colors";
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
 
 #faq {
   display: flex;
@@ -19,7 +26,15 @@
   p {
     font-size: 1.2rem;
   }
+
+  h3 {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    column-span: 2;
+  }
+
   h4 {
     font-style: oblique;
+    color: colors.$green-xdark;
   }
 }

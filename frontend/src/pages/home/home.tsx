@@ -123,7 +123,7 @@ const Home = () => {
             ) usage.
           </p>
         </div>
-        <Link to='/contribute#FAQ' className='button'>
+        <Link to='/faq' className='button'>
           Visit our FAQ
         </Link>
       </div>

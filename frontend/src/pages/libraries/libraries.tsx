@@ -4,7 +4,7 @@ import { getComponentCriteria, getLibraries } from "../../shared/services/api";
 import Alert from "../../shared/components/alert";
 import PublicLayout from "../../shared/layout/public-layout";
 
-import "./libraries.css";
+import "./libraries.scss";
 import { ComponentCriteria, Library } from "../../shared/resources/types";
 import Heading from "../../shared/components/heading";
 import LibraryList from "./parts/library-list";
@@ -50,11 +50,11 @@ const Libraries = () => {
       <LibrariesHeader />
       <hr />
       <form id='filters'>
-        <label>
-          Sort by:{" "}
+        <div className='filter-group'>
+          <label htmlFor='sorting'>Sort by: </label>
           <select
             name='sorting'
-            id=''
+            id='sorting'
             onChange={(e) => {
               setSortBy(e.target.value);
             }}
@@ -63,31 +63,35 @@ const Libraries = () => {
             <option value='score'>Score</option>
             <option value='name'>Name</option>
           </select>
-        </label>
-        <div className='spacer'></div>
-        <label htmlFor='filters'>Evaluate by components: </label>
-        {components &&
-          components.map((component) => (
-            <label key={component}>
-              <input
-                type='checkbox'
-                onChange={() => changeComponentFilter(component)}
-                checked={
-                  componentFilters.find((filter) => filter === component)
-                    ? true
-                    : false
-                }
-                name='filters'
-                id=''
-              />
-              {component}
-            </label>
-          ))}
-        <div className='spacer-flex'></div>
+        </div>
+        <div className='filter-group'>
+          <label htmlFor='filters'>Evaluate by components: </label>
+          {components &&
+            components.map((component) => (
+              <label key={component}>
+                <input
+                  type='checkbox'
+                  onChange={() => changeComponentFilter(component)}
+                  checked={
+                    componentFilters.find((filter) => filter === component)
+                      ? true
+                      : false
+                  }
+                  name='filters'
+                  id=''
+                />
+                {component}
+              </label>
+            ))}
+          <div className='spacer-flex'></div>
+        </div>
         <button
-          style={{
-            visibility: `${componentFilters.length > 0 ? "visible" : "hidden"}`,
-          }}
+          disabled={componentFilters.length <= 0}
+          // style={{
+          //   visibility: `${
+          //     componentFilters.length > 0 ? "visible" : "hidden"
+          //   }`,
+          // }}
           type='button'
           onClick={() => {
             setComponentFilters([]);
@@ -95,6 +99,7 @@ const Libraries = () => {
         >
           Reset Selection
         </button>
+        {/* <div className='spacer'></div> */}
       </form>
       {componentFilters.length < 0 && (
         <Alert type='help'>

@@ -14,15 +14,17 @@
 #filters {
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
-}
-
-#filters,
-#filters fieldset {
   display: flex;
   gap: 0.7rem;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
+  // flex-wrap: wrap;
+  // align-items: ;
+  .filter-group {
+    display: flex;
+    gap: 0.7rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .spacer-flex {

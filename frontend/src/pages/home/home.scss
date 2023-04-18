@@ -13,7 +13,7 @@
     font-size: 1.4rem;
 
     h2 {
-      color: colors.$green-dark;
+      color: colors.$green-xdark;
       font-size: 3rem;
     }
   }
@@ -38,7 +38,7 @@
 
       .highlight {
         font-size: 1.5rem;
-        color: darkgreen;
+        color: colors.$green-xdark;
         span {
           font-weight: 700;
         }

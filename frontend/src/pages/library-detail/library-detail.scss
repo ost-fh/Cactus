@@ -18,7 +18,8 @@
     row-gap: 0.7rem;
     margin-bottom: 2rem;
     margin-top: 2rem;
-    @media screen and (max-width: breakpoints.$tablet) {
+    h2 {
+      margin-bottom: 0;
     }
   }
 }
