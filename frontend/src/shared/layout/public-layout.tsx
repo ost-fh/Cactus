@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BsFillPersonFill } from "react-icons/bs";
+import { BsFillPersonFill, BsHouse, BsHouseFill, BsList } from "react-icons/bs";
 import { Link, useSearchParams } from "react-router-dom";
 import { UserContext } from "../../App";
 import Alert from "../components/alert";
@@ -19,6 +19,7 @@ const PublicLayout = ({
   const userData = useContext(UserContext);
   const [searchParams] = useSearchParams();
   const [successMessage, setSuccessMessage] = useState<string>();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const alert = searchParams.get("alert");
@@ -46,20 +47,15 @@ const PublicLayout = ({
               width='705'
             />
           </Link>
-          <Link
-            title='Navigate to homepage'
-            to={"/"}
-            className='page-header-title'
-          >
-            <h1>Project Cactus</h1>
-          </Link>
         </div>
 
-        <div className='user'>
+        <div className={`user ${menuOpen ? "visible" : "hidden"}`}>
           {userData?.token ? (
             <>
-              <BsFillPersonFill /> Logged in as {userData.username}
-              {" - "}
+              <BsFillPersonFill />
+              {/* Logged in as */}
+              {userData.username}
+              {/* {" - "} */}
               <Link to={`/logout?path=${window.location.pathname}`}>
                 Logout
               </Link>
@@ -71,14 +67,19 @@ const PublicLayout = ({
             </>
           )}
         </div>
-        <nav>
+        <nav className={menuOpen ? "visible" : "hidden"}>
           <Link
             className={`nav-link ${
               activeLink === "home" ? "nav-link-active" : ""
             }`}
             to='/'
           >
-            Home
+            Cactus{" "}
+            {activeLink === "home" ? (
+              <BsHouseFill title='home' />
+            ) : (
+              <BsHouse title='home' />
+            )}
           </Link>
           <Link
             className={`nav-link ${
@@ -90,6 +91,14 @@ const PublicLayout = ({
           </Link>
           <Link
             className={`nav-link ${
+              activeLink === "faq" ? "nav-link-active" : ""
+            }`}
+            to='/faq'
+          >
+            FAQ
+          </Link>
+          <Link
+            className={`nav-link ${
               activeLink === "contribute" ? "nav-link-active" : ""
             }`}
             to='/contribute'
@@ -97,6 +106,10 @@ const PublicLayout = ({
             Contribute
           </Link>
         </nav>
+        <button onClick={() => setMenuOpen(!menuOpen)} className='menu-button'>
+          <BsList size={"1.4rem"} />
+          {menuOpen ? "Close" : "Open "} Menu
+        </button>
       </header>
       <div aria-live='assertive'>
         {successMessage && (

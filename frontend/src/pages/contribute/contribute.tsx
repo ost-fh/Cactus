@@ -4,46 +4,46 @@ import Alert from "../../shared/components/alert";
 import Heading from "../../shared/components/heading";
 import PublicLayout from "../../shared/layout/public-layout";
 import Oauth from "../../shared/components/oauth";
-import FAQ from "./parts/faq";
 import "./contribute.scss";
+import { Link } from "react-router-dom";
 
 const Contribute = () => {
   const userData = useContext(UserContext);
+  sessionStorage.setItem("beforeLogin", "/contribute");
 
   return (
     <PublicLayout className='contribute' activeLink='contribute'>
       <header>
-        <Heading>Would you like to contribute?</Heading>
+        <Heading>Would you like to Contribute?</Heading>
         <div className='layout-split'>
           <section>
-            <h3>Test the accessibility of components</h3>
+            <h3>Test the Accessibility of Components</h3>
             <p>
-              Have a look at any library interesting to you. Add Component-Tests
-              to on one hand verify for yourself, the results are valid, and on
-              the other hand you can help.
+              Add component tests to libraries that are interesting to you. This
+              way you can verify the results for yourself, understand how it is
+              scored and you help other people by increasing the testquality. To
+              do this, go to the <Link to={"/libraries"}>library overview</Link>
+              , open a library and add a test.
             </p>
-            <h3>Add new libraries and versions</h3>
+            <h3>Add new Libraries and Versions</h3>
             <p>
-              If you need scores of a library that is not yet added? Just add
-              the library and add some tests. If a library is only available in
-              an old version, you can add the new major version.
+              Do you need scores of a library but you could not find it on
+              Cactus? Just add the library and then add some tests. If a library
+              is only available in an old version, you can add the new major
+              version.
             </p>
-            {/* <p>
-            It would be best if you have a basic knowledge of web development
-            and also a little knowledge of accessibility.
-          </p> */}
           </section>
           <Alert type='help'>
             <h3>Sign up here!</h3>
             {userData ? (
-              <Alert message='You are already logged in' />
+              <Alert message='You are already logged in. Go add some tests to a library!' />
             ) : (
               <Oauth />
             )}
           </Alert>
         </div>
         <section>
-          <h3>Add or modify a component and its criteria</h3>
+          <h3>Advanced: Add or Change the Criteria Catalogue</h3>
           <p>
             The components and its criteria are described through yaml files
             directly in the source code of this{" "}
@@ -57,8 +57,6 @@ const Contribute = () => {
           </p>
         </section>
       </header>
-      <hr />
-      <FAQ />
     </PublicLayout>
   );
 };

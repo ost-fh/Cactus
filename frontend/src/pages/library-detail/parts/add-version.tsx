@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { postNewVersion } from "../../../shared/services/api";
-import "./add-version.css";
+import "./add-version.scss";
 import Alert from "../../../shared/components/alert";
 
 type AddVersionProps = {

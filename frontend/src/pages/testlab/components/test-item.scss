@@ -1,0 +1,25 @@
+@use "src/shared/layout/colors";
+
+.test-item {
+  border: 0.125rem solid colors.$gray-xlight;
+  border-radius: 0.4rem;
+  padding: 0.8rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
+  .button-group {
+    grid-column: span 2;
+  }
+
+  .test-item-criteria {
+    font-size: 1.2rem;
+  }
+
+  .test-item-comment {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
