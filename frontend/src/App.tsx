@@ -22,6 +22,7 @@ import PrivacyPolicy from "./pages/privacy-policy/privacy-policy";
 import Components from "./pages/components/components";
 import AccessibilityStatement from "./pages/accessibility-statement/accessibility-statement";
 import LoginRedirect from "./pages/login-redirect/login-redirect";
+import FAQ from "./pages/faq/faq";
 
 export type UserData = {
   _id: string;
@@ -59,6 +60,7 @@ function App() {
             element={<LibraryDetail />}
           />
           <Route path='contribute' element={<Contribute />} />
+          <Route path='faq' element={<FAQ />} />
           <Route
             path='login'
             element={userData ? <Navigate to={"/"} /> : <Login />}

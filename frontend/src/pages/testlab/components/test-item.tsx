@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CriteriumResult } from "../../../shared/resources/types";
 import TestItemButton from "./test-item-button";
-import "./test-item.css";
+import "./test-item.scss";
 
 type TestItemProps = {
   criterium: CriteriumResult;

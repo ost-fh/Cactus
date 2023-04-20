@@ -3,6 +3,7 @@
 /** Button Styles **/
 button,
 .button,
+.button:link,
 .button:visited {
   padding: 0.4rem 0.8rem;
   background-color: colors.$gray-xlight;
@@ -24,9 +25,12 @@ button:hover,
 .button:hover {
   background-color: colors.$gray-light;
   border-color: colors.$gray-dark;
-  //   background-color: rgb(234, 234, 234);
-  //   border-color: rgb(185, 185, 185);
 }
+
+// .button:focus,
+// button:focus {
+//   outline: colors.$red 0.25rem solid;
+// }
 
 button:active,
 .button:active {
@@ -35,9 +39,7 @@ button:active,
 
 button:disabled,
 .button:disabled {
-  //   background-color: rgb(243, 243, 243);
   background-color: colors.$gray-xlight;
-  //   border-color: rgb(228, 228, 228);
   border-color: colors.$gray-light;
   color: grey;
 }
@@ -45,31 +47,26 @@ button:disabled,
 button:disabled:hover,
 .button:disabled:hover {
   background-color: rgb(197, 156, 156);
-  border-color: rgb(185, 69, 69);
   color: grey;
 }
 
 .button-selected,
+.button-selected:link,
 .button-selected:visited {
-  // background-color: rgb(141, 202, 127);
-  // border-color: rgb(118, 175, 105);
   background-color: colors.$green;
   border-color: colors.$green-dark;
 }
 
 .button-selected:hover {
-  //   background-color: rgb(153, 213, 139);
-  //   border-color: rgb(87, 137, 76);
   background-color: colors.$green-light;
   border-color: colors.$green-dark;
 }
 
 .button-primary:visited,
+.button-primary:link,
 .button-primary {
-  // background-color: rgb(14, 113, 200);
   background-color: colors.$blue;
   border-color: colors.$blue-dark;
-  // border-color: rgb(42, 130, 207);
   color: white;
 }
 
@@ -80,18 +77,9 @@ button:disabled:hover,
 }
 
 .button-primary:hover {
-  // border-color: rgb(15, 69, 118);
   background-color: colors.$blue-dark;
   border-color: colors.$blue;
-  //   background-color: rgb(25, 115, 194);
-  //   border-color: rgb(240, 248, 255);
 }
-
-// .button-primary:disabled:hover {
-//   background-color: rgb(139, 164, 185);
-//   border-color: rgb(71, 108, 141);
-//   color: rgb(71, 108, 141);
-// }
 
 .button-wide {
   width: 100%;
