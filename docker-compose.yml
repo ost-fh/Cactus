@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   frontend:
-    image: $CONTAINER_REGISTRY_PATH/frontend:e1d2c5c1ebcb5c6fc08c24085feef49a27c1041dc6e7025555892e3825c00c7e
+    image: $CONTAINER_REGISTRY_PATH/frontend:latest
     environment:
       - REACT_APP_BACKEND_BASE_URI=https://cactus-api.sifs0003.infs.ch/api
     networks:
@@ -15,7 +15,7 @@ services:
         condition: "on-failure"
 
   backend:
-    image: $CONTAINER_REGISTRY_PATH/backend:3386cae6e195fd9dd07b1e5f5843670f6a1bc773688fd8df67e6078a6c3a400b
+    image: $CONTAINER_REGISTRY_PATH/backend:latest
     environment:
       #- FRONTEND_ORIGIN=${FRONTEND_PROTOCOL}://${FRONTEND_HOST}:${FRONTEND_PORT}
       - PORT=3010
