@@ -11,11 +11,11 @@ import {
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { LibraryService } from 'src/libraries/libraries.service';
-import Library from '../models/library.schema';
+import Library from '../../common/models/library.schema';
 import CreateLibraryVersionDto from './create-library-version.dto';
 import CreateLibraryDto from './create-library.dto';
 
-@Controller('api/libraries')
+@Controller('libraries')
 export class LibraryController {
   constructor(private readonly libraryService: LibraryService) {}
 

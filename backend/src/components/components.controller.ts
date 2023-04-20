@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import Component from './component.schema';
 import { ComponentsService } from './components.service';
 
-@Controller('api/components')
+@Controller('components')
 export class ComponentsController {
   constructor(private readonly componentService: ComponentsService) {}
 

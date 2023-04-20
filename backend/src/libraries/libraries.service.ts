@@ -3,8 +3,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import CreateLibraryVersionDto from './controllers/create-library-version.dto';
 import CreateLibraryDto from './controllers/create-library.dto';
-import Library, { LibraryDocument } from './models/library.schema';
-import TestResult from './models/test-result.schema';
+import Library, { LibraryDocument } from '../common/models/library.schema';
+import TestResult from '../common/models/test-result.schema';
 
 @Injectable()
 export class LibraryService {

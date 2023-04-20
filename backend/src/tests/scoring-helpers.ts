@@ -1,6 +1,6 @@
-import AggregatedScore from 'src/libraries/models/aggregated-score.schema';
-import CriteriumScore from 'src/libraries/models/criterium-score.schema';
-import Criterium from 'src/libraries/models/criterium.schema';
+import AggregatedScore from 'src/common/models/aggregated-score.schema';
+import CriteriumScore from 'src/common/models/criterium-score.schema';
+import Criterium from 'src/common/models/criterium.schema';
 
 export const calculateAverage = (values: number[]): number => {
   const average = sumOfArray(values) / values.length;
