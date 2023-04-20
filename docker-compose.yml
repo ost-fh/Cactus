@@ -1,69 +1,46 @@
 version: "3.8"
 
 services:
-  proxy:
-    image: geometalab/env-configurable-caddy:latest
+  frontend:
+    image: $CONTAINER_REGISTRY_PATH/frontend:sha256:e1d2c5c1ebcb5c6fc08c24085feef49a27c1041dc6e7025555892e3825c00c7e
     environment:
-      CADDY_CONFIG: |
-        :8080 {
-          route {
-            handle /api/* {
-              uri strip_prefix /api
-              reverse_proxy backend:3010
-            }
-            redir /api /api/
-            reverse_proxy /* {
-              to frontend:80
-            }
-          }
-        }
+      - REACT_APP_BACKEND_BASE_URI=https://cactus-api.sifs0003.infs.ch/api
     networks:
       - web
-      - default
     deploy:
       labels:
-        caddy: cactus-dev.sifs0003.infs.ch
-        caddy.reverse_proxy: "{{upstreams 8080}}"
-      restart_policy:
-        condition: "on-failure"
-    
-
-  frontend:
-    image: $CONTAINER_REGISTRY_PATH/frontend:dev
-    environment:
-      - REACT_APP_BACKEND_BASE_URI=https://cactus-dev.sifs0003.infs.ch/api
-    networks:
-      - default
-    deploy:
-
+        caddy: cactus.sifs0003.infs.ch
+        caddy.reverse_proxy: "{{upstreams 80}}"
       restart_policy:
         condition: "on-failure"
 
   backend:
-    image: $CONTAINER_REGISTRY_PATH/backend:dev
+    image: $CONTAINER_REGISTRY_PATH/backend:sha256:3386cae6e195fd9dd07b1e5f5843670f6a1bc773688fd8df67e6078a6c3a400b
     environment:
       #- FRONTEND_ORIGIN=${FRONTEND_PROTOCOL}://${FRONTEND_HOST}:${FRONTEND_PORT}
       - PORT=3010
       - DATABASE_URL=mongodb://${DB_USERNAME}:${DB_PASSWORD}@database:27017/cactus
       - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
-      - FRONTEND_ORIGIN=https://cactus-dev.sifs0003.infs.ch
+      - FRONTEND_ORIGIN=https://cactus.sifs0003.infs.ch
       - GITHUB_OAUTH_CLIENT_ID=${GITHUB_OAUTH_CLIENT_ID}
       - GITHUB_OAUTH_CLIENT_SECRET=${GITHUB_OAUTH_CLIENT_SECRET}
-      - GITHUB_OAUTH_CALLBACK_BASE_URL=https://cactus-dev.sifs0003.infs.ch/api
+      - GITHUB_OAUTH_CALLBACK_BASE_URL=https://cactus-api.sifs0003.infs.ch/api
       - GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID}
       - GOOGLE_OAUTH_CLIENT_SECRET=${GOOGLE_OAUTH_CLIENT_SECRET}
-      - GOOGLE_OAUTH_CALLBACK_BASE_URL=https://cactus-dev.sifs0003.infs.ch/api
-      - SWAGGER_BASE_PATH=/api
+      - GOOGLE_OAUTH_CALLBACK_BASE_URL=https://cactus-api.sifs0003.infs.ch/api
+
     networks:
       - web
       - default
     deploy:
+      labels:
+        caddy: cactus-api.sifs0003.infs.ch
+        caddy.reverse_proxy: "{{upstreams 3010}}"
       restart_policy:
         condition: "on-failure"
 
   database:
-  # *portainer: mongodump --username tester -d cactus --out /backup/
-  # *portainer: mongodump --username tester -d cactus --archive=/backup/1.archive
+  # *portainer: sh -c 'exec mongodump -d cactus --archive --out /backup/' > /some/path/on/your/host/all-collections.archive
     image: mongo:6.0.4-focal
     networks:
       - default
