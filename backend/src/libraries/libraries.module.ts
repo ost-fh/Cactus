@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { LibraryService } from './libraries.service';
 import { ComponentsModule } from 'src/components/components.module';
-import Library, { LibrarySchema } from './models/library.schema';
+import Library, { LibrarySchema } from '../common/models/library.schema';
 import { LibraryController } from './controllers/library.controller';
 
 @Module({

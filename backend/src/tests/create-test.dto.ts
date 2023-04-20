@@ -5,40 +5,8 @@ import {
   IsArray,
   ValidateNested,
   IsObject,
-  IsOptional,
-  IsBoolean,
 } from 'class-validator';
-
-class TestDataDto {
-  @IsString()
-  libraryId: string;
-
-  @IsString()
-  libraryVersion: string;
-
-  @IsString()
-  component: string;
-
-  @IsString()
-  @IsOptional()
-  alternativeComponentNames?: string;
-
-  @IsString()
-  testMode: string;
-
-  @IsString()
-  userBrowser: string;
-
-  @IsString()
-  userOs: string;
-
-  @IsBoolean()
-  componentExists: boolean; // TODO only true if componentLinkDocs exist
-
-  @IsString()
-  @IsOptional()
-  componentLinkDocs?: string;
-}
+import TestDataDto from './test-data.dto';
 
 class CriteriaDto {
   @IsString()

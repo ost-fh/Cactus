@@ -8,13 +8,13 @@ import {
   combineScore,
   extractCriteria,
 } from './scoring-helpers';
-import AggregatedScore from 'src/libraries/models/aggregated-score.schema';
-import LibraryVersion from 'src/libraries/models/library-version.schema';
-import { LibraryDocument } from 'src/libraries/models/library.schema';
-import { TestResultDocument } from 'src/libraries/models/test-result.schema';
-import TestMode from 'src/libraries/models/test-mode.schema';
-import CriteriumScore from 'src/libraries/models/criterium-score.schema';
-import LibraryComponent from 'src/libraries/models/library-component.schema';
+import AggregatedScore from 'src/common/models/aggregated-score.schema';
+import LibraryVersion from 'src/common/models/library-version.schema';
+import { LibraryDocument } from 'src/common/models/library.schema';
+import { TestResultDocument } from 'src/common/models/test-result.schema';
+import TestMode from 'src/common/models/test-mode.schema';
+import CriteriumScore from 'src/common/models/criterium-score.schema';
+import LibraryComponent from 'src/common/models/library-component.schema';
 import { LibraryService } from 'src/libraries/libraries.service';
 import { ComponentsService } from 'src/components/components.service';
 

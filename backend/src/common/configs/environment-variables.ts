@@ -9,4 +9,5 @@ interface EnvironmentVariables {
   GOOGLE_OAUTH_CLIENT_ID: string;
   GOOGLE_OAUTH_CLIENT_SECRET: string;
   GOOGLE_OAUTH_CALLBACK_URL: string;
+  SWAGGER_BASE_PATH?: string;
 }
