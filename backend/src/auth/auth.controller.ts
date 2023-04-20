@@ -6,7 +6,7 @@ import User from 'src/users/user';
 import { GoogleOauthGuard } from './guards/google-oauth-guard';
 import { ConfigService } from '@nestjs/config';
 
-@Controller('api/auth')
+@Controller('auth')
 export class AuthController {
   constructor(
     private readonly authService: AuthService,

@@ -8,7 +8,10 @@ import { ComponentsModule } from 'src/components/components.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import TestResult, {
   TestResultSchema,
-} from 'src/libraries/models/test-result.schema';
+} from 'src/common/models/test-result.schema';
+import TestFeedback, {
+  TestFeedbackSchema,
+} from 'src/common/models/test-feedback.schema';
 
 @Module({
   imports: [
@@ -17,6 +20,7 @@ import TestResult, {
     ComponentsModule,
     MongooseModule.forFeature([
       { name: TestResult.name, schema: TestResultSchema },
+      { name: TestFeedback.name, schema: TestFeedbackSchema },
     ]),
   ],
   providers: [TestsService, ScoringService],

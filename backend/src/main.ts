@@ -23,17 +23,24 @@ async function bootstrap() {
 
   // Documentation
   const swaggerConfig = configService.get<SwaggerConfig>('swagger');
+  const swaggerBasePath = configService.get<EnvironmentVariables>(
+    'SWAGGER_BASE_PATH',
+    {
+      infer: true,
+    },
+  );
   if (swaggerConfig?.enabled) {
     const options = new DocumentBuilder()
       .setTitle(swaggerConfig.title)
       .setDescription(swaggerConfig.description)
       .setVersion(swaggerConfig.version || '1.0')
+      .addServer(swaggerBasePath || '')
       .addBasicAuth()
       .addBearerAuth()
       .build();
     const document = SwaggerModule.createDocument(app, options);
 
-    SwaggerModule.setup(swaggerConfig.path, app, document);
+    SwaggerModule.setup('', app, document);
   }
 
   // Cors

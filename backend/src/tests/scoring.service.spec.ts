@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { LibraryDocument } from 'src/libraries/models/library.schema';
+import { LibraryDocument } from 'src/common/models/library.schema';
 import { testLibrary } from '../../test/testlibrary-unscored';
 import { ScoringService } from './scoring.service';
 

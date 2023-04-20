@@ -1,23 +1,27 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { LibraryService } from 'src/libraries/libraries.service';
-import { LibraryDocument } from 'src/libraries/models/library.schema';
+import { LibraryDocument } from 'src/common/models/library.schema';
 import CreateTestDto from './create-test.dto';
-import UsersService from 'src/users/users.service';
 import { ScoringService } from './scoring.service';
 import { InjectModel } from '@nestjs/mongoose';
 import TestResult, {
   TestResultDocument,
-} from 'src/libraries/models/test-result.schema';
+} from 'src/common/models/test-result.schema';
 import { Model } from 'mongoose';
+import TestFeedback, {
+  TestFeedbackDocument,
+} from 'src/common/models/test-feedback.schema';
+import CreateTestFeedbackDto from './create-test-feedback.dto';
 
 @Injectable()
 export class TestsService {
   constructor(
     private readonly libraryService: LibraryService,
-    private readonly usersService: UsersService,
     private readonly scoringService: ScoringService,
     @InjectModel(TestResult.name)
     private testResultModel: Model<TestResultDocument>,
+    @InjectModel(TestFeedback.name)
+    private testFeedbackModel: Model<TestFeedbackDocument>,
   ) {}
 
   async createOrUpdate(
@@ -133,5 +137,21 @@ export class TestsService {
 
   async findAllOwn(userId: string): Promise<TestResult[]> {
     return this.testResultModel.find({ testedBy: userId }).exec();
+  }
+
+  async createTestFeedback(
+    dto: CreateTestFeedbackDto,
+    userId: string,
+  ): Promise<TestFeedback> {
+    const createdTestFeedback = new this.testFeedbackModel({
+      testedBy: userId,
+      component: dto.testData.component,
+      testMode: dto.testData.testMode,
+      userOs: dto.testData.userOs,
+      userBrowser: dto.testData.userBrowser,
+      feedback: dto.feedback,
+    });
+    createdTestFeedback.save();
+    return createdTestFeedback;
   }
 }
