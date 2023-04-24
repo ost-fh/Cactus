@@ -10,12 +10,14 @@ type ResultBubbleProps = {
   positive: number;
   negative: number;
   not_decided: number;
+  label: string;
 };
 
 const ResultBubble = (props: ResultBubbleProps) => {
   return (
     <div>
       <div className='criterium-result-bubble'>
+        <span className='visually-hidden'>{props.label}</span>
         <span>
           {props.positive} <BsHandThumbsUp title='Positive' />{" "}
         </span>

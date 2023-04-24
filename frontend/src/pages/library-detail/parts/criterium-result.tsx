@@ -27,6 +27,7 @@ const CriteriumResult = ({ item }: CriteriumResultProps) => {
     <>
       <div className='criterium-detail'>
         <ResultBubble
+          label='criterium results: '
           positive={item.positive}
           negative={item.negative}
           not_decided={item.notDecided}
