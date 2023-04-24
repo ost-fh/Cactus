@@ -39,10 +39,11 @@ const CriteriumResult = ({ item }: CriteriumResultProps) => {
           <CountBubble label='Agreement Score' count={item.agreementScore} />
         )}
         <button
-          className={`button-with-icon ${showMoreInfo ? "button-active" : ""}`}
+          className={`button-with-icon ${
+            showMoreInfo ? "criterium-detail-button-active" : ""
+          }`}
           onClick={() => setShowMoreInfo(!showMoreInfo)}
         >
-          {/* {showMoreInfo ? "hide" : "show"} */}
           <BsInfoLg title='show details to criteria' />
         </button>
       </div>
@@ -50,7 +51,7 @@ const CriteriumResult = ({ item }: CriteriumResultProps) => {
         <div className='criterium-more-info'>
           <Alert type='help'>
             <p>
-              <strong>Description:</strong> {criterium?.help}
+              <strong>How to test & evaluate:</strong> {criterium?.help}
             </p>
             <p>
               <strong>Sources:</strong> Every criterium is based on a{" "}

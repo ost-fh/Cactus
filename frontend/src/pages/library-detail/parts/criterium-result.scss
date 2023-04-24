@@ -6,15 +6,16 @@
   align-items: center;
   width: 100%;
   gap: 1rem;
+}
 
-  .button-active {
-    border-color: colors.$blue;
-    background-color: colors.$blue-xlight;
-  }
-  .button-active:hover {
-    border-color: colors.$blue-dark;
-    background-color: colors.$blue-light;
-  }
+.criterium-detail-button-active {
+  border-color: colors.$blue;
+  background-color: colors.$blue-xlight;
+}
+
+.criterium-detail-button-active:hover {
+  border-color: colors.$blue-dark;
+  background-color: colors.$blue-light;
 }
 
 .criterium-more-info {

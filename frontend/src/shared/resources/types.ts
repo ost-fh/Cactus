@@ -130,6 +130,7 @@ export type CriteriumResult = {
   help: string;
   choice: string;
   comment: string;
+  sources?: string[];
 };
 
 export type TestResultTransmission = {
