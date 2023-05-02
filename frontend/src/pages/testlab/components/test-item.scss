@@ -22,4 +22,10 @@
     flex-direction: column;
     gap: 0.3rem;
   }
+
+  .criterium-more-info {
+    p {
+      max-width: 32rem;
+    }
+  }
 }
