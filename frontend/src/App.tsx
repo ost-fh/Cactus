@@ -23,6 +23,7 @@ import Components from "./pages/components/components";
 import AccessibilityStatement from "./pages/accessibility-statement/accessibility-statement";
 import LoginRedirect from "./pages/login-redirect/login-redirect";
 import FAQ from "./pages/faq/faq";
+import Criteria from "./pages/criteria/criteria";
 
 export type UserData = {
   _id: string;
@@ -61,6 +62,7 @@ function App() {
           />
           <Route path='contribute' element={<Contribute />} />
           <Route path='faq' element={<FAQ />} />
+          <Route path='criteria' element={<Criteria />} />
           <Route
             path='login'
             element={userData ? <Navigate to={"/"} /> : <Login />}

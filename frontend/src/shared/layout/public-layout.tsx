@@ -157,6 +157,9 @@ const PublicLayout = ({
               <Link to='/privacy-policy'>Privacy Policy</Link>
             </li>
             <li>
+              <Link to='/criteria'>Criteria Reference</Link>
+            </li>
+            <li>
               <a className='nav-icon' href='https://github.com/ost-fh/Cactus'>
                 Cactus on Github{" "}
                 <img src='/github-mark.svg' alt='GitHub Mark' />
