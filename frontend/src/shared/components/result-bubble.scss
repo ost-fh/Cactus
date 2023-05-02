@@ -1,0 +1,23 @@
+@use "src/shared/layout/breakpoints";
+
+.criterium-result-bubble {
+  background-color: rgb(238, 238, 238);
+  padding: 0.4rem 0.7rem;
+  border-radius: 1rem / 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.7rem;
+  height: auto;
+  width: auto;
+
+  span {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+  }
+
+  @media screen and (max-width: breakpoints.$phone) {
+    flex-direction: column;
+  }
+}

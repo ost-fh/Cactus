@@ -86,7 +86,7 @@ const AddLibrary = () => {
             id='lib-link-docs'
           />
         </div>
-        <div className='control-group'>
+        <div className='button-group'>
           <LinkButton
             type='button'
             to={"/libraries"}

@@ -70,7 +70,12 @@ const LibraryCard = ({
             </>
           ) : (
             <Alert
-              message={`There are currently no tested components for this  ${
+              message={`There are currently no${
+                currentVersion?.components &&
+                currentVersion?.components.length > 0
+                  ? " completely"
+                  : ""
+              } tested components for this  ${
                 library.versions.length > 1 ? "version" : "library"
               }`}
             />
