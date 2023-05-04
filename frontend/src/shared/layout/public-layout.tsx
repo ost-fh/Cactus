@@ -42,7 +42,7 @@ const PublicLayout = ({
             <img
               className='logo'
               alt='logo of project cactus'
-              src='/cactus_logo.png'
+              src='/cactus_logo.svg'
               height='705'
               width='705'
             />
