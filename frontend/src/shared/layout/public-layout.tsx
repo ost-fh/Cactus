@@ -42,7 +42,7 @@ const PublicLayout = ({
             <img
               className='logo'
               alt='logo of project cactus'
-              src='/cactus_logo.png'
+              src='/cactus_logo.svg'
               height='705'
               width='705'
             />
@@ -155,6 +155,9 @@ const PublicLayout = ({
             </li>
             <li>
               <Link to='/privacy-policy'>Privacy Policy</Link>
+            </li>
+            <li>
+              <Link to='/criteria'>Criteria Reference</Link>
             </li>
             <li>
               <a className='nav-icon' href='https://github.com/ost-fh/Cactus'>

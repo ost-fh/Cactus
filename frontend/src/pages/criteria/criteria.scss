@@ -1,0 +1,76 @@
+@use "src/shared/layout/colors";
+@use "src/shared/layout/breakpoints";
+
+.criteria-reference {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  h3,
+  h4 {
+    margin: 0;
+  }
+
+  p {
+    max-width: 40rem;
+  }
+
+  .component {
+    .component-header {
+      display: grid;
+      @media screen and (min-width: breakpoints.$phone) {
+        grid-template-columns: auto 1fr auto;
+      }
+      column-gap: 1rem;
+
+      img {
+        height: 6rem;
+        grid-row: span 2;
+      }
+      button {
+        grid-row: span 2;
+        align-self: center;
+        width: 6rem;
+      }
+      @media screen and (max-width: breakpoints.$phone) {
+        grid-template-columns: auto 1fr;
+        p {
+          grid-column: span 2;
+        }
+        button {
+          width: 12rem;
+        }
+      }
+    }
+  }
+
+  .testmode {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1.2rem 0;
+  }
+  .criterion {
+    display: flex;
+    flex-direction: column;
+
+    border: 0.125rem solid colors.$gray-xlight;
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+
+    .criterion-title {
+      font-size: 1.4rem;
+    }
+
+    li a {
+      word-break: break-all;
+    }
+
+    li {
+      list-style: disc;
+      list-style-position: outside;
+      list-style-type: disc;
+      margin-left: 1.5rem;
+    }
+  }
+}
