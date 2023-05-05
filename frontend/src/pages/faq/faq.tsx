@@ -54,7 +54,8 @@ const FAQ = () => {
             </a>{" "}
             and{" "}
             <a href='https://www.w3.org/WAI/ARIA/apg/patterns/'>W3C WAI APG</a>{" "}
-            Standards.
+            Standards. You can find all the criteria in the{" "}
+            <Link to={"/criteria"}>Criteria Reference</Link>.
           </p>
         </div>
         <h3>Using Cactus</h3>
@@ -88,8 +89,12 @@ const FAQ = () => {
         <div className='question'>
           <h4>Where can I go if I find issue with cactus?</h4>
           <p>
-            Open an Issue on our GitHub Repository and explain what you see as
-            an Issue and why that is the case.
+            Open an Issue on our{" "}
+            <a className='nav-icon' href='https://github.com/ost-fh/Cactus'>
+              GitHub Repository
+            </a>{" "}
+            and explain what you see as an issue and why that is the case. You
+            can find more details in the readme file.
           </p>
         </div>
         <div className='question'>

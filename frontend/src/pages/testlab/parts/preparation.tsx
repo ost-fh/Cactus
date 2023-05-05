@@ -8,6 +8,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 import LabPathDisplay from "../components/lab-path-display";
 import { Library, TestData } from "../../../shared/resources/types";
+import "./preparation.scss";
 
 type PreparationProps = {
   testData: TestData;
@@ -93,12 +94,12 @@ const Preparation = ({
         <section>
           <h3>Step 1: Set up Browser and Screenreader</h3>
           <p>
-            To test with a screenreader, please have{" "}
+            To test with a screenreader, start up{" "}
             <a href='https://www.nvaccess.org/'>
               <strong>NVDA</strong>
             </a>{" "}
-            ready and use <strong>Chrome</strong>. This way, we will have
-            reproducible results. If you're on Mac, you can use{" "}
+            and use <strong>Chrome</strong>. This way, we will have reproducible
+            results. If you're on Mac or Linux, you can use{" "}
             <a href='https://assistivlabs.com/sign-up'>
               the service AssistivLabs
             </a>{" "}
@@ -117,13 +118,14 @@ const Preparation = ({
       <section>
         <h3>
           Step {screenreader ? "2" : "1"}: Open the{" "}
-          {testData.componentLinkDocs ? "Component" : "Library"} Documentation
+          {testData.componentLinkDocs ? `${testData.component}` : "Library"}{" "}
+          Documentation
         </h3>
         <div className='layout-split'>
-          <div>
+          <div className='subsection'>
             <p>
-              Open the documentation besides the testlab-window, as you can see
-              on the image to the right. (At least, that's what we recommend)
+              Place the documentation besides the testlab-window. (At least,
+              that's what we recommend)
             </p>
             <a
               href={

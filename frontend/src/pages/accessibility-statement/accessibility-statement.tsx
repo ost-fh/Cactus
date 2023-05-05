@@ -21,9 +21,8 @@ const AccessibilityStatement = () => {
         We use the Cactus Score to evaluate the accessibility of UI libraries
         featured on this website. The Cactus Score is a comprehensive assessment
         of accessibility, covering a wide range of criteria such as keyboard
-        accessibility, color contrast, and screen reader compatibility. We use
-        this score to help users identify the most accessible UI libraries for
-        their needs.
+        accessibility and screen reader compatibility. We use this score to help
+        users identify the most accessible UI libraries for their needs.
       </p>
       <h3>Accessibility Features of this Website</h3>
       <p>

@@ -13,7 +13,7 @@ button,
   text-align: center;
   text-decoration: none;
   font-size: 1rem;
-  display: inline-block;
+  // display: inline-block;
   transition-duration: 0.3s;
 
   -webkit-user-select: none; /* Safari */
@@ -27,10 +27,10 @@ button:hover,
   border-color: colors.$gray-dark;
 }
 
-// .button:focus,
-// button:focus {
-//   outline: colors.$red 0.25rem solid;
-// }
+.button:focus-visible,
+button:focus-visible {
+  outline: colors.$red 0.25rem solid;
+}
 
 button:active,
 .button:active {

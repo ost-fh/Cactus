@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { BsInfoLg } from "react-icons/bs";
+import Alert from "../../../shared/components/alert";
 import { CriteriumResult } from "../../../shared/resources/types";
 import TestItemButton from "./test-item-button";
 import "./test-item.scss";
@@ -10,6 +12,7 @@ type TestItemProps = {
 
 const TestItem = ({ criterium, handleChange }: TestItemProps) => {
   const [commentOpen, setCommentOpen] = useState(false);
+  const [linksOpen, setLinksOpen] = useState(false);
   const [criteriumData, setCriteriumData] = useState(criterium);
 
   const changeChoice = (choice: string) => {
@@ -56,6 +59,17 @@ const TestItem = ({ criterium, handleChange }: TestItemProps) => {
           changeChoice={changeChoice}
           active={criteriumData.choice === "not_decidable"}
         />
+        <div style={{ flexGrow: "1" }}></div>
+        <button
+          type='button'
+          className={`button-with-icon ${
+            linksOpen ? "criterium-detail-button-active" : ""
+          }`}
+          onClick={() => setLinksOpen(!linksOpen)}
+        >
+          {/* {showMoreInfo ? "hide" : "show"} */}
+          <BsInfoLg title='show details to criteria' />
+        </button>
       </div>
       {commentOpen && (
         <div className='test-item-comment'>
@@ -67,6 +81,40 @@ const TestItem = ({ criterium, handleChange }: TestItemProps) => {
             value={criteriumData.comment}
             onChange={changeComment}
           ></textarea>
+        </div>
+      )}
+      {linksOpen && (
+        <div className='criterium-more-info'>
+          <Alert type='help'>
+            <p>
+              <strong>Sources:</strong> Every criterium is based on a{" "}
+              <a
+                href='https://www.w3.org/WAI/WCAG21/quickref/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                WCAG
+              </a>{" "}
+              criterion or an{" "}
+              <a
+                href='https://www.w3.org/WAI/ARIA/apg/patterns/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                APG pattern
+              </a>
+              . This criterion is based on the following:
+            </p>
+            <ul>
+              {criterium?.sources?.map((item) => (
+                <li key={item}>
+                  <a href={item} target='_blank' rel='noreferrer'>
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Alert>
         </div>
       )}
     </div>

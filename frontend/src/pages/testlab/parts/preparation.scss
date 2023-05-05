@@ -1,0 +1,33 @@
+#testlab-preparation {
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .subsection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  p {
+    max-width: 40rem;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+  }
+
+  input[type="text"] {
+    max-width: 35rem;
+  }
+
+  .test-instruction-img {
+    height: 10rem;
+    width: min-content;
+    justify-self: center;
+  }
+}
