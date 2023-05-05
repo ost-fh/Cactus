@@ -12,7 +12,6 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   // Database
-
   const configService = app.get(ConfigService);
   const port = configService.get<EnvironmentVariables>('PORT', { infer: true });
   const corsConfig = configService.get<CorsConfig>('cors', { infer: true });
