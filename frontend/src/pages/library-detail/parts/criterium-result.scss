@@ -1,3 +1,5 @@
+@use "src/shared/layout/colors";
+
 .criterium-detail {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -6,14 +8,29 @@
   gap: 1rem;
 }
 
-.criterium-result {
-  background-color: rgb(238, 238, 238);
-  padding: 0.4rem 0.7rem;
-  border-radius: 1rem / 50%;
+.criterium-detail-button-active {
+  border-color: colors.$blue;
+  background-color: colors.$blue-xlight;
+}
+
+.criterium-detail-button-active:hover {
+  border-color: colors.$blue-dark;
+  background-color: colors.$blue-light;
+}
+
+.criterium-more-info {
+  width: 100%;
   display: flex;
-  /* flex-wrap: no-wrap; */
-  /* display: grid;
-  grid-template-columns: 1fr auto; */
-  align-items: center;
-  gap: 0.2rem;
+  flex-direction: column;
+  align-items: flex-end;
+
+  li a {
+    word-break: break-all;
+  }
+
+  li {
+    list-style: disc;
+    list-style-position: inside;
+    list-style-type: disc;
+  }
 }

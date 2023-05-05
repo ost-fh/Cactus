@@ -179,7 +179,12 @@ const LibraryDetail = () => {
                       accessibility.
                     </p>
 
-                    <ResultBubble positive={4} negative={0} not_decided={0} />
+                    <ResultBubble
+                      label='criterion results demo'
+                      positive={4}
+                      negative={0}
+                      not_decided={0}
+                    />
                     <p>
                       This shows how many testers voted if a criterium was
                       fullfilled, not fulfilled or not decidable. (exemplary

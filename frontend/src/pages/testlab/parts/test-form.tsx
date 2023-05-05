@@ -80,18 +80,14 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='lab-layout'>
+    <form onSubmit={handleSubmit} id='testlab-testform' className='lab-layout'>
       <LabPathDisplay currentPage='test' />
       <Heading>Testing the Component</Heading>
       <Alert type='help'>
         <h3>How to test:</h3>
         <p>
-          Check if the criteria apply to an interactive example of the component
-          inside the{" "}
-          <a href={linkDocs} target='_blank' rel='noreferrer'>
-            documentation
-          </a>
-          .
+          Check if each criterium applies to an interactive example of the
+          component in the documentation you opened in the previous page.
         </p>
         <p>
           Please use the keyboard to test the criteria (tab, enter, esc, space,

@@ -14,7 +14,7 @@ const TestLabLayout = (props: TestLabLayoutProps) => {
   return (
     <div className='lab-header container'>
       <header className='page-header'>
-        <img className='logo' alt='logo' src='/cactus_logo.png' />
+        <img className='logo' alt='logo' src='/cactus_logo.svg' />
         <div className='title'>
           <h1>Cactus Testlab</h1>
         </div>

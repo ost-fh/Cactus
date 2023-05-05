@@ -15,6 +15,7 @@ import {
   Version,
 } from "../../../shared/resources/types";
 import { TestDataContext } from "../test-lab";
+import "./specify-test.scss";
 
 type SpecifyTestProps = {
   setTestData: Function;
@@ -81,7 +82,11 @@ const SpecifyTest = ({ library, setTestData }: SpecifyTestProps) => {
         screenreader, for example to read an alt-text. Please use chrome and
         NVDA for this test.
       </p>
-      <p>Each testmode displays the amount of tests that were already done.</p>
+      <p>
+        You can always check the blue box on the top right to see what you chose
+        to test.
+      </p>
+      {/* <p>Each testmode displays the amount of tests that were already done.</p> */}
       <Alert type='help' message='Choose a testmode and continue below.' />
 
       {componentCriteria.map((componentCriteria) => (

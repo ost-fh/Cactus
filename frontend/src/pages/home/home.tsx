@@ -17,7 +17,7 @@ const Home = () => {
         <div className='home-cact'>
           <div className='item'>
             <img
-              src='/crowd.jpeg'
+              src='/crowd.svg'
               width={150}
               height={150}
               alt='symbolic representation of a group of people'
@@ -32,7 +32,7 @@ const Home = () => {
           </div>
           <div className='item'>
             <img
-              src='/accessibility.jpeg'
+              src='/accessibility.svg'
               width={150}
               height={150}
               alt='symbol for web accessibility'
@@ -47,7 +47,7 @@ const Home = () => {
           </div>
           <div className='item'>
             <img
-              src='/components.png'
+              src='/components.svg'
               width={150}
               height={150}
               alt='symbolic representation of a group of UI Components'
@@ -62,7 +62,7 @@ const Home = () => {
           </div>
           <div className='item'>
             <img
-              src='/testing.jpeg'
+              src='/testing.svg'
               alt='a checklist'
               className='image'
               width={150}
@@ -79,7 +79,7 @@ const Home = () => {
             <img
               width={150}
               height={150}
-              src='/cactus_logo.png'
+              src='/cactus_logo.svg'
               alt='the project cactus logo'
               className='image'
             />
@@ -114,12 +114,16 @@ const Home = () => {
         </div>
         <div className='text'>
           <p>
-            This is a comparison platform for UI Libraries. They are compared by
-            the performance evaluated by users in manual testing. Currently the
-            tests focus on screenreader and keyboard use.
+            This is a comparison platform for UI Libraries. The UI Libraries are
+            compared by the performance evaluated by users in manual testing.
+            Currently the tests focus on keyboard and on screenreader (
+            <abbr title='NonVisual Desktop Access, a free screenreader for windows'>
+              NVDA
+            </abbr>
+            ) usage.
           </p>
         </div>
-        <Link to='/contribute#FAQ' className='button'>
+        <Link to='/faq' className='button'>
           Visit our FAQ
         </Link>
       </div>
