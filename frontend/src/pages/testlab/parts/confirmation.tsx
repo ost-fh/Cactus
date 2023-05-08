@@ -1,10 +1,10 @@
-import React from "react";
+import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import Heading from "../../../shared/components/heading";
-import LinkButton from "../../../shared/components/link-button";
 import { TestData } from "../../../shared/resources/types";
 import LabPathDisplay from "../components/lab-path-display";
+import { createTestFeedback } from "../../../shared/services/api";
 
 type ConfirmationProps = {
   testData: TestData;
@@ -15,10 +15,22 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
   const navigate = useNavigate();
   let [searchParams] = useSearchParams();
 
+  const [feedback, setFeedback] = useState("");
+
   const startOver = () => {
+    sendFeedback();
     resetTestlab();
     navigate("../specify");
   };
+
+  async function sendFeedback() {
+    await createTestFeedback(testData, feedback);
+  }
+
+  function goToLibraryOverview() {
+    sendFeedback();
+    navigate(`/libraries/${testData.libraryId}/${testData.libraryVersion}`);
+  }
 
   return (
     <div className='lab-layout'>
@@ -30,13 +42,20 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
           ? "The component was marked as not available."
           : "Your evaluation was added to the library results."}
       </p>
+      <label htmlFor='feedbackField'>Please leave a feedback</label>
+      <textarea
+        id='feedbackField'
+        name='feedbackField'
+        rows={5}
+        onChange={(e) => {
+          setFeedback(e.target.value);
+        }}
+      ></textarea>
       <div className='control-group'>
         <button onClick={startOver}>Add another Test to this Library</button>
-        <LinkButton
-          label={"Go to Library Overview"}
-          className='button-primary'
-          to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
-        />
+        <button onClick={goToLibraryOverview} className='button-primary'>
+          Go to Library Overview
+        </button>
       </div>
     </div>
   );
