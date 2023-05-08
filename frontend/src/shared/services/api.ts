@@ -3,6 +3,7 @@ import {
   Criterium,
   NewLibrary,
   test,
+  TestData,
   TestResultTransmission,
 } from "../resources/types";
 
@@ -121,6 +122,15 @@ export const getUserTestData = async (): Promise<test[]> => {
       throw new Error("failed");
     }
   });
+};
+
+export const createTestFeedback = async (testData: TestData, feedback: string) => {
+  return httpService("POST", `${API_BASE_URL}/testlab/feedback`, {
+    testData,
+    feedback
+  })
+    .then((data) => data.json())
+    .catch((error) => console.error(error));
 };
 
 export const createLibrary = async (newLibrary: NewLibrary) => {
