@@ -5,6 +5,9 @@ import Heading from "../../../shared/components/heading";
 import { TestData } from "../../../shared/resources/types";
 import LabPathDisplay from "../components/lab-path-display";
 import { createTestFeedback } from "../../../shared/services/api";
+import Alert from "../../../shared/components/alert";
+import "./confirmation.scss";
+import LinkButton from "../../../shared/components/link-button";
 
 type ConfirmationProps = {
   testData: TestData;
@@ -16,21 +19,19 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
   let [searchParams] = useSearchParams();
 
   const [feedback, setFeedback] = useState("");
+  const [feedbackSent, setFeedbackSent] = useState(false);
 
   const startOver = () => {
-    sendFeedback();
     resetTestlab();
     navigate("../specify");
   };
 
-  async function sendFeedback() {
-    await createTestFeedback(testData, feedback);
-  }
+  const sendFeedback = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-  function goToLibraryOverview() {
-    sendFeedback();
-    navigate(`/libraries/${testData.libraryId}/${testData.libraryVersion}`);
-  }
+    await createTestFeedback(testData, feedback);
+    setFeedbackSent(true);
+  };
 
   return (
     <div className='lab-layout'>
@@ -42,20 +43,48 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
           ? "The component was marked as not available."
           : "Your evaluation was added to the library results."}
       </p>
-      <label htmlFor='feedbackField'>Please leave a feedback</label>
-      <textarea
-        id='feedbackField'
-        name='feedbackField'
-        rows={5}
-        onChange={(e) => {
-          setFeedback(e.target.value);
-        }}
-      ></textarea>
+      <Alert type='help' className='feedback-form'>
+        <h3>Your Feedback Matters</h3>
+        <form onSubmit={sendFeedback}>
+          <label htmlFor='feedbackField'>
+            We value your feedback and would appreciate if you could take a few
+            minutes to share your thoughts with us. Your feedback will help us
+            improve our testlab and provide a better experience for all users.
+            <ul>
+              <li>How was the overall process?</li>
+              <li>
+                Were there any questions that were confusing or unclear? If so,
+                which ones?
+              </li>
+              <li>Is there anything else you would like to share with us?</li>
+            </ul>
+          </label>
+          <textarea
+            id='feedbackField'
+            name='feedbackField'
+            rows={5}
+            onChange={(e) => {
+              setFeedback(e.target.value);
+            }}
+            required
+            disabled={feedbackSent}
+          ></textarea>
+          {feedbackSent ? (
+            <Alert type="success" message="Thanks for your feedback"></Alert>
+          ) : (
+            <button type='submit'>
+              Send Feedback
+            </button>
+          )}
+        </form>
+      </Alert>
       <div className='control-group'>
         <button onClick={startOver}>Add another Test to this Library</button>
-        <button onClick={goToLibraryOverview} className='button-primary'>
-          Go to Library Overview
-        </button>
+        <LinkButton
+          label={"Go to Library Overview"}
+          className='button-primary'
+          to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
+        />
       </div>
     </div>
   );
