@@ -1,0 +1,42 @@
+name: Button
+alternativeComponentNames:
+description: A button is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, cancelling an action, or performing a delete operation.
+imageUrl: /components.png
+testModes:
+  - testMode: Keyboard
+    criteria:
+      - _id: 1
+        title: The button is focusable with 'tab'
+        help: Click close above to the interactive example of a button and use 'tab' to try to navigate to it. You should be able to focus the button.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+      - _id: 2
+        title: A focused button has a visible focus style
+        help: If you reached the button with 'tab', you should (easily) be able to tell that it is currently focused.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html
+      - _id: 3
+        title: The button can be activated with 'space'
+        help: Navigate to the button with tab. Activate the button with the 'space'  key.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/button/
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+      - _id: 4
+        title: The button can be activated with 'enter'
+        help: Navigate to the button with tab. Activate the button with the 'enter' key.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/button/
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+  - testMode: Screenreader
+    criteria:
+      - _id: 1
+        title: The button is announced as a 'button' upon focus
+        help: Navigate to the button with tab. Upon focusing the button, it should be announced as a button.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/button/
+      - _id: 2
+        title: The label of the button is announced upon focus
+        help: Navigate to the button with tab. Upon focusing the button, the label should be announced.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/button/
+          - https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html

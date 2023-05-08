@@ -1,0 +1,41 @@
+name: Slider
+alternativeComponentNames:
+description: A slider is an input where the user selects a value from within a given range.
+imageUrl: /components.png
+testModes:
+  - testMode: Keyboard
+    criteria:
+      - _id: 1
+        title: The slider is focusable with 'tab'
+        help: Click close above to the interactive example of a slider and use 'tab' to try to navigate to it. You should be able to focus the slider.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+      - _id: 2
+        title: A focused slider has a visible focus style
+        help: If you reached the slider with 'tab', you should (easily) be able to tell that the slider (thumb) is currently focused.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html
+      - _id: 3
+        title: \'Right Arrow' or 'Up Arrow' increases the value of the slider
+        help: Using the 'right' or ' up' arrow keys, try to increase the value of the slider. At least one variation should work.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/slider/
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+      - _id: 4
+        title: \'Left Arrow' or 'Down Arrow' decreases the value of the slider
+        help: Using the 'left' or 'down' arrow keys, try to increase the value of the slider. At least one variation should work.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/slider/
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+  - testMode: Screenreader
+    criteria:
+      - _id: 1
+        title: The slider is announced as a 'slider' upon focus
+        help: Click close above to the interactive example of a slider and use 'tab' to try to navigate to it. Upon focusing the slider, it is announced as a slider.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/slider/
+      - _id: 2
+        title: The label and the maximum, minimum and current values of the slider are announced upon focus
+        help: Upon focusing the slider, it should announce the mentioned values.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/slider/

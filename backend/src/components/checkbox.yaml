@@ -1,0 +1,40 @@
+name: Checkbox
+alternativeComponentNames:
+description: A checkable input that has two ('true', 'false') or three possible values ('true', 'false', or 'mixed').
+imageUrl: /components.png
+testModes:
+  - testMode: Keyboard
+    criteria:
+      - _id: 1
+        title: The checkbox is focusable with 'tab'
+        help: Click close above to the interactive example of a checkbox and use 'tab' to try to navigate to it. You should be able to focus the button.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+      - _id: 2
+        title: A focused checkbox has a visible focus style
+        help: If you reached the checkbox with 'tab', you should (easily) be able to tell that it is currently focused.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html
+      - _id: 3
+        title: The state of the checkbox can be changed with 'space'
+        help: Press space to check or uncheck the checkbox.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+  - testMode: Screenreader
+    criteria:
+      - _id: 1
+        title: The checkbox is announced as a checkbox
+        help: Upon focusing the checkbox, it should be announced as a checkbox.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
+      - _id: 2
+        title: The label of the checkbox is read upon focus of the checkbox
+        help: Upon focusing the checkbox, the label of the checkbox is announced.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html
+      - _id: 3
+        title: The state of the checkbox is read upon focus of the checkbox
+        help: Upon focusing the checkbox, the state of the checkbox is announced, e.g. 'checked, 'unchecked' or 'indeterminate'.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/

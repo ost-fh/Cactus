@@ -7,7 +7,7 @@ testModes:
     criteria:
       - _id: 1
         title: The label of the switch is read upon focus
-        help: Upon focusing the switch, the label of the switchbox is announced.
+        help: Navigate to the switch control with tab. Upon focusing the switch, the label of the switchbox is announced.
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html
       - _id: 2
@@ -29,12 +29,12 @@ testModes:
           - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
       - _id: 2
         title: The focus style of the switch is visible
-        help: Navigate to the switch control with tab. you should (easily) be able to recognize which header element is currently focused. This is usually done with an outline.
+        help: You should (easily) be able to recognize which header element is currently focused. This is usually done with an outline.
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html
       - _id: 3
         title: The switch control does not change on focus
-        help: Navigate to the switch control with tab. Upon receiving focus, it should not change state (on/off).
+        help: Upon receiving focus, the switch control should not change state (on/off).
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/on-focus.html
       - _id: 4
