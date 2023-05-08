@@ -22,7 +22,7 @@ services:
         }
     deploy:
       labels:
-        caddy: cactus.sifs0003.infs.ch
+        caddy: cactus.projects-ost.ch
         caddy.reverse_proxy: "{{upstreams 8080}}"
       restart_policy:
         condition: "on-failure"
@@ -30,7 +30,7 @@ services:
   frontend:
     image: $CONTAINER_REGISTRY_PATH/frontend:dev
     environment:
-      - REACT_APP_BACKEND_BASE_URI=https://cactus.sifs0003.infs.ch/api
+      - REACT_APP_BACKEND_BASE_URI=https://cactus.projects-ost.ch/api
     networks:
       - default
     deploy:
@@ -43,13 +43,13 @@ services:
       - PORT=3010
       - DATABASE_URL=mongodb://${DB_USERNAME}:${DB_PASSWORD}@database:27017/cactus
       - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
-      - FRONTEND_ORIGIN=https://cactus.sifs0003.infs.ch
+      - FRONTEND_ORIGIN=https://cactus.projects-ost.ch
       - GITHUB_OAUTH_CLIENT_ID=${GITHUB_OAUTH_CLIENT_ID}
       - GITHUB_OAUTH_CLIENT_SECRET=${GITHUB_OAUTH_CLIENT_SECRET}
-      - GITHUB_OAUTH_CALLBACK_BASE_URL=https://cactus.sifs0003.infs.ch/api
+      - GITHUB_OAUTH_CALLBACK_BASE_URL=https://cactus.projects-ost.ch/api
       - GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID}
       - GOOGLE_OAUTH_CLIENT_SECRET=${GOOGLE_OAUTH_CLIENT_SECRET}
-      - GOOGLE_OAUTH_CALLBACK_BASE_URL=https://cactus.sifs0003.infs.ch/api
+      - GOOGLE_OAUTH_CALLBACK_BASE_URL=https://cactus.projects-ost.ch/api
       - SWAGGER_BASE_PATH=/api
     networks:
       - default
