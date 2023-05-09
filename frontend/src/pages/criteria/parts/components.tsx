@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ComponentCriteria } from "../../../shared/resources/types";
+import AnimatedSwitch from "./animated-switch";
 
 type ComponentProps = {
   component: ComponentCriteria;
@@ -10,7 +11,15 @@ const Component = ({ component }: ComponentProps) => {
   return (
     <div className='component'>
       <div className='component-header'>
-        <img src={component.imageUrl} alt={`${component.name} symbol`} />
+        {component.name === "Switch" ? (
+          <AnimatedSwitch />
+        ) : (
+          <img
+            className='img'
+            src={component.imageUrl}
+            alt={`${component.name} symbol`}
+          />
+        )}
         <h3>{`${component.name}${
           component.alternativeComponentNames
             ? ", " + component.alternativeComponentNames
