@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 1024 1024" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path d="M130.358 457.725L893.642 457.725C939.236 457.725 976.198 494.687 976.198 540.282L976.198 540.282C976.198 585.876 939.236 622.838 893.642 622.838L130.358 622.838C84.7638 622.838 47.8021 585.876 47.8021 540.282L47.8021 540.282C47.8021 494.687 84.7638 457.725 130.358 457.725Z" id="Fill"/>
+</defs>
+<g id="Slider" vectornator:layerName="Slider">
+<path d="M325.322 389.37C343.352 369.594 343.957 367.38 363.263 367.739C382.569 368.098 382.674 367.225 400.764 386.283C418.854 405.341 435.475 424.209 435.475 455.053L435.475 719.893C435.475 750.737 418.731 749.736 398.076 749.736L328.14 749.736C307.485 749.736 290.741 750.737 290.741 719.893L290.741 455.053C290.741 424.209 307.292 409.146 325.322 389.37Z" fill="#303030" fill-rule="nonzero" opacity="0" stroke="none"/>
+<g opacity="1">
+<use fill="#dddddd" fill-rule="nonzero" stroke="none" xlink:href="#Fill"/>
+<mask height="165.113" id="StrokeMask" maskUnits="userSpaceOnUse" width="928.396" x="47.8021" y="457.725">
+<rect fill="#000000" height="165.113" stroke="none" width="928.396" x="47.8021" y="457.725"/>
+<use fill="#ffffff" fill-rule="evenodd" stroke="none" xlink:href="#Fill"/>
+</mask>
+<use fill="none" mask="url(#StrokeMask)" stroke="#adadad" stroke-linecap="butt" stroke-linejoin="round" stroke-width="121.308" xlink:href="#Fill"/>
+</g>
+<path d="M343.748 335.903C343.748 335.903 350.73 323.532 373.07 323.532C395.411 323.532 405.245 335.903 405.245 335.903C405.245 335.903 447.222 387.14 447.222 405.842L447.222 666.605C447.222 685.307 434.666 700.468 419.177 700.468L329.815 700.468C314.326 700.468 301.77 685.307 301.77 666.605L301.77 405.842C301.77 387.14 343.748 335.903 343.748 335.903Z" fill="#303030" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</svg>
