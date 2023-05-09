@@ -64,26 +64,28 @@ const Libraries = () => {
             <option value='name'>Name</option>
           </select>
         </div>
-        <div className='filter-group'>
-          <label htmlFor='filters'>Evaluate by components: </label>
-          {components &&
-            components.map((component) => (
-              <label key={component}>
-                <input
-                  type='checkbox'
-                  onChange={() => changeComponentFilter(component)}
-                  checked={
-                    componentFilters.find((filter) => filter === component)
-                      ? true
-                      : false
-                  }
-                  name='filters'
-                />
-                {component}
-              </label>
-            ))}
-          <div className='spacer-flex'></div>
-        </div>
+        <fieldset>
+          <div className='filter-group'>
+            <legend>Evaluate by components: </legend>
+            {components &&
+              components.map((component) => (
+                <label key={component}>
+                  <input
+                    type='checkbox'
+                    onChange={() => changeComponentFilter(component)}
+                    checked={
+                      componentFilters.find((filter) => filter === component)
+                        ? true
+                        : false
+                    }
+                    name='filters'
+                  />
+                  {component}
+                </label>
+              ))}
+            <div className='spacer-flex'></div>
+          </div>
+        </fieldset>
         <button
           disabled={componentFilters.length <= 0}
           // style={{

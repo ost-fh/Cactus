@@ -6,7 +6,6 @@ import { UserContext } from "../../../App";
 import { TestDataContext } from "../test-lab";
 import { getUserTestData } from "../../../shared/services/api";
 
-
 type SpecifyComponentFieldProps = {
   componentCriteria: ComponentCriteria;
   component: Component | undefined;
@@ -116,13 +115,15 @@ const SpecifyComponentField = ({
       )}
       {/* </div> */}
 
-      {displayRedoTestMessage && (
-        <Alert
-          className='redo'
-          type='info'
-          message={`You already tested the ${testData.component} with ${testData.testMode}. If you redo the test, your previous result will be replaced.`}
-        />
-      )}
+      <div aria-live='polite' className='redo'>
+        {displayRedoTestMessage && (
+          <Alert
+            className='redo'
+            type='info'
+            message={`You already tested the ${testData.component} with ${testData.testMode}. If you redo the test, your previous result will be replaced.`}
+          />
+        )}
+      </div>
     </div>
   );
 };

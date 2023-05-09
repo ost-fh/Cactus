@@ -51,4 +51,13 @@
     gap: 0.7rem;
     align-items: center;
   }
+
+  textarea {
+    padding: 0.7rem;
+    border: 0.125rem solid colors.$gray-dark;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    max-width: 100%;
+    max-height: 20rem;
+  }
 }

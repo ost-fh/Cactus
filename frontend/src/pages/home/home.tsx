@@ -20,7 +20,7 @@ const Home = () => {
               src='/crowd.svg'
               width={150}
               height={150}
-              alt='symbolic representation of a group of people'
+              alt=''
               className='image'
             />
             <p className='highlight'>
@@ -35,7 +35,7 @@ const Home = () => {
               src='/accessibility.svg'
               width={150}
               height={150}
-              alt='symbol for web accessibility'
+              alt=''
               className='image'
             />
             <p className='highlight'>
@@ -50,7 +50,7 @@ const Home = () => {
               src='/components.svg'
               width={150}
               height={150}
-              alt='symbolic representation of a group of UI Components'
+              alt=''
               className='image'
             />
             <div>
@@ -63,7 +63,7 @@ const Home = () => {
           <div className='item'>
             <img
               src='/testing.svg'
-              alt='a checklist'
+              alt=''
               className='image'
               width={150}
               height={150}
@@ -80,7 +80,7 @@ const Home = () => {
               width={150}
               height={150}
               src='/cactus_logo.svg'
-              alt='the project cactus logo'
+              alt=''
               className='image'
             />
             <div>

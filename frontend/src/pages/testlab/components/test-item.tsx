@@ -34,90 +34,106 @@ const TestItem = ({ criterium, handleChange }: TestItemProps) => {
   };
 
   return (
-    <div className='test-item'>
-      <h3 className='test-item-criteria'>{criterium.title}</h3>
-      <p>{criterium.help}</p>
-      <div className='button-group'>
-        <TestItemButton
-          id={criterium._id}
-          label='Yes'
-          choice='yes'
-          changeChoice={changeChoice}
-          active={criteriumData.choice === "yes"}
-        />
-        <TestItemButton
-          id={criterium._id}
-          label='No'
-          choice='no'
-          changeChoice={changeChoice}
-          active={criteriumData.choice === "no"}
-        />
-        <TestItemButton
-          id={criterium._id}
-          label='Not Decidable'
-          choice='not_decidable'
-          changeChoice={changeChoice}
-          active={criteriumData.choice === "not_decidable"}
-        />
-        <div style={{ flexGrow: "1" }}></div>
-        <button
-          type='button'
-          className={`button-with-icon ${
-            linksOpen ? "criterium-detail-button-active" : ""
-          }`}
-          onClick={() => setLinksOpen(!linksOpen)}
-        >
-          {/* {showMoreInfo ? "hide" : "show"} */}
-          <BsInfoLg title='show details to criteria' />
-        </button>
+    <fieldset>
+      <div className='test-item'>
+        <legend>
+          <h3 className='test-item-criteria'>{criterium.title}</h3>
+        </legend>
+        <p>{criterium.help}</p>
+        <div className='button-group'>
+          <TestItemButton
+            id={criterium._id}
+            title={criterium.title}
+            label='Yes'
+            choice='yes'
+            changeChoice={changeChoice}
+            active={criteriumData.choice === "yes"}
+          />
+          <TestItemButton
+            id={criterium._id}
+            title={criterium.title}
+            label='No'
+            choice='no'
+            changeChoice={changeChoice}
+            active={criteriumData.choice === "no"}
+          />
+          <TestItemButton
+            id={criterium._id}
+            title={criterium.title}
+            label='Not Decidable'
+            choice='not_decidable'
+            changeChoice={changeChoice}
+            active={criteriumData.choice === "not_decidable"}
+          />
+          <div style={{ flexGrow: "1" }}></div>
+          <button
+            type='button'
+            className={`button-with-icon ${
+              linksOpen ? "criterium-detail-button-active" : ""
+            }`}
+            onClick={() => setLinksOpen(!linksOpen)}
+            aria-expanded={linksOpen}
+            aria-controls={`criterium-more-info-${criterium._id}`}
+          >
+            {/* {showMoreInfo ? "hide" : "show"} */}
+            <span className='visually-hidden'>
+              show details to criteria {criterium.title}
+            </span>
+            <BsInfoLg title='' />
+          </button>
+        </div>
+
+        {linksOpen && (
+          <div
+            id={`criterium-more-info-${criterium._id}`}
+            className='criterium-more-info'
+          >
+            <Alert type='help'>
+              <p>
+                <strong>Sources:</strong> Every criterium is based on a{" "}
+                <a
+                  href='https://www.w3.org/WAI/WCAG21/quickref/'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  WCAG
+                </a>{" "}
+                criterion or an{" "}
+                <a
+                  href='https://www.w3.org/WAI/ARIA/apg/patterns/'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  APG pattern
+                </a>
+                . This criterion is based on the following:
+              </p>
+              <ul>
+                {criterium?.sources?.map((item) => (
+                  <li key={item}>
+                    <a href={item} target='_blank' rel='noreferrer'>
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </Alert>
+          </div>
+        )}
+        {commentOpen && (
+          <div className='test-item-comment'>
+            <label htmlFor='item-comment'>Why is it not decidable?</label>
+            <textarea
+              required
+              name='comment'
+              id='item-comment'
+              value={criteriumData.comment}
+              onChange={changeComment}
+            ></textarea>
+          </div>
+        )}
       </div>
-      {commentOpen && (
-        <div className='test-item-comment'>
-          <label htmlFor='item-comment'>Why is it not decidable?</label>
-          <textarea
-            required
-            name='comment'
-            id='item-comment'
-            value={criteriumData.comment}
-            onChange={changeComment}
-          ></textarea>
-        </div>
-      )}
-      {linksOpen && (
-        <div className='criterium-more-info'>
-          <Alert type='help'>
-            <p>
-              <strong>Sources:</strong> Every criterium is based on a{" "}
-              <a
-                href='https://www.w3.org/WAI/WCAG21/quickref/'
-                target='_blank'
-                rel='noreferrer'
-              >
-                WCAG
-              </a>{" "}
-              criterion or an{" "}
-              <a
-                href='https://www.w3.org/WAI/ARIA/apg/patterns/'
-                target='_blank'
-                rel='noreferrer'
-              >
-                APG pattern
-              </a>
-              . This criterion is based on the following:
-            </p>
-            <ul>
-              {criterium?.sources?.map((item) => (
-                <li key={item}>
-                  <a href={item} target='_blank' rel='noreferrer'>
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </Alert>
-        </div>
-      )}
-    </div>
+    </fieldset>
   );
 };
 

@@ -41,7 +41,10 @@ const SpecifyTestButton = ({
         id={`${testMode}-${componentCriteria.name}`}
       />
       <div>
-        <strong>{testMode}</strong>
+        <strong>
+          <span className='visually-hidden'>{componentCriteria.name} </span>
+          {testMode}
+        </strong>
         <br />
         {amountOfTests && amountOfTests >= 1 ? (
           <small>amount of tests: {amountOfTests} </small>
