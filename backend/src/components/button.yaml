@@ -1,7 +1,7 @@
 name: Button
 alternativeComponentNames:
 description: A button is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, cancelling an action, or performing a delete operation.
-imageUrl: /components.png
+imageUrl: /components/button.svg
 testModes:
   - testMode: Keyboard
     criteria:

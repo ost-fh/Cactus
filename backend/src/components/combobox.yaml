@@ -1,7 +1,7 @@
 name: Combobox
 alternativeComponentNames: Select, Dropdown
 description: A combobox is an input widget with an associated popup that enables users to select a value for the combobox from a collection of possible values.
-imageUrl: /components.png
+imageUrl: /components/combobox.svg
 testModes:
   - testMode: Keyboard
     additionalHint: This pattern is implementable in many different ways, therefore the criteria are held general.

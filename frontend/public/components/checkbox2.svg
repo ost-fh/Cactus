@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 1024 1024" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Checkbox" vectornator:layerName="Checkbox">
+<g opacity="1">
+<path d="M256.916 138.956L767.084 138.956C832.232 138.956 885.044 191.768 885.044 256.916L885.044 767.084C885.044 832.232 832.232 885.044 767.084 885.044L256.916 885.044C191.768 885.044 138.956 832.232 138.956 767.084L138.956 256.916C138.956 191.768 191.768 138.956 256.916 138.956Z" fill="#dddddd" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M276.091 185.18L747.909 185.18C798.118 185.18 838.82 225.882 838.82 276.091L838.82 747.909C838.82 798.118 798.118 838.82 747.909 838.82L276.091 838.82C225.882 838.82 185.18 798.118 185.18 747.909L185.18 276.091C185.18 225.882 225.882 185.18 276.091 185.18Z" fill="#8b8b8b" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="Rechteck"/>
+<path d="M280.918 213.207L743.082 213.207C780.478 213.207 810.793 243.522 810.793 280.918L810.793 743.082C810.793 780.478 780.478 810.793 743.082 810.793L280.918 810.793C243.522 810.793 213.207 780.478 213.207 743.082L213.207 280.918C213.207 243.522 243.522 213.207 280.918 213.207Z" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M277.834 528.965L367.123 621.68L436.13 693.335L748.449 375.711L714.529 340.489L437.432 624.192L313.056 495.044L277.834 528.965Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</g>
+</svg>

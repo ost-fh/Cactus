@@ -1,7 +1,7 @@
 name: Checkbox
 alternativeComponentNames:
 description: A checkable input that has two ('true', 'false') or three possible values ('true', 'false', or 'mixed').
-imageUrl: /components.png
+imageUrl: /components/checkbox.svg
 testModes:
   - testMode: Keyboard
     criteria:
