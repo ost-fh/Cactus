@@ -22,9 +22,9 @@ const Heading = ({ children, noFocus = false }: HeadingProps) => {
   }, [children]);
 
   return (
-    <h2 className='heading-h2' tabIndex={-1} ref={headerRef}>
+    <h1 className='heading-h1' tabIndex={-1} ref={headerRef}>
       {children}
-    </h2>
+    </h1>
   );
 };
 
