@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 1024 1024" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Checkbox" vectornator:layerName="Checkbox">
+<path d="M252.778 132.905L771.222 132.905C837.426 132.905 891.095 186.574 891.095 252.778L891.095 771.222C891.095 837.426 837.426 891.095 771.222 891.095L252.778 891.095C186.574 891.095 132.905 837.426 132.905 771.222L132.905 252.778C132.905 186.574 186.574 132.905 252.778 132.905Z" fill="#dddddd" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M285.5 198.215L738.5 198.215C786.706 198.215 825.785 237.294 825.785 285.5L825.785 738.5C825.785 786.706 786.706 825.785 738.5 825.785L285.5 825.785C237.294 825.785 198.215 786.706 198.215 738.5L198.215 285.5C198.215 237.294 237.294 198.215 285.5 198.215Z" fill="#8b8b8b" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="Rechteck"/>
+<path d="M301.019 239.198L722.981 239.198C757.124 239.198 784.802 266.876 784.802 301.019L784.802 722.981C784.802 757.124 757.124 784.802 722.981 784.802L301.019 784.802C266.876 784.802 239.198 757.124 239.198 722.981L239.198 301.019C239.198 266.876 266.876 239.198 301.019 239.198Z" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M289.808 552.102L364.891 630.967L418.92 687.895C427.622 697.022 438.179 694.285 443.984 687.736L722.968 401.561C728.706 395.875 726.88 390.021 722.703 385.648L706.977 369.893C702.566 365.908 695.966 366.598 692.147 370.151L442.978 625.467C435.952 632.865 430.096 635.573 419.175 624.962C419.175 624.962 324.976 522.048 322.142 519.126C316.783 513.603 311.012 512 303.22 519.601C301.885 520.904 290.646 531.627 290.646 531.627C283.65 538.013 283.223 544.502 289.808 552.102Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</svg>

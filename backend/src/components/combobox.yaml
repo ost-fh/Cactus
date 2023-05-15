@@ -1,0 +1,49 @@
+name: Combobox
+alternativeComponentNames: Select, Dropdown
+description: A combobox is an input widget with an associated popup that enables users to select a value for the combobox from a collection of possible values.
+imageUrl: /components/combobox.svg
+testModes:
+  - testMode: Keyboard
+    additionalHint: This pattern is implementable in many different ways, therefore the criteria are held general.
+    criteria:
+      - _id: 1
+        title: The combobox field is focusable with 'tab'
+        help: Click close above to the interactive example of a combobox and use 'tab' to try to navigate to it. You should be able to focus the combobox.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+      - _id: 2
+        title: The selected value in the combobox has a visible focus style
+        help: You should (easily) be able to tell what element of the provided values is currently focused.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html
+      - _id: 3
+        title: The focus inside of the combobox can be moved with the arrow keys
+        help: Press 'space' or 'enter' to open the combobox. Move between the provided options with the arrow keys.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+          - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+      - _id: 4
+        title: \'esc\' closes the popup without setting a value
+        help: With the popup open, press 'esc' to close the popup. It should not change the selected value.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+          - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+      - _id: 5
+        title: \'enter\' closes the popup and sets the selected value
+        help: With the popup open, press 'enter' to close the popup. It should change the selected value.
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
+          - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+  - testMode: Screenreader
+    additionalHint: This pattern is implementable in many different ways, therefore the criteria are held general.
+    criteria:
+      - _id: 1
+        title: The combobox is announced as a 'dropdown', 'menu' or 'combobox' upon focus
+        help: Click close above to the interactive example of a combobox and use 'tab' to try to navigate to it. Upon focusing the combobox, its type is announced.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+      - _id: 2
+        title: When moving through the options, the option and its position in the list are read
+        help: Press 'space' or 'enter' to open the combobox. Move between the provided options with the arrow keys.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/

@@ -1,11 +1,21 @@
-.feedback-form form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.feedback-form {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  li {
-    list-style-type: disc;
-    list-style-position: inside;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    li {
+      list-style-type: disc;
+      list-style-position: inside;
+    }
+    textarea {
+      padding: 0.7rem;
+      border: 0.125rem solid #ccc;
+      border-radius: 0.3rem;
+      font-size: 1rem;
+      max-width: 100%;
+      max-height: 20rem;
+    }
   }
 }

@@ -44,7 +44,7 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
           : "Your evaluation was added to the library results."}
       </p>
       <Alert type='help' className='feedback-form'>
-        <h3>Your Feedback Matters</h3>
+        <h3>Your Feedback matters!</h3>
         <form onSubmit={sendFeedback}>
           <label htmlFor='feedbackField'>
             We value your feedback and would appreciate if you could take a few
@@ -70,9 +70,12 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
             disabled={feedbackSent}
           ></textarea>
           {feedbackSent ? (
-            <Alert type="success" message="Thanks for your feedback"></Alert>
+            <Alert type='success' message='Thanks for your feedback'></Alert>
           ) : (
-            <button type='submit'>
+            <button
+              type='submit'
+              className={feedback !== "" ? "button-primary" : ""}
+            >
               Send Feedback
             </button>
           )}
