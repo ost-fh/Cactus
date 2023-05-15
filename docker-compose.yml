@@ -28,7 +28,7 @@ services:
         condition: "on-failure"
         
   frontend:
-    image: $CONTAINER_REGISTRY_PATH/frontend:dev
+    image: $CONTAINER_REGISTRY_PATH/frontend:latest
     environment:
       - REACT_APP_BACKEND_BASE_URI=https://cactus.projects-ost.ch/api
     networks:
