@@ -23,13 +23,13 @@ testModes:
           - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
           - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
       - _id: 4
-        title: \'esc\' closes the popup without setting a value
+        title: "'esc' closes the popup without setting a value"
         help: With the popup open, press 'esc' to close the popup. It should not change the selected value.
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
           - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
       - _id: 5
-        title: \'enter\' closes the popup and sets the selected value
+        title: "'enter' closes the popup and sets the selected value"
         help: With the popup open, press 'enter' to close the popup. It should change the selected value.
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
@@ -42,8 +42,10 @@ testModes:
         help: Click close above to the interactive example of a combobox and use 'tab' to try to navigate to it. Upon focusing the combobox, its type is announced.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
       - _id: 2
         title: When moving through the options, the option and its position in the list are read
         help: Press 'space' or 'enter' to open the combobox. Move between the provided options with the arrow keys.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html

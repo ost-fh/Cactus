@@ -6,8 +6,8 @@ testModes:
   - testMode: Screenreader
     criteria:
       - _id: 1
-        title: The label of the switch is read upon focus
-        help: Navigate to the switch control with tab. Upon focusing the switch, the label of the switchbox is announced.
+        title: The label of the switch is announced upon focus
+        help: Navigate to the switch control with tab. Upon focusing the switch, the label of the switchbox is announced. If the documentation provides no label in the documentation, choose 'not decidable'
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html
       - _id: 2
@@ -15,11 +15,19 @@ testModes:
         help: Upon focusing the switch, it is announced as switch or checkbox.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/switch/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
       - _id: 3
         title: The screenreader announces the new state upon switching
         help: Navigate to the switch control with tab. Change the state of the switch with 'enter' or 'space'. Upon every state change, the change should be announced.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/switch/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
+      - _id: 4
+        title: The state of the switch is announced upon focus
+        help: Upon focusing the switch, the state is announced ('on' or 'off', 'checked' or 'unchecked').
+        sources:
+          - https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html
+
   - testMode: Keyboard
     criteria:
       - _id: 1

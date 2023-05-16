@@ -229,13 +229,14 @@ const LibraryDetail = () => {
 
             {version &&
               amountOfComponents &&
+              version.components.length > 0 &&
               version.components.length < amountOfComponents && (
                 // `${version.components.length} vs ${amountOfComponents}`
                 <Alert className='more-components-alert' type='help'>
                   <h2>There are more Components to test!</h2>
                   <p>
                     Currently there are {version.components.length} out of{" "}
-                    {amountOfComponents} component types tested.
+                    {amountOfComponents} component types recorded.
                   </p>
                   {userData?.token ? (
                     <LinkButton

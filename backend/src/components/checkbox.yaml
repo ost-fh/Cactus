@@ -28,6 +28,7 @@ testModes:
         help: Upon focusing the checkbox, it should be announced as a checkbox.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
       - _id: 2
         title: The label of the checkbox is read upon focus of the checkbox
         help: Upon focusing the checkbox, the label of the checkbox is announced.
@@ -38,3 +39,10 @@ testModes:
         help: Upon focusing the checkbox, the state of the checkbox is announced, e.g. 'checked, 'unchecked' or 'indeterminate'.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
+      - _id: 4
+        title: The state of checkbox is announced on change
+        help: Upon checking/unchecking the checkbox, it should announce the new state.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html

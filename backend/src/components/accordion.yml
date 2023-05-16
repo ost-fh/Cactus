@@ -1,5 +1,5 @@
 name: Accordion
-alternativeComponentNames: Disclosure
+alternativeComponentNames: Disclosure, Expansion Panel
 description: An accordion is a vertically stacked set of headings each with a collapsible panel
 imageUrl: /components/accordion.svg
 testModes:
@@ -15,6 +15,7 @@ testModes:
         help: Move the focus between the heading element of one of the sections. The screenreader should announce the section as 'expanded' or 'collapsed', or similar.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
   - testMode: Keyboard
     criteria:
       - _id: 1

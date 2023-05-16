@@ -10,12 +10,14 @@ testModes:
         help: Navigate to the radiogroup using 'tab'.
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
           - https://www.w3.org/WAI/ARIA/apg/patterns/radio/
       - _id: 2
         title: On focus and on change of the selected radio button, the button is announced with the title of the button, the state (checked/unchecked) and the position (e.g. 1 of 3)
         help: Change the selected radio button using the arrow keys.
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
           - https://www.w3.org/WAI/ARIA/apg/patterns/radio/
   - testMode: Keyboard
     criteria:
