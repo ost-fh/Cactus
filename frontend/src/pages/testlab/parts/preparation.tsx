@@ -208,6 +208,7 @@ const Preparation = ({
       </section>
 
       <div className='control-group'>
+        <h2 className='visually-hidden'>Navigation</h2>
         <LinkButton
           type='button'
           label='Back'

@@ -19,6 +19,7 @@ const TestLabLayout = (props: TestLabLayoutProps) => {
           <h1>Cactus Testlab</h1>
         </div>
         <Alert className='test-data' type='help'>
+          <h2 className='visually-hidden'>Test Data</h2>
           <ul>
             <li>Library: {props.libraryTitle}</li>
             <li>Version: {testData.libraryVersion}</li>

@@ -154,7 +154,7 @@ const LibraryDetail = () => {
                 />
               ) : (
                 <Alert type='info'>
-                  <h3>Would you like to help?</h3>
+                  <h2>Would you like to help?</h2>
                   <p>
                     You can review components yourself and help us to improve
                     the quality of the scores
@@ -169,7 +169,7 @@ const LibraryDetail = () => {
             <div className='lib-infos'>
               {!version || version.components.length === 0 || (
                 <Alert type='help'>
-                  <h3>Scoring System</h3>
+                  <h2>Scoring System</h2>
                   <div className='lib-detail-help'>
                     <ScoreBubble label='Cactus Score (example)' score={100} />
                     <p>

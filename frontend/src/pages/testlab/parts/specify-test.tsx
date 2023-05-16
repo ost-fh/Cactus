@@ -68,6 +68,7 @@ const SpecifyTest = ({ library, setTestData }: SpecifyTestProps) => {
     <form onSubmit={handleSubmit} className='lab-layout'>
       <LabPathDisplay currentPage='specify' />
       <Heading>Welcome to the Testlab</Heading>
+      <h2 className='visually-hidden'>Introduction</h2>
       <p>
         Here in the <strong>Cactus Testlab</strong> you can add tests to the
         chosen library.
@@ -99,6 +100,7 @@ const SpecifyTest = ({ library, setTestData }: SpecifyTestProps) => {
         />
       ))}
       <div className='control-group'>
+        <h2 className='visually-hidden'>Navigation</h2>
         <LinkButton
           type='button'
           label={"Cancel and close Testlab"}

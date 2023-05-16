@@ -88,11 +88,6 @@ const Libraries = () => {
         </fieldset>
         <button
           disabled={componentFilters.length <= 0}
-          // style={{
-          //   visibility: `${
-          //     componentFilters.length > 0 ? "visible" : "hidden"
-          //   }`,
-          // }}
           type='button'
           onClick={() => {
             setComponentFilters([]);
@@ -100,7 +95,6 @@ const Libraries = () => {
         >
           Reset Selection
         </button>
-        {/* <div className='spacer'></div> */}
       </form>
       {componentFilters.length < 0 && (
         <Alert type='help'>

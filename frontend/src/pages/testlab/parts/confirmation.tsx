@@ -44,7 +44,7 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
           : "Your evaluation was added to the library results."}
       </p>
       <Alert type='help' className='feedback-form'>
-        <h3>Your Feedback matters!</h3>
+        <h2>Your Feedback matters!</h2>
         <form onSubmit={sendFeedback}>
           <label htmlFor='feedbackField'>
             We value your feedback and would appreciate if you could take a few
@@ -82,6 +82,8 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
         </form>
       </Alert>
       <div className='control-group'>
+        <h2 className='visually-hidden'>Navigation</h2>
+
         <button onClick={startOver}>Add another Test to this Library</button>
         <LinkButton
           label={"Go to Library Overview"}

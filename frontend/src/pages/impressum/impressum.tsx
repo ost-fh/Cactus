@@ -7,7 +7,7 @@ const Impressum = () => {
       <header>
         <Heading>Impressum</Heading>
       </header>
-      <h3>Contact</h3>
+      <h2>Contact</h2>
       <p>
         <strong>OST</strong>
         <br />
@@ -22,18 +22,20 @@ const Impressum = () => {
         <br />
         <a href='mailto:info@ost.ch?subject=Project Cactus'>info@ost.ch</a>
       </p>
-      <h3>Legal form</h3>
+      <h2>Legal form</h2>
       <p>
         Institution under public law pursuant to the agreement on the OST –
         Eastern Switzerland University of Applied Sciences of 15 February 2019.
       </p>
-      <h3>Contact for technical and content-related matters</h3>
+      <h2>Contact for technical and content-related matters</h2>
       <p>
         <strong>OST</strong>
         <br />
         <strong>Ostschweizer Fachhochschule</strong>
         <br />
-        <a href="https://www.ost.ch/de/forschung-und-dienstleistungen/informatik/ifs-institut-fuer-software">IFS Institute for Software</a>
+        <a href='https://www.ost.ch/de/forschung-und-dienstleistungen/informatik/ifs-institut-fuer-software'>
+          IFS Institute for Software
+        </a>
         <br />
         Oberseestrasse 10
         <br />
@@ -47,7 +49,7 @@ const Impressum = () => {
           markus.stolze@ost.ch
         </a>
       </p>
-      <h3>Exclusion of liability</h3>
+      <h2>Exclusion of liability</h2>
       <p>
         OST – Eastern Switzerland University of Applied Sciences makes every
         effort to publish the content on this website as up-to-date and accurate
@@ -61,13 +63,13 @@ const Impressum = () => {
         the university reserves the right to change, delete or temporarily not
         publish content without prior notice.
       </p>
-      <h3>Exclusion of liability for links</h3>
+      <h2>Exclusion of liability for links</h2>
       <p>
         References and links to third-party websites are outside our area of
         responsibility. We decline all responsibility for such websites. Access
         to and use of such websites is at the user's own risk.
       </p>
-      <h3>Copyright</h3>
+      <h2>Copyright</h2>
       <p>
         OST – Eastern Switzerland University of Applied Sciences copyrighted
         content (texts, images, videos, etc.) and structure of this website. No

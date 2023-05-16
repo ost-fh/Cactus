@@ -10,9 +10,9 @@ const FAQ = () => {
       <Heading>FAQ: Frequently Asked Questions</Heading>
 
       <div id='faq'>
-        <h3>About Cactus</h3>
+        <h2>About Cactus</h2>
         <div className='question'>
-          <h4>What is Cactus and what does it do?</h4>
+          <h3>What is Cactus and what does it do?</h3>
           <p>
             Project Cactus is an independent accessibility comparison platform
             for UI Libraries. UI Libraries are libraries of components and
@@ -24,7 +24,7 @@ const FAQ = () => {
           </p>
         </div>
         <div className='question'>
-          <h4>Why is Cactus collaborative?</h4>
+          <h3>Why is Cactus collaborative?</h3>
           <p>
             This is for a variety of reasons. For one, there are many different
             UI libraries. We hope that with the help of the community we can
@@ -35,7 +35,7 @@ const FAQ = () => {
           </p>
         </div>
         <div className='question'>
-          <h4>Why does Cactus use manual tests?</h4>
+          <h3>Why does Cactus use manual tests?</h3>
           <p>
             The tests are primarily carried out by people who also consider
             accessibility an important issue. Since the time of volunteers is
@@ -46,7 +46,7 @@ const FAQ = () => {
           </p>
         </div>
         <div className='question'>
-          <h4>Where do the criteria come from?</h4>
+          <h3>Where do the criteria come from?</h3>
           <p>
             The criteria were developed on the basis of the{" "}
             <a href='https://www.w3.org/WAI/WCAG21/quickref/'>
@@ -58,9 +58,9 @@ const FAQ = () => {
             <Link to={"/criteria"}>Criteria Reference</Link>.
           </p>
         </div>
-        <h3>Using Cactus</h3>
+        <h2>Using Cactus</h2>
         <div className='question'>
-          <h4>How can I add a component test to a library?</h4>
+          <h3>How can I add a component test to a library?</h3>
           <p>
             Login using a Github or Google Account. Open the library you would
             like to test in the <Link to='/libraries'>Library Overview</Link>.
@@ -69,7 +69,7 @@ const FAQ = () => {
           </p>
         </div>
         <div className='question'>
-          <h4>What kinds of Libraries can be added to Cactus?</h4>
+          <h3>What kinds of Libraries can be added to Cactus?</h3>
           <p>
             In theory, all kinds of UI libraries, from primitive component
             libraries to CSS libraries. But since most criteria focus on
@@ -78,16 +78,16 @@ const FAQ = () => {
           </p>
         </div>
         <div className='question'>
-          <h4>What are the Prerequisites to contribute to Cactus?</h4>
+          <h3>What are the Prerequisites to contribute to Cactus?</h3>
           <p>
             It would be best if you have a basic knowledge of web development
             and also a little knowledge on accessibility. But then it should be
             an easy, comfortable and fast experience for you.
           </p>
         </div>
-        <h3>Other Questions</h3>
+        <h2>Other Questions</h2>
         <div className='question'>
-          <h4>Where can I go if I find issue with cactus?</h4>
+          <h3>Where can I go if I find issue with cactus?</h3>
           <p>
             Open an Issue on our{" "}
             <a className='nav-icon' href='https://github.com/ost-fh/Cactus'>
@@ -98,7 +98,7 @@ const FAQ = () => {
           </p>
         </div>
         <div className='question'>
-          <h4>Does Cactus provide a standard for UI library accessibility?</h4>
+          <h3>Does Cactus provide a standard for UI library accessibility?</h3>
           <p>
             There is no standard for accessibility in UI library, since only a
             subset of the W3C WCAG and APG Rules and Recommendations apply on UI
@@ -109,10 +109,10 @@ const FAQ = () => {
           </p>
         </div>
         <div className='question'>
-          <h4>
+          <h3>
             If I use a high scoring library for my project, will I not have to
             worry about accessibility?
-          </h4>
+          </h3>
           <p>
             You will have to worry. Since the libraries only provide a skeleton,
             and one that often is highly customizable, we can only test that
@@ -122,7 +122,7 @@ const FAQ = () => {
           </p>
         </div>
         {/* <div className="question">
-        <h4></h4>
+        <h3></h3>
         <p></p>
       </div> */}
       </div>

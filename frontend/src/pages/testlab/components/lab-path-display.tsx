@@ -9,6 +9,7 @@ type LabPathDisplayProps = {
 const LabPathDisplay = ({ currentPage }: LabPathDisplayProps) => {
   return (
     <div className='lab-path-display'>
+      <h2 className='visually-hidden'>Testing progress stepper</h2>
       <LabPathDisplayField
         active={currentPage === "specify"}
         link={currentPage === "preparation" || currentPage === "test"}

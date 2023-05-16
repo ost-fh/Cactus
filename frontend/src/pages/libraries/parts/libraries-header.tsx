@@ -24,7 +24,7 @@ const LibrariesHeader = () => {
           </p>
         </Alert> */}
         <Alert type='info'>
-          <h3>Do you miss a UI library?</h3>
+          <h2>Do you miss a UI library?</h2>
           {userData?.token ? (
             <>
               <p>
@@ -50,7 +50,7 @@ const LibrariesHeader = () => {
       </header>
       <section>
         <Alert type='help'>
-          <h3>Scoring System</h3>
+          <h2>Scoring System</h2>
           <div className='lib-detail-help'>
             <ScoreBubble score={100} />
             <p>

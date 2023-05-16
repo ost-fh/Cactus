@@ -18,7 +18,7 @@ const PrivacyPolicy = () => {
         parties»). We use the term «data» in this policy to mean «personal data»
         or «personal details».
       </p>
-      <h3>Who is responsible for processing your data?</h3>
+      <h2>Who is responsible for processing your data?</h2>
       <p>The data controller is:</p>
       <strong>OST</strong>
       <br />
@@ -37,7 +37,7 @@ const PrivacyPolicy = () => {
         Do you have specific questions regarding how we handle your data? We
         would be happy to help you.
       </p>
-      <h3>What data do we process?</h3>
+      <h2>What data do we process?</h2>
       <p>
         The personal data types that we process as standard include the
         following:
@@ -60,7 +60,7 @@ const PrivacyPolicy = () => {
           inquiry)
         </li>
       </ul>
-      <h3>For what purpose do we process your data?</h3>
+      <h2>For what purpose do we process your data?</h2>
       <p>
         We may collect data from you in order to display and optimize our
         website content whilst also ensuring data security. The same applies to
@@ -69,7 +69,7 @@ const PrivacyPolicy = () => {
         (e.g. encryption via SSL/TLS). Security measures are continually being
         improved based on the latest technological developments.
       </p>
-      <h3>To whom do we disclose your data?</h3>
+      <h2>To whom do we disclose your data?</h2>
       <p>
         Within OST, access to your data is granted to positions that require it
         in order to fulfill our contractual and statutory obligations. Service
@@ -89,7 +89,7 @@ const PrivacyPolicy = () => {
           provider, online tools).
         </li>
       </ul>
-      <h3>Is your personal data sent abroad?</h3>
+      <h2>Is your personal data sent abroad?</h2>
       <p>
         Depending on the type of product or service, personal data and
         recipients in countries without an appropriate level of data protection
@@ -107,7 +107,7 @@ const PrivacyPolicy = () => {
         </li>
         <li>GitHub OAuth (GitHub, Inc.), based in the USA</li>
       </ul>
-      <h3>How long do we process your data for?</h3>
+      <h2>How long do we process your data for?</h2>
       <p>
         We process your data for as long as required for our processing
         purposes, statutory retention periods, and our legitimate interests in
@@ -117,14 +117,14 @@ const PrivacyPolicy = () => {
         storage or processing period has elapsed as part of our standard
         processes.
       </p>
-      <h3>How do we protect your data?</h3>
+      <h2>How do we protect your data?</h2>
       <p>
         We take appropriate security measures to ensure the confidentiality,
         integrity and availability of your personal data, to protect it against
         unauthorized or unlawful processing, and to counter the risk of loss,
         inadvertent alteration, accidental disclosure or unauthorized access.
       </p>
-      <h3>What are your rights?</h3>
+      <h2>What are your rights?</h2>
       <p>
         To make it easier to monitor processing of your personal data, you have
         the following rights relating to our data processing in accordance with
@@ -187,7 +187,7 @@ const PrivacyPolicy = () => {
         country’s data protection authorities.
       </p>
       <p></p>
-      <h3>Can this privacy policy be changed?</h3>
+      <h2>Can this privacy policy be changed?</h2>
       <p>
         We reserve the right and, if relevant, are obligated to alter the terms
         of this privacy policy. We will publish any such changes immediately. It

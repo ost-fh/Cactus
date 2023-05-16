@@ -84,7 +84,7 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
       <LabPathDisplay currentPage='test' />
       <Heading>Testing the Component</Heading>
       <Alert type='help'>
-        <h3>How to test:</h3>
+        <h2>How to test:</h2>
         <p>
           Check if each criterium applies to an interactive example of the
           component in the documentation you opened in the previous page.
@@ -110,6 +110,8 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
       {error !== "" && <Alert type='error' message={error} />}
 
       <div className='control-group'>
+        <h2 className='visually-hidden'>Navigation</h2>
+
         <LinkButton
           type='button'
           label='Back'

@@ -16,7 +16,7 @@ const AccessibilityStatement = () => {
         inclusive online experience, and we strive to make this website as
         accessible as possible.
       </p>
-      <h3>Measuring Accessibility with the Cactus Score</h3>
+      <h2>Measuring Accessibility with the Cactus Score</h2>
       <p>
         We use the Cactus Score to evaluate the accessibility of UI libraries
         featured on this website. The Cactus Score is a comprehensive assessment
@@ -24,7 +24,7 @@ const AccessibilityStatement = () => {
         accessibility and screen reader compatibility. We use this score to help
         users identify the most accessible UI libraries for their needs.
       </p>
-      <h3>Accessibility Features of this Website</h3>
+      <h2>Accessibility Features of this Website</h2>
       <p>
         The project cactus is committed to ensuring that this website is
         accessible to people with disabilities. We strive to meet the Web
@@ -57,7 +57,7 @@ const AccessibilityStatement = () => {
           quickly and easily
         </li>
       </ul>
-      <h3>Contact Us</h3>
+      <h2>Contact Us</h2>
       <p>
         We recognize that there may be some limitations to accessibility on this
         website, and we are actively working to address these issues. If you
