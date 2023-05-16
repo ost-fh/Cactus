@@ -25,7 +25,10 @@ const Component = ({ component }: ComponentProps) => {
             ? ", " + component.alternativeComponentNames
             : ""
         }`}</h3>
-        <button onClick={() => setCollapsed(!collapsed)}>
+        <button
+          aria-expanded={!collapsed}
+          onClick={() => setCollapsed(!collapsed)}
+        >
           {collapsed ? "Show all criteria" : "Hide Criteria"}
         </button>
         <p>{component.description}</p>

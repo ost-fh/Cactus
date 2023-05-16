@@ -77,9 +77,9 @@ const TestItem = ({ criterium, handleChange }: TestItemProps) => {
           >
             {/* {showMoreInfo ? "hide" : "show"} */}
             <span className='visually-hidden'>
-              show details to criteria {criterium.title}
+              show details to criteria "{criterium.title}".
             </span>
-            <BsInfoLg title='' />
+            <BsInfoLg aria-hidden='true' title='show details' />
           </button>
         </div>
 

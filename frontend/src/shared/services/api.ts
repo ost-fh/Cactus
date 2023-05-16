@@ -2,7 +2,7 @@ import {
   ComponentCriteria,
   Criterium,
   NewLibrary,
-  test,
+  Test,
   TestData,
   TestResultTransmission,
 } from "../resources/types";
@@ -77,6 +77,22 @@ export const getComponentCriteria = async (): Promise<ComponentCriteria[]> => {
     .catch((error) => console.error(error));
 };
 
+export const getAllTestModes = async (
+  componentName: string
+): Promise<string[]> => {
+  const allCriteria: ComponentCriteria[] = await getComponentCriteria();
+  const component = allCriteria.find((item) => item.name === componentName);
+  if (!component) {
+    throw Error("invalid component name");
+  }
+  return component.testModes.map((testMode) => testMode.testMode);
+
+  // const res = allCriteria.map((component) => {
+  //   return component.testModes.map((testMode) => testMode.testMode);
+  // });
+  // return res.flat(1);
+};
+
 export const getAllCriteria = async (): Promise<Criterium[]> => {
   const allCriteria: ComponentCriteria[] = await getComponentCriteria();
   const res = allCriteria.map((component) => {
@@ -114,7 +130,7 @@ export const getUserProfile = async (token?: string) => {
   );
 };
 
-export const getUserTestData = async (): Promise<test[]> => {
+export const getUserTestData = async (): Promise<Test[]> => {
   return httpService("GET", `${API_BASE_URL}/testlab`).then((data) => {
     if (data.status === 200) {
       return data.json();
@@ -124,10 +140,13 @@ export const getUserTestData = async (): Promise<test[]> => {
   });
 };
 
-export const createTestFeedback = async (testData: TestData, feedback: string) => {
+export const createTestFeedback = async (
+  testData: TestData,
+  feedback: string
+) => {
   return httpService("POST", `${API_BASE_URL}/testlab/feedback`, {
     testData,
-    feedback
+    feedback,
   })
     .then((data) => data.json())
     .catch((error) => console.error(error));

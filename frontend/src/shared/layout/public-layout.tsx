@@ -49,6 +49,55 @@ const PublicLayout = ({
           </Link>
         </div>
 
+        <button onClick={() => setMenuOpen(!menuOpen)} className='menu-button'>
+          <BsList size={"1.4rem"} />
+          {menuOpen ? "Close" : "Open "} Menu
+        </button>
+
+        <nav className={menuOpen ? "visible" : "hidden"}>
+          <Link
+            className={`nav-link ${
+              activeLink === "home" ? "nav-link-active" : ""
+            }`}
+            aria-current={activeLink === "home" && "page"}
+            to='/'
+          >
+            Cactus{" "}
+            {activeLink === "home" ? (
+              <BsHouseFill title='home' />
+            ) : (
+              <BsHouse title='home' />
+            )}
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeLink === "libraries" ? "nav-link-active" : ""
+            }`}
+            aria-current={activeLink === "libraries" && "page"}
+            to='/libraries'
+          >
+            Libraries
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeLink === "faq" ? "nav-link-active" : ""
+            }`}
+            aria-current={activeLink === "faq" && "page"}
+            to='/faq'
+          >
+            FAQ
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeLink === "contribute" ? "nav-link-active" : ""
+            }`}
+            aria-current={activeLink === "contribute" && "page"}
+            to='/contribute'
+          >
+            Contribute
+          </Link>
+        </nav>
+
         <div className={`user ${menuOpen ? "visible" : "hidden"}`}>
           {userData?.token ? (
             <>
@@ -67,49 +116,6 @@ const PublicLayout = ({
             </>
           )}
         </div>
-        <nav className={menuOpen ? "visible" : "hidden"}>
-          <Link
-            className={`nav-link ${
-              activeLink === "home" ? "nav-link-active" : ""
-            }`}
-            to='/'
-          >
-            Cactus{" "}
-            {activeLink === "home" ? (
-              <BsHouseFill title='home' />
-            ) : (
-              <BsHouse title='home' />
-            )}
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeLink === "libraries" ? "nav-link-active" : ""
-            }`}
-            to='/libraries'
-          >
-            Libraries
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeLink === "faq" ? "nav-link-active" : ""
-            }`}
-            to='/faq'
-          >
-            FAQ
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeLink === "contribute" ? "nav-link-active" : ""
-            }`}
-            to='/contribute'
-          >
-            Contribute
-          </Link>
-        </nav>
-        <button onClick={() => setMenuOpen(!menuOpen)} className='menu-button'>
-          <BsList size={"1.4rem"} />
-          {menuOpen ? "Close" : "Open "} Menu
-        </button>
       </header>
       <div aria-live='assertive'>
         {successMessage && (
@@ -125,6 +131,7 @@ const PublicLayout = ({
       </main>
       <hr />
       <footer className='page-footer'>
+        <h2 className='visually-hidden'>Footer</h2>
         <div className='ost'>
           <p>
             Developed and maintained
