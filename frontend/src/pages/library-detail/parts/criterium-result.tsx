@@ -43,8 +43,12 @@ const CriteriumResult = ({ item }: CriteriumResultProps) => {
             showMoreInfo ? "criterium-detail-button-active" : ""
           }`}
           onClick={() => setShowMoreInfo(!showMoreInfo)}
+          aria-expanded={showMoreInfo}
+          aria-label={`${
+            showMoreInfo ? "hide" : "show"
+          } details to criterion "${criterium?.title}".`}
         >
-          <BsInfoLg title='show details to criteria' />
+          <BsInfoLg title='show details to criterion' />
         </button>
       </div>
       {showMoreInfo && (

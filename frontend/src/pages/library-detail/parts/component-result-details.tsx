@@ -1,115 +1,98 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { UserContext } from "../../../App";
 import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
 import LinkButton from "../../../shared/components/link-button";
 import ScoreBubble from "../../../shared/components/score-bubble";
-import { mode } from "../../../shared/resources/types";
+import { Mode } from "../../../shared/resources/types";
 import { SHOW_AGREEMENT_SCORE } from "../library-detail";
 
 import CriteriumResult from "./criterium-result";
+import { getAllTestModes } from "../../../shared/services/api";
 
 type ComponentResultDetailsProps = {
-  screenReaderScores: mode | undefined;
-  keyboardScores: mode | undefined;
+  componentName: string;
+  testModes: Mode[];
   testlabComponentURL: string;
+};
+
+type Score = {
+  modeName: string;
+  mode: Mode | undefined;
 };
 
 /** This Component is used with ComponentResult */
 const ComponentResultDetails = ({
-  screenReaderScores,
-  keyboardScores,
+  componentName,
+  testModes,
   testlabComponentURL,
 }: ComponentResultDetailsProps) => {
   const userData = useContext(UserContext);
 
+  const [allTestModes, setAllTestModes] = useState<Score[]>();
+
+  // map the existing testMode-resultdata on all possible testModes of the component type
+  useEffect(() => {
+    getAllTestModes(componentName).then((testModeStrings) => {
+      const allTestModes = testModeStrings.map((testMode): Score => {
+        return {
+          modeName: testMode,
+          mode: testModes.find((item) => item.name === testMode),
+        };
+      });
+      setAllTestModes(allTestModes);
+    });
+  }, [componentName, testModes]);
+
   return (
     <>
       <div className='scores detail-scores'>
-        <h4>Keyboard:</h4>
-        {keyboardScores ? (
-          <>
-            <ScoreBubble
-              color='green-light'
-              score={keyboardScores.accessibilityScore}
-            />
-            <CountBubble
-              label='Tests'
-              count={keyboardScores.testScores?.amountOfTests}
-            />
-            {SHOW_AGREEMENT_SCORE && (
-              <CountBubble
-                label='Agreement Score'
-                count={keyboardScores.agreementScore}
-              />
-            )}
-            {/* <h4 className='scores-break'>Keyboard Criteria Evaluation:</h4> */}
-            {keyboardScores.scoresPerCriterium.map((item) => {
-              return (
-                <CriteriumResult
-                  key={item.criterium_id + keyboardScores.name}
-                  item={item}
+        {allTestModes &&
+          allTestModes.map((testMode) =>
+            testMode.mode ? (
+              <>
+                <h3>{testMode.modeName}:</h3>
+                <ScoreBubble
+                  color='green-light'
+                  score={testMode.mode.accessibilityScore}
                 />
-              );
-            })}
-          </>
-        ) : (
-          <Alert type='help' className='alert-with-icon'>
-            {/* <Alert message='There were no keyboard accessibility tests done yet' /> */}
-            <BsInfoCircleFill />
-            <p>There were no keyboard accessibility tests done yet.</p>
-            {userData && (
-              <LinkButton
-                to={`${testlabComponentURL}&mode=Keyboard`}
-                label={"Add tests"}
-              />
-            )}
-          </Alert>
-        )}
-      </div>
-      <div className='scores detail-scores'>
-        <h4>Screenreader:</h4>
-        {screenReaderScores ? (
-          <>
-            <ScoreBubble
-              color='green-light'
-              score={screenReaderScores.accessibilityScore}
-            />
-            <CountBubble
-              label='Tests'
-              count={screenReaderScores.testScores.amountOfTests}
-            />
-            {SHOW_AGREEMENT_SCORE && (
-              <CountBubble
-                label='Agreement Score'
-                count={screenReaderScores.agreementScore}
-              />
-            )}
-            {/* <h4 className='scores-break'>Screenreader Criteria Evaluation:</h4> */}
-
-            {screenReaderScores.scoresPerCriterium.map((item) => {
-              return (
-                <CriteriumResult
-                  key={item.criterium_id + screenReaderScores.name}
-                  item={item}
+                <CountBubble
+                  label='Tests'
+                  count={testMode.mode.testScores?.amountOfTests}
                 />
-              );
-            })}
-          </>
-        ) : (
-          <Alert type='help' className='alert-with-icon'>
-            <BsInfoCircleFill />
-            <p>There were no screenreader accessibility tests done yet.</p>
-            {userData && (
-              <LinkButton
-                to={`${testlabComponentURL}&mode=Screenreader`}
-                label={"Add tests"}
-              />
-            )}
-          </Alert>
-          // <Alert message='There were no screenreader accessibility tests done yet' />
-        )}
+                {SHOW_AGREEMENT_SCORE && (
+                  <CountBubble
+                    label='Agreement Score'
+                    count={testMode.mode.agreementScore}
+                  />
+                )}
+                {testMode.mode.scoresPerCriterium.map((item) => {
+                  return (
+                    <CriteriumResult
+                      key={item.criterium_id + testMode.modeName}
+                      item={item}
+                    />
+                  );
+                })}
+              </>
+            ) : (
+              <Alert type='help' className='alert-with-icon'>
+                <BsInfoCircleFill />
+                <p>
+                  There were no {testMode.modeName} accessibility tests done
+                  yet.
+                </p>
+                {userData && (
+                  <LinkButton
+                    to={`${testlabComponentURL}&mode=${testMode.modeName}`}
+                    label={"Add tests"}
+                    ariaLabel={`Add ${testMode.modeName} accessibility tests for the ${componentName} component.`}
+                  />
+                )}
+              </Alert>
+            )
+          )}
       </div>
     </>
   );
