@@ -50,7 +50,7 @@ const PublicLayout = ({
         </div>
 
         <button onClick={() => setMenuOpen(!menuOpen)} className='menu-button'>
-          <BsList size={"1.4rem"} />
+          <BsList size={"1.5rem"} />
           {menuOpen ? "Close" : "Open "} Menu
         </button>
 
@@ -102,9 +102,7 @@ const PublicLayout = ({
           {userData?.token ? (
             <>
               <BsFillPersonFill />
-              {/* Logged in as */}
               {userData.username}
-              {/* {" - "} */}
               <Link to={`/logout?path=${window.location.pathname}`}>
                 Logout
               </Link>
