@@ -86,11 +86,14 @@ export const getAllTestModes = async (
     throw Error("invalid component name");
   }
   return component.testModes.map((testMode) => testMode.testMode);
+};
 
-  // const res = allCriteria.map((component) => {
-  //   return component.testModes.map((testMode) => testMode.testMode);
-  // });
-  // return res.flat(1);
+export const getAmountOfComponents = async (): Promise<number> => {
+  return getComponentCriteria().then((data) => {
+    return data.length;
+  });
+  // const allCriteria: ComponentCriteria[] = await getComponentCriteria();
+  // return allCriteria.length;
 };
 
 export const getAllCriteria = async (): Promise<Criterium[]> => {

@@ -23,6 +23,17 @@
       margin-bottom: 0;
     }
   }
+
+  .more-components-alert {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: flex-start;
+    h2,
+    p {
+      margin: 0;
+    }
+  }
 }
 
 .lib-detail-help {

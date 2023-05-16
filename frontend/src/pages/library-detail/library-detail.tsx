@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-import { getLibrary } from "../../shared/services/api";
+import { getAmountOfComponents, getLibrary } from "../../shared/services/api";
 import { Library, Version } from "../../shared/resources/types";
 import { UserContext } from "../../App";
 
@@ -36,6 +36,11 @@ const LibraryDetail = () => {
 
   const [library, setLibrary] = useState<Library>();
   const [version, setVersion] = useState<Version | undefined>();
+  const [amountOfComponents, setAmountOfComponents] = useState<number>();
+
+  useEffect(() => {
+    getAmountOfComponents().then((data) => setAmountOfComponents(data));
+  }, []);
 
   const changeVersion = (newVersion: string) => {
     navigate(`/libraries/${library?._id}/${newVersion}`, { replace: true });
@@ -221,6 +226,31 @@ const LibraryDetail = () => {
                 />
               ))
             )}
+
+            {version &&
+              amountOfComponents &&
+              version.components.length < amountOfComponents && (
+                // `${version.components.length} vs ${amountOfComponents}`
+                <Alert className='more-components-alert' type='help'>
+                  <h2>There are more Components to test!</h2>
+                  <p>
+                    Currently there are {version.components.length} out of{" "}
+                    {amountOfComponents} component types tested.
+                  </p>
+                  {userData?.token ? (
+                    <LinkButton
+                      to={`/testlab/${library?._id}/${version?.version}`}
+                      className='button-primary'
+                      label='Add a Component Test'
+                    />
+                  ) : (
+                    <LinkButton
+                      to='/contribute'
+                      label='Find out how to contribute'
+                    />
+                  )}
+                </Alert>
+              )}
           </section>
         </>
       )}

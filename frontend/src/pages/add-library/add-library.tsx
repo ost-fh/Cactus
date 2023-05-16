@@ -42,7 +42,7 @@ const AddLibrary = () => {
       <Heading noFocus>Add a new Library</Heading>
       <p>
         To add a new Library, please fill out the form below. Only add libraries
-        that do not yet exit on cactus.
+        that do not yet exit on cactus. (All fields are required.)
       </p>
       <form className='add-library-form' onSubmit={handleSubmit}>
         <div className='form'>

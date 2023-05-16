@@ -46,7 +46,10 @@ const ComponentResult = ({
 
         <h2 className='title'>
           {component.name}{" "}
-          <small>(or {component.alternativeComponentNames})</small>
+          {component.alternativeComponentNames &&
+            component.alternativeComponentNames.length > 0 && (
+              <small>(or {component.alternativeComponentNames})</small>
+            )}
         </h2>
 
         <p className='description'>{componentData?.description}</p>
@@ -71,7 +74,10 @@ const ComponentResult = ({
 
       <h2 className='title'>
         {component.name}{" "}
-        <small>(or {component.alternativeComponentNames})</small>
+        {component.alternativeComponentNames &&
+          component.alternativeComponentNames.length > 0 && (
+            <small>(or {component.alternativeComponentNames})</small>
+          )}
       </h2>
 
       <p className='description'>{componentData?.description}</p>
