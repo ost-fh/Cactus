@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Alert from "../../../shared/components/alert";
-import Heading from "../../../shared/components/heading";
-import LinkButton from "../../../shared/components/link-button";
+import Alert from "../../../../shared/components/alert";
+import Heading from "../../../../shared/components/heading";
+import LinkButton from "../../../../shared/components/link-button";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
-import LabPathDisplay from "../components/lab-path-display";
-import { Library, TestData } from "../../../shared/resources/types";
+import LabPathDisplay from "../../components/lab-path-display";
+import { Library } from "../../../../shared/resources/types";
 import "./preparation.scss";
+import { TestDataContext } from "../../test-lab";
 
 type PreparationProps = {
-  testData: TestData;
+  // testData: TestData;
   linkDocs: string;
   library: Library | undefined;
   changeLinkDocs: (linkDocs: string) => void;
@@ -19,13 +20,15 @@ type PreparationProps = {
 };
 
 const Preparation = ({
-  testData,
+  // testData,
   linkDocs,
   library,
   changeLinkDocs,
   changeExists,
 }: PreparationProps) => {
   const navigate = useNavigate();
+  const testData = useContext(TestDataContext);
+
   const screenreader = testData.testMode === "Screenreader";
   const [componentName, setComponentName] = useState<string>();
   const [componentLinkDocs, setComponentLinkDocs] = useState<string>("");
@@ -85,7 +88,7 @@ const Preparation = ({
       className='lab-layout'
     >
       <LabPathDisplay currentPage='preparation' />
-      <Heading>Test Preparation</Heading>
+      <Heading visuallyHiddenPrefix='Step 2 of 4'>Test Preparation</Heading>
       <Alert
         type='help'
         message='Please follow the instructions to prepare for the test.'

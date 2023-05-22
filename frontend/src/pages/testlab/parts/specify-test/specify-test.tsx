@@ -1,20 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsChevronDoubleLeft, BsChevronRight } from "react-icons/bs";
-import Alert from "../../../shared/components/alert";
-import LinkButton from "../../../shared/components/link-button";
-import LabPathDisplay from "../components/lab-path-display";
-import Heading from "../../../shared/components/heading";
-import SpecifyComponentField from "../components/specify-component-field";
-import { getComponentCriteria } from "../../../shared/services/api";
+import Alert from "../../../../shared/components/alert";
+import LinkButton from "../../../../shared/components/link-button";
+import Heading from "../../../../shared/components/heading";
+import LabPathDisplay from "../../components/lab-path-display";
+import { getComponentCriteria } from "../../../../shared/services/api";
+import SpecifyComponentField from "./components/specify-component-field";
 import {
   ComponentCriteria,
   getComponent,
   getVersion,
   Library,
   Version,
-} from "../../../shared/resources/types";
-import { TestDataContext } from "../test-lab";
+} from "../../../../shared/resources/types";
+import { TestDataContext } from "../../test-lab";
 import "./specify-test.scss";
 
 type SpecifyTestProps = {
@@ -67,7 +67,9 @@ const SpecifyTest = ({ library, setTestData }: SpecifyTestProps) => {
   return (
     <form onSubmit={handleSubmit} className='lab-layout'>
       <LabPathDisplay currentPage='specify' />
-      <Heading>Welcome to the Testlab</Heading>
+      <Heading visuallyHiddenPrefix='Step 1 of 4'>
+        Welcome to the Testlab
+      </Heading>
       <h2 className='visually-hidden'>Introduction</h2>
       <p>
         Here in the <strong>Cactus Testlab</strong> you can add tests to the

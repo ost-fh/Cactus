@@ -1,5 +1,8 @@
 import React from "react";
-import { ComponentCriteria, TestData } from "../../../shared/resources/types";
+import {
+  ComponentCriteria,
+  TestData,
+} from "../../../../../shared/resources/types";
 import { BsCheckCircleFill } from "react-icons/bs";
 
 type SpecifyTestButtonProps = {

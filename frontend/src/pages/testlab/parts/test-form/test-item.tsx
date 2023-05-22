@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsInfoLg } from "react-icons/bs";
-import Alert from "../../../shared/components/alert";
-import { CriteriumResult } from "../../../shared/resources/types";
+import Alert from "../../../../shared/components/alert";
+import { CriteriumResult } from "../../../../shared/resources/types";
 import TestItemButton from "./test-item-button";
 import "./test-item.scss";
 

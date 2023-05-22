@@ -4,10 +4,15 @@ import "./heading.css";
 // This component is used for focus management und pagetitle management while navigating pages for screenreaders
 type HeadingProps = {
   children: string;
+  visuallyHiddenPrefix?: string;
   noFocus?: boolean;
 };
 
-const Heading = ({ children, noFocus = false }: HeadingProps) => {
+const Heading = ({
+  children,
+  visuallyHiddenPrefix,
+  noFocus = false,
+}: HeadingProps) => {
   const headerRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -23,6 +28,9 @@ const Heading = ({ children, noFocus = false }: HeadingProps) => {
 
   return (
     <h1 className='heading-h1' tabIndex={-1} ref={headerRef}>
+      {visuallyHiddenPrefix !== undefined && (
+        <span className='visually-hidden'>{visuallyHiddenPrefix}</span>
+      )}
       {children}
     </h1>
   );

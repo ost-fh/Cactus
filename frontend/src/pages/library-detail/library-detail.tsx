@@ -152,11 +152,20 @@ const LibraryDetail = () => {
                 />
               )}
               {userData?.token ? (
-                <LinkButton
-                  to={`/testlab/${library?._id}/${version?.version}`}
-                  className='button-primary button-wide'
-                  label='Add a Component Test'
-                />
+                <>
+                  <LinkButton
+                    to={`/testlab/${library?._id}/${version?.version}`}
+                    className='button-primary button-wide'
+                    label='Add a Component Test'
+                  />
+                  <p>
+                    {" "}
+                    <small>
+                      Your first component test will take about 10 minutes.
+                      Further tests will take around 5 minutes.
+                    </small>
+                  </p>
+                </>
               ) : (
                 <Alert type='info'>
                   <h2>Would you like to help?</h2>

@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   getComponentCriteria,
   postTestResult,
-} from "../../../shared/services/api";
-import LinkButton from "../../../shared/components/link-button";
+} from "../../../../shared/services/api";
+import LinkButton from "../../../../shared/components/link-button";
 import {
   ComponentCriteria,
   CriteriaGroup,
   CriteriumResult,
-  TestData,
-} from "../../../shared/resources/types";
-import Alert from "../../../shared/components/alert";
+} from "../../../../shared/resources/types";
+import Alert from "../../../../shared/components/alert";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import LabPathDisplay from "../components/lab-path-display";
-import TestItem from "../components/test-item";
-import Heading from "../../../shared/components/heading";
+import LabPathDisplay from "../../components/lab-path-display";
+import TestItem from "./test-item";
+import Heading from "../../../../shared/components/heading";
+import { TestDataContext } from "../../test-lab";
 
-type TestFormProps = {
-  testData: TestData;
-  linkDocs: string;
-};
+// type TestFormProps = {
+//   testData: TestData;
+//   linkDocs: string;
+// };
 
-const TestForm = ({ testData, linkDocs }: TestFormProps) => {
+const TestForm = () => {
   const navigate = useNavigate();
+
+  const testData = useContext(TestDataContext);
 
   const [testResult, setTestResult] = useState<CriteriumResult[]>();
   const [criteriaGroup, setCriteriaGroup] = useState<CriteriaGroup>();
@@ -82,7 +84,9 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   return (
     <form onSubmit={handleSubmit} id='testlab-testform' className='lab-layout'>
       <LabPathDisplay currentPage='test' />
-      <Heading>Testing the Component</Heading>
+      <Heading visuallyHiddenPrefix='Step 1 of 4'>
+        Testing the Component
+      </Heading>
       <Alert type='help'>
         <h2>How to test:</h2>
         <p>
