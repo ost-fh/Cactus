@@ -94,3 +94,32 @@ hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+p {
+  margin-bottom: 0.3rem;
+}
+
+input,
+select {
+  font-size: 1rem;
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.2rem;
+  border: 1px solid lightgray;
+}

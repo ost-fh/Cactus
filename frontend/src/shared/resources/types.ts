@@ -53,7 +53,7 @@ export type Version = {
 export type Component = {
   name: string;
   alternativeComponentNames: string;
-  modes: mode[];
+  modes: Mode[];
   accessibilityScore: number;
   agreementScore: number;
   amountOfTests: number;
@@ -71,7 +71,7 @@ export const getComponent = (
   }
 };
 
-export type mode = {
+export type Mode = {
   name: string;
   tests: string[]; // _id of tests
   scoresPerCriterium: CriteriumScore[];
@@ -81,7 +81,7 @@ export type mode = {
   _id: string;
 };
 
-export type test = {
+export type Test = {
   testedBy: string;
   criteria: CriteriumResult[];
   testScore: AggregatedScore;

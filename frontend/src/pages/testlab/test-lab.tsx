@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { getLibrary } from "../../shared/services/api";
 import {
   getComponent,
@@ -13,21 +13,22 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
-import SpecifyTest from "./parts/specify-test";
-import TestForm from "./parts/test-form";
-import TestLabLayout from "./layout/lab-layout";
-import Confirmation from "./parts/confirmation";
-import Preparation from "./parts/preparation";
-import Alert from "../../shared/components/alert";
-import Heading from "../../shared/components/heading";
 import {
   browserName,
   browserVersion,
   osName,
   osVersion,
 } from "react-device-detect";
+
+import Alert from "../../shared/components/alert";
+import Heading from "../../shared/components/heading";
+
+import TestLabLayout from "./layout/lab-layout";
+import SpecifyTest from "./parts/specify-test/specify-test";
+import Preparation from "./parts/preparation/preparation";
+import TestForm from "./parts/test-form/test-form";
+import Confirmation from "./parts/confirmation/confirmation";
 import Exclude from "./parts/exclude";
-import { createContext } from "react";
 
 export const TestDataContext = createContext<TestData>({
   libraryId: "0",
@@ -141,7 +142,6 @@ const TestLab = () => {
             path='prepare/'
             element={
               <Preparation
-                testData={testData}
                 linkDocs={library?.linkDocs || "error"}
                 library={library || undefined}
                 changeLinkDocs={changeLinkDocs}
@@ -149,21 +149,11 @@ const TestLab = () => {
               />
             }
           />
-          <Route
-            path='test/'
-            element={
-              <TestForm
-                testData={testData}
-                linkDocs={library?.linkDocs || "error"}
-              />
-            }
-          />
-          <Route path='exclude/' element={<Exclude testData={testData} />} />
+          <Route path='test/' element={<TestForm />} />
+          <Route path='exclude/' element={<Exclude />} />
           <Route
             path='confirmation/'
-            element={
-              <Confirmation testData={testData} resetTestlab={resetTestlab} />
-            }
+            element={<Confirmation resetTestlab={resetTestlab} />}
           />
           <Route
             path='*'

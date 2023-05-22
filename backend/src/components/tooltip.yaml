@@ -7,7 +7,7 @@ testModes:
     criteria:
       - _id: 1
         title: The tooltip is read upon focus of the element
-        help: Once the element that tiggers the tooltip is focused, the content of the tooltip is read. the tooltip itself never recieves focus.
+        help: Once the element that tiggers the tooltip is focused, the content of the tooltip is read. The tooltip itself never recieves focus.
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html
   - testMode: Keyboard
@@ -29,7 +29,7 @@ testModes:
           - https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/
           - https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html
       - _id: 4
-        title: The tooltip closes with the `esc` key
+        title: The tooltip closes with the 'esc' key
         help: The tooltip should dissapear when pressing the escape key. It should also dissapear if the focus leaves the element, but that is not the focus here.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/

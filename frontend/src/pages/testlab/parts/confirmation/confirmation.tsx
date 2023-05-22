@@ -1,22 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import Heading from "../../../shared/components/heading";
-import { TestData } from "../../../shared/resources/types";
-import LabPathDisplay from "../components/lab-path-display";
-import { createTestFeedback } from "../../../shared/services/api";
-import Alert from "../../../shared/components/alert";
+import Heading from "../../../../shared/components/heading";
+import LabPathDisplay from "../../components/lab-path-display";
+import { createTestFeedback } from "../../../../shared/services/api";
+import Alert from "../../../../shared/components/alert";
 import "./confirmation.scss";
-import LinkButton from "../../../shared/components/link-button";
+import LinkButton from "../../../../shared/components/link-button";
+import { TestDataContext } from "../../test-lab";
 
 type ConfirmationProps = {
-  testData: TestData;
   resetTestlab: () => void;
 };
 
-const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
+const Confirmation = ({ resetTestlab }: ConfirmationProps) => {
   const navigate = useNavigate();
   let [searchParams] = useSearchParams();
+  const testData = useContext(TestDataContext);
 
   const [feedback, setFeedback] = useState("");
   const [feedbackSent, setFeedbackSent] = useState(false);
@@ -36,7 +36,7 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
   return (
     <div className='lab-layout'>
       <LabPathDisplay currentPage={"confirm"} />
-      <Heading>Thank you very much!</Heading>
+      <Heading visuallyHiddenPrefix='Step 4 of 4'>Thank you very much!</Heading>
 
       <p>
         {searchParams.get("source") === "exclude"
@@ -44,7 +44,7 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
           : "Your evaluation was added to the library results."}
       </p>
       <Alert type='help' className='feedback-form'>
-        <h3>Your Feedback matters!</h3>
+        <h2>Your Feedback matters!</h2>
         <form onSubmit={sendFeedback}>
           <label htmlFor='feedbackField'>
             We value your feedback and would appreciate if you could take a few
@@ -82,6 +82,8 @@ const Confirmation = ({ testData, resetTestlab }: ConfirmationProps) => {
         </form>
       </Alert>
       <div className='control-group'>
+        <h2 className='visually-hidden'>Navigation</h2>
+
         <button onClick={startOver}>Add another Test to this Library</button>
         <LinkButton
           label={"Go to Library Overview"}

@@ -1,5 +1,6 @@
 type TestItemButtonProps = {
   id: string;
+  title: string;
   label: string;
   choice: string;
   changeChoice: Function;
@@ -9,6 +10,7 @@ type TestItemButtonProps = {
 // this component is used by test-item.tsx
 const TestItemButton = ({
   id,
+  title,
   label,
   choice,
   changeChoice,
@@ -19,7 +21,13 @@ const TestItemButton = ({
       className={`button ${active && "button-selected"}`}
       onClick={() => changeChoice(choice)}
     >
-      <input type='radio' name={id} required id={`${id}${choice}`} />
+      <input
+        type='radio'
+        name={id}
+        aria-label={`${title}: Choice: ${label}.`}
+        required
+        id={`${id}${choice}`}
+      />
       {label}
     </label>
   );

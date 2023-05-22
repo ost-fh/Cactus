@@ -49,29 +49,17 @@ const PublicLayout = ({
           </Link>
         </div>
 
-        <div className={`user ${menuOpen ? "visible" : "hidden"}`}>
-          {userData?.token ? (
-            <>
-              <BsFillPersonFill />
-              {/* Logged in as */}
-              {userData.username}
-              {/* {" - "} */}
-              <Link to={`/logout?path=${window.location.pathname}`}>
-                Logout
-              </Link>
-            </>
-          ) : (
-            <>
-              <BsFillPersonFill />
-              <Link to={`/login?path=${window.location.pathname}`}>Login</Link>
-            </>
-          )}
-        </div>
+        <button onClick={() => setMenuOpen(!menuOpen)} className='menu-button'>
+          <BsList size={"1.5rem"} />
+          {menuOpen ? "Close" : "Open "} Menu
+        </button>
+
         <nav className={menuOpen ? "visible" : "hidden"}>
           <Link
             className={`nav-link ${
               activeLink === "home" ? "nav-link-active" : ""
             }`}
+            aria-current={activeLink === "home" && "page"}
             to='/'
           >
             Cactus{" "}
@@ -85,6 +73,7 @@ const PublicLayout = ({
             className={`nav-link ${
               activeLink === "libraries" ? "nav-link-active" : ""
             }`}
+            aria-current={activeLink === "libraries" && "page"}
             to='/libraries'
           >
             Libraries
@@ -93,6 +82,7 @@ const PublicLayout = ({
             className={`nav-link ${
               activeLink === "faq" ? "nav-link-active" : ""
             }`}
+            aria-current={activeLink === "faq" && "page"}
             to='/faq'
           >
             FAQ
@@ -101,15 +91,29 @@ const PublicLayout = ({
             className={`nav-link ${
               activeLink === "contribute" ? "nav-link-active" : ""
             }`}
+            aria-current={activeLink === "contribute" && "page"}
             to='/contribute'
           >
             Contribute
           </Link>
         </nav>
-        <button onClick={() => setMenuOpen(!menuOpen)} className='menu-button'>
-          <BsList size={"1.4rem"} />
-          {menuOpen ? "Close" : "Open "} Menu
-        </button>
+
+        <div className={`user ${menuOpen ? "visible" : "hidden"}`}>
+          {userData?.token ? (
+            <>
+              <BsFillPersonFill />
+              {userData.username}
+              <Link to={`/logout?path=${window.location.pathname}`}>
+                Logout
+              </Link>
+            </>
+          ) : (
+            <>
+              <BsFillPersonFill />
+              <Link to={`/login?path=${window.location.pathname}`}>Login</Link>
+            </>
+          )}
+        </div>
       </header>
       <div aria-live='assertive'>
         {successMessage && (
@@ -125,6 +129,7 @@ const PublicLayout = ({
       </main>
       <hr />
       <footer className='page-footer'>
+        <h2 className='visually-hidden'>Footer</h2>
         <div className='ost'>
           <p>
             Developed and maintained

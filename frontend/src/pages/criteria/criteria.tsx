@@ -17,7 +17,7 @@ const Criteria = () => {
     <PublicLayout className='criteria-reference'>
       <Heading>Criteria Overview</Heading>
       <Alert type='help'>
-        <h3>Sources</h3>
+        <h2>Sources</h2>
         Every criterium is based on a{" "}
         <a
           href='https://www.w3.org/WAI/WCAG21/quickref/'

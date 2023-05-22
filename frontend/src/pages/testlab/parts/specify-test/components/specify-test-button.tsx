@@ -1,5 +1,9 @@
 import React from "react";
-import { ComponentCriteria, TestData } from "../../../shared/resources/types";
+import {
+  ComponentCriteria,
+  TestData,
+} from "../../../../../shared/resources/types";
+import { BsCheckCircleFill } from "react-icons/bs";
 
 type SpecifyTestButtonProps = {
   testData: TestData; // to check if active
@@ -41,7 +45,10 @@ const SpecifyTestButton = ({
         id={`${testMode}-${componentCriteria.name}`}
       />
       <div>
-        <strong>{testMode}</strong>
+        <strong>
+          <span className='visually-hidden'>{componentCriteria.name} </span>
+          {testMode}
+        </strong>
         <br />
         {amountOfTests && amountOfTests >= 1 ? (
           <small>amount of tests: {amountOfTests} </small>
@@ -49,7 +56,11 @@ const SpecifyTestButton = ({
           <small>no tests</small>
         )}
         <br />
-        <small className='tested'>{alreadyTested && "Tested by you"}</small>
+        {alreadyTested && (
+          <small className='tested'>
+            <BsCheckCircleFill size={"0.75rem"} /> Tested by you
+          </small>
+        )}
       </div>
     </label>
   );

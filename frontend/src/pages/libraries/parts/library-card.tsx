@@ -49,7 +49,7 @@ const LibraryCard = ({
       }`}
     >
       <header className='header'>
-        <h3>{library.title}</h3>
+        <h2>{library.title}</h2>
         <p>Version: {library.currentVersion}</p>
         {library.versions.length > 1 && (
           <small>(older versions available)</small>

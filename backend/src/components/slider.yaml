@@ -16,13 +16,13 @@ testModes:
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html
       - _id: 3
-        title: \'Right Arrow' or 'Up Arrow' increases the value of the slider
+        title: "'Right Arrow' or 'Up Arrow' increases the value of the slider"
         help: Using the 'right' or ' up' arrow keys, try to increase the value of the slider. At least one variation should work.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/slider/
           - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
       - _id: 4
-        title: \'Left Arrow' or 'Down Arrow' decreases the value of the slider
+        title: "'Left Arrow' or 'Down Arrow' decreases the value of the slider"
         help: Using the 'left' or 'down' arrow keys, try to increase the value of the slider. At least one variation should work.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/slider/
@@ -30,12 +30,26 @@ testModes:
   - testMode: Screenreader
     criteria:
       - _id: 1
-        title: The slider is announced as a 'slider' upon focus
+        title: The slider is announced as a 'slider' on focus
         help: Click close above to the interactive example of a slider and use 'tab' to try to navigate to it. Upon focusing the slider, it is announced as a slider.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/slider/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
       - _id: 2
-        title: The label and the maximum, minimum and current values of the slider are announced upon focus
-        help: Upon focusing the slider, it should announce the mentioned values.
+        title: The label of the slider is announced on focus
+        help: Upon focusing the slider, it should announce the label. If there is no label provided by the documentation, choose 'not decidable'.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/slider/
+          - https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html
+      - _id: 3
+        title: The current value of the slider is announced on focus
+        help: Upon focusing the slider, it should announce the current value.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/slider/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
+      - _id: 4
+        title: The current value of the slider is announced on change
+        help: Use the arrow keys to change the value of the slider. The updated value should be announced on change.
+        sources:
+          - https://www.w3.org/WAI/ARIA/apg/patterns/slider/
+          - https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html

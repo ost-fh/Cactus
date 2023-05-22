@@ -16,18 +16,22 @@ type ResultBubbleProps = {
 const ResultBubble = (props: ResultBubbleProps) => {
   return (
     <div>
-      <div className='criterium-result-bubble'>
-        <span className='visually-hidden'>{props.label}</span>
-        <span>
-          {props.positive} <BsHandThumbsUp title='Positive' />{" "}
-        </span>
-        <span>
-          {props.negative} <BsHandThumbsDown title='negative' />{" "}
-        </span>
-        <span>
-          {props.not_decided} <BsPatchQuestion title='not decided' />
-        </span>
-      </div>
+      <ul className='criterium-result-bubble'>
+        <li className='visually-hidden'>{props.label}</li>
+        <li>
+          {props.positive} <span className='visually-hidden'> Positive</span>
+          <BsHandThumbsUp title='' />
+        </li>
+        <li>
+          {props.negative} <span className='visually-hidden'> Negative</span>
+          <BsHandThumbsDown title='' />
+        </li>
+        <li>
+          {props.not_decided}{" "}
+          <span className='visually-hidden'> Not decided</span>
+          <BsPatchQuestion title='' />
+        </li>
+      </ul>
     </div>
   );
 };

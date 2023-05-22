@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   getComponentCriteria,
   postTestResult,
-} from "../../../shared/services/api";
-import LinkButton from "../../../shared/components/link-button";
+} from "../../../../shared/services/api";
+import LinkButton from "../../../../shared/components/link-button";
 import {
   ComponentCriteria,
   CriteriaGroup,
   CriteriumResult,
-  TestData,
-} from "../../../shared/resources/types";
-import Alert from "../../../shared/components/alert";
+} from "../../../../shared/resources/types";
+import Alert from "../../../../shared/components/alert";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import LabPathDisplay from "../components/lab-path-display";
-import TestItem from "../components/test-item";
-import Heading from "../../../shared/components/heading";
+import LabPathDisplay from "../../components/lab-path-display";
+import TestItem from "./test-item";
+import Heading from "../../../../shared/components/heading";
+import { TestDataContext } from "../../test-lab";
 
-type TestFormProps = {
-  testData: TestData;
-  linkDocs: string;
-};
+// type TestFormProps = {
+//   testData: TestData;
+//   linkDocs: string;
+// };
 
-const TestForm = ({ testData, linkDocs }: TestFormProps) => {
+const TestForm = () => {
   const navigate = useNavigate();
+
+  const testData = useContext(TestDataContext);
 
   const [testResult, setTestResult] = useState<CriteriumResult[]>();
   const [criteriaGroup, setCriteriaGroup] = useState<CriteriaGroup>();
@@ -82,9 +84,11 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
   return (
     <form onSubmit={handleSubmit} id='testlab-testform' className='lab-layout'>
       <LabPathDisplay currentPage='test' />
-      <Heading>Testing the Component</Heading>
+      <Heading visuallyHiddenPrefix='Step 1 of 4'>
+        Testing the Component
+      </Heading>
       <Alert type='help'>
-        <h3>How to test:</h3>
+        <h2>How to test:</h2>
         <p>
           Check if each criterium applies to an interactive example of the
           component in the documentation you opened in the previous page.
@@ -110,6 +114,8 @@ const TestForm = ({ testData, linkDocs }: TestFormProps) => {
       {error !== "" && <Alert type='error' message={error} />}
 
       <div className='control-group'>
+        <h2 className='visually-hidden'>Navigation</h2>
+
         <LinkButton
           type='button'
           label='Back'
