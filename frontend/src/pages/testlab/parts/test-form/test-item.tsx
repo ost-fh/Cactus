@@ -122,7 +122,9 @@ const TestItem = ({ criterium, handleChange }: TestItemProps) => {
         )}
         {commentOpen && (
           <div className='test-item-comment'>
-            <label htmlFor='item-comment'>Why is it not decidable?</label>
+            <label htmlFor='item-comment'>
+              Why is it not decidable? (please give a brief reason)
+            </label>
             <textarea
               required
               name='comment'
