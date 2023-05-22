@@ -20,7 +20,7 @@ const Home = () => {
               src='/crowd.svg'
               width={150}
               height={150}
-              alt='symbolic representation of a group of people'
+              alt=''
               className='image'
             />
             <p className='highlight'>
@@ -35,7 +35,7 @@ const Home = () => {
               src='/accessibility.svg'
               width={150}
               height={150}
-              alt='symbol for web accessibility'
+              alt=''
               className='image'
             />
             <p className='highlight'>
@@ -50,7 +50,7 @@ const Home = () => {
               src='/components.svg'
               width={150}
               height={150}
-              alt='symbolic representation of a group of UI Components'
+              alt=''
               className='image'
             />
             <div>
@@ -63,7 +63,7 @@ const Home = () => {
           <div className='item'>
             <img
               src='/testing.svg'
-              alt='a checklist'
+              alt=''
               className='image'
               width={150}
               height={150}
@@ -80,7 +80,7 @@ const Home = () => {
               width={150}
               height={150}
               src='/cactus_logo.svg'
-              alt='the project cactus logo'
+              alt=''
               className='image'
             />
             <div>
@@ -95,13 +95,13 @@ const Home = () => {
       <hr />
       <div className='home-section '>
         <div className='title'>
-          <h3>The Mission</h3>
+          <h2>The Mission</h2>
         </div>
         <div className='text'>
           <p>
             "Is my favourite UI library accessible?" - "What UI Frameworks could
             I choose for my project that gives me a headstart in accessibility?"
-            These are the questions project cactus tries to answer!
+            These are the questions Project Cactus tries to answer!
           </p>
         </div>
         <Link to='/libraries' className='button button-primary'>
@@ -110,7 +110,7 @@ const Home = () => {
       </div>
       <div className='home-section '>
         <div className='title'>
-          <h3>How does it work?</h3>
+          <h2>How does it work?</h2>
         </div>
         <div className='text'>
           <p>
@@ -129,7 +129,7 @@ const Home = () => {
       </div>
       <div className='home-section '>
         <div className='title'>
-          <h3>We need your Help!</h3>
+          <h2>We need your Help!</h2>
         </div>
         <div className='text'>
           <p>

@@ -30,13 +30,6 @@ const ComponentResult = ({
     });
   }, [component.name]);
 
-  const screenReaderScores = component.modes.find(
-    (mode) => mode.name === "Screenreader"
-  );
-  const keyboardScores = component.modes.find(
-    (mode) => mode.name === "Keyboard"
-  );
-
   const toggleDetails = () => {
     setDetailsOpen(!detailsOpen);
   };
@@ -51,10 +44,13 @@ const ComponentResult = ({
           height={150}
         />
 
-        <h3 className='title'>
+        <h2 className='title'>
           {component.name}{" "}
-          <small>(or {component.alternativeComponentNames})</small>
-        </h3>
+          {component.alternativeComponentNames &&
+            component.alternativeComponentNames.length > 0 && (
+              <small>(or {component.alternativeComponentNames})</small>
+            )}
+        </h2>
 
         <p className='description'>{componentData?.description}</p>
 
@@ -76,17 +72,17 @@ const ComponentResult = ({
         alt={`schematic of ${component.name}`}
       />
 
-      <h3 className='title'>
+      <h2 className='title'>
         {component.name}{" "}
-        <small>(or {component.alternativeComponentNames})</small>
-      </h3>
+        {component.alternativeComponentNames &&
+          component.alternativeComponentNames.length > 0 && (
+            <small>(or {component.alternativeComponentNames})</small>
+          )}
+      </h2>
 
       <p className='description'>{componentData?.description}</p>
 
       <div className='main-scores scores'>
-        {/* <p>
-          <strong>Overall Scores:</strong>
-        </p> */}
         {component.componentTested ? (
           <ScoreBubble
             color='green-light'
@@ -113,6 +109,7 @@ const ComponentResult = ({
           aria-label={`${
             detailsOpen ? "Hide" : "Show"
           } detailed evaluation of ${component.name}`}
+          aria-expanded={detailsOpen}
           onClick={toggleDetails}
         >
           {detailsOpen ? (
@@ -136,8 +133,8 @@ const ComponentResult = ({
       </div>
       {detailsOpen && (
         <ComponentResultDetails
-          screenReaderScores={screenReaderScores}
-          keyboardScores={keyboardScores}
+          componentName={component.name}
+          testModes={component.modes}
           testlabComponentURL={`${testlabComponentURL}?component=${component.name}`}
         />
       )}

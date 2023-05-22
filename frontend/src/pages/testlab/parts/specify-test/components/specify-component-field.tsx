@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import Alert from "../../../shared/components/alert";
-import { Component, ComponentCriteria } from "../../../shared/resources/types";
+import Alert from "../../../../../shared/components/alert";
+import {
+  Component,
+  ComponentCriteria,
+} from "../../../../../shared/resources/types";
 import SpecifyTestButton from "./specify-test-button";
-import { UserContext } from "../../../App";
-import { TestDataContext } from "../test-lab";
-import { getUserTestData } from "../../../shared/services/api";
-
+import { UserContext } from "../../../../../App";
+import { TestDataContext } from "../../../test-lab";
+import { getUserTestData } from "../../../../../shared/services/api";
 
 type SpecifyComponentFieldProps = {
   componentCriteria: ComponentCriteria;
@@ -116,13 +118,15 @@ const SpecifyComponentField = ({
       )}
       {/* </div> */}
 
-      {displayRedoTestMessage && (
-        <Alert
-          className='redo'
-          type='info'
-          message={`You already tested the ${testData.component} with ${testData.testMode}. If you redo the test, your previous result will be replaced.`}
-        />
-      )}
+      <div aria-live='polite' className='redo'>
+        {displayRedoTestMessage && (
+          <Alert
+            className='redo'
+            type='info'
+            message={`You already tested the ${testData.component} with ${testData.testMode}. If you redo the test, your previous result will be replaced.`}
+          />
+        )}
+      </div>
     </div>
   );
 };

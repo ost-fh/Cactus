@@ -17,7 +17,7 @@ const Contribute = () => {
         <Heading>Would you like to Contribute?</Heading>
         <div className='layout-split'>
           <section>
-            <h3>Test the Accessibility of Components</h3>
+            <h2>Test the Accessibility of Components</h2>
             <p>
               Add component tests to libraries that are interesting to you. This
               way you can verify the results for yourself, understand how it is
@@ -25,7 +25,7 @@ const Contribute = () => {
               do this, go to the <Link to={"/libraries"}>library overview</Link>
               , open a library and add a test.
             </p>
-            <h3>Add new Libraries and Versions</h3>
+            <h2>Add new Libraries and Versions</h2>
             <p>
               Do you need scores of a library but you could not find it on
               Cactus? Just add the library and then add some tests. If a library
@@ -34,7 +34,7 @@ const Contribute = () => {
             </p>
           </section>
           <Alert type='help'>
-            <h3>Sign up here!</h3>
+            <h2>Sign up here!</h2>
             {userData ? (
               <Alert message='You are already logged in. Go add some tests to a library!' />
             ) : (
@@ -43,7 +43,7 @@ const Contribute = () => {
           </Alert>
         </div>
         <section>
-          <h3>Advanced: Add or Change the Criteria Catalogue</h3>
+          <h2>Advanced: Add or Change the Criteria Catalogue</h2>
           <p>
             The components and its criteria are described through yaml files
             directly in the source code of this{" "}

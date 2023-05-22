@@ -27,7 +27,7 @@ testModes:
           - https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
           - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
       - _id: 5
-        title: The focus returns to the calling button after closing or canceling the dialog with `esc`
+        title: The focus returns to the calling button after closing or canceling the dialog with 'esc'
         help: To help with seamless navigation, the focus should return to the element that opened a dialog. So open the modal with a button or link that you selected with 'tab', then cancel or close the modal. the focus should return to the calling button.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/

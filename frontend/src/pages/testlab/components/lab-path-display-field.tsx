@@ -46,7 +46,7 @@ const LabPathDisplayField = ({
   return (
     <div
       className={`path-element ${active && "path-element-active"}`}
-      aria-current={active ? "page" : "false"}
+      aria-current={active ? "step" : "false"}
     >
       {done && (
         <div className='circle-done'>

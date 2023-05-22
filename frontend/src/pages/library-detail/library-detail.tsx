@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-import { getLibrary } from "../../shared/services/api";
+import { getAmountOfComponents, getLibrary } from "../../shared/services/api";
 import { Library, Version } from "../../shared/resources/types";
 import { UserContext } from "../../App";
 
@@ -36,6 +36,11 @@ const LibraryDetail = () => {
 
   const [library, setLibrary] = useState<Library>();
   const [version, setVersion] = useState<Version | undefined>();
+  const [amountOfComponents, setAmountOfComponents] = useState<number>();
+
+  useEffect(() => {
+    getAmountOfComponents().then((data) => setAmountOfComponents(data));
+  }, []);
 
   const changeVersion = (newVersion: string) => {
     navigate(`/libraries/${library?._id}/${newVersion}`, { replace: true });
@@ -147,14 +152,23 @@ const LibraryDetail = () => {
                 />
               )}
               {userData?.token ? (
-                <LinkButton
-                  to={`/testlab/${library?._id}/${version?.version}`}
-                  className='button-primary button-wide'
-                  label='Add a Component Test'
-                />
+                <>
+                  <LinkButton
+                    to={`/testlab/${library?._id}/${version?.version}`}
+                    className='button-primary button-wide'
+                    label='Add a Component Test'
+                  />
+                  <p>
+                    {" "}
+                    <small>
+                      Your first component test will take about 10 minutes.
+                      Further tests will take around 5 minutes.
+                    </small>
+                  </p>
+                </>
               ) : (
                 <Alert type='info'>
-                  <h3>Would you like to help?</h3>
+                  <h2>Would you like to help?</h2>
                   <p>
                     You can review components yourself and help us to improve
                     the quality of the scores
@@ -169,7 +183,7 @@ const LibraryDetail = () => {
             <div className='lib-infos'>
               {!version || version.components.length === 0 || (
                 <Alert type='help'>
-                  <h3>Scoring System</h3>
+                  <h2>Scoring System</h2>
                   <div className='lib-detail-help'>
                     <ScoreBubble label='Cactus Score (example)' score={100} />
                     <p>
@@ -221,6 +235,32 @@ const LibraryDetail = () => {
                 />
               ))
             )}
+
+            {version &&
+              amountOfComponents &&
+              version.components.length > 0 &&
+              version.components.length < amountOfComponents && (
+                // `${version.components.length} vs ${amountOfComponents}`
+                <Alert className='more-components-alert' type='help'>
+                  <h2>There are more Components to test!</h2>
+                  <p>
+                    Currently there are {version.components.length} out of{" "}
+                    {amountOfComponents} component types recorded.
+                  </p>
+                  {userData?.token ? (
+                    <LinkButton
+                      to={`/testlab/${library?._id}/${version?.version}`}
+                      className='button-primary'
+                      label='Add a Component Test'
+                    />
+                  ) : (
+                    <LinkButton
+                      to='/contribute'
+                      label='Find out how to contribute'
+                    />
+                  )}
+                </Alert>
+              )}
           </section>
         </>
       )}
