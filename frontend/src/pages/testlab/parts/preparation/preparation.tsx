@@ -205,7 +205,7 @@ const Preparation = ({
               onChange={() => changeExists(!testData.componentExists)}
               type='checkbox'
             />
-            Exclude the component {testData.component} from {library?.title}
+            Exclude the {testData.component} component from {library?.title}
           </label>
         </div>
       </section>
