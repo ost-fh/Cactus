@@ -1,5 +1,5 @@
 name: Slider
-alternativeComponentNames:
+alternativeComponentNames: Range
 description: A slider is an input where the user selects a value from within a given range.
 imageUrl: /components/slider.svg
 testModes:

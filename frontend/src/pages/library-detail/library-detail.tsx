@@ -162,7 +162,7 @@ const LibraryDetail = () => {
                     {" "}
                     <small>
                       Your first component test will take about 10 minutes.
-                      Further tests will take around 5 minutes.
+                      Further tests will take around 5 minutes or less.
                     </small>
                   </p>
                 </>
