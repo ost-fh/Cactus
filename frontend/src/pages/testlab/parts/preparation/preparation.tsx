@@ -39,12 +39,15 @@ const Preparation = ({
   // generate combined component display name
   useEffect(() => {
     if (testData.component) {
-      setComponentName(`${testData.component}
-        ${
-          testData.alternativeComponentNames !== "" &&
+      setComponentName(
+        `${testData.component}${
           testData.alternativeComponentNames !== undefined &&
-          " or " + testData.alternativeComponentNames
-        }`);
+          testData.alternativeComponentNames !== null &&
+          testData.alternativeComponentNames.length > 0
+            ? " or " + testData.alternativeComponentNames
+            : ""
+        }`
+      );
     }
   }, [testData.alternativeComponentNames, testData.component]);
 
