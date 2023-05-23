@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { ReactNode, useEffect, useRef } from "react";
 import "./heading.css";
 
 // This component is used for focus management und pagetitle management while navigating pages for screenreaders
 type HeadingProps = {
-  children: string;
+  children: string | ReactNode;
   visuallyHiddenPrefix?: string;
   noFocus?: boolean;
 };
