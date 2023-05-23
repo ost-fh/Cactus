@@ -8,7 +8,7 @@ import Alert from "../../../../shared/components/alert";
 import "./confirmation.scss";
 import LinkButton from "../../../../shared/components/link-button";
 import { TestDataContext } from "../../test-lab";
-import { BsArrowClockwise } from "react-icons/bs";
+import { BsArrowClockwise, BsChevronDoubleRight } from "react-icons/bs";
 import { GiPartyPopper } from "react-icons/gi";
 
 type ConfirmationProps = {
@@ -101,6 +101,8 @@ const Confirmation = ({ resetTestlab }: ConfirmationProps) => {
         </button>
         <LinkButton
           label={"Go to Library Overview"}
+          icon={<BsChevronDoubleRight />}
+          iconPosition='right'
           className='button-primary'
           to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
         />

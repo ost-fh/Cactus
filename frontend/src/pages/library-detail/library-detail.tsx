@@ -17,7 +17,7 @@ import "./library-detail.scss";
 import CountBubble from "../../shared/components/count-bubble";
 import ResultBubble from "../../shared/components/result-bubble";
 import Heading from "../../shared/components/heading";
-import { BsChevronLeft } from "react-icons/bs";
+import { BsChevronDoubleRight, BsChevronLeft } from "react-icons/bs";
 
 export const SHOW_AGREEMENT_SCORE = false;
 
@@ -155,7 +155,9 @@ const LibraryDetail = () => {
                 <>
                   <LinkButton
                     to={`/testlab/${library?._id}/${version?.version}`}
-                    className='button-primary button-wide'
+                    className={`button-primary button-wide`}
+                    icon={<BsChevronDoubleRight />}
+                    iconPosition='right'
                     label='Add a Component Test'
                   />
                   <p>

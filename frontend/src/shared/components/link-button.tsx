@@ -8,6 +8,7 @@ type LinkButtonProps = {
   disabled?: boolean;
   icon?: ReactElement;
   type?: "button" | "submit" | "reset";
+  iconPosition?: "left" | "right";
   ariaLabel?: string;
 };
 
@@ -18,18 +19,22 @@ const LinkButton = ({
   icon,
   disabled = false,
   type,
+  iconPosition = "left",
   ariaLabel = undefined,
 }: LinkButtonProps) => {
   const navigate = useNavigate();
   return (
     <button
       aria-label={ariaLabel}
-      className={`${className ? className : ""} ${icon && "button-with-icon"}`}
+      className={`${className ? className : ""} ${
+        icon ? "button-with-icon" : ""
+      }`}
       disabled={disabled}
       type={type}
       onClick={() => navigate(to)}
     >
-      {icon} {label}
+      {iconPosition === "left" ? icon : ""} {label}{" "}
+      {iconPosition === "right" ? icon : ""}
     </button>
   );
 };
