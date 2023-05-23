@@ -39,7 +39,7 @@
       button {
         grid-row: span 2;
         align-self: center;
-        width: 8rem;
+        width: 7rem;
       }
       @media screen and (max-width: breakpoints.$phone) {
         grid-template-columns: auto 1fr;
@@ -47,7 +47,7 @@
           grid-column: span 2;
         }
         button {
-          width: 12rem;
+          width: 100%;
         }
       }
     }

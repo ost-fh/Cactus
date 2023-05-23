@@ -35,12 +35,12 @@ const Component = ({ component, expand = true }: ComponentProps) => {
           {collapsed ? (
             <>
               <BsChevronDoubleDown />
-              Show all criteria
+              Show Criteria
             </>
           ) : (
             <>
               <BsChevronDoubleUp />
-              Hide criteria
+              Hide Criteria
             </>
           )}
         </button>
