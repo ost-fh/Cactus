@@ -41,8 +41,7 @@ const Preparation = ({
     if (testData.component) {
       setComponentName(
         `${testData.component}${
-          testData.alternativeComponentNames !== undefined &&
-          testData.alternativeComponentNames !== null &&
+          testData.alternativeComponentNames &&
           testData.alternativeComponentNames.length > 0
             ? " or " + testData.alternativeComponentNames
             : ""
@@ -55,7 +54,7 @@ const Preparation = ({
     setComponentLinkDocs(testData.componentLinkDocs);
   }, [testData.componentLinkDocs]);
 
-  //display correct button
+  //display correct navigation button
   useEffect(() => {
     if (
       testData.componentLinkDocs === componentLinkDocs &&
@@ -143,7 +142,7 @@ const Preparation = ({
               target='_blank'
               rel='noreferrer'
             >
-              Open documentation in new tab
+              Open Documentation in new Tab
             </a>
           </div>
           <img
@@ -182,7 +181,8 @@ const Preparation = ({
             <h4>Incorrect Link to Documentation?</h4>
             <p>
               <label htmlFor='linkDocs'>
-                If the link is incorrect, please paste the correct link here:
+                If the link to <strong>{`${componentName}`}</strong> is
+                incorrect, please paste the correct link here:
               </label>
             </p>
           </>
@@ -201,7 +201,7 @@ const Preparation = ({
           type='text'
         />
         <div>
-          <p>Is the {testData.component} component not available? </p>
+          <p>Is the component not available? </p>
           <label>
             <input
               checked={!testData.componentExists}
