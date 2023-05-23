@@ -39,7 +39,7 @@
       button {
         grid-row: span 2;
         align-self: center;
-        width: 6rem;
+        width: 8rem;
       }
       @media screen and (max-width: breakpoints.$phone) {
         grid-template-columns: auto 1fr;
@@ -53,16 +53,24 @@
     }
   }
 
+  .focus {
+    background-color: colors.$green-xlight;
+    padding: 0.8rem;
+    border-radius: 0.7rem;
+  }
+
   .testmode {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
     margin: 1.2rem 0;
   }
+
   .criterion {
     display: flex;
     flex-direction: column;
 
+    background-color: white;
     border: 0.125rem solid colors.$gray-xlight;
     border-radius: 0.5rem;
     padding: 0.7rem;
