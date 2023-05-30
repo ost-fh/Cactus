@@ -28,6 +28,16 @@ jobs:
       github-actor: ${{ github.actor }}
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
+  deploy-new-image:
+    runs-on: ubuntu-latest
+    environment: production
+    needs: build-and-push-backend-image
+    steps:
+      - name: Invoke deployment hook
+        uses: distributhor/workflow-webhook@v3.0.4
+        env:
+          webhook_url: ${{ secrets.BACKEND_SERVICE_WEBHOOK_URL }}
+          silent: true
 
 
       
