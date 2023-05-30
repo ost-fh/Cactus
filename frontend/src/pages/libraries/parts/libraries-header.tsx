@@ -33,7 +33,7 @@ const LibrariesHeader = () => {
               </p>
               <LinkButton
                 to='new'
-                label='Add a new library'
+                label='Add a new Library'
                 className='button-primary'
               />
             </>
@@ -43,7 +43,7 @@ const LibrariesHeader = () => {
                 We are always looking for help. And you might be able to improve
                 this directory for yourself and for others.
               </p>
-              <LinkButton to='/contribute' label='Find out how to contribute' />
+              <LinkButton to='/contribute' label='Find out how to Contribute' />
             </>
           )}
         </Alert>
@@ -51,7 +51,7 @@ const LibrariesHeader = () => {
       <section>
         <Alert type='help'>
           <h2>Scoring System</h2>
-          <div className='lib-detail-help'>
+          <div className='library-help'>
             <ScoreBubble score={100} />
             <p>
               The cactus score shows how good the library and its components did

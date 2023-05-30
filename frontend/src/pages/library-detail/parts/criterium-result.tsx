@@ -39,7 +39,7 @@ const CriteriumResult = ({ item }: CriteriumResultProps) => {
           <CountBubble label='Agreement Score' count={item.agreementScore} />
         )}
         <button
-          className={`button-with-icon ${
+          className={`icon-button ${
             showMoreInfo ? "criterium-detail-button-active" : ""
           }`}
           onClick={() => setShowMoreInfo(!showMoreInfo)}

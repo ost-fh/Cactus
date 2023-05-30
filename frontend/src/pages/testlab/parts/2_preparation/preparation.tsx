@@ -10,6 +10,7 @@ import LabPathDisplay from "../../components/lab-path-display";
 import { Library } from "../../../../shared/resources/types";
 import "./preparation.scss";
 import { TestDataContext } from "../../test-lab";
+import { browserName, osName } from "react-device-detect";
 
 type PreparationProps = {
   // testData: TestData;
@@ -39,12 +40,14 @@ const Preparation = ({
   // generate combined component display name
   useEffect(() => {
     if (testData.component) {
-      setComponentName(`${testData.component}
-        ${
-          testData.alternativeComponentNames !== "" &&
-          testData.alternativeComponentNames !== undefined &&
-          " or " + testData.alternativeComponentNames
-        }`);
+      setComponentName(
+        `${testData.component}${
+          testData.alternativeComponentNames &&
+          testData.alternativeComponentNames.length > 0
+            ? " or " + testData.alternativeComponentNames
+            : ""
+        }`
+      );
     }
   }, [testData.alternativeComponentNames, testData.component]);
 
@@ -52,7 +55,7 @@ const Preparation = ({
     setComponentLinkDocs(testData.componentLinkDocs);
   }, [testData.componentLinkDocs]);
 
-  //display correct button
+  //display correct navigation button
   useEffect(() => {
     if (
       testData.componentLinkDocs === componentLinkDocs &&
@@ -93,9 +96,9 @@ const Preparation = ({
         type='help'
         message='Please follow the instructions to prepare for the test.'
       />
-      {screenreader && (
+      {screenreader ? (
         <section>
-          <h3>Step 1: Set up Browser and Screenreader</h3>
+          <h2>Step 1: Set up Browser and Screenreader</h2>
           <p>
             To test with a screenreader, start up{" "}
             <a href='https://www.nvaccess.org/'>
@@ -116,14 +119,41 @@ const Preparation = ({
             .
           </p>
         </section>
+      ) : (
+        <section>
+          <h2>Step 1: Prepare your Browser</h2>
+          <p>
+            To test components with the keyboard, you might need to change
+            settings to enable full keyboard navigation.
+          </p>
+          <Alert
+            message={`You seem to be using ${browserName} on ${osName}.`}
+          />
+          <p>
+            <strong>Safari</strong> does not enable keyboard navigation by
+            default. Please go to Safari Preferences &gt; Advanced &gt;
+            Accessibility &gt; Press "Tab to highlight each item on a webpage".
+          </p>
+          <p>
+            <strong>Firefox on MacOS</strong> the Tab key will skip over plain
+            links by default. Please open the System Preferences, navigate to
+            Keyboard and to Shortcuts, check "all controls" or "keyboard
+            navigation to move focus between controls", depending on the
+            version. On MacOS Ventura, Press Ctrl + (Fn + ) F7.
+          </p>
+          <p>
+            <strong>Other browsers</strong> should allow full keyboard
+            navigation out of the box.
+          </p>
+        </section>
       )}
 
       <section>
-        <h3>
-          Step {screenreader ? "2" : "1"}: Open the{" "}
+        <h2>
+          Step 2: Open the{" "}
           {testData.componentLinkDocs ? `${testData.component}` : "Library"}{" "}
           Documentation
-        </h3>
+        </h2>
         <div className='layout-split'>
           <div className='subsection'>
             <p>
@@ -140,7 +170,7 @@ const Preparation = ({
               target='_blank'
               rel='noreferrer'
             >
-              Open documentation in new tab
+              Open Documentation in new Tab
             </a>
           </div>
           <img
@@ -152,7 +182,7 @@ const Preparation = ({
       </section>
       {!testData.componentLinkDocs && (
         <section>
-          <h3>Step {screenreader ? "3" : "2"}: Navigate to the Component</h3>
+          <h2>Step 3: Navigate to the Component</h2>
           <p>
             Navigate to the documentation page of{" "}
             <strong>{componentName}</strong> (different libraries name the same
@@ -163,10 +193,7 @@ const Preparation = ({
       <section>
         {!testData.componentLinkDocs ? (
           <>
-            <h3>
-              Step {screenreader ? "4" : "3"}: Add Link to the Component
-              Documentation
-            </h3>
+            <h2>Step 4: Add Link to the Component Documentation</h2>
             <p>
               <label htmlFor='linkDocs'>
                 To make testing for other people easier, please copy the link to
@@ -176,10 +203,11 @@ const Preparation = ({
           </>
         ) : (
           <>
-            <h4>Incorrect Link to Documentation?</h4>
+            <h3>Incorrect Link to Documentation?</h3>
             <p>
               <label htmlFor='linkDocs'>
-                If the link is incorrect, please paste the correct link here:
+                If the link to <strong>{`${componentName}`}</strong> is
+                incorrect, please paste the correct link here:
               </label>
             </p>
           </>
@@ -198,7 +226,7 @@ const Preparation = ({
           type='text'
         />
         <div>
-          <p>Is the {testData.component} component not available? </p>
+          <p>Is the component not available? </p>
           <label>
             <input
               checked={!testData.componentExists}

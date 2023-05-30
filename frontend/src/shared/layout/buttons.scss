@@ -1,4 +1,5 @@
 @use "src/shared/layout/colors";
+@use "src/shared/layout/breakpoints";
 
 /** Button Styles **/
 button,
@@ -12,6 +13,7 @@ button,
   color: black;
   text-align: center;
   text-decoration: none;
+  font-weight: 500;
   font-size: 1rem;
   // display: inline-block;
   transition-duration: 0.3s;
@@ -19,6 +21,10 @@ button,
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+
+  @media screen and (max-width: breakpoints.$phone) {
+    padding: 0.6rem 1rem;
+  }
 }
 
 button:hover,
@@ -85,9 +91,17 @@ button:disabled:hover,
   width: 100%;
 }
 
-.button-with-icon {
+.icon-button {
   display: flex;
   gap: 0.7rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-with-icon {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: auto auto;
   justify-content: center;
   align-items: center;
 }

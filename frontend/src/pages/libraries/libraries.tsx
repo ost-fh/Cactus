@@ -10,6 +10,7 @@ import Heading from "../../shared/components/heading";
 import LibraryList from "./parts/library-list";
 import LibrariesHeader from "./parts/libraries-header";
 import Bubble from "../../shared/components/bubble";
+import LoadingSpinner from "../../shared/components/loading";
 
 const Libraries = () => {
   const [libraries, setLibraries] = useState<Library[]>();
@@ -45,7 +46,7 @@ const Libraries = () => {
   };
 
   return (
-    <PublicLayout activeLink='libraries'>
+    <PublicLayout className='libraries' activeLink='libraries'>
       <Heading>Libraries</Heading>
       <LibrariesHeader />
       <hr />
@@ -115,7 +116,7 @@ const Libraries = () => {
       )}
       <hr />
       {!libraries ? (
-        <Alert message='Libraries are loading ...' />
+        <LoadingSpinner />
       ) : libraries.length === 0 ? (
         <Alert message='Currently, there are no libraries.' />
       ) : (

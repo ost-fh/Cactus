@@ -1,13 +1,12 @@
 .feedback-form {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
   form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     li {
       list-style-type: disc;
-      list-style-position: inside;
+      list-style-position: outside;
+      margin-left: 1.5rem;
     }
   }
 }

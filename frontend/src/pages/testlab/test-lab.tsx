@@ -24,10 +24,10 @@ import Alert from "../../shared/components/alert";
 import Heading from "../../shared/components/heading";
 
 import TestLabLayout from "./layout/lab-layout";
-import SpecifyTest from "./parts/specify-test/specify-test";
-import Preparation from "./parts/preparation/preparation";
-import TestForm from "./parts/test-form/test-form";
-import Confirmation from "./parts/confirmation/confirmation";
+import SpecifyTest from "./parts/1_specify-test/specify-test";
+import Preparation from "./parts/2_preparation/preparation";
+import TestForm from "./parts/3_test-form/test-form";
+import Confirmation from "./parts/4_confirmation/confirmation";
 import Exclude from "./parts/exclude";
 
 export const TestDataContext = createContext<TestData>({

@@ -44,18 +44,18 @@ const SpecifyTestButton = ({
         checked={active}
         id={`${testMode}-${componentCriteria.name}`}
       />
-      <div>
+      <div className='button-label'>
         <strong>
           <span className='visually-hidden'>{componentCriteria.name} </span>
           {testMode}
         </strong>
-        <br />
+
         {amountOfTests && amountOfTests >= 1 ? (
           <small>amount of tests: {amountOfTests} </small>
         ) : (
           <small>no tests</small>
         )}
-        <br />
+
         {alreadyTested && (
           <small className='tested'>
             <BsCheckCircleFill size={"0.75rem"} /> Tested by you

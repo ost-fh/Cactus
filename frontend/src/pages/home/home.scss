@@ -28,9 +28,6 @@
     }
 
     .item {
-      // display: grid;
-      // grid-template-columns: 1fr;
-      // grid-template-rows: auto 1fr;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -44,26 +41,28 @@
         }
       }
 
-      .image {
-        width: 7.5rem;
-      }
-
       .description {
         text-align: center;
         font-size: 1.3rem;
       }
     }
 
-    @media screen and (max-width: breakpoints.$desktop) {
+    @media screen and (min-width: breakpoints.$desktop) {
       .image {
-        max-width: 7rem;
+        max-width: 7.5rem;
       }
     }
 
-    @media screen and (max-width: 55rem) {
+    @media screen and (min-width: breakpoints.$tablet) and (max-width: breakpoints.$desktop) {
       display: flex;
       flex-direction: column;
 
+      .image {
+        max-width: 6rem;
+      }
+      .cactus-text {
+        min-width: 14rem;
+      }
       .item {
         flex-direction: row;
         justify-content: center;
@@ -71,22 +70,26 @@
     }
 
     @media screen and (max-width: breakpoints.$tablet) {
+      display: flex;
+      flex-direction: column;
+
       .image {
         max-width: 5rem;
+      }
+      .cactus-text {
+        width: 11rem;
+      }
+      .item {
+        flex-direction: row;
+        justify-content: center;
       }
     }
   }
 
   .home-section {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas:
-      "title text"
-      "title button";
     padding: 1rem;
     align-items: center;
-    column-gap: 1.5rem;
-    row-gap: 0;
 
     .button {
       grid-area: button;
@@ -108,12 +111,23 @@
       font-size: 1.3rem;
     }
 
+    @media screen and (min-width: breakpoints.$tablet) {
+      grid-template-columns: 1fr 2fr;
+      grid-template-areas:
+        "title text"
+        "title button";
+      column-gap: 1.5rem;
+      row-gap: 0;
+    }
+
     @media screen and (max-width: breakpoints.$tablet) {
       grid-template-columns: 1fr;
       grid-template-areas:
         "title"
         "text"
         "button";
+      column-gap: 0;
+      row-gap: 0.7rem;
 
       .title {
         justify-self: center;

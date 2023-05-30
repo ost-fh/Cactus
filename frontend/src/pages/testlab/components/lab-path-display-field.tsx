@@ -39,7 +39,7 @@ const LabPathDisplayField = ({
           ) : (
             <div className='number-circle'>{step}</div>
           ))}
-        {label}
+        <span className='label'>{label}</span>
       </Link>
     );
 
@@ -59,7 +59,7 @@ const LabPathDisplayField = ({
         ) : (
           <div className={`number-circle`}>{step}</div>
         ))}
-      {label}
+      <span className='label'>{label}</span>
     </div>
   );
 };

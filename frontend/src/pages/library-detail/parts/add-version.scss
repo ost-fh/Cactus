@@ -4,10 +4,10 @@
   border: solid colors.$gray-xlight 0.125rem;
   border-radius: 0.5rem;
   padding: 0.7rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
   width: 100%;
+  .form {
+    align-items: stretch;
+  }
 }
 
 .add-version-form-small-label {
