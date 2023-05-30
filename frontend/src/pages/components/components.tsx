@@ -7,6 +7,7 @@ import ScoreBubble from "../../shared/components/score-bubble";
 import LibraryCard from "../libraries/parts/library-card";
 import "./components.scss";
 
+// This page is only for development purposes and is not available in productive environments.
 const Components = () => {
   return (
     <div className='container components'>
