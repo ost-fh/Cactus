@@ -47,36 +47,36 @@ const ComponentResultDetails = ({
 
   return (
     <>
-      <div className='scores detail-scores'>
-        {allTestModes &&
-          allTestModes.map((testMode) =>
-            testMode.mode ? (
-              <>
-                <h3>{testMode.modeName}:</h3>
-                <ScoreBubble
-                  color='green-light'
-                  score={testMode.mode.accessibilityScore}
-                />
+      {allTestModes &&
+        allTestModes.map((testMode) =>
+          testMode.mode ? (
+            <div key={testMode.mode._id} className='scores detail-scores'>
+              <h3>{testMode.modeName}:</h3>
+              <ScoreBubble
+                color='green-light'
+                score={testMode.mode.accessibilityScore}
+              />
+              <CountBubble
+                label='Tests'
+                count={testMode.mode.testScores?.amountOfTests}
+              />
+              {SHOW_AGREEMENT_SCORE && (
                 <CountBubble
-                  label='Tests'
-                  count={testMode.mode.testScores?.amountOfTests}
+                  label='Agreement Score'
+                  count={testMode.mode.agreementScore}
                 />
-                {SHOW_AGREEMENT_SCORE && (
-                  <CountBubble
-                    label='Agreement Score'
-                    count={testMode.mode.agreementScore}
+              )}
+              {testMode.mode.scoresPerCriterium.map((item) => {
+                return (
+                  <CriteriumResult
+                    key={item.criterium_id + testMode.modeName}
+                    item={item}
                   />
-                )}
-                {testMode.mode.scoresPerCriterium.map((item) => {
-                  return (
-                    <CriteriumResult
-                      key={item.criterium_id + testMode.modeName}
-                      item={item}
-                    />
-                  );
-                })}
-              </>
-            ) : (
+                );
+              })}
+            </div>
+          ) : (
+            <div key={testMode.modeName} className='scores detail-scores'>
               <Alert type='help' className='alert-with-icon'>
                 <BsInfoCircleFill />
                 <p>
@@ -91,9 +91,9 @@ const ComponentResultDetails = ({
                   />
                 )}
               </Alert>
-            )
-          )}
-      </div>
+            </div>
+          )
+        )}
     </>
   );
 };

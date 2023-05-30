@@ -1,15 +1,16 @@
 @use "src/shared/layout/breakpoints";
 
 .library-detail {
-  .backnav > a {
-    display: flex;
-    align-items: center;
-  }
   .backnav {
     margin-top: -0.5rem;
     margin-bottom: -0.5rem;
     width: fit-content;
+    a {
+      display: flex;
+      align-items: center;
+    }
   }
+
   .header {
     display: flex;
     flex-wrap: wrap;
@@ -24,6 +25,27 @@
     }
   }
 
+  .lib-detail-help {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+
+  .testresults {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 1.2rem;
+  }
+
   .more-components-alert {
     display: flex;
     flex-direction: column;
@@ -34,25 +56,4 @@
       margin: 0;
     }
   }
-}
-
-.lib-detail-help {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.3rem;
-}
-
-.lib-infos {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.7rem;
-}
-
-.lib-testresults {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-  gap: 1.2rem;
 }

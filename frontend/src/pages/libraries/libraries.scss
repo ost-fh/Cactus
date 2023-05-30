@@ -1,40 +1,49 @@
 @use "src/shared/layout/breakpoints";
 
-.library-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
+.libraries {
+  .library-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
 
-.library-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  margin: 1rem 0;
-}
+  .library-help {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
 
-#filters {
-  margin-top: 0.7rem;
-  margin-bottom: 0.7rem;
-  display: flex;
-  gap: 0.7rem;
-  flex-direction: row;
+  .library-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1rem 0;
+  }
 
-  .filter-group {
+  #filters {
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
     display: flex;
     gap: 0.7rem;
     flex-direction: row;
-    flex-wrap: wrap;
+
+    .filter-group {
+      display: flex;
+      gap: 0.7rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    @media screen and (max-width: breakpoints.$phone) {
+      flex-direction: column;
+    }
   }
 
-  @media screen and (max-width: breakpoints.$phone) {
-    flex-direction: column;
+  .spacer-flex {
+    flex-grow: 1;
   }
-}
-
-.spacer-flex {
-  flex-grow: 1;
-}
-.spacer {
-  width: 0.5rem;
+  .spacer {
+    width: 0.5rem;
+  }
 }

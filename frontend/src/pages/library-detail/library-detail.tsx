@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { BsChevronDoubleRight, BsChevronLeft } from "react-icons/bs";
 
 import { getAmountOfComponents, getLibrary } from "../../shared/services/api";
 import { Library, Version } from "../../shared/resources/types";
@@ -9,15 +10,13 @@ import PublicLayout from "../../shared/layout/public-layout";
 import ScoreBubble from "../../shared/components/score-bubble";
 import LinkButton from "../../shared/components/link-button";
 import Alert from "../../shared/components/alert";
+import Heading from "../../shared/components/heading";
 
 import AddVersion from "./parts/add-version";
 import ComponentResult from "./parts/component-result";
+import ScoringSystemLibraryDetail from "./parts/scoring-system";
 
 import "./library-detail.scss";
-import CountBubble from "../../shared/components/count-bubble";
-import ResultBubble from "../../shared/components/result-bubble";
-import Heading from "../../shared/components/heading";
-import { BsChevronDoubleRight, BsChevronLeft } from "react-icons/bs";
 
 export const SHOW_AGREEMENT_SCORE = false;
 
@@ -123,8 +122,8 @@ const LibraryDetail = () => {
               )}
             </div>
           </header>
-          <section className='lib-info layout-split'>
-            <div className='lib-infos'>
+          <section className='layout-split'>
+            <div className='infos'>
               <a href={library.linkHome} target='_blank' rel='noreferrer'>
                 Homepage (opens in new Tab)
               </a>
@@ -182,50 +181,14 @@ const LibraryDetail = () => {
                 </Alert>
               )}
             </div>
-            <div className='lib-infos'>
+            <div className='infos'>
               {!version || version.components.length === 0 || (
-                <Alert type='help'>
-                  <h2>Scoring System</h2>
-                  <div className='lib-detail-help'>
-                    <ScoreBubble label='Cactus Score (example)' score={100} />
-                    <p>
-                      This is an average score over all the tests that were made
-                      for a component, testmode or library. It gives an idea
-                      about how good a library performs in terms of
-                      accessibility.
-                    </p>
-
-                    <ResultBubble
-                      label='criterion results demo'
-                      positive={4}
-                      negative={0}
-                      not_decided={0}
-                    />
-                    <p>
-                      This shows how many testers voted if a criterium was
-                      fullfilled, not fulfilled or not decidable. (exemplary
-                      numbers used)
-                    </p>
-                    {SHOW_AGREEMENT_SCORE && (
-                      <>
-                        <CountBubble
-                          label='Agreement Score (example)'
-                          count={1}
-                        />
-                        <p>
-                          This number between 0 and 1 shows how much different
-                          testers agree with each other. A number closer to 1 is
-                          better.
-                        </p>
-                      </>
-                    )}
-                  </div>
-                </Alert>
+                <ScoringSystemLibraryDetail />
               )}
             </div>
           </section>
 
-          <section className='lib-testresults'>
+          <section className='testresults'>
             {!version || version.components.length === 0 ? (
               <Alert message='There are currently no component testresults for this library.' />
             ) : (
@@ -238,31 +201,34 @@ const LibraryDetail = () => {
               ))
             )}
 
-            {version &&
-              amountOfComponents &&
-              version.components.length > 0 &&
-              version.components.length < amountOfComponents && (
-                // `${version.components.length} vs ${amountOfComponents}`
-                <Alert className='more-components-alert' type='help'>
-                  <h2>There are more Components to test!</h2>
-                  <p>
-                    Currently there are {version.components.length} out of{" "}
-                    {amountOfComponents} component types recorded.
-                  </p>
-                  {userData?.token ? (
-                    <LinkButton
-                      to={`/testlab/${library?._id}/${version?.version}`}
-                      className='button-primary'
-                      label='Add a Component Test'
-                    />
-                  ) : (
-                    <LinkButton
-                      to='/contribute'
-                      label='Find out how to contribute'
-                    />
-                  )}
-                </Alert>
-              )}
+            {
+              // CTA to test if not all components are recorded
+              version &&
+                amountOfComponents &&
+                version.components.length > 0 &&
+                version.components.length < amountOfComponents && (
+                  // `${version.components.length} vs ${amountOfComponents}`
+                  <Alert className='more-components-alert' type='help'>
+                    <h2>There are more Components to test!</h2>
+                    <p>
+                      Currently there are {version.components.length} out of{" "}
+                      {amountOfComponents} component types recorded.
+                    </p>
+                    {userData?.token ? (
+                      <LinkButton
+                        to={`/testlab/${library?._id}/${version?.version}`}
+                        className='button-primary'
+                        label='Add a Component Test'
+                      />
+                    ) : (
+                      <LinkButton
+                        to='/contribute'
+                        label='Find out how to contribute'
+                      />
+                    )}
+                  </Alert>
+                )
+            }
           </section>
         </>
       )}
