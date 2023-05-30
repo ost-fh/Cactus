@@ -97,7 +97,7 @@ const Preparation = ({
       />
       {screenreader && (
         <section>
-          <h3>Step 1: Set up Browser and Screenreader</h3>
+          <h2>Step 1: Set up Browser and Screenreader</h2>
           <p>
             To test with a screenreader, start up{" "}
             <a href='https://www.nvaccess.org/'>
@@ -121,11 +121,11 @@ const Preparation = ({
       )}
 
       <section>
-        <h3>
+        <h2>
           Step {screenreader ? "2" : "1"}: Open the{" "}
           {testData.componentLinkDocs ? `${testData.component}` : "Library"}{" "}
           Documentation
-        </h3>
+        </h2>
         <div className='layout-split'>
           <div className='subsection'>
             <p>
@@ -154,7 +154,7 @@ const Preparation = ({
       </section>
       {!testData.componentLinkDocs && (
         <section>
-          <h3>Step {screenreader ? "3" : "2"}: Navigate to the Component</h3>
+          <h2>Step {screenreader ? "3" : "2"}: Navigate to the Component</h2>
           <p>
             Navigate to the documentation page of{" "}
             <strong>{componentName}</strong> (different libraries name the same
@@ -165,10 +165,10 @@ const Preparation = ({
       <section>
         {!testData.componentLinkDocs ? (
           <>
-            <h3>
+            <h2>
               Step {screenreader ? "4" : "3"}: Add Link to the Component
               Documentation
-            </h3>
+            </h2>
             <p>
               <label htmlFor='linkDocs'>
                 To make testing for other people easier, please copy the link to
@@ -178,7 +178,7 @@ const Preparation = ({
           </>
         ) : (
           <>
-            <h4>Incorrect Link to Documentation?</h4>
+            <h3>Incorrect Link to Documentation?</h3>
             <p>
               <label htmlFor='linkDocs'>
                 If the link to <strong>{`${componentName}`}</strong> is

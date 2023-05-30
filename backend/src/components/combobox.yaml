@@ -24,7 +24,7 @@ testModes:
           - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
       - _id: 4
         title: "'esc' closes the popup"
-        help: With the popup/dropdown open, press 'esc' to close the popup.
+        help: With the popup/dropdown open, press 'esc' to close the popup. It may or may not change the selected value.
         sources:
           - https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html
           - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
