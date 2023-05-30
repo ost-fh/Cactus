@@ -125,6 +125,11 @@ const TestForm = () => {
         <button type='submit' className='button-primary button-with-icon'>
           <BsChevronRight /> Finish Test
         </button>
+        {process.env.NODE_ENV === "development" && (
+          <button type='button' onClick={() => navigate("../confirmation")}>
+            DEV:skip
+          </button>
+        )}
       </div>
     </form>
   );

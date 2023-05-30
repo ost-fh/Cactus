@@ -65,7 +65,7 @@ const SpecifyTest = ({ library, setTestData }: SpecifyTestProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='lab-layout'>
+    <form onSubmit={handleSubmit} className='lab-layout lab-specify'>
       <LabPathDisplay currentPage='specify' />
       <Heading visuallyHiddenPrefix='Step 1 of 4'>
         Welcome to the Testlab
@@ -89,29 +89,29 @@ const SpecifyTest = ({ library, setTestData }: SpecifyTestProps) => {
         You can always check the blue box on the top right to see what you chose
         to test.
       </p>
-      {/* <p>Each testmode displays the amount of tests that were already done.</p> */}
-      <Alert type='help' message='Choose a testmode and continue below.' />
-
-      {componentCriteria.map((componentCriteria) => (
-        <SpecifyComponentField
-          key={componentCriteria.name}
-          componentCriteria={componentCriteria}
-          component={getComponent(componentCriteria.name, version)}
-          testModes={testModes}
-          handleChange={handleChange}
-        />
-      ))}
-      <div className='control-group'>
-        <h2 className='visually-hidden'>Navigation</h2>
-        <LinkButton
-          type='button'
-          label={"Cancel and close Testlab"}
-          to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
-          icon={<BsChevronDoubleLeft />}
-        />
-        <button type='submit' className='button-primary button-with-icon'>
-          <BsChevronRight /> Next
-        </button>
+      <Alert type='help' message="Choose a testmode and click 'Next'." />
+      <div className='lab-layout'>
+        {componentCriteria.map((componentCriteria) => (
+          <SpecifyComponentField
+            key={componentCriteria.name}
+            componentCriteria={componentCriteria}
+            component={getComponent(componentCriteria.name, version)}
+            testModes={testModes}
+            handleChange={handleChange}
+          />
+        ))}
+        <div className='control-group'>
+          <h2 className='visually-hidden'>Navigation</h2>
+          <LinkButton
+            type='button'
+            label={"Cancel and close Testlab"}
+            to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
+            icon={<BsChevronDoubleLeft />}
+          />
+          <button type='submit' className='button-primary button-with-icon'>
+            <BsChevronRight /> Next
+          </button>
+        </div>
       </div>
     </form>
   );

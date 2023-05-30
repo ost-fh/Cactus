@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 import Heading from "../../../../shared/components/heading";
 import LabPathDisplay from "../../components/lab-path-display";
@@ -8,6 +8,8 @@ import Alert from "../../../../shared/components/alert";
 import "./confirmation.scss";
 import LinkButton from "../../../../shared/components/link-button";
 import { TestDataContext } from "../../test-lab";
+import { BsArrowClockwise, BsChevronDoubleRight } from "react-icons/bs";
+import { GiPartyPopper } from "react-icons/gi";
 
 type ConfirmationProps = {
   resetTestlab: () => void;
@@ -36,14 +38,18 @@ const Confirmation = ({ resetTestlab }: ConfirmationProps) => {
   return (
     <div className='lab-layout'>
       <LabPathDisplay currentPage={"confirm"} />
-      <Heading visuallyHiddenPrefix='Step 4 of 4'>Thank you very much!</Heading>
+      <Heading visuallyHiddenPrefix='Step 4 of 4'>
+        <>
+          <GiPartyPopper title='' /> Thank you very much!
+        </>
+      </Heading>
 
       <p>
         {searchParams.get("source") === "exclude"
           ? "The component was marked as not available."
           : "Your evaluation was added to the library results."}
       </p>
-      <Alert type='help' className='feedback-form'>
+      <Alert type='info' className='feedback-form'>
         <h2>Your Feedback matters!</h2>
         <form onSubmit={sendFeedback}>
           <label htmlFor='feedbackField'>
@@ -54,7 +60,13 @@ const Confirmation = ({ resetTestlab }: ConfirmationProps) => {
               <li>How was the overall process?</li>
               <li>
                 Were there any questions that were confusing or unclear? If so,
-                which ones?
+                which ones?{" "}
+                <Link
+                  target='_blank'
+                  to={`/criteria?component=${testData.component}&testmode=${testData.testMode}`}
+                >
+                  (Click here to see the criteria again)
+                </Link>
               </li>
               <li>Is there anything else you would like to share with us?</li>
             </ul>
@@ -84,9 +96,13 @@ const Confirmation = ({ resetTestlab }: ConfirmationProps) => {
       <div className='control-group'>
         <h2 className='visually-hidden'>Navigation</h2>
 
-        <button onClick={startOver}>Add another Test to this Library</button>
+        <button className='button-with-icon' onClick={startOver}>
+          <BsArrowClockwise title='' /> Add another Test to this Library
+        </button>
         <LinkButton
           label={"Go to Library Overview"}
+          icon={<BsChevronDoubleRight />}
+          iconPosition='right'
           className='button-primary'
           to={`/libraries/${testData.libraryId}/${testData.libraryVersion}`}
         />

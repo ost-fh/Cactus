@@ -14,7 +14,7 @@ testModes:
     criteria:
       - _id: 1
         title: The triggered alert does not affect keyboard focus
-        help: The keyboard focus should remain on the triggering element.
+        help: Use the keyboard to navigate to an example implementation of an alert and trigger it. This is usually a button. The keyboard focus should remain on the triggering element.
         sources:
           - https://www.w3.org/WAI/ARIA/apg/patterns/alert/
       # - _id: 2

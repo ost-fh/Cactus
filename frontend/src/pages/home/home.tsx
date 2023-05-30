@@ -23,12 +23,14 @@ const Home = () => {
               alt=''
               className='image'
             />
-            <p className='highlight'>
-              <span>C</span>ollaborative
-            </p>
-            {/* <p className='description'>
+            <div className='cactus-text'>
+              <p className='highlight'>
+                <span>C</span>ollaborative
+              </p>
+              {/* <p className='description'>
             This is a community driven platform
           </p> */}
+            </div>
           </div>
           <div className='item'>
             <img
@@ -38,12 +40,14 @@ const Home = () => {
               alt=''
               className='image'
             />
-            <p className='highlight'>
-              <span>A</span>ccessibility
-            </p>
-            {/* <p className='description'>
+            <div className='cactus-text'>
+              <p className='highlight'>
+                <span>A</span>ccessibility
+              </p>
+              {/* <p className='description'>
             Making the web a little bit more accessible
           </p> */}
+            </div>
           </div>
           <div className='item'>
             <img
@@ -53,7 +57,7 @@ const Home = () => {
               alt=''
               className='image'
             />
-            <div>
+            <div className='cactus-text'>
               <p className='highlight'>
                 <span>C</span>omponents
               </p>
@@ -68,12 +72,14 @@ const Home = () => {
               width={150}
               height={150}
             />
-            <p className='highlight'>
-              <span>T</span>esting
-            </p>
-            {/* <p className='description'>
+            <div className='cactus-text'>
+              <p className='highlight'>
+                <span>T</span>esting
+              </p>
+              {/* <p className='description'>
             This is a community driven platform
           </p> */}
+            </div>
           </div>
           <div className='item'>
             <img
@@ -83,7 +89,7 @@ const Home = () => {
               alt=''
               className='image'
             />
-            <div>
+            <div className='cactus-text'>
               <p className='highlight'>
                 cact<span>US</span>
               </p>

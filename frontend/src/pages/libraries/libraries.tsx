@@ -45,7 +45,7 @@ const Libraries = () => {
   };
 
   return (
-    <PublicLayout activeLink='libraries'>
+    <PublicLayout className='libraries' activeLink='libraries'>
       <Heading>Libraries</Heading>
       <LibrariesHeader />
       <hr />

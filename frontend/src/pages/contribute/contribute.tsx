@@ -33,23 +33,23 @@ const Contribute = () => {
               version.
             </p>
           </section>
-          <Alert type='help'>
-            <h2>Sign up here!</h2>
-            {userData ? (
-              <Alert message='You are already logged in. Go add some tests to a library!' />
-            ) : (
+          {userData ? (
+            <Alert message='You are already logged in. Go add some tests to a library!' />
+          ) : (
+            <Alert type='help'>
+              <h2>Sign up here!</h2>
               <Oauth />
-            )}
-          </Alert>
+            </Alert>
+          )}
         </div>
         <section>
           <h2>Advanced: Add or Change the Criteria Catalogue</h2>
           <p>
-            The components and its criteria are described through yaml files
-            directly in the source code of this{" "}
+            The components and their <Link to={"/criteria"}>criteria</Link> are
+            described through yaml files directly in the source code of this{" "}
             <a href='https://github.com/ost-fh/Cactus'>GitHub repository</a>.
-            But luckily the whole application is open source and therefore
-            everyone is invited to contribute. This{" "}
+            The whole application is open source and everyone is invited to
+            contribute. This{" "}
             <a href='https://github.com/ost-fh/Cactus/blob/main/CONTRIBUTING.md'>
               manual
             </a>{" "}

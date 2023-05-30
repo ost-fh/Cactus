@@ -51,7 +51,7 @@ const LibrariesHeader = () => {
       <section>
         <Alert type='help'>
           <h2>Scoring System</h2>
-          <div className='lib-detail-help'>
+          <div className='library-help'>
             <ScoreBubble score={100} />
             <p>
               The cactus score shows how good the library and its components did

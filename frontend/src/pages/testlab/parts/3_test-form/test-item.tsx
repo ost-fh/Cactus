@@ -68,7 +68,7 @@ const TestItem = ({ criterium, handleChange }: TestItemProps) => {
           <div style={{ flexGrow: "1" }}></div>
           <button
             type='button'
-            className={`button-with-icon ${
+            className={`icon-button ${
               linksOpen ? "criterium-detail-button-active" : ""
             }`}
             onClick={() => setLinksOpen(!linksOpen)}

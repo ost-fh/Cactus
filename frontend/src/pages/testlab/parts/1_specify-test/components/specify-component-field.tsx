@@ -83,7 +83,7 @@ const SpecifyComponentField = ({
         height={150}
         alt={componentCriteria.name}
       />
-      {/* <div className='specify-component-content'> */}
+
       <div className='header'>
         <h3>{componentCriteria.name}</h3>
         <p>{componentCriteria.alternativeComponentNames}</p>
@@ -116,17 +116,17 @@ const SpecifyComponentField = ({
           <button onClick={() => setExists(true)}>Reenable Component</button>
         </Alert>
       )}
-      {/* </div> */}
-
-      <div aria-live='polite' className='redo'>
-        {displayRedoTestMessage && (
-          <Alert
-            className='redo'
-            type='info'
-            message={`You already tested the ${testData.component} with ${testData.testMode}. If you redo the test, your previous result will be replaced.`}
-          />
-        )}
-      </div>
+      {alreadyTestedModes && (
+        <div aria-live='polite' className='redo'>
+          {displayRedoTestMessage && (
+            <Alert
+              className='redo'
+              type='info'
+              message={`You already tested the ${testData.component} with ${testData.testMode}. If you redo the test, your previous result will be replaced.`}
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 };

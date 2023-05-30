@@ -29,8 +29,19 @@
   @media screen and (max-width: breakpoints.$at800) {
     flex-direction: column;
   }
-  @media screen and (max-width: breakpoints.$phablet) {
+  @media screen and (min-width: breakpoints.$phone) and (max-width: breakpoints.$phablet) {
     font-size: 0.8rem;
+  }
+  @media screen and (max-width: breakpoints.$phone) {
+    font-size: 0.9rem;
+    height: 100%;
+    flex-direction: column;
+    padding: 0.5rem 0.3rem;
+    gap: 0.3rem;
+    .label {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
   }
 }
 

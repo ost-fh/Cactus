@@ -39,12 +39,14 @@ const Preparation = ({
   // generate combined component display name
   useEffect(() => {
     if (testData.component) {
-      setComponentName(`${testData.component}
-        ${
-          testData.alternativeComponentNames !== "" &&
-          testData.alternativeComponentNames !== undefined &&
-          " or " + testData.alternativeComponentNames
-        }`);
+      setComponentName(
+        `${testData.component}${
+          testData.alternativeComponentNames &&
+          testData.alternativeComponentNames.length > 0
+            ? " or " + testData.alternativeComponentNames
+            : ""
+        }`
+      );
     }
   }, [testData.alternativeComponentNames, testData.component]);
 
@@ -52,7 +54,7 @@ const Preparation = ({
     setComponentLinkDocs(testData.componentLinkDocs);
   }, [testData.componentLinkDocs]);
 
-  //display correct button
+  //display correct navigation button
   useEffect(() => {
     if (
       testData.componentLinkDocs === componentLinkDocs &&
@@ -95,7 +97,7 @@ const Preparation = ({
       />
       {screenreader && (
         <section>
-          <h3>Step 1: Set up Browser and Screenreader</h3>
+          <h2>Step 1: Set up Browser and Screenreader</h2>
           <p>
             To test with a screenreader, start up{" "}
             <a href='https://www.nvaccess.org/'>
@@ -119,11 +121,11 @@ const Preparation = ({
       )}
 
       <section>
-        <h3>
+        <h2>
           Step {screenreader ? "2" : "1"}: Open the{" "}
           {testData.componentLinkDocs ? `${testData.component}` : "Library"}{" "}
           Documentation
-        </h3>
+        </h2>
         <div className='layout-split'>
           <div className='subsection'>
             <p>
@@ -140,7 +142,7 @@ const Preparation = ({
               target='_blank'
               rel='noreferrer'
             >
-              Open documentation in new tab
+              Open Documentation in new Tab
             </a>
           </div>
           <img
@@ -152,7 +154,7 @@ const Preparation = ({
       </section>
       {!testData.componentLinkDocs && (
         <section>
-          <h3>Step {screenreader ? "3" : "2"}: Navigate to the Component</h3>
+          <h2>Step {screenreader ? "3" : "2"}: Navigate to the Component</h2>
           <p>
             Navigate to the documentation page of{" "}
             <strong>{componentName}</strong> (different libraries name the same
@@ -163,10 +165,10 @@ const Preparation = ({
       <section>
         {!testData.componentLinkDocs ? (
           <>
-            <h3>
+            <h2>
               Step {screenreader ? "4" : "3"}: Add Link to the Component
               Documentation
-            </h3>
+            </h2>
             <p>
               <label htmlFor='linkDocs'>
                 To make testing for other people easier, please copy the link to
@@ -176,10 +178,11 @@ const Preparation = ({
           </>
         ) : (
           <>
-            <h4>Incorrect Link to Documentation?</h4>
+            <h3>Incorrect Link to Documentation?</h3>
             <p>
               <label htmlFor='linkDocs'>
-                If the link is incorrect, please paste the correct link here:
+                If the link to <strong>{`${componentName}`}</strong> is
+                incorrect, please paste the correct link here:
               </label>
             </p>
           </>
@@ -198,7 +201,7 @@ const Preparation = ({
           type='text'
         />
         <div>
-          <p>Is the {testData.component} component not available? </p>
+          <p>Is the component not available? </p>
           <label>
             <input
               checked={!testData.componentExists}

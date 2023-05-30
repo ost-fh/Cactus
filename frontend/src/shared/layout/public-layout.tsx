@@ -9,12 +9,14 @@ type PublicLayoutProps = {
   children?: React.ReactNode;
   activeLink?: string;
   className?: string;
+  id?: string;
 };
 
 const PublicLayout = ({
   children,
   activeLink,
   className,
+  id,
 }: PublicLayoutProps) => {
   const userData = useContext(UserContext);
   const [searchParams] = useSearchParams();
