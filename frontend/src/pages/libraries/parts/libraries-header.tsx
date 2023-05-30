@@ -33,7 +33,7 @@ const LibrariesHeader = () => {
               </p>
               <LinkButton
                 to='new'
-                label='Add a new library'
+                label='Add a new Library'
                 className='button-primary'
               />
             </>
@@ -43,7 +43,7 @@ const LibrariesHeader = () => {
                 We are always looking for help. And you might be able to improve
                 this directory for yourself and for others.
               </p>
-              <LinkButton to='/contribute' label='Find out how to contribute' />
+              <LinkButton to='/contribute' label='Find out how to Contribute' />
             </>
           )}
         </Alert>

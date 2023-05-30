@@ -11,6 +11,7 @@ import ScoreBubble from "../../shared/components/score-bubble";
 import LinkButton from "../../shared/components/link-button";
 import Alert from "../../shared/components/alert";
 import Heading from "../../shared/components/heading";
+import LoadingSpinner from "../../shared/components/loading";
 
 import AddVersion from "./parts/add-version";
 import ComponentResult from "./parts/component-result";
@@ -97,9 +98,7 @@ const LibraryDetail = () => {
     <PublicLayout className='library-detail' activeLink='libraries'>
       {!library ? (
         <>
-          {pageLoadingState === state.loading && (
-            <Alert message='Library is loading ...' />
-          )}
+          {pageLoadingState === state.loading && <LoadingSpinner />}
           {pageLoadingState === state.error && (
             <Alert type='error' message='Library not found.'></Alert>
           )}

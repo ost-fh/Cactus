@@ -38,8 +38,6 @@ const LoginRedirect = ({ setUserData }: any) => {
         setUserData({ ...user, token: accessToken });
         setPageState(state.success);
         setTimeout(() => {
-          console.log(beforeLoginUrl);
-
           navigate(
             beforeLoginUrl
               ? `${beforeLoginUrl}?alert=login`

@@ -6,11 +6,9 @@ export const useUserData = () => {
     if (userDataString) {
       const userData = JSON.parse(userDataString);
       const token = decodeJWT(userData.token);
-      // console.log(token);
 
       const exp = new Date(token.payload.exp * 1000);
       // token exp is in NumericDate -> seconds, not milliseconds
-      // console.log(exp.valueOf() + " vs " + new Date().valueOf());
 
       if (exp < new Date()) {
         localStorage.removeItem("userData");
