@@ -30,7 +30,8 @@ jobs:
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
   deploy-new-image:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
+    environment: dev
     needs: build-and-push-frontend-image
     steps:
       - name: Invoke deployment hook
