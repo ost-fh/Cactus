@@ -10,6 +10,7 @@ import LabPathDisplay from "../../components/lab-path-display";
 import { Library } from "../../../../shared/resources/types";
 import "./preparation.scss";
 import { TestDataContext } from "../../test-lab";
+import { browserName, osName } from "react-device-detect";
 
 type PreparationProps = {
   // testData: TestData;
@@ -95,7 +96,7 @@ const Preparation = ({
         type='help'
         message='Please follow the instructions to prepare for the test.'
       />
-      {screenreader && (
+      {screenreader ? (
         <section>
           <h2>Step 1: Set up Browser and Screenreader</h2>
           <p>
@@ -118,11 +119,38 @@ const Preparation = ({
             .
           </p>
         </section>
+      ) : (
+        <section>
+          <h2>Step 1: Prepare your Browser</h2>
+          <p>
+            To test components with the keyboard, you might need to change
+            settings to enable full keyboard navigation.
+          </p>
+          <Alert
+            message={`You seem to be using ${browserName} on ${osName}.`}
+          />
+          <p>
+            <strong>Safari</strong> does not enable keyboard navigation by
+            default. Please go to Safari Preferences &gt; Advanced &gt;
+            Accessibility &gt; Press "Tab to highlight each item on a webpage".
+          </p>
+          <p>
+            <strong>Firefox on MacOS</strong> the Tab key will skip over plain
+            links by default. Please open the System Preferences, navigate to
+            Keyboard and to Shortcuts, check "all controls" or "keyboard
+            navigation to move focus between controls", depending on the
+            version. On MacOS Ventura, Press Ctrl + (Fn + ) F7.
+          </p>
+          <p>
+            <strong>Other browsers</strong> should allow full keyboard
+            navigation out of the box.
+          </p>
+        </section>
       )}
 
       <section>
         <h2>
-          Step {screenreader ? "2" : "1"}: Open the{" "}
+          Step 2: Open the{" "}
           {testData.componentLinkDocs ? `${testData.component}` : "Library"}{" "}
           Documentation
         </h2>
@@ -154,7 +182,7 @@ const Preparation = ({
       </section>
       {!testData.componentLinkDocs && (
         <section>
-          <h2>Step {screenreader ? "3" : "2"}: Navigate to the Component</h2>
+          <h2>Step 3: Navigate to the Component</h2>
           <p>
             Navigate to the documentation page of{" "}
             <strong>{componentName}</strong> (different libraries name the same
@@ -165,10 +193,7 @@ const Preparation = ({
       <section>
         {!testData.componentLinkDocs ? (
           <>
-            <h2>
-              Step {screenreader ? "4" : "3"}: Add Link to the Component
-              Documentation
-            </h2>
+            <h2>Step 4: Add Link to the Component Documentation</h2>
             <p>
               <label htmlFor='linkDocs'>
                 To make testing for other people easier, please copy the link to

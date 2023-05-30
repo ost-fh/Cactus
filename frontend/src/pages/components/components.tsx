@@ -6,6 +6,7 @@ import CountBubble from "../../shared/components/count-bubble";
 import ScoreBubble from "../../shared/components/score-bubble";
 import LibraryCard from "../libraries/parts/library-card";
 import "./components.scss";
+import LoadingSpinner from "../../shared/components/loading";
 
 // This page is only for development purposes and is not available in productive environments.
 const Components = () => {
@@ -69,6 +70,18 @@ const Components = () => {
         </div>
         <div>
           <button className='button-wide'>Button wide</button>
+        </div>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+        >
+          <h2>Loading</h2>
+          <div style={{ width: "15rem", height: "10rem" }}>
+            <LoadingSpinner />
+          </div>
+          <div style={{ width: "5rem", height: "10rem" }}>
+            <LoadingSpinner />
+          </div>
+          <LoadingSpinner />
         </div>
         <h2>Bubbles</h2>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
