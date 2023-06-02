@@ -10,15 +10,17 @@ export type BubbleProps = {
 
 const Bubble = ({ value, label, color = "none", className }: BubbleProps) => {
   return (
-    <div className={`bubble bubble-${color} ${className || ""}`}>
-      {value === undefined ? (
-        label
-      ) : (
-        <>
-          <span className='bubble-value'>{value}</span> {label}
-        </>
-      )}
-    </div>
+    <p className='bubble-container'>
+      <div className={`bubble bubble-${color} ${className || ""}`}>
+        {value === undefined ? (
+          label
+        ) : (
+          <>
+            <span className='bubble-value'>{value}</span> {label}
+          </>
+        )}
+      </div>
+    </p>
   );
 };
 
