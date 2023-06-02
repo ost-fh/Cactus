@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Library, Version } from "../../../shared/resources/types";
 import Alert from "../../../shared/components/alert";
 import CountBubble from "../../../shared/components/count-bubble";
-import LinkButton from "../../../shared/components/link-button";
 import ScoreBubble from "../../../shared/components/score-bubble";
 
 import "./library-card.scss";
 import Bubble from "../../../shared/components/bubble";
 import { createFilterScores, filterScore } from "./library-card-helpers";
 import { BsQuestionLg, BsXLg } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 type LibraryCardProps = {
   library: Library;
@@ -149,12 +149,13 @@ const LibraryCard = ({
           )}
       </div>
       <div className='aside'>
-        <LinkButton
+        <Link
           to={library._id}
-          className='button-wide'
-          label='Show More'
-          ariaLabel={`${library.title} show more`}
-        />
+          className='button button-wide'
+          aria-label={`${library.title} show more`}
+        >
+          Show More
+        </Link>
       </div>
     </article>
   );
