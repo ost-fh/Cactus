@@ -3,7 +3,10 @@ import { BsXLg } from "react-icons/bs";
 import Alert from "../../shared/components/alert";
 import Bubble from "../../shared/components/bubble";
 import CountBubble from "../../shared/components/count-bubble";
+import ResultBubble from "../../shared/components/result-bubble";
 import ScoreBubble from "../../shared/components/score-bubble";
+import Toggletip from "../../shared/components/toggletip";
+import Tooltip from "../../shared/components/tooltip";
 import LibraryCard from "../libraries/parts/library-card";
 import "./components.scss";
 import LoadingSpinner from "../../shared/components/loading";
@@ -16,7 +19,7 @@ const Components = () => {
         id='main'
         style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
       >
-        <h1>Components</h1>
+        <h1>Cactus UI Components</h1>
         <h2>Colors</h2>
         <div className='colors'>
           <div className='color green-xlight'></div>
@@ -58,6 +61,7 @@ const Components = () => {
           <button className='button' disabled>
             Button
           </button>
+
           <button className='button button-with-icon'>
             <BsXLg />
             Button
@@ -83,6 +87,36 @@ const Components = () => {
           </div>
           <LoadingSpinner />
         </div>
+        <h2>Toggletip</h2>
+        <Toggletip label=''>
+          <p>asdf</p>
+          <a href='google.com'>asdf</a>
+        </Toggletip>
+        <h2>Tooltip</h2>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+          <Tooltip
+            position='right'
+            tooltipElement={<Bubble value='?' label='yellow' color='yellow' />}
+          >
+            Bubble as tooltipElement
+          </Tooltip>
+          <Tooltip tooltipElement={<Bubble label='asd' />}>
+            Bubble as tooltipElement / right
+          </Tooltip>
+          <Tooltip bubbleData={{ label: "Hi", color: "red" }}>
+            Bubble Demo
+            <Bubble value='?' label='yellow' color='yellow' />
+          </Tooltip>
+          <Tooltip>Tooltip element default</Tooltip>
+          <Tooltip>
+            <p>p element tooltip</p>
+          </Tooltip>
+          <Tooltip position='right'>Tooltip element default right</Tooltip>
+          <Tooltip position='left'>Tooltip element default left</Tooltip>
+          <Tooltip>
+            <div style={{ width: "10rem", height: "10rem" }}>10x10 rem</div>
+          </Tooltip>
+        </div>
         <h2>Bubbles</h2>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
           <Bubble value={5} label='asdf' />
@@ -99,6 +133,23 @@ const Components = () => {
           <ScoreBubble score={1} />
           <CountBubble count={4} />
           {/* Remove Count Bubble */}
+        </div>
+        <h2>Result Bubbles</h2>
+        <div style={{ display: "flex", gap: "0.5rem" }}>
+          <ResultBubble
+            label='test'
+            positive={0}
+            negative={0}
+            not_decided={0}
+          />
+          <div style={{ width: "3rem" }}>
+            <ResultBubble
+              label='test'
+              positive={0}
+              negative={0}
+              not_decided={0}
+            />
+          </div>
         </div>
         <h2>Library Cards</h2>
         <LibraryCard library={libraryExample} />
