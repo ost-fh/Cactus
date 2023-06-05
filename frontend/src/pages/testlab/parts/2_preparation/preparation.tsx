@@ -11,21 +11,22 @@ import { Library } from "../../../../shared/resources/types";
 import "./preparation.scss";
 import { TestDataContext } from "../../test-lab";
 import { browserName, osName } from "react-device-detect";
+import SelectScreenreader from "./select-screenreader";
 
 type PreparationProps = {
-  // testData: TestData;
   linkDocs: string;
   library: Library | undefined;
   changeLinkDocs: (linkDocs: string) => void;
   changeExists: (exists: boolean) => void;
+  changeScreenreader: (screenreader: string) => void;
 };
 
 const Preparation = ({
-  // testData,
   linkDocs,
   library,
   changeLinkDocs,
   changeExists,
+  changeScreenreader,
 }: PreparationProps) => {
   const navigate = useNavigate();
   const testData = useContext(TestDataContext);
@@ -33,9 +34,8 @@ const Preparation = ({
   const screenreader = testData.testMode === "Screenreader";
   const [componentName, setComponentName] = useState<string>();
   const [componentLinkDocs, setComponentLinkDocs] = useState<string>("");
-  const [buttonState, setButtonState] = useState<"save" | "next" | "exclude">(
-    "next"
-  );
+  const [chosenScreenreader, setChosenScreenreader] = useState<string>();
+  const [buttonState, setButtonState] = useState<"save" | "exclude">("save");
 
   // generate combined component display name
   useEffect(() => {
@@ -57,30 +57,26 @@ const Preparation = ({
 
   //display correct navigation button
   useEffect(() => {
+    if (testData.componentExists) {
+      setButtonState("save");
+    } else {
+      setButtonState("exclude");
+    }
+  }, [testData.componentExists]);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (
       testData.componentLinkDocs === componentLinkDocs &&
       componentLinkDocs !== "" &&
       testData.componentExists
     ) {
-      setButtonState("next");
+      changeLinkDocs(componentLinkDocs);
     }
-    if (
-      testData.componentLinkDocs !== componentLinkDocs &&
-      testData.componentExists
-    ) {
-      setButtonState("save");
+    if (screenreader && chosenScreenreader) {
+      console.log(chosenScreenreader);
+      changeScreenreader(chosenScreenreader);
     }
-    if (componentLinkDocs === "") {
-      setButtonState("save");
-    }
-    if (!testData.componentExists) {
-      setButtonState("exclude");
-    }
-  }, [componentLinkDocs, testData.componentExists, testData.componentLinkDocs]);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    changeLinkDocs(componentLinkDocs);
     navigate("../test");
   };
 
@@ -98,26 +94,53 @@ const Preparation = ({
       />
       {screenreader ? (
         <section>
-          <h2>Step 1: Set up Browser and Screenreader</h2>
-          <p>
-            To test with a screenreader, start up{" "}
-            <a href='https://www.nvaccess.org/'>
-              <strong>NVDA</strong>
-            </a>{" "}
-            and use <strong>Chrome</strong>. This way, we will have reproducible
-            results. If you're on Mac or Linux, you can use{" "}
-            <a href='https://assistivlabs.com/sign-up'>
-              the service AssistivLabs
-            </a>{" "}
-            (14 days free, sign-up required) to access Chrome and NVDA.
-          </p>
-          <p>
-            If you never used NVDA before, here is a great{" "}
-            <a href='https://webaim.org/articles/nvda/'>
-              Tutorial on webaim.org
-            </a>
-            .
-          </p>
+          <h2>Step 1: Choose and set up a Screenreader</h2>
+          <div className='layout-split'>
+            <div className='subsection'>
+              <p>To test with a screenreader, start up your screenreader.</p>
+              <SelectScreenreader
+                chosenScreenreader={chosenScreenreader}
+                setChosenScreenreader={setChosenScreenreader}
+              />
+            </div>
+            <Alert type='info'>
+              <p>
+                <strong>
+                  Don't want to install a screenreader on your system?
+                </strong>{" "}
+                You can use the service{" "}
+                <a
+                  href='https://assistivlabs.com/'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  AssistivLabs
+                </a>{" "}
+                (14 days free, sign-up required) to access a in-browser
+                screenreader.
+              </p>
+              <p>
+                <strong>No experience with a screenreader?</strong> To start
+                off, we would recommend{" "}
+                <a
+                  href='https://www.nvaccess.org/'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  <strong>NVDA</strong>
+                </a>
+                . If you never used NVDA before, there is a great{" "}
+                <a
+                  href='https://webaim.org/articles/nvda/'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Tutorial on webaim.org
+                </a>
+                .
+              </p>
+            </Alert>
+          </div>
         </section>
       ) : (
         <section>
@@ -246,15 +269,6 @@ const Preparation = ({
           to={"../specify"}
           icon={<BsChevronLeft />}
         />
-        {buttonState === "next" && (
-          <LinkButton
-            label='Next'
-            type='button'
-            className='button-primary'
-            icon={<BsChevronRight />}
-            to='../test'
-          ></LinkButton>
-        )}
         {buttonState === "save" && (
           <button type='submit' className='button-primary button-with-icon'>
             <BsChevronRight /> Save & Continue

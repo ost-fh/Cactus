@@ -38,6 +38,7 @@ export const TestDataContext = createContext<TestData>({
   testMode: "",
   userBrowser: "",
   userOs: "",
+  userScreenreader: "",
   componentLinkDocs: "",
   componentExists: true,
 });
@@ -55,6 +56,7 @@ const TestLab = () => {
     testMode: "",
     userBrowser: "",
     userOs: "",
+    userScreenreader: "",
     componentLinkDocs: "",
     componentExists: true,
   });
@@ -108,6 +110,10 @@ const TestLab = () => {
     setTestData({ ...testData, componentExists: exists });
   };
 
+  const changeScreenreader = (screenreader: string) => {
+    setTestData({ ...testData, userScreenreader: screenreader });
+  };
+
   const resetTestlab = () => {
     if (id) {
       getLibrary(id).then((lib) => {
@@ -120,6 +126,7 @@ const TestLab = () => {
       alternativeComponentNames: "",
       component: "",
       testMode: "",
+      userScreenreader: "",
       userBrowser: "",
       userOs: "",
       componentLinkDocs: "",
@@ -146,6 +153,7 @@ const TestLab = () => {
                 library={library || undefined}
                 changeLinkDocs={changeLinkDocs}
                 changeExists={changeExists}
+                changeScreenreader={changeScreenreader}
               />
             }
           />
