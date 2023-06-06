@@ -5,7 +5,6 @@ type LinkButtonProps = {
   to: string;
   label: string;
   className?: string;
-  disabled?: boolean;
   icon?: ReactElement;
   type?: "button" | "submit" | "reset";
   iconPosition?: "left" | "right";
@@ -17,7 +16,6 @@ const LinkButton = ({
   to,
   className,
   icon,
-  disabled = false,
   type,
   iconPosition = "left",
   ariaLabel = undefined,
@@ -29,7 +27,6 @@ const LinkButton = ({
       className={`${className ? className : ""} ${
         icon ? "button-with-icon" : ""
       }`}
-      disabled={disabled}
       type={type}
       onClick={() => navigate(to)}
     >
