@@ -20,6 +20,9 @@ export default class TestFeedback {
   userOs: string;
 
   @Prop()
+  userScreenreader: string;
+
+  @Prop()
   userBrowser: string;
 
   @Prop()

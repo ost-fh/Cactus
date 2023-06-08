@@ -23,6 +23,9 @@ export default class TestDataDto {
   @IsString()
   userOs: string;
 
+  @IsString()
+  userScreenreader: string;
+
   @IsBoolean()
   componentExists: boolean; // TODO only true if componentLinkDocs exist
 
