@@ -10,20 +10,15 @@ const SelectScreenreader = ({
   chosenScreenreader,
   setChosenScreenreader,
 }: SelectScreenreaderProps) => {
-  //   const [screenreader, setScreenreader] = useState<string>();
   const [recoveredScreenreader, setRecoveredScreenreader] = useState(false);
 
   useEffect(() => {
     if (!chosenScreenreader) {
-      // look at localstorage
       const savedScreenreader = localStorage.getItem("screenreader-setting");
       if (savedScreenreader) {
         setChosenScreenreader(savedScreenreader);
         setRecoveredScreenreader(true);
       }
-      //
-    } else {
-      //   setScreenreader(screenreader);
     }
   }, [chosenScreenreader, setChosenScreenreader]);
 
@@ -35,7 +30,7 @@ const SelectScreenreader = ({
 
   return (
     <label className='select-screenreader'>
-      What screenreader are you using? (required)
+      What screenreader are you using? {!recoveredScreenreader && "(required)"}
       <select
         required
         name='screenreader'
@@ -54,7 +49,7 @@ const SelectScreenreader = ({
       {recoveredScreenreader && (
         <Alert
           type='success'
-          message='Your previously used Screenreader was restored.'
+          message='Your previously selected Screenreader was restored.'
         />
       )}
     </label>
