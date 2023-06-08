@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { TestDataContext } from "../../../test-lab";
 
-type ComponentLinkFieldProps = {
+type ComponentLinkSectionProps = {
   setComponentLinkDocs: Function;
   changeExists: Function;
   componentName: string;
@@ -9,13 +9,13 @@ type ComponentLinkFieldProps = {
   libraryTitle: string | undefined;
 };
 
-const ComponentLinkField = ({
+const ComponentLinkSection = ({
   setComponentLinkDocs,
   componentLinkDocs,
   changeExists,
   componentName,
   libraryTitle,
-}: ComponentLinkFieldProps) => {
+}: ComponentLinkSectionProps) => {
   const testData = useContext(TestDataContext);
 
   return (
@@ -69,4 +69,4 @@ const ComponentLinkField = ({
   );
 };
 
-export default ComponentLinkField;
+export default ComponentLinkSection;
