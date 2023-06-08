@@ -109,7 +109,6 @@ const TestLab = () => {
   const changeExists = (exists: boolean) => {
     setTestData({ ...testData, componentExists: exists });
   };
-
   const changeScreenreader = (screenreader: string) => {
     setTestData({ ...testData, userScreenreader: screenreader });
   };

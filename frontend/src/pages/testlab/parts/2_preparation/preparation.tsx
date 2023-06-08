@@ -67,14 +67,13 @@ const Preparation = ({
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (
-      testData.componentLinkDocs === componentLinkDocs &&
       componentLinkDocs !== "" &&
+      testData.componentLinkDocs !== componentLinkDocs &&
       testData.componentExists
     ) {
       changeLinkDocs(componentLinkDocs);
     }
     if (screenreader && chosenScreenreader) {
-      console.log(chosenScreenreader);
       changeScreenreader(chosenScreenreader);
     }
     navigate("../test");
