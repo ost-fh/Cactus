@@ -11,31 +11,32 @@ import { Library } from "../../../../shared/resources/types";
 import "./preparation.scss";
 import { TestDataContext } from "../../test-lab";
 import { browserName, osName } from "react-device-detect";
+import SelectScreenreader from "./parts/select-screenreader";
+import ComponentLinkSection from "./parts/component-link-section";
 
 type PreparationProps = {
-  // testData: TestData;
   linkDocs: string;
   library: Library | undefined;
   changeLinkDocs: (linkDocs: string) => void;
   changeExists: (exists: boolean) => void;
+  changeScreenreader: (screenreader: string) => void;
 };
 
 const Preparation = ({
-  // testData,
   linkDocs,
   library,
   changeLinkDocs,
   changeExists,
+  changeScreenreader,
 }: PreparationProps) => {
   const navigate = useNavigate();
   const testData = useContext(TestDataContext);
 
   const screenreader = testData.testMode === "Screenreader";
-  const [componentName, setComponentName] = useState<string>();
+  const [componentName, setComponentName] = useState<string>("");
   const [componentLinkDocs, setComponentLinkDocs] = useState<string>("");
-  const [buttonState, setButtonState] = useState<"save" | "next" | "exclude">(
-    "next"
-  );
+  const [chosenScreenreader, setChosenScreenreader] = useState<string>();
+  const [buttonState, setButtonState] = useState<"save" | "exclude">("save");
 
   // generate combined component display name
   useEffect(() => {
@@ -57,30 +58,25 @@ const Preparation = ({
 
   //display correct navigation button
   useEffect(() => {
-    if (
-      testData.componentLinkDocs === componentLinkDocs &&
-      componentLinkDocs !== "" &&
-      testData.componentExists
-    ) {
-      setButtonState("next");
-    }
-    if (
-      testData.componentLinkDocs !== componentLinkDocs &&
-      testData.componentExists
-    ) {
+    if (testData.componentExists) {
       setButtonState("save");
-    }
-    if (componentLinkDocs === "") {
-      setButtonState("save");
-    }
-    if (!testData.componentExists) {
+    } else {
       setButtonState("exclude");
     }
-  }, [componentLinkDocs, testData.componentExists, testData.componentLinkDocs]);
+  }, [testData.componentExists]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    changeLinkDocs(componentLinkDocs);
+    if (
+      componentLinkDocs !== "" &&
+      testData.componentLinkDocs !== componentLinkDocs &&
+      testData.componentExists
+    ) {
+      changeLinkDocs(componentLinkDocs);
+    }
+    if (screenreader && chosenScreenreader) {
+      changeScreenreader(chosenScreenreader);
+    }
     navigate("../test");
   };
 
@@ -98,26 +94,53 @@ const Preparation = ({
       />
       {screenreader ? (
         <section>
-          <h2>Step 1: Set up Browser and Screenreader</h2>
-          <p>
-            To test with a screenreader, start up{" "}
-            <a href='https://www.nvaccess.org/'>
-              <strong>NVDA</strong>
-            </a>{" "}
-            and use <strong>Chrome</strong>. This way, we will have reproducible
-            results. If you're on Mac or Linux, you can use{" "}
-            <a href='https://assistivlabs.com/sign-up'>
-              the service AssistivLabs
-            </a>{" "}
-            (14 days free, sign-up required) to access Chrome and NVDA.
-          </p>
-          <p>
-            If you never used NVDA before, here is a great{" "}
-            <a href='https://webaim.org/articles/nvda/'>
-              Tutorial on webaim.org
-            </a>
-            .
-          </p>
+          <h2>Step 1: Choose and set up a Screenreader</h2>
+          <div className='layout-split'>
+            <div className='subsection'>
+              <p>To test with a screenreader, start up your screenreader.</p>
+              <SelectScreenreader
+                chosenScreenreader={chosenScreenreader}
+                setChosenScreenreader={setChosenScreenreader}
+              />
+            </div>
+            <Alert type='info'>
+              <p>
+                <strong>
+                  Don't want to install a screenreader on your system?
+                </strong>{" "}
+                You can use the service{" "}
+                <a
+                  href='https://assistivlabs.com/'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  AssistivLabs
+                </a>{" "}
+                (14 days free, sign-up required) to access a in-browser
+                screenreader.
+              </p>
+              <p>
+                <strong>No experience with a screenreader?</strong> To start
+                off, we would recommend{" "}
+                <a
+                  href='https://www.nvaccess.org/'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  <strong>NVDA</strong>
+                </a>
+                . If you never used NVDA before, there is a great{" "}
+                <a
+                  href='https://webaim.org/articles/nvda/'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Tutorial on webaim.org
+                </a>
+                .
+              </p>
+            </Alert>
+          </div>
         </section>
       ) : (
         <section>
@@ -190,53 +213,14 @@ const Preparation = ({
           </p>
         </section>
       )}
-      <section>
-        {!testData.componentLinkDocs ? (
-          <>
-            <h2>Step 4: Add Link to the Component Documentation</h2>
-            <p>
-              <label htmlFor='linkDocs'>
-                To make testing for other people easier, please copy the link to
-                the component documentation and paste it here:
-              </label>
-            </p>
-          </>
-        ) : (
-          <>
-            <h3>Incorrect Link to Documentation?</h3>
-            <p>
-              <label htmlFor='linkDocs'>
-                If the link to <strong>{`${componentName}`}</strong> is
-                incorrect, please paste the correct link here:
-              </label>
-            </p>
-          </>
-        )}
 
-        <input
-          disabled={!testData.componentExists}
-          id='linkDocs'
-          placeholder='https://...'
-          pattern='http(s)?:\/\/(www\.)?[-a-zA-Z0-9]{2,256}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
-          required
-          onChange={(e) => {
-            setComponentLinkDocs(e.target.value);
-          }}
-          value={componentLinkDocs}
-          type='text'
-        />
-        <div>
-          <p>Is the component not available? </p>
-          <label>
-            <input
-              checked={!testData.componentExists}
-              onChange={() => changeExists(!testData.componentExists)}
-              type='checkbox'
-            />
-            Exclude the {testData.component} component from {library?.title}
-          </label>
-        </div>
-      </section>
+      <ComponentLinkSection
+        setComponentLinkDocs={setComponentLinkDocs}
+        changeExists={changeExists}
+        componentName={componentName}
+        componentLinkDocs={componentLinkDocs}
+        libraryTitle={library?.title}
+      />
 
       <div className='control-group'>
         <h2 className='visually-hidden'>Navigation</h2>
@@ -246,15 +230,6 @@ const Preparation = ({
           to={"../specify"}
           icon={<BsChevronLeft />}
         />
-        {buttonState === "next" && (
-          <LinkButton
-            label='Next'
-            type='button'
-            className='button-primary'
-            icon={<BsChevronRight />}
-            to='../test'
-          ></LinkButton>
-        )}
         {buttonState === "save" && (
           <button type='submit' className='button-primary button-with-icon'>
             <BsChevronRight /> Save & Continue

@@ -121,6 +121,7 @@ export class TestsService {
       criteria: criteria,
       userBrowser: dto.testData.userBrowser,
       userOs: dto.testData.userOs,
+      userScreenreader: dto.testData.userScreenreader,
       testMode: mode,
     });
     mode.tests.push(createdTestResult);
@@ -148,6 +149,7 @@ export class TestsService {
       component: dto.testData.component,
       testMode: dto.testData.testMode,
       userOs: dto.testData.userOs,
+      userScreenreader: dto.testData.userScreenreader,
       userBrowser: dto.testData.userBrowser,
       feedback: dto.feedback,
     });

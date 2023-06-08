@@ -90,7 +90,7 @@ const SpecifyTest = ({ library, setTestData }: SpecifyTestProps) => {
         to test.
       </p>
       <Alert type='help' message="Choose a testmode and click 'Next'." />
-      <div className='lab-layout'>
+      <div className='options-list'>
         {componentCriteria.map((componentCriteria) => (
           <SpecifyComponentField
             key={componentCriteria.name}

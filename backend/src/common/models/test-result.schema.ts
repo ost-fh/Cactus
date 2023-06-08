@@ -28,6 +28,9 @@ export default class TestResult {
   userOs: string;
 
   @Prop()
+  userScreenreader: string;
+
+  @Prop()
   userBrowser: string;
 
   @Prop()
