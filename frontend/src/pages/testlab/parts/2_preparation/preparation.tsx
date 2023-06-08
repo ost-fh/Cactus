@@ -11,7 +11,8 @@ import { Library } from "../../../../shared/resources/types";
 import "./preparation.scss";
 import { TestDataContext } from "../../test-lab";
 import { browserName, osName } from "react-device-detect";
-import SelectScreenreader from "./select-screenreader";
+import SelectScreenreader from "./parts/select-screenreader";
+import ComponentLinkField from "./parts/component-link-field";
 
 type PreparationProps = {
   linkDocs: string;
@@ -32,7 +33,7 @@ const Preparation = ({
   const testData = useContext(TestDataContext);
 
   const screenreader = testData.testMode === "Screenreader";
-  const [componentName, setComponentName] = useState<string>();
+  const [componentName, setComponentName] = useState<string>("");
   const [componentLinkDocs, setComponentLinkDocs] = useState<string>("");
   const [chosenScreenreader, setChosenScreenreader] = useState<string>();
   const [buttonState, setButtonState] = useState<"save" | "exclude">("save");
@@ -212,7 +213,15 @@ const Preparation = ({
           </p>
         </section>
       )}
-      <section>
+
+      <ComponentLinkField
+        setComponentLinkDocs={setComponentLinkDocs}
+        changeExists={changeExists}
+        componentName={componentName}
+        componentLinkDocs={componentLinkDocs}
+        libraryTitle={library?.title}
+      />
+      {/* <section>
         {!testData.componentLinkDocs ? (
           <>
             <h2>Step 4: Add the Link pointing to the Documentation</h2>
@@ -258,7 +267,7 @@ const Preparation = ({
             Exclude the {testData.component} component from {library?.title}
           </label>
         </div>
-      </section>
+      </section> */}
 
       <div className='control-group'>
         <h2 className='visually-hidden'>Navigation</h2>

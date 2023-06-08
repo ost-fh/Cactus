@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Alert from "../../../../shared/components/alert";
+import Alert from "../../../../../shared/components/alert";
 
 type SelectScreenreaderProps = {
   chosenScreenreader: string | undefined;
