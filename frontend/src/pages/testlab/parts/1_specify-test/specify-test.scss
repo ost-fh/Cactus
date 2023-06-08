@@ -5,15 +5,30 @@
   .control-group {
     position: sticky;
     bottom: 1rem;
-    // background-color: white;
-    // border: 0.25rem solid colors.$green-xlight;
     box-shadow: 0 0.1rem 0.5rem 0 rgba(0, 0, 0, 0.2);
   }
 
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    .testlab-specify-component {
+      border: 0.125rem solid colors.$gray-xlight;
+      border-bottom: 0;
+    }
+    .testlab-specify-component:first-child {
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+    .testlab-specify-component:nth-last-child(2) {
+      border-radius: 0 0 0.5rem 0.5rem;
+      border-bottom: 0.125rem solid colors.$gray-xlight;
+    }
+    .control-group:last-child {
+      margin-top: 1rem !important;
+    }
+  }
+
   .testlab-specify-component {
-    padding: 0.7rem;
-    border: 0.125rem solid colors.$gray-xlight;
-    border-radius: 0.3rem;
+    padding: 1rem;
     display: grid;
     gap: 0.5rem 1rem;
     grid-template-columns: 6rem 1fr;
