@@ -216,7 +216,7 @@ const Preparation = ({
       <section>
         {!testData.componentLinkDocs ? (
           <>
-            <h2>Step 4: Add Link to the Component Documentation</h2>
+            <h2>Step 4: Add the Link pointing to the Documentation</h2>
             <p>
               <label htmlFor='linkDocs'>
                 To make testing for other people easier, please copy the link to
