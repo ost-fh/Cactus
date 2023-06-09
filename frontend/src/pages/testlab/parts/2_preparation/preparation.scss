@@ -16,9 +16,16 @@
     max-width: 40rem;
   }
 
-  h3 {
+  .select-screenreader {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  h2 {
     margin-bottom: 0;
-    margin-top: 0.5rem;
+    margin-top: 0.7rem;
   }
 
   input[type="text"] {

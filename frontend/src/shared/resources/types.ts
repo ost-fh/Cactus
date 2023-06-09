@@ -101,6 +101,7 @@ export type TestData = {
   componentExists: boolean;
   userOs: string;
   userBrowser: string;
+  userScreenreader: string;
 };
 
 export type ComponentCriteria = {

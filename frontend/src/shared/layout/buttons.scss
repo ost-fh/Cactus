@@ -6,6 +6,7 @@ button,
 .button,
 .button:link,
 .button:visited {
+  display: block;
   padding: 0.4rem 0.8rem;
   background-color: colors.$gray-xlight;
   border: solid colors.$gray 0.1rem;

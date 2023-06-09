@@ -24,6 +24,7 @@ export const testLibrary = {
                   testedBy: 'user1',
                   userBrowser: 'Chrome 108',
                   userOs: 'Windows 10',
+                  userScreenreader: 'Screenreader 1',
                   criteria: [
                     {
                       criterium_id: '31',
@@ -79,6 +80,7 @@ export const testLibrary = {
                   testedBy: 'user1',
                   userBrowser: 'Chrome 108',
                   userOs: 'Windows 10',
+                  userScreenreader: 'Screenreader 1',
                   criteria: [
                     {
                       criterium_id: '31',
@@ -143,6 +145,7 @@ export const testLibrary = {
                   testedBy: 'user1',
                   userBrowser: 'Chrome 108',
                   userOs: 'Windows 10',
+                  userScreenreader: 'Screenreader 1',
                   criteria: [
                     {
                       criterium_id: '21',
@@ -176,6 +179,7 @@ export const testLibrary = {
                   testedBy: 'user1',
                   userBrowser: 'Chrome 108',
                   userOs: 'Windows 10',
+                  userScreenreader: 'Screenreader 1',
                   criteria: [
                     {
                       criterium_id: '21',
