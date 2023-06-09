@@ -67,11 +67,10 @@ const Preparation = ({
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (
-      componentLinkDocs !== "" &&
-      testData.componentLinkDocs !== componentLinkDocs &&
-      testData.componentExists
-    ) {
+    if (testData.componentExists) {
+      console.log(
+        `updating componentLinkDocs from ${testData.componentLinkDocs}  to ${componentLinkDocs}`
+      );
       changeLinkDocs(componentLinkDocs);
     }
     if (screenreader && chosenScreenreader) {
