@@ -12,6 +12,7 @@ import { TestDataContext } from "../../test-lab";
 import { browserName, osName } from "react-device-detect";
 import SelectScreenreader from "./parts/select-screenreader";
 import ComponentLinkSection from "./parts/component-link-section";
+import LinkButton from "../../../../shared/components/link-button";
 
 type PreparationProps = {
   linkDocs: string;
@@ -222,9 +223,12 @@ const Preparation = ({
 
       <div className='control-group'>
         <h2 className='visually-hidden'>Navigation</h2>
-        <button type='button' onClick={() => navigate("../specify")}>
-          <BsChevronLeft /> Back
-        </button>
+        <LinkButton
+          type='button'
+          label='Back'
+          to={"../specify"}
+          icon={<BsChevronLeft />}
+        />
         {buttonState === "save" && (
           <button type='submit' className='button-primary button-with-icon'>
             <BsChevronRight /> Save & Continue

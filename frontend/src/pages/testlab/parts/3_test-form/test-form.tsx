@@ -15,6 +15,7 @@ import LabPathDisplay from "../../components/lab-path-display";
 import TestItem from "./test-item";
 import Heading from "../../../../shared/components/heading";
 import { TestDataContext } from "../../test-lab";
+import LinkButton from "../../../../shared/components/link-button";
 
 // type TestFormProps = {
 //   testData: TestData;
@@ -114,9 +115,12 @@ const TestForm = () => {
 
       <div className='control-group'>
         <h2 className='visually-hidden'>Navigation</h2>
-        <button type='button' onClick={() => navigate("../prepare")}>
-          <BsChevronLeft /> Back
-        </button>
+        <LinkButton
+          type='button'
+          label='Back'
+          to={"../prepare"}
+          icon={<BsChevronLeft />}
+        />
         <button type='submit' className='button-primary button-with-icon'>
           <BsChevronRight /> Finish Test
         </button>
