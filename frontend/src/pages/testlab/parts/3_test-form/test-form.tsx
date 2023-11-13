@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+
 import {
   getComponentCriteria,
   postTestResult,
@@ -9,13 +11,13 @@ import {
   CriteriaGroup,
   CriteriumResult,
 } from "../../../../shared/resources/types";
-import Alert from "../../../../shared/components/alert";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import LabPathDisplay from "../../components/lab-path-display";
-import TestItem from "./test-item";
-import Heading from "../../../../shared/components/heading";
-import { TestDataContext } from "../../test-lab";
 import LinkButton from "../../../../shared/components/link-button";
+import Heading from "../../../../shared/components/heading";
+import Alert from "../../../../shared/components/alert";
+
+import LabPathDisplay from "../../components/lab-path-display";
+import { TestDataContext } from "../../test-lab";
+import TestItem from "./test-item";
 
 // type TestFormProps = {
 //   testData: TestData;
