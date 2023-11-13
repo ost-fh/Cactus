@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Link } from "react-router-dom";
 
 type LinkButtonProps = {
   to: string;
@@ -20,17 +21,17 @@ const LinkButton = ({
   ariaLabel = undefined,
 }: LinkButtonProps) => {
   return (
-    <a
+    <Link
       aria-label={ariaLabel}
       className={`button ${className ? className : ""} ${
         icon ? "button-with-icon" : ""
       }`}
       type={type}
-      href={to}
+      to={to}
     >
       {iconPosition === "left" ? icon : ""} {label}{" "}
       {iconPosition === "right" ? icon : ""}
-    </a>
+    </Link>
   );
 };
 
