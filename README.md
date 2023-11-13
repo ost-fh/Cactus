@@ -26,6 +26,15 @@ contains the backend of this application. It processes the db calls and handle t
 
 The newest production-ready release of this application is hosted by the Eastern Switzerland University of Applied Sciences (OST). In the background a [mongo DB](https://www.mongodb.com/) stores the test results and user profiles.
 
+### Deployment
+
+[Dev Branch Deployment](https://cactus-dev.sifs0003.infs.ch/)
+[Main Branch Deployment](https://cactus.projects-ost.ch/)
+
+### Use of Branches
+
+The main and dev-branches are protected. Create a feature branch and a pull request (into dev) to add changes. The main branch is only to be changed from the dev-branch.
+
 ## Contribution
 
 We appreciate your interest in contributing to our project. There are two mainly focused ways to contribute this project showed in this visualization.

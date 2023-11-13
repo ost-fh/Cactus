@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { browserName, osName } from "react-device-detect";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 import Alert from "../../../../shared/components/alert";
 import Heading from "../../../../shared/components/heading";
 import LinkButton from "../../../../shared/components/link-button";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { Library } from "../../../../shared/resources/types";
 
 import LabPathDisplay from "../../components/lab-path-display";
-import { Library } from "../../../../shared/resources/types";
 import "./preparation.scss";
 import { TestDataContext } from "../../test-lab";
-import { browserName, osName } from "react-device-detect";
 import SelectScreenreader from "./parts/select-screenreader";
 import ComponentLinkSection from "./parts/component-link-section";
 

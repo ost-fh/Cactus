@@ -1,21 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+
 import {
   getComponentCriteria,
   postTestResult,
 } from "../../../../shared/services/api";
-import LinkButton from "../../../../shared/components/link-button";
 import {
   ComponentCriteria,
   CriteriaGroup,
   CriteriumResult,
 } from "../../../../shared/resources/types";
-import Alert from "../../../../shared/components/alert";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import LabPathDisplay from "../../components/lab-path-display";
-import TestItem from "./test-item";
+import LinkButton from "../../../../shared/components/link-button";
 import Heading from "../../../../shared/components/heading";
+import Alert from "../../../../shared/components/alert";
+
+import LabPathDisplay from "../../components/lab-path-display";
 import { TestDataContext } from "../../test-lab";
+import TestItem from "./test-item";
 
 // type TestFormProps = {
 //   testData: TestData;
@@ -115,7 +117,6 @@ const TestForm = () => {
 
       <div className='control-group'>
         <h2 className='visually-hidden'>Navigation</h2>
-
         <LinkButton
           type='button'
           label='Back'
