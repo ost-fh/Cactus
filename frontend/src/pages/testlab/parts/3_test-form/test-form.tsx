@@ -4,7 +4,6 @@ import {
   getComponentCriteria,
   postTestResult,
 } from "../../../../shared/services/api";
-import LinkButton from "../../../../shared/components/link-button";
 import {
   ComponentCriteria,
   CriteriaGroup,
@@ -115,13 +114,9 @@ const TestForm = () => {
 
       <div className='control-group'>
         <h2 className='visually-hidden'>Navigation</h2>
-
-        <LinkButton
-          type='button'
-          label='Back'
-          to={"../prepare"}
-          icon={<BsChevronLeft />}
-        />
+        <button type='button' onClick={() => navigate("../prepare")}>
+          <BsChevronLeft /> Back
+        </button>
         <button type='submit' className='button-primary button-with-icon'>
           <BsChevronRight /> Finish Test
         </button>

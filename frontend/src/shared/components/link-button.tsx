@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-import { useNavigate } from "react-router-dom";
 
 type LinkButtonProps = {
   to: string;
@@ -20,19 +19,18 @@ const LinkButton = ({
   iconPosition = "left",
   ariaLabel = undefined,
 }: LinkButtonProps) => {
-  const navigate = useNavigate();
   return (
-    <button
+    <a
       aria-label={ariaLabel}
-      className={`${className ? className : ""} ${
+      className={`button ${className ? className : ""} ${
         icon ? "button-with-icon" : ""
       }`}
       type={type}
-      onClick={() => navigate(to)}
+      href={to}
     >
       {iconPosition === "left" ? icon : ""} {label}{" "}
       {iconPosition === "right" ? icon : ""}
-    </button>
+    </a>
   );
 };
 

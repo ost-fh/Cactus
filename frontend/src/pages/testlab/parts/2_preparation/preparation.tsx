@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import Alert from "../../../../shared/components/alert";
 import Heading from "../../../../shared/components/heading";
-import LinkButton from "../../../../shared/components/link-button";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 import LabPathDisplay from "../../components/lab-path-display";
@@ -223,12 +222,9 @@ const Preparation = ({
 
       <div className='control-group'>
         <h2 className='visually-hidden'>Navigation</h2>
-        <LinkButton
-          type='button'
-          label='Back'
-          to={"../specify"}
-          icon={<BsChevronLeft />}
-        />
+        <button type='button' onClick={() => navigate("../specify")}>
+          <BsChevronLeft /> Back
+        </button>
         {buttonState === "save" && (
           <button type='submit' className='button-primary button-with-icon'>
             <BsChevronRight /> Save & Continue
